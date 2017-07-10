@@ -1,19 +1,24 @@
 ﻿namespace Alpha.Messages.Site.App_Start
 {
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
-    using System.Web.Mvc;
+    using Announcements.Models;
+    using Announcements.Services;
+    using Client;
     using Controllers;
+    using Criteria;
     using Fanex.Data.Repository;
     using MediatR;
-    using Messages.Models;
-    using Models;
+    using Requests;
+    using Services;
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
     using Sunplus.Agent.Model.Base;
     using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.Model.Entities.Permission;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
+    using System.Web.Mvc;
 
     public static class DependencyConfig
     {
@@ -29,6 +34,8 @@
             RegisterDataAccesses(container);
 
             RegisterServices(container);
+
+            RegisterAnnouncementService(container);
 
             // This is an extension method from the integration package.
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
@@ -56,7 +63,7 @@
 
         private static IEnumerable<Assembly> GetAssemblies()
         {
-            yield return typeof(HomeController).Assembly;
+            yield return typeof(AnnouncementController).Assembly;
         }
 
         private static void RegisterDataAccesses(Container container)
@@ -66,8 +73,28 @@
 
         private static void RegisterServices(Container container)
         {
+#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
             container.RegisterSingleton<IUserSession, UserSessionExt>();
-            container.RegisterSingleton<IUser, User>();
+#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
+            container.RegisterSingleton<AnnouncementFromApiService, AnnoucemtnFromApiServiceImpl>();
+            container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();
+            container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
+            container.Register<ProductService>(
+                () => new ProductServiceImpl(
+                    container.GetInstance<IDynamicRepository>(),
+#pragma warning disable CS0618 // 'UserPermission' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
+                    UserPermission.HasPermissionOnProduct),
+#pragma warning restore CS0618 // 'UserPermission' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
+                Lifestyle.Singleton);
+            container.RegisterSingleton<ResourceManager, SiteResourceManager>();
+
+        }
+
+        private static void RegisterAnnouncementService(Container container)
+        {           
+            container.RegisterSingleton<IParam, SpecificationParameter>();
+            container.RegisterSingleton<SpecificationService, SpecificationServiceImpl>();
+            container.RegisterSingleton<AnnouncementClient, AnnouncementClientImpl>();
         }
     }
 }

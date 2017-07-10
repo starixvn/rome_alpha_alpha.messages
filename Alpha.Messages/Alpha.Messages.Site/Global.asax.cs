@@ -1,15 +1,16 @@
 ﻿namespace Alpha.Messages.Site
 {
-    using System.Diagnostics;
-    using System.Reflection;
-    using System.Web.Mvc;
-    using System.Web.Routing;
     using App_Start;
     using Auth.Filters;
     using Configurations;
     using Fanex.Data;
     using Fanex.Data.OldConnectionStringProvider;
+    using Helpers;
     using ONEbook.UM.Filters;
+    using System.Diagnostics;
+    using System.Reflection;
+    using System.Web.Mvc;
+    using System.Web.Routing;
     using Web;
     using Web.Helpers;
 
@@ -40,6 +41,8 @@
 
             GlobalFilters.Filters.Add(new CheckUMFilter());
             GlobalFilters.Filters.Add(new CheckBelongingFilter());
+
+            ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
             StaticResources.Init(GetBuildVersion());
         }
