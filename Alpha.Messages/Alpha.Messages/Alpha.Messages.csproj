@@ -115,8 +115,7 @@
     <Compile Include="Criteria\GetProductsCriteria.cs" />
     <Compile Include="Criteria\InsertPersonalMessageCriteria.cs" />
     <Compile Include="Criteria\InsertPersonalMessageTargetCriteria.cs" />
-    <Compile Include="Criteria\IResourceManager.cs" />
-    <Compile Include="Criteria\SiteResourceManager.cs" />
+    <Compile Include="Models\ResourceManager.cs" />
     <Compile Include="Criteria\UpdateViewStatus.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\Enumerations\Enumeration.cs" />
