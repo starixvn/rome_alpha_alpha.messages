@@ -5,24 +5,24 @@
 }
 @if (Model.Announcements.Any())
 {
-    <div class="announcement-section">
-        @foreach (var announcement in Model.Announcements)
-        {
-            index++;
-            <div id="announcement_@index" class="js-announcement hidden">
-                @if (string.IsNullOrEmpty(Model.Announcements.First().Source))
-                {
-                    @Html.Partial("HotAnnouncementWithText", Model.Announcements.First())
-                }
-                else
-                {
-                    @Html.Partial("HotAnnouncementWithSource", Model.Announcements.First())
-                }
-            </div>
-        }
-        @Html.Hidden("announcement-cookies-id", Model.Announcements.First().CookieId)
-        @Html.Hidden("numberAnnouncement", Model.Announcements.Count())
-    </div>
+    foreach (var announcement in Model.Announcements)
+    {
+        index++;
+        <div id="announcement_@index" class="js-announcement">
+            @if (!string.IsNullOrEmpty(announcement.Content))
+            {
+                @Html.Partial("HotAnnouncementWithText", announcement)
+            }
+            else
+            {
+                @Html.Partial("HotAnnouncementWithSource", announcement)
+            }
+            @Html.Hidden("AnnouncementId", announcement.Id)
+        </div>
+    }
+
+    @Html.Hidden("numberAnnouncement", Model.Announcements.Count())
+    @Html.Hidden("announcement-cookies-id", Model.Announcements.First().CookieId)
 }
 else
 {
