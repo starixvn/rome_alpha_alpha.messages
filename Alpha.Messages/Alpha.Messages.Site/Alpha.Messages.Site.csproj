@@ -214,6 +214,9 @@
     <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Alpha.Messages.Site.ruleset" />
+    <None Include="Web.AppSettings.local.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>

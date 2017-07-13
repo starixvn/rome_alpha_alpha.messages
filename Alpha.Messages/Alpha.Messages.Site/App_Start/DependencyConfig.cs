@@ -73,18 +73,14 @@
 
         private static void RegisterServices(Container container)
         {
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
             container.RegisterSingleton<IUserSession, UserSessionExt>();
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
             container.RegisterSingleton<AnnouncementFromApiService, AnnoucemtnFromApiServiceImpl>();
             container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
             container.Register<ProductService>(
                 () => new ProductServiceImpl(
                     container.GetInstance<IDynamicRepository>(),
-#pragma warning disable CS0618 // 'UserPermission' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
                     UserPermission.HasPermissionOnProduct),
-#pragma warning restore CS0618 // 'UserPermission' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
                 Lifestyle.Singleton);
             container.RegisterSingleton<ResourceManager, SiteResourceManager>();
 
@@ -94,7 +90,7 @@
         {           
             container.RegisterSingleton<IParam, SpecificationParameter>();
             container.RegisterSingleton<SpecificationService, SpecificationServiceImpl>();
-            container.RegisterSingleton<AnnouncementClient, AnnouncementClientImpl>();
+            container.RegisterSingleton<AnnouncementClient, AnnouncementClientImpl>();            
         }
     }
 }
