@@ -284,9 +284,9 @@
     <None Include="Web.backupMNLNap2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
-    <None Include="Web.AppSettings.local.config">
+    <Content Include="Web.AppSettings.local.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
