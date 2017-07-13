@@ -1,20 +1,20 @@
 ﻿using Alpha.Announcements.Models;
+using Alpha.Messages.Services;
 using Sunplus.Agent.Model.Entities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alpha.Messages.Site.Requests
 {
     public class SpecificationParameter : IParam
     {
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
         private readonly IUserSession userSession;
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
+        private readonly ProductService productService;
 
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
-        public SpecificationParameter(IUserSession userSession)
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
+        public SpecificationParameter(IUserSession userSession, ProductService productService)
         {
             this.userSession = userSession;
+            this.productService = productService;
         }
 
         public int AdminId => userSession.AdminId;
@@ -41,6 +41,7 @@ namespace Alpha.Messages.Site.Requests
 
         public bool IsSyncedCasino => userSession.IsLiveCasinoSync;
 
-        public IEnumerable<byte> OfferedProductIds { get; set; }
+        public IEnumerable<byte> OfferedProductIds
+            => productService.GetOfferedProductsByCustomer(UserId).Select(i => (byte)i.Id);
     }
 }
