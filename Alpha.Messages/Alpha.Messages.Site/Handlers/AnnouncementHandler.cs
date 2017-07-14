@@ -44,12 +44,12 @@ namespace Alpha.Messages.Site.Handlers
 
             var productNamesBuilder = new StringBuilder("<ol>");
             int index = 0;
-            foreach (var name in products)
+            foreach (var product in products)
             {
                 productNamesBuilder.Append("<li>")
                     .Append(++index)
                     .Append(". ")
-                    .Append(name)
+                    .Append(product.Name)
                     .Append("</li>");
             }
 

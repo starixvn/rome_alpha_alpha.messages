@@ -34,6 +34,7 @@ namespace Alpha.Messages.Services
 
         public IEnumerable<HotAnnouncement> GetHotAnnouncements(GetHotAnnouncementsParams parameters)
         {
+            var announcements = new List<HotAnnouncement>();
             var messageTypes = Enumerable.Empty<string>();
             if (parameters.AdminId == 0)
             {
@@ -45,17 +46,21 @@ namespace Alpha.Messages.Services
                 {
                     messageTypes = messageTypes.Contains(FishingWorldNotice.ToString()) ?
                         new List<string> { FishingWorldNotice.ToString() } :
-                        messageTypes;
+                        new List<string>();
                 }
             }
 
-            var hotAnnouncement = new HotAnnouncement
+            var content = GetSettingChangedMessage(messageTypes, parameters);
+            if (!string.IsNullOrEmpty(content))
             {
-                Content = GetSettingChangedMessage(messageTypes, parameters),
-                Languague = parameters.Language
-            };
+                announcements.Add(new HotAnnouncement
+                {
+                    Content = content,
+                    Languague = parameters.Language
+                });
+            }
 
-            return new List<HotAnnouncement> { hotAnnouncement };
+            return announcements;
         }
 
         private static bool IsNotAgentLevel(byte roleId) => !Enumeration.FromValue<UserLevel>(roleId).IsAgentLevel();
