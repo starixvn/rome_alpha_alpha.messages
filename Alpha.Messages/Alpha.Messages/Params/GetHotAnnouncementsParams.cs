@@ -6,16 +6,7 @@ using System.Linq;
 namespace Alpha.Messages.Params
 {
     public class GetHotAnnouncementsParams
-    {
-        public GetHotAnnouncementsParams() : this(null)
-        {
-        }
-
-        public GetHotAnnouncementsParams(Dictionary<string, string> replacement)
-        {
-            Replacement = replacement ?? new Dictionary<string, string>();
-        }
-
+    {       
         public int UserId { get; set; }
 
         public int SubAccId { get; set; }
@@ -34,20 +25,8 @@ namespace Alpha.Messages.Params
 
         public string[] NoticeTypes { get; set; }
 
-        public IParam SpecificationParamter { get; set; }
+        public bool IsMobileDevice { get; set; }
 
-        public Dictionary<string, string> Replacement { get; }
-
-        public void AddReplacement(string key, string value)
-        {
-            if (Replacement.Any(i => i.Key == key))
-            {
-                Replacement[key] = value;
-            }
-            else
-            {
-                Replacement.Add(key, value);
-            }
-        }
+        public IParam SpecificationParamter { get; set; }        
     }
 }

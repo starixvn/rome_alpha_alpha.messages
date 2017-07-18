@@ -54,9 +54,8 @@ namespace Alpha.Messages.Services
             if (!string.IsNullOrEmpty(content))
             {
                 announcements.Add(new HotAnnouncement
-                {
-                    Content = content,
-                    Languague = parameters.Language
+                {                    
+                    Content = content
                 });
             }
 

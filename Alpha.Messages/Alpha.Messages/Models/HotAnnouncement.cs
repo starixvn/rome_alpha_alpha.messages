@@ -14,10 +14,6 @@ namespace Alpha.Messages.Models
 
         public string Code { get; set; }
 
-        public string Source { get; set; }
-
-        public string CookieId { get; set; }
-
-        public string Languague { get; set; }
+        public string Source { get; set; }        
     }
 }

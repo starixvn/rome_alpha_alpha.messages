@@ -13,7 +13,7 @@
             {
                 @Html.Partial("HotAnnouncementWithText", announcement)
             }
-            else
+            else if(!string.IsNullOrEmpty(announcement.Source))
             {
                 @Html.Partial("HotAnnouncementWithSource", announcement)
             }
@@ -22,10 +22,9 @@
     }
 
     @Html.Hidden("numberAnnouncement", Model.Announcements.Count())
-    @Html.Hidden("announcement-cookies-id", Model.Announcements.First().CookieId)
+    @Html.Hidden("announcement-cookies-id", Model.CookiesId)
 }
 else
 {
     @Html.Hidden("no-info", Resources.NoInformationIsAvailable);
-
 }

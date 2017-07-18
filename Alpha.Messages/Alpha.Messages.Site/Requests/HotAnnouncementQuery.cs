@@ -45,7 +45,7 @@ namespace Alpha.Messages.Site.Requests
 
         public string[] NoticeTypes { get; set; }
 
-        public GetHotAnnouncementsParams AssignValue()
+        public GetHotAnnouncementsParams ConvertToParameters()
         {
             return new GetHotAnnouncementsParams
             {
@@ -58,6 +58,7 @@ namespace Alpha.Messages.Site.Requests
                 SubAccId = SubAccId,
                 UserName = UserName,
                 NoticeTypes = NoticeTypes,
+                IsMobileDevice = IsMobileDevice,
                 SpecificationParamter = Specification
             };
         }

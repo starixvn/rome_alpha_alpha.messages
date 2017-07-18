@@ -31,7 +31,8 @@
         public IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request)
         {
             var restRequest = new RestRequest("AnnouncementApi/GetAnnouncements", Method.POST);
-            restRequest.AddJsonBody(request);
+            restRequest.AddQueryParameter("environment", request.Environment);
+            restRequest.AddQueryParameter("system", request.System);
             IRestResponse response = restClient.Execute(restRequest);
             if (response.StatusCode == HttpStatusCode.OK)
             {

@@ -74,6 +74,7 @@
         private static void RegisterServices(Container container)
         {
             container.RegisterSingleton<IUserSession, UserSessionExt>();
+            container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
             container.RegisterSingleton<AnnouncementFromApiService, AnnoucemtnFromApiServiceImpl>();
             container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();

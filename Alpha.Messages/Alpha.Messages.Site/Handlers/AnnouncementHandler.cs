@@ -1,7 +1,4 @@
-﻿using Alpha.Messages.Client.Requests;
-using Alpha.Messages.Constants;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
+﻿using Alpha.Messages.Constants;
 using Alpha.Messages.Services;
 using Alpha.Messages.Site.Requests;
 using Alpha.Messages.Site.ViewModels;
@@ -16,46 +13,28 @@ namespace Alpha.Messages.Site.Handlers
 {
     public class AnnouncementHandler :
          IRequestHandler<HotAnnouncementQuery, HotAnnouncementViewModel>
-    {
+    {        
         private readonly AnnouncementService announcementService;
-        private readonly ProductService productService;
+        private readonly AnnouncementFormatService formatAnnouncementService;        
 
-        public AnnouncementHandler(AnnouncementService announcementService, ProductService productService)
+        public AnnouncementHandler(
+            AnnouncementService announcementService, 
+            AnnouncementFormatService formatService)
         {
             this.announcementService = announcementService;
-            this.productService = productService;
+            this.formatAnnouncementService = formatService;
         }
 
         public HotAnnouncementViewModel Handle(HotAnnouncementQuery message)
         {
-            var parameters = message.AssignValue();
+            var parameters = message.ConvertToParameters();            
 
-            parameters.AddReplacement(TagMessage.SiteMain, message.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
-            parameters.AddReplacement(TagMessage.ProductList, BuildProductListForReplace(message.CustId));
+            var announcements = announcementService.GetHotAnnouncement(parameters);
+            var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);
 
-            var hotAnnouncement = announcementService.GetHotAnnouncement(parameters);
+            var cookiesId = Encryption.PearsonEncode(message.UserName + message.UserId + message.SubAccId);
 
-            return new HotAnnouncementViewModel(hotAnnouncement);
-        }
-
-        private string BuildProductListForReplace(int custId)
-        {
-            var products = productService.GetOfferedProductsByCustomer(custId);
-
-            var productNamesBuilder = new StringBuilder("<ol>");
-            int index = 0;
-            foreach (var product in products)
-            {
-                productNamesBuilder.Append("<li>")
-                    .Append(++index)
-                    .Append(". ")
-                    .Append(product.Name)
-                    .Append("</li>");
-            }
-
-            productNamesBuilder.Append("</ol>");
-
-            return productNamesBuilder.ToString();
-        }
+            return new HotAnnouncementViewModel(formatedAnnouncements, cookiesId);
+        }        
     }
 }

@@ -22,6 +22,7 @@ namespace Alpha.Messages.Services
 
     public class AnnoucemtnFromApiServiceImpl : AnnouncementFromApiService
     {
+        private const int CachedSecondAnnouncement = 10;
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationSerivce;
 
@@ -38,7 +39,6 @@ namespace Alpha.Messages.Services
         {
             var request = new QueryAnnouncementRequest
             {
-                Date = DateTime.Now.Date,
                 Environment = AppSettings.Environment,
                 System = AppSettings.SiteGroup
             };
@@ -46,7 +46,7 @@ namespace Alpha.Messages.Services
             var allNouncementsToday = ConfiguredCacheService.GetOrSet(
                 $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
                 () => announcementClient.GetAnnouncements(request),
-                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(10)));
+                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             var userAnnouncements = GetAnnouncementsByUser(allNouncementsToday, announcementParams);
 
@@ -65,9 +65,7 @@ namespace Alpha.Messages.Services
                     {
                         Code = announcement.Code,
                         Content = GetMessageContentByLanguage(announcement.Contents, announcementParams),
-                        Id = announcement.Id,
-                        Languague = announcementParams.Language,
-                        CookieId = Encryption.PearsonEncode(announcementParams.UserId.ToString() + announcementParams.SubAccId.ToString())
+                        Id = announcement.Id
                     };
                 }
             }
@@ -78,7 +76,7 @@ namespace Alpha.Messages.Services
             var findingContent = messages.First(i => i.LanguageKey == announcementParams.Language);
             var messageContent = findingContent != null ? findingContent.Text : GetMessageContentDefault(messages);
 
-            return RewriteMessageContent(messageContent, announcementParams);
+            return messageContent;
         }
 
         private static string GetMessageContentDefault(IEnumerable<MessageContent> messages)
@@ -86,17 +84,6 @@ namespace Alpha.Messages.Services
             var contentDefault = messages.First(i => i.LanguageKey.Equals(Language.Default));
 
             return contentDefault != null ? contentDefault.Text : string.Empty;
-        }
-
-        private static string RewriteMessageContent(string messageContent, GetHotAnnouncementsParams announcementParams)
-        {
-            var content = messageContent;
-            foreach(var item in announcementParams.Replacement)
-            {
-                content = messageContent.Replace(item.Key, item.Value);
-            }
-
-            return content;
-        }
+        }        
     }
 }
