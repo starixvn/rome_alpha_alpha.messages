@@ -208,12 +208,13 @@
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
-    <Content Include="Views\Announcement\HotAnnouncement.cshtml" />
-    <Content Include="Views\Announcement\HotAnnouncementWithSource.cshtml" />
-    <Content Include="Views\Announcement\HotAnnouncementWithText.cshtml" />
+    <Content Include="Views\Announcement\PopupAnnouncement.cshtml" />
+    <Content Include="Views\Announcement\PopupAnnouncementWithSource.cshtml" />
+    <Content Include="Views\Announcement\PopupAnnouncementWithText.cshtml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Alpha.Messages.Site.ruleset" />
+    <Content Include="Views\Announcement\HeaderAnnouncement.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -301,7 +302,8 @@
     <Compile Include="Handlers\AnnouncementHandler.cs" />
     <Compile Include="Helpers\QueryEntityModelBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\HotAnnouncementQuery.cs" />
+    <Compile Include="Requests\HeaderAnnouncementQuery.cs" />
+    <Compile Include="Requests\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\SpecificationParameter.cs" />
     <Compile Include="ViewModels\HotAnnouncementViewModel.cs" />
   </ItemGroup>

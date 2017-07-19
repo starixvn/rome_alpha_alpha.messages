@@ -11,11 +11,11 @@
         <div id="announcement_@index" class="js-announcement">
             @if (!string.IsNullOrEmpty(announcement.Content))
             {
-                @Html.Partial("HotAnnouncementWithText", announcement)
+                @Html.Partial("PopupAnnouncementWithText", announcement)
             }
             else if(!string.IsNullOrEmpty(announcement.Source))
             {
-                @Html.Partial("HotAnnouncementWithSource", announcement)
+                @Html.Partial("PopupAnnouncementWithSource", announcement)
             }
             @Html.Hidden("AnnouncementId", announcement.Id)
         </div>

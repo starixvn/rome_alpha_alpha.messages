@@ -14,6 +14,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
     public class AnnouncementHandlerTest
     {
         private AnnouncementService announcementService;
+        private AnnouncementFromApiService announcementApiService;
         private AnnouncementFormatService formatService;
         private AnnouncementHandler handler;
         private UserSessionFixture fixture;
@@ -22,7 +23,8 @@ namespace Alpha.Messages.Site.Tests.Handlers
         {
             announcementService = Substitute.For<AnnouncementService>();
             formatService = Substitute.For<AnnouncementFormatService>();
-            handler = new AnnouncementHandler(announcementService, formatService);
+            announcementApiService = Substitute.For<AnnouncementFromApiService>();
+            handler = new AnnouncementHandler(announcementService, formatService, announcementApiService);
             fixture = new UserSessionFixture();
         }
 
@@ -30,7 +32,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
         public void Handle_Always_CallGetHotAnnouncement()
         {
             //// Arrange
-            var query = new HotAnnouncementQuery(fixture.UserSession);            
+            var query = new PopupAnnouncementQuery(fixture.UserSession);            
 
             //// Act
             handler.Handle(query);
@@ -44,7 +46,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
         {
             //// Arrange
             var announcements = new List<HotAnnouncement>();            
-            var query = new HotAnnouncementQuery(fixture.UserSession);
+            var query = new PopupAnnouncementQuery(fixture.UserSession);
             announcementService.GetHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Returns(announcements);
 
             //// Act

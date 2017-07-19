@@ -10,15 +10,11 @@ using System.Collections.Generic;
 
 namespace Alpha.Messages.Site.Requests
 {
-    public class HotAnnouncementQuery : IRequest<HotAnnouncementViewModel>
+    public class PopupAnnouncementQuery : IRequest<HotAnnouncementViewModel>
     {
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
         private readonly IUserSession userSession;
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
-              
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
-        public HotAnnouncementQuery(IUserSession userSession)
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
+
+        public PopupAnnouncementQuery(IUserSession userSession)
         {
             this.userSession = userSession;
         }

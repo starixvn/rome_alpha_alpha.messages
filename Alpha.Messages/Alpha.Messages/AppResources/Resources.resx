@@ -138,4 +138,10 @@
   <data name="Notice_3" xml:space="preserve">
     <value>Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings.</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="less" xml:space="preserve">
+    <value>less</value>
+  </data>
 </root>

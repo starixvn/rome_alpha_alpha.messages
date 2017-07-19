@@ -27,7 +27,7 @@ namespace Alpha.Messages.Services
 
         public IEnumerable<HotAnnouncement> GetHotAnnouncement(GetHotAnnouncementsParams getParams)
         {            
-            var announcementsFromApi = apiService.GetHotAnnouncements(getParams);
+            var announcementsFromApi = apiService.GetPopupAnnouncements(getParams);
             var announcementsFromDb = dataBaseSerivce.GetHotAnnouncements(getParams);
 
             return announcementsFromDb.Concat(announcementsFromApi);

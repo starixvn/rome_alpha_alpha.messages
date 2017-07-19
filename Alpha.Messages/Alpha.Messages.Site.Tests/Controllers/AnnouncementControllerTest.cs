@@ -34,11 +34,11 @@ namespace Alpha.Messages.Site.Tests.Controllers
         public void HotAnnouncement_Always_SetSpecificationToQuery()
         {
             //// Arrange
-            var query = new HotAnnouncementQuery(fixtures.UserSession);
+            var query = new PopupAnnouncementQuery(fixtures.UserSession);
             var controller = new AnnouncementController(mediator, specificationParam);
 
             //// Act
-            controller.HotAnnouncement(query);
+            controller.PopupAnnouncement(query);
 
             //// Assert
             Assert.True(compareLogic.Compare(specificationParam, query.Specification).AreEqual);
@@ -47,11 +47,11 @@ namespace Alpha.Messages.Site.Tests.Controllers
         public void HotAnnouncement_Always_SendQueryToMediator()
         {
             //// Arrange
-            var query = new HotAnnouncementQuery(fixtures.UserSession);
+            var query = new PopupAnnouncementQuery(fixtures.UserSession);
             var controller = new AnnouncementController(mediator, specificationParam);
 
             //// Act
-            controller.HotAnnouncement(query);
+            controller.PopupAnnouncement(query);
 
             //// Assert
             mediator.Received().Send(query);

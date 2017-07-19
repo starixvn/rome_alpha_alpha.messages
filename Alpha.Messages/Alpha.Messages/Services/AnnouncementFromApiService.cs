@@ -17,7 +17,9 @@ namespace Alpha.Messages.Services
 {
     public interface AnnouncementFromApiService
     {
-        IEnumerable<HotAnnouncement> GetHotAnnouncements(GetHotAnnouncementsParams getParam);
+        IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams getParam);
+
+        IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams getParam);
     }
 
     public class AnnoucemtnFromApiServiceImpl : AnnouncementFromApiService
@@ -35,7 +37,25 @@ namespace Alpha.Messages.Services
             this.specificationSerivce = specificationSerivce;
         }
 
-        public IEnumerable<HotAnnouncement> GetHotAnnouncements(GetHotAnnouncementsParams announcementParams)
+        public IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams)
+        {
+            var allNouncementsToday = GetAllAnnouncementToday();
+
+            var userAnnouncements = GetPopuAnnouncementsByUser(allNouncementsToday, announcementParams);
+
+            return userAnnouncements;
+        }
+
+        public IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams)
+        {
+            var allNouncementsToday = GetAllAnnouncementToday();
+
+            var userAnnouncements = GetHeaderAnnouncementsByUser(allNouncementsToday, announcementParams);
+
+            return userAnnouncements;
+        }
+
+        private IEnumerable<Announcement> GetAllAnnouncementToday()
         {
             var request = new QueryAnnouncementRequest
             {
@@ -48,14 +68,30 @@ namespace Alpha.Messages.Services
                 () => announcementClient.GetAnnouncements(request),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
-            var userAnnouncements = GetAnnouncementsByUser(allNouncementsToday, announcementParams);
-
-            return userAnnouncements;
+            return allNouncementsToday;
         }
 
-        private IEnumerable<HotAnnouncement> GetAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
+        private IEnumerable<HotAnnouncement> GetPopuAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
         {
-            foreach (var announcement in announcements)
+            foreach (var announcement in announcements.Where(i => i.AnnouncementType == AnnouncementType.Popup))
+            {
+                if (announcement.Specifications == null
+                    || !announcement.Specifications.Any()
+                    || specificationSerivce.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
+                {
+                    yield return new HotAnnouncement
+                    {
+                        Code = announcement.Code,
+                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams),
+                        Id = announcement.Id
+                    };
+                }
+            }
+        }
+
+        private IEnumerable<HotAnnouncement> GetHeaderAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
+        {
+            foreach (var announcement in announcements.Where(i => i.AnnouncementType == AnnouncementType.HeaderPopup))
             {
                 if (announcement.Specifications == null
                     || !announcement.Specifications.Any()
@@ -84,6 +120,6 @@ namespace Alpha.Messages.Services
             var contentDefault = messages.First(i => i.LanguageKey.Equals(Language.Default));
 
             return contentDefault != null ? contentDefault.Text : string.Empty;
-        }        
+        }
     }
 }

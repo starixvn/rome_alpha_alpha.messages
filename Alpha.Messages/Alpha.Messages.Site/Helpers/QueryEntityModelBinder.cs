@@ -7,10 +7,9 @@ namespace Alpha.Messages.Site.Helpers
 {
     public class QueryEntityModelBinder : DefaultModelBinder
     {
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
         private static readonly Type[] IUserSessionType = { typeof(IUserSession) };
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
-        private static readonly Type HotAnnouncementQueryType = typeof(HotAnnouncementQuery);
+        private static readonly Type PopupAnnouncementQueryType = typeof(PopupAnnouncementQuery);
+        private static readonly Type HeaderAnnouncementQueryType = typeof(HeaderAnnouncementQuery);
 
         protected override object CreateModel(
             ControllerContext controllerContext,
@@ -18,8 +17,9 @@ namespace Alpha.Messages.Site.Helpers
             Type modelType)
         {
             if (modelType != null
-                && HotAnnouncementQueryType.IsAssignableFrom(modelType)
-                && modelType.GetConstructor(IUserSessionType) != null)
+                && modelType.GetConstructor(IUserSessionType) != null
+                && (PopupAnnouncementQueryType.IsAssignableFrom(modelType)
+                || HeaderAnnouncementQueryType.IsAssignableFrom(modelType)))
             {
                 return CreateInstanceOfAssignableReportBaseQuery(modelType);
             }
@@ -28,9 +28,7 @@ namespace Alpha.Messages.Site.Helpers
         }
 
         protected virtual object CreateInstanceOfAssignableReportBaseQuery(Type modelType)
-#pragma warning disable CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
             => Activator.CreateInstance(modelType, DependencyResolver.Current.GetService<IUserSession>());
-#pragma warning restore CS0618 // 'IUserSession' is obsolete: 'Should rename to Sunplus.Agent.Model.Base'
 
         protected virtual object CallBaseCreateModel(
            ControllerContext controllerContext,

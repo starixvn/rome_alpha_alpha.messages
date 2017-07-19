@@ -15,10 +15,17 @@
             this.specificationParam = specificationParam;
         }
 
-        public ActionResult HotAnnouncement(HotAnnouncementQuery message)
+        public ActionResult PopupAnnouncement(PopupAnnouncementQuery message)
         {
             message.NoticeTypes = AppSettings.NoticeTypes;
             message.IsMobileDevice = Request.Browser.IsMobileDevice;
+            message.Specification = specificationParam;
+
+            return View(message);
+        }
+
+        public ActionResult HeaderAnnouncement(HeaderAnnouncementQuery message)
+        {
             message.Specification = specificationParam;
 
             return View(message);

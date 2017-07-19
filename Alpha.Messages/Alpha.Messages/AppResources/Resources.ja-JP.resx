@@ -120,4 +120,10 @@
   <data name="NoInformationIsAvailable" xml:space="preserve">
     <value>情報がありません</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="less" xml:space="preserve">
+    <value>less</value>
+  </data>
 </root>

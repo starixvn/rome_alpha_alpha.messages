@@ -30,7 +30,7 @@ namespace Alpha.Messages.Tests.Services
         {
             //// Arrange
             var numberItem = 2;
-            apiService.GetHotAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
+            apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
                 Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
 
             dbService.GetHotAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
@@ -52,7 +52,7 @@ namespace Alpha.Messages.Tests.Services
             service.GetHotAnnouncement(new GetHotAnnouncementsParams());
 
             //// Assert
-            apiService.GetHotAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();
+            apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();
             dbService.GetHotAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();
         }
     }
