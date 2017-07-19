@@ -16,14 +16,13 @@ namespace Alpha.Messages.Services
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
     {
-        private readonly Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> replacementCode;
-        private readonly ProductService productService;
+        public Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> replacementCode { get; set; }        
 
-        public AnnouncementFormatServiceImpl(ProductService productService)
+        public AnnouncementFormatServiceImpl()
         {
-            this.productService = productService;
             replacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
-            replacementCode.Add("1111", ReplaceOfferedProducts);
+
+            // Add Code & proccessed Function to replace
             replacementCode.Add("2222", ReplaceSiteMain);
         }
 
@@ -44,26 +43,6 @@ namespace Alpha.Messages.Services
         private static string ReplaceSiteMain(string content, GetHotAnnouncementsParams param)
         {
             return content.Replace(TagMessage.SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
-        }
-
-        private string ReplaceOfferedProducts(string content, GetHotAnnouncementsParams message)
-        {
-            var products = productService.GetOfferedProductsByCustomer(message.CustId);
-
-            var productNamesBuilder = new StringBuilder("<ol>");
-            int index = 0;
-            foreach (var product in products)
-            {
-                productNamesBuilder.Append("<li>")
-                    .Append(++index)
-                    .Append(". ")
-                    .Append(product.Name)
-                    .Append("</li>");
-            }
-
-            productNamesBuilder.Append("</ol>");
-
-            return content.Replace(TagMessage.ProductList, productNamesBuilder.ToString());
-        }
+        }        
     }
 }

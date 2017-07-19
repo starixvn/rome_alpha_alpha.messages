@@ -31,7 +31,7 @@ namespace Alpha.Messages.Site.Tests.Controllers
         }
 
         [Test]
-        public void HotAnnouncement_Always_SetSpecificationToQuery()
+        public void PopupAnnouncement_Always_SetSpecificationToQuery()
         {
             //// Arrange
             var query = new PopupAnnouncementQuery(fixtures.UserSession);
@@ -43,8 +43,9 @@ namespace Alpha.Messages.Site.Tests.Controllers
             //// Assert
             Assert.True(compareLogic.Compare(specificationParam, query.Specification).AreEqual);
         }
+
         [Test]
-        public void HotAnnouncement_Always_SendQueryToMediator()
+        public void PopupAnnouncement_Always_SendQueryToMediator()
         {
             //// Arrange
             var query = new PopupAnnouncementQuery(fixtures.UserSession);
@@ -52,6 +53,20 @@ namespace Alpha.Messages.Site.Tests.Controllers
 
             //// Act
             controller.PopupAnnouncement(query);
+
+            //// Assert
+            mediator.Received().Send(query);
+        }
+
+        [Test]
+        public void HeaderAnnouncement_Always_SendQueryToMediator()
+        {
+            //// Arrange
+            var query = new HeaderAnnouncementQuery(fixtures.UserSession);
+            var controller = new AnnouncementController(mediator, specificationParam);
+
+            //// Act
+            controller.HeaderAnnouncement(query);
 
             //// Assert
             mediator.Received().Send(query);

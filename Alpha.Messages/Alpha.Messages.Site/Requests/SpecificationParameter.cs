@@ -43,5 +43,7 @@ namespace Alpha.Messages.Site.Requests
 
         public IEnumerable<byte> OfferedProductIds
             => productService.GetOfferedProductsByCustomer(UserId).Select(i => (byte)i.Id);
+
+        public bool EnableYesterdayTransfer => userSession.IsAllDayBalTransfer;
     }
 }
