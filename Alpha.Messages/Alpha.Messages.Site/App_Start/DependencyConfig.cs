@@ -7,6 +7,7 @@
     using Criteria;
     using Fanex.Data.Repository;
     using MediatR;
+    using Models;
     using Requests;
     using Services;
     using SimpleInjector;

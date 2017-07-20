@@ -13,6 +13,7 @@
     using System.Web.Routing;
     using Web;
     using Web.Helpers;
+    using ClientAppSettings = Client.Configurations.AppSettings;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -28,6 +29,8 @@
             DependencyConfig.Init();
 
             AppSettings.Verify();
+
+            ClientAppSettings.Verify();
 
             DbSettingProviderManager
                 .StartNewSession()

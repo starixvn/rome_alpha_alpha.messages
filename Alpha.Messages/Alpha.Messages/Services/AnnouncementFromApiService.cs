@@ -26,7 +26,7 @@ namespace Alpha.Messages.Services
     {
         private const int CachedSecondAnnouncement = 10;
         private readonly AnnouncementClient announcementClient;
-        private readonly SpecificationService specificationSerivce;
+        private readonly SpecificationService specificationService;
 
 
         public AnnoucemtnFromApiServiceImpl(
@@ -34,7 +34,7 @@ namespace Alpha.Messages.Services
             SpecificationService specificationSerivce)
         {
             this.announcementClient = announcementClient;
-            this.specificationSerivce = specificationSerivce;
+            this.specificationService = specificationSerivce;
         }
 
         public IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams)
@@ -77,12 +77,12 @@ namespace Alpha.Messages.Services
             {
                 if (announcement.Specifications == null
                     || !announcement.Specifications.Any()
-                    || specificationSerivce.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
+                    || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
                     yield return new HotAnnouncement
                     {
                         Code = announcement.Code,
-                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams),
+                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language),
                         Id = announcement.Id
                     };
                 }
@@ -95,21 +95,21 @@ namespace Alpha.Messages.Services
             {
                 if (announcement.Specifications == null
                     || !announcement.Specifications.Any()
-                    || specificationSerivce.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
+                    || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
                     yield return new HotAnnouncement
                     {
                         Code = announcement.Code,
-                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams),
+                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language),
                         Id = announcement.Id
                     };
                 }
             }
         }
 
-        private static string GetMessageContentByLanguage(IEnumerable<MessageContent> messages, GetHotAnnouncementsParams announcementParams)
+        private static string GetMessageContentByLanguage(IEnumerable<MessageContent> messages, string languageKey)
         {
-            var findingContent = messages.First(i => i.LanguageKey == announcementParams.Language);
+            var findingContent = messages.First(i => i.LanguageKey == languageKey);
             var messageContent = findingContent != null ? findingContent.Text : GetMessageContentDefault(messages);
 
             return messageContent;

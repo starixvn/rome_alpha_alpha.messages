@@ -1,12 +1,18 @@
 ﻿
 using Alpha.Announcements.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Alpha.Messages.Params
 {
     public class GetHotAnnouncementsParams
-    {       
+    {
+        public GetHotAnnouncementsParams()
+        {
+            NoticeTypes = Array.Empty<string>();
+        }
+
         public int UserId { get; set; }
 
         public int SubAccId { get; set; }

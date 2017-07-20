@@ -22,7 +22,20 @@
             => string.IsNullOrEmpty(GetConfigValue("Announcement:SecretKey")) ? 
             "ZDlhMWFmMDgtZGQ0ZC00NWY0LTg1ODItNzVkNTdhOTNjOTEx" : 
             GetConfigValue("Announcement:SecretKey");
-               
+
+        public static void Verify()
+        {
+            Require(AnnouncementApi, nameof(AnnouncementApi));
+        }
+
+        private static void Require(string key, string keyName)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new ConfigurationErrorsException($"{keyName} is null or whitespace");
+            }
+        }
+
         public static string GetConfigValue(string configName) => AppSettingValues[configName];       
     }
 }

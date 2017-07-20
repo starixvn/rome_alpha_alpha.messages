@@ -1,5 +1,6 @@
 ﻿using Alpha.Announcements.Models;
 using Alpha.Messages.Client.Requests;
+using Alpha.Messages.Configurations;
 using Alpha.Messages.Models;
 using Alpha.Messages.Params;
 using Alpha.Messages.Site.Requests;
@@ -7,6 +8,7 @@ using Alpha.Messages.Site.ViewModels;
 using MediatR;
 using Sunplus.Agent.Model.Entities;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Alpha.Messages.Site.Requests
 {
@@ -14,9 +16,10 @@ namespace Alpha.Messages.Site.Requests
     {
         private readonly IUserSession userSession;
 
-        public PopupAnnouncementQuery(IUserSession userSession)
+        public PopupAnnouncementQuery(IUserSession userSession, bool? isMobileDevice)
         {
             this.userSession = userSession;
+            IsMobileDevice = isMobileDevice ?? HttpContext.Current.Request.Browser.IsMobileDevice;
         }
 
         public IParam Specification { get; set; }
@@ -39,7 +42,7 @@ namespace Alpha.Messages.Site.Requests
 
         public string Site => userSession.Site;
 
-        public string[] NoticeTypes { get; set; }
+        public string[] NoticeTypes { get; set; } = AppSettings.NoticeTypes;
 
         public GetHotAnnouncementsParams ConvertToParameters()
         {

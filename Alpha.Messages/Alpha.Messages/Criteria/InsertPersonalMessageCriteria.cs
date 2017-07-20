@@ -1,12 +1,7 @@
-﻿using Alpha.Messages.AppResources;
+﻿using Alpha.Messages.Models;
 using Fanex.Data;
 using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alpha.Messages.Criteria
 {

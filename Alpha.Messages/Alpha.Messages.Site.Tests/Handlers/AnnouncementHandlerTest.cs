@@ -29,10 +29,10 @@ namespace Alpha.Messages.Site.Tests.Handlers
         }
 
         [Test]
-        public void Handle_Always_CallGetHotAnnouncement()
+        public void Handle_HeaderAnnouncement_CallGetHotAnnouncement()
         {
             //// Arrange
-            var query = new PopupAnnouncementQuery(fixture.UserSession);            
+            var query = new PopupAnnouncementQuery(fixture.UserSession, false);
 
             //// Act
             handler.Handle(query);
@@ -42,11 +42,11 @@ namespace Alpha.Messages.Site.Tests.Handlers
         }
 
         [Test]
-        public void Handle_Always_CallFormatService()
+        public void Handle_HeaderAnnouncement_CallFormatService()
         {
             //// Arrange
-            var announcements = new List<HotAnnouncement>();            
-            var query = new PopupAnnouncementQuery(fixture.UserSession);
+            var announcements = new List<HotAnnouncement>();
+            var query = new PopupAnnouncementQuery(fixture.UserSession, false);
             announcementService.GetHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Returns(announcements);
 
             //// Act
@@ -56,5 +56,17 @@ namespace Alpha.Messages.Site.Tests.Handlers
             formatService.Received().Format(announcements, Arg.Any<GetHotAnnouncementsParams>());
         }
 
+        [Test]
+        public void Handle_HeaderAnnouncement_CallHeaderHotAnnouncementService()
+        {
+            //// Arrange
+            var query = new HeaderAnnouncementQuery(fixture.UserSession);
+
+            //// Act
+            handler.Handle(query);
+
+            //// Assert
+            announcementApiService.Received().GetHeaderAnnouncements(Arg.Any<GetHotAnnouncementsParams>());
+        }
     }
 }

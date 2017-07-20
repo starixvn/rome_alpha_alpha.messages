@@ -1,4 +1,5 @@
 ﻿using Alpha.Announcements.Models;
+using Alpha.Messages.Configurations;
 using Alpha.Messages.Site.Controllers;
 using Alpha.Messages.Site.Requests;
 using Alpha.Messages.Site.Tests.Fixtures;
@@ -8,6 +9,7 @@ using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,13 +30,17 @@ namespace Alpha.Messages.Site.Tests.Controllers
             mediator = NSubstitute.Substitute.For<IMediator>();
             specificationParam = Substitute.For<IParam>();
             compareLogic = new CompareLogic();
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["NoticeTypes"] = "xxx"
+            };
         }
 
         [Test]
         public void PopupAnnouncement_Always_SetSpecificationToQuery()
         {
             //// Arrange
-            var query = new PopupAnnouncementQuery(fixtures.UserSession);
+            var query = new PopupAnnouncementQuery(fixtures.UserSession, false);
             var controller = new AnnouncementController(mediator, specificationParam);
 
             //// Act
@@ -48,7 +54,7 @@ namespace Alpha.Messages.Site.Tests.Controllers
         public void PopupAnnouncement_Always_SendQueryToMediator()
         {
             //// Arrange
-            var query = new PopupAnnouncementQuery(fixtures.UserSession);
+            var query = new PopupAnnouncementQuery(fixtures.UserSession, false);
             var controller = new AnnouncementController(mediator, specificationParam);
 
             //// Act

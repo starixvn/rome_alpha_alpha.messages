@@ -1,7 +1,7 @@
 ﻿using Alpha.Messages.AppResources;
 using System.Globalization;
 
-namespace Alpha.Messages.Criteria
+namespace Alpha.Messages.Models
 {
     public interface ResourceManager
     {

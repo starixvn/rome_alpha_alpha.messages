@@ -30,12 +30,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1-Renovation-05\lib\net40\Alpha.Announcements.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Caching.2.1.0\lib\net461\Fanex.Caching.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Common, Version=1.0.404.97, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Common.1.0.404.97\lib\net40\Fanex.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Data.Repository, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Data.Repository.1.0.1\lib\net461\Fanex.Data.Repository.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Products, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Products.1.0.0.0\lib\net40\Fanex.Products.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.File.1.0.0\lib\net40\IBCFile.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects, Version=3.9.0.0, Culture=neutral, PublicKeyToken=d970ace04cc85217, processorArchitecture=MSIL">
@@ -54,8 +70,20 @@
       <HintPath>..\..\packages\AutoFixture.3.50.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.2.4\lib\net40\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="RemotingRef, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RemotingRef.1.0.0.13\lib\net40\RemotingRef.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SPSRemoting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.2.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.2.5\lib\net40\Sunplus.Agent.Model.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Model.Definitions.3.0.1.7\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -69,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Criteria\GetMessageTypeListCriteriaTest.cs" />
     <Compile Include="Criteria\GetProductsCriteriaTest.cs" />
     <Compile Include="Criteria\InsertPersonalMessageCriteriaTest.cs" />
@@ -78,6 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatServiceTest.cs" />
     <Compile Include="Services\AnnouncementFromApiServiceTest.cs" />
+    <Compile Include="Services\AnnouncementFromDatabaseServiceTests.cs" />
     <Compile Include="Services\AnnouncementServiceTest.cs" />
     <Compile Include="Services\ProductServiceTest.cs" />
   </ItemGroup>
@@ -86,6 +116,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alpha.Messages.Client\Alpha.Messages.Client.csproj">
+      <Project>{2703095a-0eeb-4c8d-9187-e84d3f1cda40}</Project>
+      <Name>Alpha.Messages.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alpha.Messages\Alpha.Messages.csproj">
       <Project>{2bebc35b-fc38-4091-9364-1c95b6bd2236}</Project>
       <Name>Alpha.Messages</Name>
@@ -97,6 +131,7 @@
   <ItemGroup>
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

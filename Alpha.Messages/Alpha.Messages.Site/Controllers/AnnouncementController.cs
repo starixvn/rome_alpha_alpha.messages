@@ -17,9 +17,7 @@
 
         public ActionResult PopupAnnouncement(PopupAnnouncementQuery message)
         {
-            message.NoticeTypes = AppSettings.NoticeTypes;
-            message.IsMobileDevice = Request.Browser.IsMobileDevice;
-            message.Specification = specificationParam;
+            message.Specification = specificationParam;            
 
             return View(message);
         }
