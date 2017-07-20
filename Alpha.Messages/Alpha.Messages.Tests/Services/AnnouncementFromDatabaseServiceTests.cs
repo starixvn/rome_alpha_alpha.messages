@@ -7,6 +7,7 @@ using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Alpha.Messages.Tests.Services
         public void GetHotAnnouncements_UserIsNotAdmin_CallDynamicRepositoryToGetMessageTypes()
         {
             //// Arrange
-            var parameters = new GetHotAnnouncementsParams { RoleId = 1};
+            var parameters = new GetHotAnnouncementsParams { RoleId = 1 };
             dynamicRepository.Fetch<byte>(Arg.Any<GetMessageTypeListCriteria>()).Returns(Enumerable.Empty<byte>());
 
             //// Act
@@ -39,6 +40,6 @@ namespace Alpha.Messages.Tests.Services
 
             //// Assert
             dynamicRepository.Received().Fetch<byte>(Arg.Any<GetMessageTypeListCriteria>());
-        }
+        }       
     }
 }
