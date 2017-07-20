@@ -31,7 +31,7 @@ namespace Alpha.Messages.Tests.Services
         {
             //// Arrange
             var announcements = fixture.CreateMany<HotAnnouncement>();
-            formatService.replacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
+            formatService.ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
 
             //// Act
             var act = formatService.Format(announcements, new GetHotAnnouncementsParams());

@@ -16,24 +16,24 @@ namespace Alpha.Messages.Services
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
     {
-        public Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> replacementCode { get; set; }        
+        public Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> ReplacementCode { get; set; }        
 
         public AnnouncementFormatServiceImpl()
         {
-            replacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
+            ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
 
             // Add Code & proccessed Function to replace
-            replacementCode.Add("2222", ReplaceSiteMain);
+            ReplacementCode.Add("2222", ReplaceSiteMain);
         }
 
         public IEnumerable<HotAnnouncement> Format(IEnumerable<HotAnnouncement> announcements, GetHotAnnouncementsParams message)
         {
             foreach (var announcement in announcements)
             {
-                var containsCode = replacementCode.ContainsKey(announcement.Code);
+                var containsCode = ReplacementCode.ContainsKey(announcement.Code);
                 if (containsCode)
                 {
-                    announcement.Content = replacementCode[announcement.Code](announcement.Content, message);
+                    announcement.Content = ReplacementCode[announcement.Code](announcement.Content, message);
                 }
 
                 yield return announcement;

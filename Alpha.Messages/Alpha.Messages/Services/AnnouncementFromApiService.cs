@@ -17,9 +17,9 @@ namespace Alpha.Messages.Services
 {
     public interface AnnouncementFromApiService
     {
-        IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams getParam);
+        IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams);
 
-        IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams getParam);
+        IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams);
     }
 
     public class AnnoucemtnFromApiServiceImpl : AnnouncementFromApiService
