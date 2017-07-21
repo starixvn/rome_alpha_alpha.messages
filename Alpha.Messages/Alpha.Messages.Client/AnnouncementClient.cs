@@ -18,11 +18,16 @@
 
     public class AnnouncementClientImpl : AnnouncementClient
     {
-        private readonly RestClient restClient;
+        private readonly IRestClient restClient;
 
-        public AnnouncementClientImpl()
+        public AnnouncementClientImpl() : this(null)
         {
-            restClient = new RestClient(new Uri(AppSettings.AnnouncementApi))
+
+        }
+
+        public AnnouncementClientImpl(IRestClient restClient)
+        {
+            this.restClient = restClient ?? new RestClient(new Uri(AppSettings.AnnouncementApi))
             {
                 Authenticator = new HmacAuthenticator()
             };

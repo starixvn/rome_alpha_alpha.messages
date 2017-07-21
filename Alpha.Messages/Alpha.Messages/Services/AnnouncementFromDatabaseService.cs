@@ -62,7 +62,7 @@ namespace Alpha.Messages.Services
             return announcements;
         }
 
-        private static bool IsNotAgentLevel(byte roleId) => !Enumeration.FromValue<UserLevel>(roleId).IsAgentLevel();
+        private static bool IsNotAgentLevel(byte roleId) => Enumeration.FromValue<UserLevel>(roleId).IsNotAgentLevel();
 
         private string GetSettingChangedMessage(IEnumerable<string> messageTypes, GetHotAnnouncementsParams announcementParams)
         {

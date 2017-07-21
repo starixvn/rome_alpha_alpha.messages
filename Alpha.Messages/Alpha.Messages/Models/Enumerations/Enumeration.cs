@@ -24,27 +24,7 @@ namespace Alpha.Messages.Models.Enumerations
 
         public string DisplayName => _displayName;
 
-        public byte Value => _value;
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
-            "CA1062:Validate arguments of public methods",
-            MessageId = "1",
-            Justification = "Reviewed"),
-        System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design",
-            "CA1062:Validate arguments of public methods",
-            MessageId = "0",
-            Justification = "Reviewed")]
-        public static byte AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
-        {
-            var absoluteDifference = (byte)Math.Abs(firstValue.Value - secondValue.Value);
-            return absoluteDifference;
-        }
-
-        public static T FromDisplayName<T>(string displayName) where T : Enumeration, new()
-        {
-            var matchingItem = Parse<T, string>(displayName, "display name", item => item.DisplayName == displayName);
-            return matchingItem;
-        }
+        public byte Value => _value;        
 
         public static T FromValue<T>(byte value) where T : Enumeration, new()
         {

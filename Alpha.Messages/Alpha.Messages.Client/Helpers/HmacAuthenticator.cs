@@ -26,16 +26,6 @@
 
         public void Authenticate(IRestClient client, IRestRequest request)
         {
-            if (client == null)
-            {
-                throw new ArgumentNullException(nameof(client), "Rest Client cannot be null");
-            }
-
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request), "Rest Request cannot be null");
-            }
-
             string requestUri = HttpUtility.UrlEncode(client.BuildUri(request).ToString().ToLowerInvariant());
             string requestHttpMethod = request.Method.ToString();
 

@@ -22,14 +22,14 @@ namespace Alpha.Messages.Services
         IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams);
     }
 
-    public class AnnoucemtnFromApiServiceImpl : AnnouncementFromApiService
+    public class AnnoucementFromApiServiceImpl : AnnouncementFromApiService
     {
         private const int CachedSecondAnnouncement = 10;
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
 
 
-        public AnnoucemtnFromApiServiceImpl(
+        public AnnoucementFromApiServiceImpl(
             AnnouncementClient announcementClient,
             SpecificationService specificationSerivce)
         {
@@ -109,7 +109,7 @@ namespace Alpha.Messages.Services
 
         private static string GetMessageContentByLanguage(IEnumerable<MessageContent> messages, string languageKey)
         {
-            var findingContent = messages.First(i => i.LanguageKey == languageKey);
+            var findingContent = messages.FirstOrDefault(i => i.LanguageKey == languageKey);
             var messageContent = findingContent != null ? findingContent.Text : GetMessageContentDefault(messages);
 
             return messageContent;
@@ -117,7 +117,7 @@ namespace Alpha.Messages.Services
 
         private static string GetMessageContentDefault(IEnumerable<MessageContent> messages)
         {
-            var contentDefault = messages.First(i => i.LanguageKey.Equals(Language.Default));
+            var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(Language.Default));
 
             return contentDefault != null ? contentDefault.Text : string.Empty;
         }

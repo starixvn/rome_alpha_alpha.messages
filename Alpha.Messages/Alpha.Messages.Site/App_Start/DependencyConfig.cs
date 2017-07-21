@@ -9,6 +9,7 @@
     using MediatR;
     using Models;
     using Requests;
+    using RestSharp;
     using Services;
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
@@ -76,8 +77,8 @@
         {
             container.RegisterSingleton<IUserSession, UserSessionExt>();
             container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
-            container.RegisterSingleton<AnnouncementFromApiService, AnnoucemtnFromApiServiceImpl>();
-            container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();
+            container.RegisterSingleton<AnnouncementFromApiService, AnnoucementFromApiServiceImpl>();
+            container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();            
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
             container.Register<ProductService>(
                 () => new ProductServiceImpl(
@@ -89,10 +90,10 @@
         }
 
         private static void RegisterAnnouncementService(Container container)
-        {           
+        {
             container.RegisterSingleton<IParam, SpecificationParameter>();
             container.RegisterSingleton<SpecificationService, SpecificationServiceImpl>();
-            container.RegisterSingleton<AnnouncementClient, AnnouncementClientImpl>();            
+            container.Register<AnnouncementClient>(() => new AnnouncementClientImpl(), Lifestyle.Singleton);
         }
     }
 }

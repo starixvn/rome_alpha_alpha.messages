@@ -16,6 +16,10 @@ namespace Alpha.Messages.Site.Requests
     {
         private readonly IUserSession userSession;
 
+        public PopupAnnouncementQuery(IUserSession userSession) : this(userSession, null)
+        {
+        }
+
         public PopupAnnouncementQuery(IUserSession userSession, bool? isMobileDevice)
         {
             this.userSession = userSession;

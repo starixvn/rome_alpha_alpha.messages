@@ -10,6 +10,7 @@ using Alpha.Messages.Tests.Fixtures;
 using NSubstitute;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -24,17 +25,20 @@ namespace Alpha.Messages.Tests.Services
         private readonly Fixture fixture = new Fixture();
         private AnnouncementFromApiService apiService;
         private AnnouncementClient announcementClient;
+        private AnnouncementClient announcementClientImpl;
+        private IRestClient restClient;
         private SpecificationService specificationService;
         private FanexCacheFixture cacheFixture;
 
         [SetUp]
         public void SetUp()
         {
+            restClient = Substitute.For<RestClient>();
+            announcementClientImpl = new AnnouncementClientImpl(restClient);
             announcementClient = Substitute.For<AnnouncementClient>();
             specificationService = Substitute.For<SpecificationService>();
             specificationService.IsSatisfied(Arg.Any<IEnumerable<ISpecification<IParam>>>(), Arg.Any<IParam>()).Returns(true);
 
-            apiService = new AnnoucemtnFromApiServiceImpl(announcementClient, specificationService);
             cacheFixture = new FanexCacheFixture();
             AppSettings.AppSettingValues = new NameValueCollection
             {
@@ -46,7 +50,8 @@ namespace Alpha.Messages.Tests.Services
         [Test]
         public void GetPopupAnnouncement_NotExistedCache_CallApi()
         {
-            //// Arrange            
+            //// Arrange     
+            apiService = new AnnoucementFromApiServiceImpl(announcementClient, specificationService);
             announcementClient.GetAnnouncements(Arg.Any<QueryAnnouncementRequest>()).Returns(Enumerable.Empty<Announcement>());
 
             //// Act
@@ -57,9 +62,28 @@ namespace Alpha.Messages.Tests.Services
         }
 
         [Test]
+        public void GetPopupAnnouncement_AnnouncementNoSpec_Return1Announcement()
+        {
+            //// Arrange
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Content = AnnouncementFixture.Content
+            });
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+
+            //// Act
+            var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "xxx" });
+
+            //// Assert
+            Assert.AreEqual(2, act.ToList().Count());
+        }
+
+        [Test]
         public void GetHeaderAnnouncement_NotExistedCache_CallApi()
         {
             //// Arrange
+            apiService = new AnnoucementFromApiServiceImpl(announcementClient, specificationService);
             announcementClient.GetAnnouncements(Arg.Any<QueryAnnouncementRequest>()).Returns(Enumerable.Empty<Announcement>());
 
             //// Act
@@ -67,6 +91,24 @@ namespace Alpha.Messages.Tests.Services
 
             //// Assert
             announcementClient.Received().GetAnnouncements(Arg.Any<QueryAnnouncementRequest>());
+        }
+
+        [Test]
+        public void GetHeaderAnnouncement_AnnouncementNoSpec_Return1Announcement()
+        {
+            //// Arrange
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Content = AnnouncementFixture.Content
+            });
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+
+            //// Act
+            var act = apiService.GetHeaderAnnouncements(new GetHotAnnouncementsParams { Language = "en-US" });
+
+            //// Assert
+            Assert.AreEqual(1, act.Count());
         }
     }
 }
