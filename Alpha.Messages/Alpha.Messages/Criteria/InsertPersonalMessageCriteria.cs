@@ -31,11 +31,7 @@ namespace Alpha.Messages.Criteria
             IsTest = false;
             CreatorName = string.Empty;
         }
-
-        public InsertPersonalMessageCriteria(string resourceKey) : this(resourceKey, null)
-        {
-        }
-
+       
         [SpParam(SqlParamName = "content_en")]
         public string ContentEN { get; set; }
 

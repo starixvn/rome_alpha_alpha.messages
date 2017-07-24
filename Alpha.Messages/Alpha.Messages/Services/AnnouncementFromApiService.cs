@@ -4,11 +4,9 @@ using Alpha.Messages.Client;
 
 using Alpha.Messages.Client.Requests;
 using Alpha.Messages.Configurations;
-using Alpha.Messages.Constants;
 using Alpha.Messages.Models;
 using Alpha.Messages.Params;
 using Fanex.Caching;
-using Sunplus.Agent.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +23,8 @@ namespace Alpha.Messages.Services
     public class AnnoucementFromApiServiceImpl : AnnouncementFromApiService
     {
         private const int CachedSecondAnnouncement = 10;
+        private const string DefaultLanguage = "en-US";
+
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
 
@@ -117,7 +117,7 @@ namespace Alpha.Messages.Services
 
         private static string GetMessageContentDefault(IEnumerable<MessageContent> messages)
         {
-            var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(Language.Default));
+            var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
             return contentDefault != null ? contentDefault.Text : string.Empty;
         }

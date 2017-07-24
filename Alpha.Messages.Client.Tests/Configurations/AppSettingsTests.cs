@@ -8,6 +8,19 @@ namespace Alpha.Messages.Client.Tests.Configurations
     public class AppSettingsTests
     {
         [Test]
+        public void Verify_NoMissing_NoThrowException()
+        {
+            //// Arrange
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["Announcement:ApiUrl"] = "xxx"
+            };
+
+            //// Act && Assert
+            Assert.DoesNotThrow(() => AppSettings.Verify());
+        }
+
+        [Test]
         public void Verify_MissingAnnouncementApi_ThrowException()
         {
             //// Arrange

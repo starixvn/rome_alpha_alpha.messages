@@ -1,10 +1,8 @@
-﻿using Alpha.Messages.Constants;
-using Alpha.Messages.Models;
+﻿using Alpha.Messages.Models;
 using Alpha.Messages.Params;
 using Alpha.Web.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Alpha.Messages.Services
 {
@@ -16,7 +14,8 @@ namespace Alpha.Messages.Services
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
     {
-        public Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> ReplacementCode { get; set; }        
+        public Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> ReplacementCode { get; set; }
+        public const string SiteMain = "{site-main}";
 
         public AnnouncementFormatServiceImpl()
         {
@@ -42,7 +41,7 @@ namespace Alpha.Messages.Services
 
         private static string ReplaceSiteMain(string content, GetHotAnnouncementsParams param)
         {
-            return content.Replace(TagMessage.SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
+            return content.Replace(SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
         }        
     }
 }

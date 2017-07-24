@@ -133,8 +133,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Configurations\AppSettings.cs" />
-    <Compile Include="Constants\TagMessage.cs" />
-    <Compile Include="Constants\Language.cs" />
     <Compile Include="Criteria\GetNoticeListIsNoViewedCriteria.cs" />
     <Compile Include="Criteria\GetProductsCriteria.cs" />
     <Compile Include="Criteria\InsertPersonalMessageCriteria.cs" />
