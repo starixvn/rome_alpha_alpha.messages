@@ -14,6 +14,20 @@ namespace Alpha.Messages.Tests.Configurations
     public class AppSettingsTests
     {
         [Test]
+        public void Verify_NoMissing_NoThrowException()
+        {
+            //// Arrange
+            AppSettings.AppSettingValues = new NameValueCollection()
+            {
+                ["Environment"] = "xxx",
+                ["StoredProcedurePath"] = "xxx"
+            };
+
+            //// Act && Assert
+            Assert.DoesNotThrow(() => AppSettings.Verify());
+        }
+
+        [Test]
         public void Verify_MissingStoreProceducePatch_ThrowException()
         {
             //// Arrange

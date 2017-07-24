@@ -52,7 +52,7 @@ namespace Alpha.Messages.Services
                     .Fetch<byte>(new GetNoticeListIsNoViewedCriteria(parameters.CustId))
                     .Select(i => i.ToString());
 
-                if (IsNotAgentLevel(parameters.RoleId))
+                if (!UserLevel.IsAgentLevel(parameters.RoleId))
                 {
                     noticesAreNoViewed = noticesAreNoViewed.Contains(FishingWorldNotice.ToString()) ?
                         new List<string> { FishingWorldNotice.ToString() } :
@@ -62,9 +62,7 @@ namespace Alpha.Messages.Services
 
             return noticesAreNoViewed;
         }
-
-        private static bool IsNotAgentLevel(byte roleId) => Enumeration.FromValue<UserLevel>(roleId).IsNotAgentLevel();
-
+        
         private IEnumerable<HotAnnouncement> GetNoticesAreViewing(IEnumerable<string> NoticesAreNoViewed, GetHotAnnouncementsParams announcementParams)
         {
             var correctType = announcementParams.NoticeTypes.Where(i => IsShowNotice(i, NoticesAreNoViewed));

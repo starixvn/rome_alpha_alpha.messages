@@ -140,7 +140,6 @@
     <Compile Include="Models\ResourceManager.cs" />
     <Compile Include="Criteria\UpdateViewStatus.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Models\Enumerations\Enumeration.cs" />
     <Compile Include="Models\Enumerations\UserLevel.cs" />
     <Compile Include="Models\HotAnnouncement.cs" />
     <Compile Include="Models\Product.cs" />

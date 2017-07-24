@@ -1,32 +1,30 @@
-﻿using System;
-
-namespace Alpha.Messages.Models.Enumerations
+﻿namespace Alpha.Messages.Models.Enumerations
 {
-    [Serializable]
-    public class UserLevel : Enumeration
-    {        
-        public static readonly UserLevel Super = new UserLevel(4, "Super");     
-        public static readonly UserLevel Master = new UserLevel(3, "Master");        
-        public static readonly UserLevel Agent = new UserLevel(2, "Agent");        
-        public static readonly UserLevel Member = new UserLevel(1, "Member");
+    public static class UserLevel
+    {
+        private const int Member = 1;
+        private const int Agent = 2;
+        private const int Master = 3;
+        private const int Super = 4;
 
-        public UserLevel()
+        public static bool IsMemberLevel(int level)
         {
+            return Member == level;
         }
 
-        private UserLevel(byte value, string displayName)
-            : base(value, displayName)
+        public static bool IsAgentLevel(int level)
         {
+            return Agent == level;
         }
 
-        public bool IsAgentLevel()
+        public static bool IsMasterLevel(int level)
         {
-            return this == Agent;
+            return Master == level;
         }
 
-        public bool IsNotAgentLevel()
+        public static bool IsSuperLevel(int level)
         {
-            return !IsAgentLevel();
-        }       
+            return Super == level;
+        }
     }
 }
