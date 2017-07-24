@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Alpha.Messages.Criteria
 {
-    public class GetMessageTypeListCriteria : CriteriaBase
+    public class GetNoticeListIsNoViewedCriteria : CriteriaBase
     {
-        public GetMessageTypeListCriteria(int custId)
+        public GetNoticeListIsNoViewedCriteria(int custId)
         {
             CustId = custId;
         }

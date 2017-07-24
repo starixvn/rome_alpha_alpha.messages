@@ -60,6 +60,7 @@
     <Compile Include="AnnouncementClientTests.cs" />
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Fixtures\AnnouncementContent.cs" />
+    <Compile Include="Helpers\HmacAuthenticatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

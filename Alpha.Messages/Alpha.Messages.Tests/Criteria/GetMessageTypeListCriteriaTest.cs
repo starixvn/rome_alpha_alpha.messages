@@ -15,7 +15,7 @@ namespace Alpha.Messages.Tests.Criteria
         public void GetSettingKey_Always_ReturnCorrectKey()
         {
             //// Arrange
-            var criteria = new GetMessageTypeListCriteria(263);
+            var criteria = new GetNoticeListIsNoViewedCriteria(263);
             var expectedKey = "Age_MessageNoticeSelByCustID";
 
             //// Act
@@ -29,7 +29,7 @@ namespace Alpha.Messages.Tests.Criteria
         public void IsValid_CustIdMoreThanZeo_ReturnTrue()
         {
             //// Arrange
-            var criteria = new GetMessageTypeListCriteria(263);
+            var criteria = new GetNoticeListIsNoViewedCriteria(263);
 
             //// Act
             var act = criteria.IsValid();

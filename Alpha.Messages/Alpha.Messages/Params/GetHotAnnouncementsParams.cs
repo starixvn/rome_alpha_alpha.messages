@@ -19,7 +19,15 @@ namespace Alpha.Messages.Params
 
         public byte RoleId { get; set; }
 
-        public int AdminId { get; set; }
+        public int AdminId { private get; set; }
+
+        public bool IsUserAdmin
+        {
+            get
+            {
+                return AdminId != 0;
+            }
+        }
 
         public int CustId { get; set; }
 

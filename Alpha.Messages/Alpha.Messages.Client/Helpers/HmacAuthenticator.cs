@@ -18,10 +18,7 @@
 
         public HmacAuthenticator()
         {
-            if (!string.IsNullOrEmpty(machineIP))
-            {
-                machineIP = GetLocalIPAddress();
-            }
+            machineIP = GetLocalIPAddress();
         }
 
         public void Authenticate(IRestClient client, IRestRequest request)

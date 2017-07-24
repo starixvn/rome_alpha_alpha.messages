@@ -20,7 +20,9 @@ namespace Alpha.Messages.Services
 
     public class AnnouncementFromDatabaseServiceImpl : AnnouncementFromDatabaseService
     {
-        public const int FishingWorldNotice = 3;
+        private const int FishingWorldNotice = 3;
+        private static string[] splitChars = { "_" };
+
         private readonly IDynamicRepository dynamicRepository;
         private readonly ResourceManager resourceManager;
 
@@ -34,87 +36,82 @@ namespace Alpha.Messages.Services
 
         public IEnumerable<HotAnnouncement> GetHotAnnouncements(GetHotAnnouncementsParams parameters)
         {
-            var announcements = new List<HotAnnouncement>();
-            var messageTypes = Enumerable.Empty<string>();
-            if (parameters.AdminId == 0)
+            var noticesAreNotViewed = GetNoticesAreNotViewed(parameters);
+
+            var announcements = GetNoticesAreViewing(noticesAreNotViewed, parameters);
+
+            return announcements;
+        }
+
+        private IEnumerable<string> GetNoticesAreNotViewed(GetHotAnnouncementsParams parameters)
+        {
+            var noticesAreNoViewed = Enumerable.Empty<string>();
+            if (!parameters.IsUserAdmin)
             {
-                messageTypes = dynamicRepository
-                    .Fetch<byte>(new GetMessageTypeListCriteria(parameters.CustId))
-                    .Select(messageType => messageType.ToString());
+                noticesAreNoViewed = dynamicRepository
+                    .Fetch<byte>(new GetNoticeListIsNoViewedCriteria(parameters.CustId))
+                    .Select(i => i.ToString());
 
                 if (IsNotAgentLevel(parameters.RoleId))
                 {
-                    messageTypes = messageTypes.Contains(FishingWorldNotice.ToString()) ?
+                    noticesAreNoViewed = noticesAreNoViewed.Contains(FishingWorldNotice.ToString()) ?
                         new List<string> { FishingWorldNotice.ToString() } :
                         new List<string>();
                 }
             }
 
-            var content = GetSettingChangedMessage(messageTypes, parameters);
-            if (!string.IsNullOrEmpty(content))
-            {
-                announcements.Add(new HotAnnouncement
-                {                    
-                    Content = content
-                });
-            }
-
-            return announcements;
+            return noticesAreNoViewed;
         }
 
         private static bool IsNotAgentLevel(byte roleId) => Enumeration.FromValue<UserLevel>(roleId).IsNotAgentLevel();
 
-        private string GetSettingChangedMessage(IEnumerable<string> messageTypes, GetHotAnnouncementsParams announcementParams)
+        private IEnumerable<HotAnnouncement> GetNoticesAreViewing(IEnumerable<string> NoticesAreNoViewed, GetHotAnnouncementsParams announcementParams)
         {
-            var noticeTypes = announcementParams.NoticeTypes;
+            var correctType = announcementParams.NoticeTypes.Where(i => IsShowNotice(i, NoticesAreNoViewed));
 
-            var correctType = noticeTypes.FirstOrDefault(noticeType => ShowNotice(noticeType, messageTypes));
-            var messageContent = string.Empty;
-
-            if (correctType != null)
+            foreach (var type in correctType)
             {
-                var resourceKey = "Notice_" + correctType;
-                messageContent = Resources.ResourceManager.GetString(resourceKey);
-                InsertPersonalMessage(resourceKey, announcementParams);
-                UpdateViewStatus(announcementParams.CustId, correctType);
+                var resourceKey = "Notice_" + type;
+                InsertPersonalNotice(resourceKey, announcementParams);
+                UpdateNoticeStatusIsViewed(announcementParams.CustId, type);
+
+                yield return new HotAnnouncement
+                {
+                    Content = Resources.ResourceManager.GetString(resourceKey)
+                };
             }
-
-            return messageContent;
         }
 
-        private static bool ShowNotice(string noticeType, IEnumerable<string> messageTypes)
+        private static bool IsShowNotice(string noticeType, IEnumerable<string> NoticesAreNoViewed)
         {
-            var splitChars = new[] { '_' };
-
-            return noticeType.Split(splitChars, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(subMessageType => !messageTypes.Contains(subMessageType)) == null;
+            return noticeType.Split(splitChars, StringSplitOptions.RemoveEmptyEntries)
+                .FirstOrDefault(n => !NoticesAreNoViewed.Contains(n)) == null;
         }
 
-        private void InsertPersonalMessage(string key, GetHotAnnouncementsParams getParams)
+        private void InsertPersonalNotice(string key, GetHotAnnouncementsParams getParams)
         {
             var rawData = dynamicRepository.Fetch<int>(new InsertPersonalMessageCriteria(key, resourceManager));
-            if (!rawData.Any())
+            if (rawData.Any())
             {
-                return;
+                var firstMessage = rawData.FirstOrDefault();
+                dynamicRepository.Fetch<bool>(new InsertPersonalMessageTargetCriteria
+                {
+                    MessageId = firstMessage,
+                    TargetId = getParams.UserId,
+                    TargetName = getParams.UserName,
+                    IsRead = false,
+                    BetTransId = "0"
+                });
             }
-
-            var firstMessage = rawData.FirstOrDefault();
-            dynamicRepository.Fetch<bool>(new InsertPersonalMessageTargetCriteria
-            {
-                MessageId = firstMessage,
-                TargetId = getParams.UserId,
-                TargetName = getParams.UserName,
-                IsRead = false,
-                BetTransId = "0"
-            });
         }
 
-        private void UpdateViewStatus(int custId, string noticeType)
+        private void UpdateNoticeStatusIsViewed(int custId, string noticeType)
         {
-            var subTypes = noticeType.Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+            var subTypes = noticeType.Split(splitChars, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var subType in subTypes)
             {
-                dynamicRepository.Fetch<bool>(new UpdateViewStatus(custId, true, Converter.ToInt(subType)));
+                dynamicRepository.Fetch<bool>(new UpdateViewStatus(custId, isViewed: true, typeId: Converter.ToInt(subType)));
             }
         }
     }
