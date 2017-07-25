@@ -1,9 +1,11 @@
-﻿using Alpha.Messages.Client.Requests;
+﻿using Alpha.Messages.Client.Configurations;
+using Alpha.Messages.Client.Requests;
 using NSubstitute;
 using NUnit.Framework;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -21,6 +23,19 @@ namespace Alpha.Messages.Client.Tests
         {
             this.restClient = Substitute.For<IRestClient>();
             client = new AnnouncementClientImpl(restClient);
+        }
+
+        [Test]        
+        public void AnnouncementClientImpl_Always_NoThrowException()
+        {
+            //// Arrange
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["Announcement:ApiUrl"] = "http://ha.nexdev.net:7426/Local01/api/"
+            };
+            
+            //// Act && Assert
+            Assert.DoesNotThrow(() => new AnnouncementClientImpl());
         }
 
         [Test]
