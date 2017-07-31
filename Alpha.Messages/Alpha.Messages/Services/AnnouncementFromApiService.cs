@@ -113,7 +113,7 @@ namespace Alpha.Messages.Services
         {
             var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
-            return contentDefault;// != null ? contentDefault : new MessageContent();
+            return contentDefault;
         }
     }
 }
