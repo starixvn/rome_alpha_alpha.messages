@@ -21,7 +21,7 @@ namespace Alpha.Messages.Models
             Id = id;
             Content = content;
             Code = code;
-            Source = $"/{AlphaAppSettings.MessageAppPath}/{source}";
+            Source = $"{AlphaAppSettings.MessageAppPath}/{source}";
         }
 
         public long Id { get; }
