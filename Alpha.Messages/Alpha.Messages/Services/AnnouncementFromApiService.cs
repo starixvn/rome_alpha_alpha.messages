@@ -79,12 +79,9 @@ namespace Alpha.Messages.Services
                     || !announcement.Specifications.Any()
                     || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
-                    yield return new HotAnnouncement
-                    {
-                        Code = announcement.Code,
-                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language),
-                        Id = announcement.Id
-                    };
+                    var message = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
+
+                    yield return new HotAnnouncement(announcement.Id, message.Text, announcement.Code, message.Url);
                 }
             }
         }
@@ -97,29 +94,26 @@ namespace Alpha.Messages.Services
                     || !announcement.Specifications.Any()
                     || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
-                    yield return new HotAnnouncement
-                    {
-                        Code = announcement.Code,
-                        Content = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language),
-                        Id = announcement.Id
-                    };
+                    var message = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
+
+                    yield return new HotAnnouncement(announcement.Id, message.Text, announcement.Code, message.Url);
                 }
             }
         }
 
-        private static string GetMessageContentByLanguage(IEnumerable<MessageContent> messages, string languageKey)
+        private static MessageContent GetMessageContentByLanguage(IEnumerable<MessageContent> messages, string languageKey)
         {
             var findingContent = messages.FirstOrDefault(i => i.LanguageKey == languageKey);
-            var messageContent = findingContent != null ? findingContent.Text : GetMessageContentDefault(messages);
+            var messageContent = findingContent ?? GetMessageContentDefault(messages);
 
             return messageContent;
         }
 
-        private static string GetMessageContentDefault(IEnumerable<MessageContent> messages)
+        private static MessageContent GetMessageContentDefault(IEnumerable<MessageContent> messages)
         {
             var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
-            return contentDefault != null ? contentDefault.Text : string.Empty;
+            return contentDefault;// != null ? contentDefault : new MessageContent();
         }
     }
 }

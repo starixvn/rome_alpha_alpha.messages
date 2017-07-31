@@ -15,13 +15,13 @@ namespace Alpha.Messages.Tests.Services
 {
     public class AnnouncementFormatServiceTest
     {
-        private readonly Fixture fixture = new Fixture();        
+        private readonly Fixture fixture = new Fixture();
         private AnnouncementFormatServiceImpl formatService;
         private CompareLogic compareLogic;
 
         [SetUp]
         public void SetUp()
-        {            
+        {
             formatService = new AnnouncementFormatServiceImpl();
             compareLogic = new CompareLogic();
         }
@@ -45,7 +45,7 @@ namespace Alpha.Messages.Tests.Services
         {
             //// Arrange
             var content = fixture.Create<string>();
-            var mainCodeAnnouncement = new HotAnnouncement { Code = "2222", Content = "{site-main}" + content };
+            var mainCodeAnnouncement = new HotAnnouncement(1, content + "{site-main}", "2222", "");
             var announcements = new List<HotAnnouncement> { mainCodeAnnouncement };
 
             //// Act

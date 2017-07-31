@@ -54,8 +54,8 @@
       <HintPath>..\..\packages\Alpha.Auth.3.0.1.4\lib\net40\Alpha.Auth.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Web, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Web.1.0.0.5\lib\net40\Alpha.Web.dll</HintPath>
+    <Reference Include="Alpha.Web, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Web.1.0.0.9-announcement-01\lib\net40\Alpha.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -222,6 +222,7 @@
     <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
+    <Content Include="Flash\testing.swf" />
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
     <Content Include="Views\Announcement\PopupAnnouncement.cshtml" />
@@ -234,6 +235,9 @@
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
+    <Content Include="Views\Announcement\Template\Flash\testing.swf" />
+    <Content Include="Views\Announcement\Template\Testing.html" />
+    <Content Include="Views\Announcement\Template\Testing.css" />
     <Content Include="Web.AppSettings.backupMNL.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
