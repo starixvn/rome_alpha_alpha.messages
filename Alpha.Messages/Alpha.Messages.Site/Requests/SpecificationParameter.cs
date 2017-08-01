@@ -23,7 +23,7 @@ namespace Alpha.Messages.Site.Requests
 
         public byte CurrencyId => (byte)userSession.CurrencyId;
 
-        public int UserId => userSession.UserId;
+        public int UserId => userSession.CustId;
 
         public bool IsInternal => userSession.IsInternal;
 
