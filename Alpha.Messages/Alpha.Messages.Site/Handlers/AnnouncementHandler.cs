@@ -30,10 +30,10 @@ namespace Alpha.Messages.Site.Handlers
         {
             var parameters = message.ConvertToParameters();
 
-            var announcements = announcementService.GetHotAnnouncement(parameters);
+            var announcements = announcementService.GetPopupAnnouncement(parameters);
             var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);
 
-            var cookiesId = Encryption.PearsonEncode(message.UserName + message.UserId + message.SubAccId);
+            var cookiesId = Encryption.PearsonEncode(message.UserName + message.CustId + message.SubAccId);
 
             return new HotAnnouncementViewModel(formatedAnnouncements, cookiesId);
         }

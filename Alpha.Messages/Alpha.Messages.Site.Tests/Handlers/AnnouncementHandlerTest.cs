@@ -38,7 +38,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
             handler.Handle(query);
 
             //// Assert
-            announcementService.Received().GetHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>());
+            announcementService.Received().GetPopupAnnouncement(Arg.Any<GetHotAnnouncementsParams>());
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
             //// Arrange
             var announcements = new List<HotAnnouncement>();
             var query = new PopupAnnouncementQuery(fixture.UserSession, false);
-            announcementService.GetHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Returns(announcements);
+            announcementService.GetPopupAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Returns(announcements);
 
             //// Act
             handler.Handle(query);

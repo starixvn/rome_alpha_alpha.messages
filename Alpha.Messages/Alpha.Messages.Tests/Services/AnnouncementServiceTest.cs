@@ -37,7 +37,7 @@ namespace Alpha.Messages.Tests.Services
                 Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
 
             //// Act
-            var act = service.GetHotAnnouncement(new GetHotAnnouncementsParams());
+            var act = service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
 
             //// Assert
             Assert.AreEqual(numberItem, act.Count());
@@ -49,7 +49,7 @@ namespace Alpha.Messages.Tests.Services
             //// Arrange
 
             //// Act
-            service.GetHotAnnouncement(new GetHotAnnouncementsParams());
+            service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
 
             //// Assert
             apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();

@@ -9,7 +9,7 @@ namespace Alpha.Messages.Services
 {
     public interface AnnouncementService
     {
-        IEnumerable<HotAnnouncement> GetHotAnnouncement(GetHotAnnouncementsParams getParams);
+        IEnumerable<HotAnnouncement> GetPopupAnnouncement(GetHotAnnouncementsParams getParams);
     }
 
     public class AnnouncementServiceImpl : AnnouncementService
@@ -25,7 +25,7 @@ namespace Alpha.Messages.Services
             this.dataBaseSerivce = dataBaseSerivce;
         }
 
-        public IEnumerable<HotAnnouncement> GetHotAnnouncement(GetHotAnnouncementsParams getParams)
+        public IEnumerable<HotAnnouncement> GetPopupAnnouncement(GetHotAnnouncementsParams getParams)
         {            
             var announcementsFromApi = apiService.GetPopupAnnouncements(getParams);
             var announcementsFromDb = dataBaseSerivce.GetHotAnnouncements(getParams);

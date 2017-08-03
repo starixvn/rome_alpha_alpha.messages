@@ -8,23 +8,19 @@
     foreach (var announcement in Model.Announcements)
     {
         index++;
-        <div id="announcement_@index" class="js-announcement">
-            @if (!string.IsNullOrEmpty(announcement.Content))
-            {
-                @Html.Partial("PopupAnnouncementWithText", announcement)
-            }
-            else if(!string.IsNullOrEmpty(announcement.Source))
+        <div id="announcement_@announcement.Id" class="js-announcement">
+            @if (!string.IsNullOrEmpty(announcement.Source))
             {
                 @Html.Partial("PopupAnnouncementWithSource", announcement)
+            }
+            else if(!string.IsNullOrEmpty(announcement.Content))
+            {
+                @Html.Partial("PopupAnnouncementWithText", announcement)
             }
             @Html.Hidden("AnnouncementId", announcement.Id)
         </div>
     }
-
-    @Html.Hidden("numberAnnouncement", Model.Announcements.Count())
+    
     @Html.Hidden("announcement-cookies-id", Model.CookiesId)
-}
-else
-{
     @Html.Hidden("no-info", Resources.NoInformationIsAvailable);
 }
