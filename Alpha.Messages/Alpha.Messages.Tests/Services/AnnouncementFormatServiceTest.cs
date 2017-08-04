@@ -45,7 +45,7 @@ namespace Alpha.Messages.Tests.Services
         {
             //// Arrange
             var content = fixture.Create<string>();
-            var mainCodeAnnouncement = new HotAnnouncement(1, content + "{site-main}", "2222", "");
+            var mainCodeAnnouncement = new HotAnnouncement("1", content + "{site-main}", "2222", "");
             var announcements = new List<HotAnnouncement> { mainCodeAnnouncement };
 
             //// Act

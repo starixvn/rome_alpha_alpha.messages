@@ -24,6 +24,7 @@ namespace Alpha.Messages.Services
     {
         private const int CachedSecondAnnouncement = 10;
         private const string DefaultLanguage = "en-US";
+        private const string PrefixId = "M7";
 
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
@@ -81,7 +82,7 @@ namespace Alpha.Messages.Services
                 {
                     var message = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
 
-                    yield return new HotAnnouncement(announcement.Id, message.Text, announcement.Code, message.Url);
+                    yield return new HotAnnouncement(PrefixId + announcement.Id.ToString(), message.Text, announcement.Code, message.Url);
                 }
             }
         }
@@ -96,7 +97,7 @@ namespace Alpha.Messages.Services
                 {
                     var message = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
 
-                    yield return new HotAnnouncement(announcement.Id, message.Text, announcement.Code, message.Url);
+                    yield return new HotAnnouncement(PrefixId + announcement.Id.ToString(), message.Text, announcement.Code, message.Url);
                 }
             }
         }

@@ -33,7 +33,7 @@ namespace Alpha.Messages.Tests.Services
             apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
                 Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
 
-            dbService.GetHotAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
+            dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).
                 Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
 
             //// Act
@@ -53,7 +53,7 @@ namespace Alpha.Messages.Tests.Services
 
             //// Assert
             apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();
-            dbService.GetHotAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();
+            dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Received();
         }
     }
 }

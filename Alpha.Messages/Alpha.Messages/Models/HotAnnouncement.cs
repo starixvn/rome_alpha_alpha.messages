@@ -16,7 +16,7 @@ namespace Alpha.Messages.Models
             Source = string.Empty;
         }
 
-        public HotAnnouncement(long id, string content, string code, string source)
+        public HotAnnouncement(string id, string content, string code, string source)
         {
             Id = id;
             Content = content;
@@ -24,7 +24,7 @@ namespace Alpha.Messages.Models
             Source = !string.IsNullOrEmpty(source) ? $"{AlphaAppSettings.MessageAppPath}/{source}" : source;
         }
 
-        public long Id { get; }
+        public string Id { get; }
 
         public string Content { get; set; }
 

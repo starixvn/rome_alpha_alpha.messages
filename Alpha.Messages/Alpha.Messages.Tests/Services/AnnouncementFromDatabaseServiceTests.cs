@@ -38,7 +38,7 @@ namespace Alpha.Messages.Tests.Services
             dynamicRepository.Fetch<byte>(Arg.Any<GetNoticeListIsNoViewedCriteria>()).Returns(Enumerable.Empty<byte>());
 
             //// Act
-            service.GetHotAnnouncements(parameters);
+            service.GetFirstHotAnnouncement(parameters);
 
             //// Assert
             dynamicRepository.Received().Fetch<byte>(Arg.Any<GetNoticeListIsNoViewedCriteria>());
@@ -52,7 +52,7 @@ namespace Alpha.Messages.Tests.Services
             dynamicRepository.Fetch<byte>(Arg.Any<GetNoticeListIsNoViewedCriteria>()).Returns(Enumerable.Empty<byte>());
 
             //// Act
-            service.GetHotAnnouncements(parameters);
+            service.GetFirstHotAnnouncement(parameters);
 
             //// Assert
             dynamicRepository.Received().Fetch<byte>(Arg.Any<GetNoticeListIsNoViewedCriteria>());
@@ -77,10 +77,10 @@ namespace Alpha.Messages.Tests.Services
                 .Returns(new List<bool> { true });
 
             //// Act
-            var act = service.GetHotAnnouncements(parameters);
+            var act = service.GetFirstHotAnnouncement(parameters);
 
             //// Assert
-            Assert.AreEqual(1, act.Count());
+            Assert.NotNull(act);
         }
         [Test]
         public void GetHotAnnouncements_HasNotices_ReturnFishingWordNotices()
@@ -102,10 +102,10 @@ namespace Alpha.Messages.Tests.Services
                 .Returns(new List<bool> { true });
 
             //// Act
-            var act = service.GetHotAnnouncements(parameters);
+            var act = service.GetFirstHotAnnouncement(parameters);
 
             //// Assert
-            Assert.AreEqual(3, act.Count());
+            Assert.NotNull(act);
         }
 
     }

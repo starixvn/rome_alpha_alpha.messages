@@ -15,7 +15,7 @@ namespace Alpha.Messages.Services
 {
     public interface AnnouncementFromDatabaseService
     {
-        IEnumerable<HotAnnouncement> GetHotAnnouncements(GetHotAnnouncementsParams getParams);
+        HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams getParams);
     }
 
     public class AnnouncementFromDatabaseServiceImpl : AnnouncementFromDatabaseService
@@ -34,11 +34,11 @@ namespace Alpha.Messages.Services
             this.resourceManager = resourceManager;
         }
 
-        public IEnumerable<HotAnnouncement> GetHotAnnouncements(GetHotAnnouncementsParams parameters)
+        public HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams parameters)
         {
             var noticesAreNotViewed = GetNoticesAreNotViewed(parameters);
 
-            var announcements = GetNoticesAreViewing(noticesAreNotViewed, parameters);
+            var announcements = GetFirstNoticeIsViewing(noticesAreNotViewed, parameters);
 
             return announcements;
         }
@@ -63,21 +63,21 @@ namespace Alpha.Messages.Services
             return noticesAreNoViewed;
         }
         
-        private IEnumerable<HotAnnouncement> GetNoticesAreViewing(IEnumerable<string> NoticesAreNoViewed, GetHotAnnouncementsParams announcementParams)
+        private HotAnnouncement GetFirstNoticeIsViewing(IEnumerable<string> NoticesAreNoViewed, GetHotAnnouncementsParams announcementParams)
         {
-            var correctType = announcementParams.NoticeTypes.Where(i => IsShowNotice(i, NoticesAreNoViewed));
+            var firstType = announcementParams.NoticeTypes.FirstOrDefault(i => IsShowNotice(i, NoticesAreNoViewed));
 
-            foreach (var type in correctType)
+            if (firstType != null)
             {
-                var resourceKey = "Notice_" + type;
-                InsertPersonalNotice(resourceKey, announcementParams);
-                UpdateNoticeStatusIsViewed(announcementParams.CustId, type);
+                var resourceKey = "Notice_" + firstType;
+                var id = InsertPersonalNotice(resourceKey, announcementParams);
+                UpdateNoticeStatusIsViewed(announcementParams.CustId, firstType);
 
-                yield return new HotAnnouncement
-                {
-                    Content = Resources.ResourceManager.GetString(resourceKey)
-                };
+                var content = Resources.ResourceManager.GetString(resourceKey);
+                return new HotAnnouncement(id.ToString(), content, string.Empty, string.Empty);
             }
+
+            return null;
         }
 
         private static bool IsShowNotice(string noticeType, IEnumerable<string> NoticesAreNoViewed)
@@ -86,21 +86,24 @@ namespace Alpha.Messages.Services
                 .Any(n => NoticesAreNoViewed.Contains(n));
         }
 
-        private void InsertPersonalNotice(string key, GetHotAnnouncementsParams getParams)
+        private int InsertPersonalNotice(string key, GetHotAnnouncementsParams getParams)
         {
+            var id = 0;
             var rawData = dynamicRepository.Fetch<int>(new InsertPersonalMessageCriteria(key, resourceManager));
             if (rawData.Any())
             {
-                var firstMessage = rawData.FirstOrDefault();
+                id = rawData.FirstOrDefault();
                 dynamicRepository.Fetch<bool>(new InsertPersonalMessageTargetCriteria
                 {
-                    MessageId = firstMessage,
+                    MessageId = id,
                     TargetId = getParams.UserId,
                     TargetName = getParams.UserName,
                     IsRead = false,
                     BetTransId = "0"
-                });
+                });                
             }
+
+            return id;
         }
 
         private void UpdateNoticeStatusIsViewed(int custId, string noticeType)
