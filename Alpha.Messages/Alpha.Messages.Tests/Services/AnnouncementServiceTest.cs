@@ -34,7 +34,7 @@ namespace Alpha.Messages.Tests.Services
                 Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
 
             dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).
-                Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
+                Returns(new HotAnnouncement());
 
             //// Act
             var act = service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
@@ -44,16 +44,56 @@ namespace Alpha.Messages.Tests.Services
         }
 
         [Test]
-        public void GetHotAnnouncement_Always_CallApiAndDbService()
+        public void GetHotAnnouncement_DBAnnouncementEmpty_ReturnApiAnnouncement()
         {
             //// Arrange
+            HotAnnouncement firstAnnouncement = null;
+            apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
+                Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
+
+            dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).
+                Returns(firstAnnouncement);
 
             //// Act
-            service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
+            var act = service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
 
             //// Assert
-            apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).Received();
-            dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Received();
+            Assert.AreEqual(1, act.Count());
+        }
+
+        [Test]
+        public void GetHotAnnouncement_DBAnnouncementNoEmpty_ReturnApiAnnouncement()
+        {
+            //// Arrange            
+            apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
+                Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
+
+            dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).
+                Returns(new HotAnnouncement());
+
+            //// Act
+            var act = service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
+
+            //// Assert
+            Assert.AreEqual(2, act.Count());
+        }
+        [Test]
+        public void GetHotAnnouncement_Always_Call2Services()
+        {
+            //// Arrange            
+            apiService.GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>()).
+                Returns(new List<HotAnnouncement>() { new HotAnnouncement() });
+
+            dbService.GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).
+                Returns(new HotAnnouncement());
+
+            //// Act
+            var act = service.GetPopupAnnouncement(new GetHotAnnouncementsParams());
+
+            //// Assert
+            
+            apiService.Received().GetPopupAnnouncements(Arg.Any<GetHotAnnouncementsParams>());
+            dbService.Received().GetFirstHotAnnouncement(Arg.Any<GetHotAnnouncementsParams>());
         }
     }
 }
