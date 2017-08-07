@@ -110,5 +110,23 @@ namespace Alpha.Messages.Tests.Services
             //// Assert
             Assert.AreEqual(1, act.Count());
         }
+
+        [Test]
+        public void GetHeaderAnnouncement_NotFindingLangueage_ReturnDefaultAnnouncement()
+        {
+            //// Arrange
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Content = AnnouncementFixture.Content
+            });
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+
+            //// Act
+            var act = apiService.GetHeaderAnnouncements(new GetHotAnnouncementsParams { Language = "ja-JP" });
+
+            //// Assert
+            Assert.AreEqual(1, act.Count());
+        }
     }
 }
