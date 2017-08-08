@@ -42,7 +42,7 @@ namespace Alpha.Messages.Services
         {
             var allNouncementsToday = GetAllAnnouncementToday();
 
-            var userAnnouncements = GetPopuAnnouncementsByUser(allNouncementsToday, announcementParams);
+            var userAnnouncements = GetPopupAnnouncementsByUser(allNouncementsToday, announcementParams);
 
             return userAnnouncements;
         }
@@ -74,7 +74,7 @@ namespace Alpha.Messages.Services
             return allNouncementsToday;
         }
 
-        private IEnumerable<HotAnnouncement> GetPopuAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
+        private IEnumerable<HotAnnouncement> GetPopupAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
         {
             foreach (var announcement in announcements.Where(i => i.AnnouncementType == AnnouncementType.Popup))
             {
