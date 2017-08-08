@@ -66,7 +66,9 @@ namespace Alpha.Messages.Services
 
             var allNouncementsToday = ConfiguredCacheService.GetOrSet(
                 $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
-                () => announcementClient.GetAnnouncements(request),
+                () => announcementClient.GetAnnouncements(request)
+                .OrderBy(i => i.Ordinal)
+                .ThenBy(i => i.CreatedDate),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             return allNouncementsToday;
@@ -107,17 +109,22 @@ namespace Alpha.Messages.Services
             var message = messages.FirstOrDefault(i => i.LanguageKey == languageKey);
             if (message != null && string.IsNullOrEmpty(message.Text))
             {
-                message.Text = GetMessageContentDefault(messages);
+                message.Text = GetMessageContentDefault(messages).Text;
+            }
+
+            if (message == null)
+            {
+                message = GetMessageContentDefault(messages);
             }
 
             return message;
         }
 
-        private static string GetMessageContentDefault(IEnumerable<MessageContent> messages)
+        private static MessageContent GetMessageContentDefault(IEnumerable<MessageContent> messages)
         {
             var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
-            return contentDefault.Text;
+            return contentDefault;
         }
     }
 }

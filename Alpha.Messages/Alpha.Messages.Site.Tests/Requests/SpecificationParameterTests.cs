@@ -171,7 +171,7 @@ namespace Alpha.Messages.Site.Tests.Requests
         {
             //// Arrange
             var expectedValue = "Agent01";
-            userSession.SiteName.Returns(expectedValue);
+            userSession.Site.Returns(expectedValue);
 
             //// Act
             var act = parameter.Site;

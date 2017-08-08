@@ -61,23 +61,23 @@ namespace Alpha.Messages.Tests.Services
             announcementClient.Received().GetAnnouncements(Arg.Any<QueryAnnouncementRequest>());
         }
 
-        //[Test]
-        //public void GetPopupAnnouncement_AnnouncementNoSpec_Return1Announcement()
-        //{
-        //    //// Arrange
-        //    restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
-        //    {
-        //        StatusCode = System.Net.HttpStatusCode.OK,
-        //        Content = AnnouncementFixture.Content
-        //    });
-        //    apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+        [Test]
+        public void GetPopupAnnouncement_AnnouncementNoSpec_Return2Announcement()
+        {
+            //// Arrange
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Content = AnnouncementFixture.AllContent
+            });
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
 
-        //    //// Act
-        //    var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "xxx" });
+            //// Act
+            var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "xxx" });
 
-        //    //// Assert
-        //    Assert.AreEqual(2, act.ToList().Count());
-        //}
+            //// Assert
+            Assert.AreEqual(2, act.ToList().Count());
+        }
 
         [Test]
         public void GetHeaderAnnouncement_NotExistedCache_CallApi()
@@ -100,7 +100,7 @@ namespace Alpha.Messages.Tests.Services
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Content = AnnouncementFixture.Content
+                Content = AnnouncementFixture.AllContent
             });
             apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
 
@@ -112,21 +112,43 @@ namespace Alpha.Messages.Tests.Services
         }
 
         [Test]
-        public void GetHeaderAnnouncement_NotFindingLangueage_ReturnDefaultAnnouncement()
+        public void GetPopUpAnnouncement_NotFindingLangueage_ReturnDefaultAnnouncement()
         {
             //// Arrange
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Content = AnnouncementFixture.Content
+                Content = AnnouncementFixture.AllContent
             });
             apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
 
             //// Act
-            var act = apiService.GetHeaderAnnouncements(new GetHotAnnouncementsParams { Language = "ja-JP" });
+            var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "ja-JP" }).ToList();
 
-            //// Assert
-            Assert.AreEqual(1, act.Count());
+            //// Assert            
+            Assert.AreEqual("<p>We are pleased to announce that you are allowed to transfer your Cash Balance to your downlines and vice versa, from now on.Moreover, the quantity of Yesterday Balance transfer for each member is now unlimited.</p><p>If you need further assistance, please contact our Customer Service Department.</p>",
+                act[0].Content);
+            Assert.AreEqual("xx", act[1].Content);
+        }
+
+        [Test]
+        public void GetPopUpAnnouncement_2Announcement_SortByOrdinal()
+        {
+            //// Arrange
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Content = AnnouncementFixture.PopupContent
+            });
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+
+            //// Act
+            var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "ja-JP" }).ToList();
+
+            //// Assert            
+            Assert.AreEqual("code1", act[0].Code);
+            Assert.AreEqual("code2", act[1].Code);
+            Assert.AreEqual("code3", act[2].Code);
         }
     }
 }
