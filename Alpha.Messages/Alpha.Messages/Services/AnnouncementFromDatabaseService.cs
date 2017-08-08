@@ -52,7 +52,7 @@ namespace Alpha.Messages.Services
                     .Fetch<byte>(new GetNoticeListIsNoViewedCriteria(parameters.CustId))
                     .Select(i => i.ToString());
 
-                if (!UserLevel.IsAgentLevel(parameters.RoleId))
+                if (IsNotAgent(parameters.RoleId))
                 {
                     noticesAreNoViewed = noticesAreNoViewed.Contains(FishingWorldNotice.ToString()) ?
                         new List<string> { FishingWorldNotice.ToString() } :
@@ -62,7 +62,9 @@ namespace Alpha.Messages.Services
 
             return noticesAreNoViewed;
         }
-        
+
+        private static bool IsNotAgent(byte roleId) => !UserLevel.IsAgentLevel(roleId);
+
         private HotAnnouncement GetFirstNoticeIsViewing(IEnumerable<string> NoticesAreNoViewed, GetHotAnnouncementsParams announcementParams)
         {
             var firstType = announcementParams.NoticeTypes.FirstOrDefault(i => IsShowNotice(i, NoticesAreNoViewed));
@@ -100,7 +102,7 @@ namespace Alpha.Messages.Services
                     TargetName = getParams.UserName,
                     IsRead = false,
                     BetTransId = "0"
-                });                
+                });
             }
 
             return id;
