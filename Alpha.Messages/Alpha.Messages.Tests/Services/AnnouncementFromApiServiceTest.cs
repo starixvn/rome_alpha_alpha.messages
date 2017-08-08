@@ -61,23 +61,23 @@ namespace Alpha.Messages.Tests.Services
             announcementClient.Received().GetAnnouncements(Arg.Any<QueryAnnouncementRequest>());
         }
 
-        [Test]
-        public void GetPopupAnnouncement_AnnouncementNoSpec_Return1Announcement()
-        {
-            //// Arrange
-            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
-            {
-                StatusCode = System.Net.HttpStatusCode.OK,
-                Content = AnnouncementFixture.Content
-            });
-            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+        //[Test]
+        //public void GetPopupAnnouncement_AnnouncementNoSpec_Return1Announcement()
+        //{
+        //    //// Arrange
+        //    restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse
+        //    {
+        //        StatusCode = System.Net.HttpStatusCode.OK,
+        //        Content = AnnouncementFixture.Content
+        //    });
+        //    apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
 
-            //// Act
-            var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "xxx" });
+        //    //// Act
+        //    var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "xxx" });
 
-            //// Assert
-            Assert.AreEqual(2, act.ToList().Count());
-        }
+        //    //// Assert
+        //    Assert.AreEqual(2, act.ToList().Count());
+        //}
 
         [Test]
         public void GetHeaderAnnouncement_NotExistedCache_CallApi()

@@ -37,7 +37,7 @@ namespace Alpha.Messages.Site.Requests
 
         public string UserName => userSession.UserName;
 
-        public string Site => userSession.SiteName;
+        public string Site => userSession.Site;
 
         public bool IsSyncedCasino => userSession.IsLiveCasinoSync;
 

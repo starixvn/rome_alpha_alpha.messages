@@ -18,7 +18,7 @@ namespace Alpha.Messages.Site.Requests
 
         public IParam Specification { get; set; }
         
-        public int UserId => userSession.UserId;
+        public int UserId => userSession.CustId;
 
         public int SubAccId => userSession.SubAccId;
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AlphaAppSettings = Alpha.Web.Configurations.AppSettings;
+﻿using AlphaAppSettings = Alpha.Web.Configurations.AppSettings;
 
 namespace Alpha.Messages.Models
 {
@@ -21,7 +16,7 @@ namespace Alpha.Messages.Models
             Id = id;
             Content = content;
             Code = code;
-            Source = !string.IsNullOrEmpty(source) ? $"{AlphaAppSettings.MessageAppPath}/{source}" : source;
+            Source = string.IsNullOrEmpty(source) ? source : $"{AlphaAppSettings.MessageAppPath}/{source}";
         }
 
         public string Id { get; }
