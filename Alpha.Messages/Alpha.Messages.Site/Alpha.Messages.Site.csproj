@@ -273,6 +273,12 @@
     <Content Include="Web.AppSettings.pro2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
+	<Content Include="Web.AppSettings.staging.config">
+		<DependentUpon>Web.AppSettings.config</DependentUpon>
+	</Content>
+	<Content Include="Web.AppSettings.staging2.config">
+		<DependentUpon>Web.AppSettings.config</DependentUpon>
+	</Content>
     <Content Include="Web.AppSettings.sit.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
@@ -360,6 +366,12 @@
     <None Include="Web.pro.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
+	<None Include="Web.staging.config">
+		<DependentUpon>Web.local.config</DependentUpon>
+	</None>
+	<None Include="Web.staging2.config">
+		<DependentUpon>Web.local.config</DependentUpon>
+	</None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
