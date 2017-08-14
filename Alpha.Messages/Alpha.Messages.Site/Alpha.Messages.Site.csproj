@@ -30,10 +30,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\..\build\AnalysisRules\FanexRules.Error.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Alpha.Messages.Site.Debug.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,14 +43,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Alpha.Messages.Site.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1-Renovation-09\lib\net40\Alpha.Announcements.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.Auth, Version=3.0.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.Auth.3.0.1.4\lib\net40\Alpha.Auth.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Web, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Web.1.0.0.5\lib\net40\Alpha.Web.dll</HintPath>
+    <Reference Include="Alpha.Web, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Web.1.0.0.9-announcement-01\lib\net40\Alpha.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -76,8 +82,16 @@
       <HintPath>..\..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
+    <Reference Include="Fanex.Products, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Products.1.0.0.0\lib\net40\Fanex.Products.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.File.1.0.0\lib\net40\IBCFile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MediatR.2.0.1\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -109,6 +123,10 @@
       <HintPath>..\..\packages\ONEbook.UM.2.0.2.7\lib\net40\ONEbook.UM.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RemotingRef, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RemotingRef.1.0.0.13\lib\net40\RemotingRef.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -125,8 +143,12 @@
       <HintPath>..\..\packages\SimpleInjector.Integration.Web.Mvc.3.3.2\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.2.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.2.3\lib\net40\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="SPSRemoting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.2.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.2.5\lib\net40\Sunplus.Agent.Model.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.1.6, Culture=neutral, processorArchitecture=MSIL">
@@ -180,71 +202,90 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SPNames\DBAGE.bodb02.BODBDownlineNet.xml" />
-    <Content Include="App_Data\SPNames\DBONUSER.ON_USER.BODBDownlineNet.xml" />
-    <Content Include="assets\bundles\default.css" />
-    <Content Include="assets\bundles\default.min.css">
-      <DependentUpon>default.css</DependentUpon>
-    </Content>
-    <Content Include="assets\styles\site.css">
-      <DependentUpon>site.scss</DependentUpon>
-    </Content>
-    <Content Include="assets\styles\site.min.css">
-      <DependentUpon>site.css</DependentUpon>
-    </Content>
+    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\MNL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\MNL\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\MNL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\SIT\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\SIT\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\SIT\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
+    <Content Include="Views\Announcement\PopupAnnouncement.cshtml" />
+    <Content Include="Views\Announcement\PopupAnnouncementWithSource.cshtml" />
+    <Content Include="Views\Announcement\PopupAnnouncementWithText.cshtml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
+    <Content Include="Alpha.Messages.Site.Debug.ruleset" />
+    <Content Include="Alpha.Messages.Site.ruleset" />
+    <Content Include="Views\Announcement\HeaderAnnouncement.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
-    <None Include="Web.AppSettings.backupMNL.config">
+    <Content Include="Views\Announcement\Template\Flash\testing.swf" />
+    <Content Include="Views\Announcement\Template\Testing.html" />
+    <Content Include="Views\Announcement\Template\Testing.css" />
+    <Content Include="Web.AppSettings.backupMNL.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNL2.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNL2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLExNap.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLExNap.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLExNap2.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLExNap2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLNap.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLNap.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLNap2.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLNap2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.napexternal.config">
+    </Content>
+    <Content Include="Web.AppSettings.napexternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.napexternal2.config">
+    </Content>
+    <Content Include="Web.AppSettings.napexternal2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.napinternal.config">
+    </Content>
+    <Content Include="Web.AppSettings.napinternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.napinternal2.config">
+    </Content>
+    <Content Include="Web.AppSettings.napinternal2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.pro.config">
+    </Content>
+    <Content Include="Web.AppSettings.pro.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.pro2.config">
+    </Content>
+    <Content Include="Web.AppSettings.pro2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.sit.config">
+    </Content>
+    <Content Include="Web.AppSettings.sit.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.sit2.config">
+    </Content>
+    <Content Include="Web.AppSettings.sit2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.uat.config">
+    </Content>
+    <Content Include="Web.AppSettings.uat.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.uat2.config">
+    </Content>
+    <Content Include="Web.AppSettings.uat2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.backupMNL.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -263,19 +304,27 @@
     <None Include="Web.backupMNLNap2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
+    <Content Include="Web.AppSettings.local.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Handlers\AnnouncementHandler.cs" />
+    <Compile Include="Helpers\QueryEntityModelBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\HeaderAnnouncementQuery.cs" />
+    <Compile Include="Requests\PopupAnnouncementQuery.cs" />
+    <Compile Include="Requests\SpecificationParameter.cs" />
+    <Compile Include="ViewModels\HotAnnouncementViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -284,7 +333,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="App_Data\AuthorizationSection.config" />
-    <Content Include="App_Data\SPNames\DBARC.bodb_Archive.BODBDownlineNet" />
     <Content Include="assets\styles\site.scss" />
     <Content Include="assets\styles\_variables.scss" />
     <Content Include="bundleconfig.json" />
@@ -292,7 +340,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <None Include="Web.AppSettings.config" />
+    <Content Include="Web.AppSettings.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -329,14 +377,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\bundles\" />
     <Folder Include="assets\scripts\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alpha.Messages.Client\Alpha.Messages.Client.csproj">
+      <Project>{2703095A-0EEB-4C8D-9187-E84D3F1CDA40}</Project>
+      <Name>Alpha.Messages.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alpha.Messages\Alpha.Messages.csproj">
       <Project>{2bebc35b-fc38-4091-9364-1c95b6bd2236}</Project>
       <Name>Alpha.Messages</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

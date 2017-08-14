@@ -1,11 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Controllers
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Web.Mvc;
     using MediatR;
+    using System.Web.Mvc;
     using Web;
 
-    [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1304:NonPrivateReadonlyFieldsMustBeginWithUpperCaseLetter", Justification = "Reviewed.")]
     public abstract class SiteBaseController : BaseController
     {
         protected readonly IMediator mediator;

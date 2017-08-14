@@ -1,0 +1,29 @@
+﻿@model HotAnnouncementViewModel
+@{
+    Layout = null;
+    var index = 0;
+}
+@if (Model.Announcements.Any())
+{
+    foreach (var announcement in Model.Announcements)
+    {
+        index++;
+        if (!string.IsNullOrEmpty(announcement.Source))
+        {
+            <div id="announcement_@announcement.Id" class="js-announcement">
+                @Html.Partial("PopupAnnouncementWithSource", announcement)
+                @Html.Hidden("AnnouncementId", announcement.Id)
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(announcement.Content))
+        {
+            <div id="announcement_@announcement.Id" class="js-announcement">
+                @Html.Partial("PopupAnnouncementWithText", announcement)
+                @Html.Hidden("AnnouncementId", announcement.Id)
+            </div>
+        }
+    }
+
+    @Html.Hidden("announcement-cookies-id", Model.CookiesId)
+    @Html.Hidden("no-info", Resources.NoInformationIsAvailable);
+}

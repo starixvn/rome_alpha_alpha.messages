@@ -120,4 +120,10 @@
   <data name="NoInformationIsAvailable" xml:space="preserve">
     <value>가능한 정보가 없습니다</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>자세히</value>
+  </data>
+  <data name="less" xml:space="preserve">
+    <value>less</value>
+  </data>
 </root>
