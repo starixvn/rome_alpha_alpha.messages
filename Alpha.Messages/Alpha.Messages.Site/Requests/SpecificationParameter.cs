@@ -41,6 +41,18 @@ namespace Alpha.Messages.Site.Requests
 
         public bool IsSyncedCasino => userSession.IsLiveCasinoSync;
 
+        public int MRecommendId => userSession.MRecommendId;
+
+        public int SRecommendId => userSession.SRecommendId;
+
+        public bool IsSuper => userSession.IsSuper;
+
+        public bool IsMaster => userSession.IsMaster;
+
+        public bool IsAgent => userSession.IsAgent;
+
+        public bool IsIMBCCustomer => userSession.IsIMBCCustomer;
+
         public IEnumerable<byte> OfferedProductIds
             => productService.GetOfferedProductsByCustomer(UserId).Select(i => (byte)i.Id);
 

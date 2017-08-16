@@ -40,6 +40,20 @@ namespace Alpha.Messages.Site.Requests
 
         public int CustId => userSession.CustId;
 
+        public int ARecommendId => userSession.ARecommendId;
+
+        public int MRecommendId => userSession.MRecommendId;
+
+        public int SRecommendId => userSession.SRecommendId;
+
+        public bool IsSuper => userSession.IsSuper;
+
+        public bool IsMaster => userSession.IsMaster;
+
+        public bool IsAgent => userSession.IsAgent;
+
+        public bool IsIMBCCustomer => userSession.IsIMBCCustomer;
+
         public string Language => userSession.Language;
 
         public string UserName => userSession.UserName;
@@ -54,6 +68,13 @@ namespace Alpha.Messages.Site.Requests
             {
                 AdminId = AdminId,
                 CustId = CustId,
+                ARecommendId = ARecommendId,
+                MRecommendId = MRecommendId,
+                SRecommendId = SRecommendId,
+                IsSuper = IsSuper,
+                IsMaster = IsMaster,
+                IsAgent = IsAgent,
+                IsIMBCCustomer = IsIMBCCustomer,
                 UserId = UserId,
                 Language = Language,
                 RoleId = RoleId,
