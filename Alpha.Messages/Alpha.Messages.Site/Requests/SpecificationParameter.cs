@@ -53,6 +53,8 @@ namespace Alpha.Messages.Site.Requests
 
         public bool IsIMBCCustomer => userSession.IsIMBCCustomer;
 
+        public Dictionary<string, object> DynamicParams { get; }
+
         public IEnumerable<byte> OfferedProductIds
             => productService.GetOfferedProductsByCustomer(UserId).Select(i => (byte)i.Id);
 

@@ -22,7 +22,7 @@ namespace Alpha.Messages.Services
 
     public class AnnoucementFromApiServiceImpl : AnnouncementFromApiService
     {
-        private const int CachedSecondAnnouncement = 1;
+        private const int CachedSecondAnnouncement = 30;
         private const string DefaultLanguage = "en-US";
         private const string PrefixId = "M7";
 
