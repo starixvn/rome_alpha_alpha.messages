@@ -84,8 +84,11 @@ namespace Alpha.Messages.Services
 
         private static bool IsShowNotice(string noticeType, IEnumerable<string> NoticesAreNoViewed)
         {
-            return noticeType.Split(splitChars, StringSplitOptions.RemoveEmptyEntries)
-                .Any(n => NoticesAreNoViewed.Contains(n));
+            var splitChars = new[] { '_' };
+
+            return noticeType
+                .Split(splitChars, StringSplitOptions.RemoveEmptyEntries)                
+                .FirstOrDefault(subMessageType => !NoticesAreNoViewed.Contains(subMessageType)) == null;
         }
 
         private int InsertPersonalNotice(string key, GetHotAnnouncementsParams getParams)
