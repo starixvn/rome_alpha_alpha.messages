@@ -1,13 +1,13 @@
-﻿using Alpha.Messages.Criteria;
-using Alpha.Messages.Models;
-using Fanex.Caching;
-using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Services
+﻿namespace Alpha.Messages.Services
 {
+    using Alpha.Messages.Criteria;
+    using Alpha.Messages.Models;
+    using Fanex.Caching;
+    using Fanex.Data.Repository;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public interface ProductService
     {
         IEnumerable<Product> GetOfferedProductsByCustomer(int custId);

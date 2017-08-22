@@ -1,18 +1,16 @@
-﻿using Alpha.Messages.AppResources;
-using Alpha.Messages.Criteria;
-using Alpha.Messages.Models;
-using Alpha.Messages.Models.Enumerations;
-using Alpha.Messages.Params;
-using Fanex.Common;
-using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Services
+﻿namespace Alpha.Messages.Services
 {
+    using Alpha.Messages.AppResources;
+    using Alpha.Messages.Criteria;
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Models.Enumerations;
+    using Alpha.Messages.Params;
+    using Fanex.Common;
+    using Fanex.Data.Repository;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public interface AnnouncementFromDatabaseService
     {
         HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams getParams);
@@ -83,11 +81,9 @@ namespace Alpha.Messages.Services
         }
 
         private static bool IsShowNotice(string noticeType, IEnumerable<string> NoticesAreNoViewed)
-        {
-            var splitChars = new[] { '_' };
-
+        {   
             return noticeType
-                .Split(splitChars, StringSplitOptions.RemoveEmptyEntries)                
+                .Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries)                
                 .FirstOrDefault(subMessageType => !NoticesAreNoViewed.Contains(subMessageType)) == null;
         }
 

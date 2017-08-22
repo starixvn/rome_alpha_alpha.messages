@@ -1,17 +1,17 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Messages.Client.Requests;
-using Alpha.Messages.Configurations;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using Alpha.Messages.Site.Requests;
-using Alpha.Messages.Site.ViewModels;
-using MediatR;
-using Sunplus.Agent.Model.Entities;
-using System.Collections.Generic;
-using System.Web;
-
-namespace Alpha.Messages.Site.Requests
+﻿namespace Alpha.Messages.Site.Requests
 {
+    using Alpha.Announcements.Models;
+    using Alpha.Messages.Client.Requests;
+    using Alpha.Messages.Configurations;
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Params;
+    using Alpha.Messages.Site.Requests;
+    using Alpha.Messages.Site.ViewModels;
+    using MediatR;
+    using Sunplus.Agent.Model.Entities;
+    using System.Collections.Generic;
+    using System.Web;
+
     public class PopupAnnouncementQuery : IRequest<HotAnnouncementViewModel>
     {
         private readonly IUserSession userSession;

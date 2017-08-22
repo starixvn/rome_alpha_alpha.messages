@@ -1,18 +1,19 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Announcements.Services;
-using Alpha.Messages.Client;
-
-using Alpha.Messages.Client.Requests;
-using Alpha.Messages.Configurations;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using Fanex.Caching;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Services
+﻿namespace Alpha.Messages.Services
 {
+    using Alpha.Announcements.Models;
+    using Alpha.Announcements.Services;
+    using Alpha.Messages.Client;
+
+    using Alpha.Messages.Client.Requests;
+    using Alpha.Messages.Configurations;
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Params;
+    using Fanex.Caching;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+
     public interface AnnouncementFromApiService
     {
         IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams);

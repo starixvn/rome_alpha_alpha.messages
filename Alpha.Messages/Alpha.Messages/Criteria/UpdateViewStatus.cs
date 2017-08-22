@@ -1,12 +1,12 @@
-﻿using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Criteria
+﻿namespace Alpha.Messages.Criteria
 {
+    using Fanex.Data.Repository;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class UpdateViewStatus : CriteriaBase
     {
         public UpdateViewStatus(int custId, bool isViewed, int typeId)

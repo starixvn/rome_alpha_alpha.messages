@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Alpha.Messages.Models
+﻿namespace Alpha.Messages.Models
 {
+    using System;
+
     public class Product
     {
         public Product(int id, string name, DateTime endOfSupportDate)

@@ -1,12 +1,12 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Services
+﻿namespace Alpha.Messages.Services
 {
+    using Alpha.Announcements.Models;
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Params;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public interface AnnouncementService
     {
         IEnumerable<HotAnnouncement> GetPopupAnnouncement(GetHotAnnouncementsParams getParams);

@@ -1,11 +1,8 @@
-﻿
-using Alpha.Announcements.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Params
+﻿namespace Alpha.Messages.Params
 {
+    using Alpha.Announcements.Models;
+    using System;
+
     public class GetHotAnnouncementsParams
     {
         public GetHotAnnouncementsParams()

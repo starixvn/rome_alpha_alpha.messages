@@ -4,12 +4,10 @@
     using Announcements.Services;
     using Client;
     using Controllers;
-    using Criteria;
     using Fanex.Data.Repository;
     using MediatR;
     using Models;
     using Requests;
-    using RestSharp;
     using Services;
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
