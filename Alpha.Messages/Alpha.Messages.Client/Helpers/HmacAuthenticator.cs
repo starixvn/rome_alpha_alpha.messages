@@ -1,16 +1,14 @@
 ﻿namespace Alpha.Messages.Client.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Sockets;
-    using System.Security.Cryptography;
-    using System.Text;
     using Configurations;
     using RestSharp;
     using RestSharp.Authenticators;
     using RestSharp.Extensions.MonoHttp;
+    using System;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Security.Cryptography;
+    using System.Text;
 
     public class HmacAuthenticator : IAuthenticator
     {

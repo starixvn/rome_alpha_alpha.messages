@@ -13,7 +13,7 @@
 
     public interface AnnouncementFromDatabaseService
     {
-        HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams getParams);
+        HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams parameters);
     }
 
     public class AnnouncementFromDatabaseServiceImpl : AnnouncementFromDatabaseService
