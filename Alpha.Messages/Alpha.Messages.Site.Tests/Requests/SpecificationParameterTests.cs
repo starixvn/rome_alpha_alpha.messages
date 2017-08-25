@@ -185,7 +185,7 @@ namespace Alpha.Messages.Site.Tests.Requests
         {
             //// Arrange
             var expectedValue = true;
-            userSession.IsLiveCasinoSync.Returns(expectedValue);
+            userSession.IsCasinoSync.Returns(expectedValue);
 
             //// Act
             var act = parameter.IsSyncedCasino;
