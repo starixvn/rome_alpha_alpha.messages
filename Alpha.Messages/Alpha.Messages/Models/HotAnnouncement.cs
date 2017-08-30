@@ -1,7 +1,7 @@
-﻿using AlphaAppSettings = Alpha.Web.Configurations.AppSettings;
-
-namespace Alpha.Messages.Models
+﻿namespace Alpha.Messages.Models
 {
+    using AlphaAppSettings = Alpha.Web.Configurations.AppSettings;
+
     public class HotAnnouncement
     {
         public HotAnnouncement()

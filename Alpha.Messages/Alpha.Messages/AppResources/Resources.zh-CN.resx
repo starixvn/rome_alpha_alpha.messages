@@ -126,4 +126,16 @@
   <data name="less" xml:space="preserve">
     <value>少</value>
   </data>
+  <data name="Notice_2" xml:space="preserve">
+    <value>您的上线已修改您的投注金額數值。&lt;br&gt;请务必核对您的下线的细节。</value>
+  </data>
+  <data name="Notice_1_2" xml:space="preserve">
+    <value>您的上线已修改您的最低占成及投注金额数值。&lt;br&gt;请务必核对您的下线的细节。</value>
+  </data>
+  <data name="Notice_1" xml:space="preserve">
+    <value>您的上线已修改您的最低占成。&lt;br&gt;请务必核对您的下线的细节。</value>
+  </data>
+  <data name="Notice_3" xml:space="preserve">
+    <value>您的上线已开启“捕鱼天下”予您的下线。请到您的设定页面进行配置</value>
+  </data>
 </root>

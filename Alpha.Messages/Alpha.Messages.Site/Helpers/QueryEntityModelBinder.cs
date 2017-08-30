@@ -1,10 +1,10 @@
-﻿using Alpha.Messages.Site.Requests;
-using Sunplus.Agent.Model.Entities;
-using System;
-using System.Web.Mvc;
-
-namespace Alpha.Messages.Site.Helpers
+﻿namespace Alpha.Messages.Site.Helpers
 {
+    using Alpha.Messages.Site.Requests;
+    using Sunplus.Agent.Model.Entities;
+    using System;
+    using System.Web.Mvc;
+
     public class QueryEntityModelBinder : DefaultModelBinder
     {
         private static readonly Type[] IUserSessionType = { typeof(IUserSession) };

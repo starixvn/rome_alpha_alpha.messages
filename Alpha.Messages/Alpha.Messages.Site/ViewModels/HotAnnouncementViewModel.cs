@@ -1,8 +1,8 @@
-﻿using Alpha.Messages.Models;
-using System.Collections.Generic;
-
-namespace Alpha.Messages.Site.ViewModels
+﻿namespace Alpha.Messages.Site.ViewModels
 {
+    using Alpha.Messages.Models;
+    using System.Collections.Generic;
+
     public class HotAnnouncementViewModel
     {
         public HotAnnouncementViewModel(IEnumerable<HotAnnouncement> announcements, string cookiesId)

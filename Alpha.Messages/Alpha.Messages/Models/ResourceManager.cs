@@ -1,8 +1,8 @@
-﻿using Alpha.Messages.AppResources;
-using System.Globalization;
-
-namespace Alpha.Messages.Models
+﻿namespace Alpha.Messages.Models
 {
+    using Alpha.Messages.AppResources;
+    using System.Globalization;
+
     public interface ResourceManager
     {
         string GetString(string name, CultureInfo culture);

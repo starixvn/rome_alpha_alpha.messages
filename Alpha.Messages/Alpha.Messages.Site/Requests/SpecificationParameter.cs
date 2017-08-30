@@ -1,11 +1,11 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Messages.Services;
-using Sunplus.Agent.Model.Entities;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Site.Requests
+﻿namespace Alpha.Messages.Site.Requests
 {
+    using Alpha.Announcements.Models;
+    using Alpha.Messages.Services;
+    using Sunplus.Agent.Model.Entities;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class SpecificationParameter : IParam
     {
         private readonly IUserSession userSession;
@@ -39,7 +39,21 @@ namespace Alpha.Messages.Site.Requests
 
         public string Site => userSession.Site;
 
-        public bool IsSyncedCasino => userSession.IsLiveCasinoSync;
+        public bool IsSyncedCasino => userSession.IsCasinoSync;
+
+        public int MRecommendId => userSession.MRecommendId;
+
+        public int SRecommendId => userSession.SRecommendId;
+
+        public bool IsSuper => userSession.IsSuper;
+
+        public bool IsMaster => userSession.IsMaster;
+
+        public bool IsAgent => userSession.IsAgent;
+
+        public bool IsIMBCCustomer => userSession.IsIMBCCustomer;
+
+        public Dictionary<string, object> DynamicParams { get; }
 
         public IEnumerable<byte> OfferedProductIds
             => productService.GetOfferedProductsByCustomer(UserId).Select(i => (byte)i.Id);

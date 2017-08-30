@@ -1,12 +1,12 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using MediatR;
-using Sunplus.Agent.Model.Entities;
-using System.Collections.Generic;
-
-namespace Alpha.Messages.Site.Requests
+﻿namespace Alpha.Messages.Site.Requests
 {
+    using Alpha.Announcements.Models;
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Params;
+    using MediatR;
+    using Sunplus.Agent.Model.Entities;
+    using System.Collections.Generic;
+
     public class HeaderAnnouncementQuery : IRequest<IEnumerable<HotAnnouncement>>
     {
         private readonly IUserSession userSession;

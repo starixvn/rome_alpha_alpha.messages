@@ -126,4 +126,16 @@
   <data name="less" xml:space="preserve">
     <value>Rút gọn</value>
   </data>
+  <data name="Notice_2" xml:space="preserve">
+    <value>Giới hạn tiền đặt cược của bạn bị thay đổi bởi cấp trên ..&lt;br&gt;Vui lòng thông báo và kiểm tra chi tiết tất cả những thành viên cấp dưới trực thuộc bạn</value>
+  </data>
+  <data name="Notice_1_2" xml:space="preserve">
+    <value>Giới hạn tiền đặt cược và giá trị PT nhỏ nhất của bạn bị thay đổi bởi cấp trên ..&lt;br&gt; Vui lòng thông báo và kiểm tra chi tiết tất cả những thành viên cấp dưới trực thuộc bạn</value>
+  </data>
+  <data name="Notice_1" xml:space="preserve">
+    <value> Giá trị PT nhỏ nhất của bạn bị thay đổi bởi cấp trên .&lt;br&gt; Vui lòng thông báo và kiểm tra chi tiết tất cả những thành viên cấp dưới trực thuộc bạn</value>
+  </data>
+  <data name="Notice_3" xml:space="preserve">
+    <value>Cấp dưới của bạn đã được kích hoạt sản phẩm Fishing World. Vui lòng thiết lập thông số Position Taking của bản thân.</value>
+  </data>
 </root>

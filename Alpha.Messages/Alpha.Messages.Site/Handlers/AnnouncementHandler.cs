@@ -1,13 +1,13 @@
-﻿using Alpha.Messages.Models;
-using Alpha.Messages.Services;
-using Alpha.Messages.Site.Requests;
-using Alpha.Messages.Site.ViewModels;
-using MediatR;
-using Sunplus.Agent.Utilities;
-using System.Collections.Generic;
-
-namespace Alpha.Messages.Site.Handlers
+﻿namespace Alpha.Messages.Site.Handlers
 {
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Services;
+    using Alpha.Messages.Site.Requests;
+    using Alpha.Messages.Site.ViewModels;
+    using MediatR;
+    using Sunplus.Agent.Utilities;
+    using System.Collections.Generic;
+
     public class AnnouncementHandler :
          IRequestHandler<PopupAnnouncementQuery, HotAnnouncementViewModel>,
         IRequestHandler<HeaderAnnouncementQuery, IEnumerable<HotAnnouncement>>

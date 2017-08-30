@@ -1,11 +1,8 @@
-﻿
-using Alpha.Announcements.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Params
+﻿namespace Alpha.Messages.Params
 {
+    using Alpha.Announcements.Models;
+    using System;
+
     public class GetHotAnnouncementsParams
     {
         public GetHotAnnouncementsParams()
@@ -30,6 +27,20 @@ namespace Alpha.Messages.Params
         }
 
         public int CustId { get; set; }
+
+        public int ARecommendId { get; set; }
+
+        public int MRecommendId { get; set; }
+
+        public int SRecommendId { get; set; }
+
+        public bool IsSuper { get; set; }
+
+        public bool IsMaster { get; set; }
+
+        public bool IsAgent { get; set; }
+
+        public bool IsIMBCCustomer { get; set; }
 
         public string Language { get; set; }
 

@@ -1,11 +1,11 @@
-﻿using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using Alpha.Web.Helpers;
-using System;
-using System.Collections.Generic;
-
-namespace Alpha.Messages.Services
+﻿namespace Alpha.Messages.Services
 {
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Params;
+    using Alpha.Web.Helpers;
+    using System;
+    using System.Collections.Generic;
+
     public interface AnnouncementFormatService
     {
         IEnumerable<HotAnnouncement> Format(IEnumerable<HotAnnouncement> announcements, GetHotAnnouncementsParams message);

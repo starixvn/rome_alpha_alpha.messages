@@ -1,10 +1,10 @@
-﻿using Alpha.Messages.Models;
-using Fanex.Data;
-using Fanex.Data.Repository;
-using System.Globalization;
-
-namespace Alpha.Messages.Criteria
+﻿namespace Alpha.Messages.Criteria
 {
+    using Alpha.Messages.Models;
+    using Fanex.Data;
+    using Fanex.Data.Repository;
+    using System.Globalization;
+
     public class InsertPersonalMessageCriteria : CriteriaBase
     {
         public const int PositionTakingChanged = 1;
