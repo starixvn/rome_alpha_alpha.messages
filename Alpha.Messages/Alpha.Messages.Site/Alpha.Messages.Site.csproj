@@ -279,6 +279,18 @@
 	<Content Include="Web.AppSettings.staging2.config">
 		<DependentUpon>Web.AppSettings.config</DependentUpon>
 	</Content>
+	<Content Include="Web.AppSettings.stagingnap.config">
+		<DependentUpon>Web.AppSettings.config</DependentUpon>
+	</Content>
+	<Content Include="Web.AppSettings.stagingnap2.config">
+		<DependentUpon>Web.AppSettings.config</DependentUpon>
+	</Content>
+	<Content Include="Web.AppSettings.stagingext.config">
+		<DependentUpon>Web.AppSettings.config</DependentUpon>
+	</Content>
+	<Content Include="Web.AppSettings.stagingext2.config">
+		<DependentUpon>Web.AppSettings.config</DependentUpon>
+	</Content>
     <Content Include="Web.AppSettings.sit.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
