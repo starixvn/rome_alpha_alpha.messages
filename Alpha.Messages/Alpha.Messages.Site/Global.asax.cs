@@ -1,5 +1,11 @@
 ﻿namespace Alpha.Messages.Site
 {
+    using System;
+    using System.Diagnostics;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
     using App_Start;
     using Auth.Filters;
     using Configurations;
@@ -7,10 +13,8 @@
     using Fanex.Data.OldConnectionStringProvider;
     using Helpers;
     using ONEbook.UM.Filters;
-    using System.Diagnostics;
-    using System.Reflection;
-    using System.Web.Mvc;
-    using System.Web.Routing;
+    using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.Utilities;
     using Web;
     using Web.Helpers;
     using ClientAppSettings = Client.Configurations.AppSettings;
@@ -48,6 +52,28 @@
             ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
             StaticResources.Init(GetBuildVersion());
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError().GetBaseException();
+            if (ex is HttpException)
+            {
+                return;
+            }
+
+            if (!Request.IsLocal)
+            {
+                if (ex.Message.Contains("Extend Token Error UserID") ||
+                    ex.Message.Contains("'0' is not a valid value in Alpha.Main.Models.Enumerations.UserLevel"))
+                {
+                    return;
+                }
+
+                Logs.FilterInfoWarnOrError(
+                    ex,
+                    UserSession.Current != null ? UserSession.Current.CustId : 0);
+            }
         }
 
         private static string GetBuildVersion()
