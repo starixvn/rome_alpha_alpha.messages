@@ -8,7 +8,7 @@
     {
         [ThreadStatic]
         private static NameValueCollection appSettingValues;
-        
+
         internal static NameValueCollection AppSettingValues
         {
             get { return appSettingValues ?? ConfigurationManager.AppSettings; }
@@ -18,10 +18,10 @@
 
         public static string AnnouncementApi => GetConfigValue("Announcement:ApiUrl");
 
-        public static string AnnouncementSecretKey 
-            => string.IsNullOrEmpty(GetConfigValue("Announcement:SecretKey")) ? 
-            "ZDlhMWFmMDgtZGQ0ZC00NWY0LTg1ODItNzVkNTdhOTNjOTEx" : 
-            GetConfigValue("Announcement:SecretKey");
+        public static string AnnouncementSecretKey
+            => string.IsNullOrEmpty(GetConfigValue("Announcement:SecretKey")) ?
+            "ZDlhMWFmMDgtZGQ0ZC00NWY0LTg1ODItNzVkNTdhOTNjOTEx" :
+            GetConfigValue("Announcement:SecretKey");        
 
         public static void Verify()
         {
@@ -36,6 +36,6 @@
             }
         }
 
-        public static string GetConfigValue(string configName) => AppSettingValues[configName];       
+        public static string GetConfigValue(string configName) => AppSettingValues[configName];
     }
 }

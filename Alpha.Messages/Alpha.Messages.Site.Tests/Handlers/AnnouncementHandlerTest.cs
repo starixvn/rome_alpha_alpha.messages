@@ -1,16 +1,15 @@
-﻿using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using Alpha.Messages.Services;
-using Alpha.Messages.Site.Handlers;
-using Alpha.Messages.Site.Requests;
-using Alpha.Messages.Site.Tests.Fixtures;
-using NSubstitute;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alpha.Messages.Site.Tests.Handlers
+﻿namespace Alpha.Messages.Site.Tests.Handlers
 {
+    using Alpha.Messages.Models.Announcement;
+    using Alpha.Messages.Params.Announcement;
+    using Alpha.Messages.Services;
+    using Alpha.Messages.Site.Handlers;
+    using Alpha.Messages.Site.Requests;
+    using Alpha.Messages.Site.Tests.Fixtures;
+    using NSubstitute;
+    using NUnit.Framework;
+    using System.Collections.Generic;
+
     public class AnnouncementHandlerTest
     {
         private AnnouncementService announcementService;

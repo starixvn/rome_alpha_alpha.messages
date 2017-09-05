@@ -34,6 +34,12 @@
 
         public static string StoreProcedurePath => GetConfigValue("StoredProcedurePath");
 
+        public static string MessageSuper => GetConfigValue("Message:Super");
+
+        public static string MessageMaster => GetConfigValue("Message:Master");
+
+        public static string MessageAgent => GetConfigValue("Message:Agent");
+
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
 
         public static void Verify()

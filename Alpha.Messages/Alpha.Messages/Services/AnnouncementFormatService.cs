@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Messages.Services
 {
-    using Alpha.Messages.Models;
-    using Alpha.Messages.Params;
     using Alpha.Web.Helpers;
+    using Models.Announcement;
+    using Params.Announcement;
     using System;
     using System.Collections.Generic;
 

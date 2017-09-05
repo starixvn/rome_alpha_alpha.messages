@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
-    using Alpha.Messages.Models;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Requests;
     using Alpha.Messages.Site.ViewModels;
     using MediatR;
+    using Models.Announcement;
     using Sunplus.Agent.Utilities;
     using System.Collections.Generic;
 

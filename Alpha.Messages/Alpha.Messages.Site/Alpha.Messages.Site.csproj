@@ -213,23 +213,30 @@
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\MNL\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\MNL\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\PRO\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\SIT\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\SIT\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
     <Content Include="assets\bundles\default.css" />
     <Content Include="assets\bundles\default.min.css" />
     <Content Include="Global.asax" />
@@ -311,21 +318,21 @@
 	<Content Include="Web.AppSettings.staging3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.stagingnap.config">
-		<DependentUpon>Web.AppSettings.config</DependentUpon>
-	</Content>
-	<Content Include="Web.AppSettings.stagingnap2.config">
-		<DependentUpon>Web.AppSettings.config</DependentUpon>
-	</Content>
+    <Content Include="Web.AppSettings.stagingnap.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.AppSettings.stagingnap2.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
 	<Content Include="Web.AppSettings.stagingnap3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.stagingext.config">
-		<DependentUpon>Web.AppSettings.config</DependentUpon>
-	</Content>
-	<Content Include="Web.AppSettings.stagingext2.config">
-		<DependentUpon>Web.AppSettings.config</DependentUpon>
-	</Content>
+    <Content Include="Web.AppSettings.stagingext.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.AppSettings.stagingext2.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
 	<Content Include="Web.AppSettings.stagingext3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
@@ -383,6 +390,7 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\BaioAnnouncementController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -390,12 +398,16 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\AnnouncementHandler.cs" />
+    <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Helpers\QueryEntityModelBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\HeaderAnnouncementQuery.cs" />
-    <Compile Include="Requests\PopupAnnouncementQuery.cs" />
-    <Compile Include="Requests\SpecificationParameter.cs" />
+    <Compile Include="Requests\Announcement\HeaderAnnouncementQuery.cs" />
+    <Compile Include="Requests\Message\LatestMessageQuery.cs" />
+    <Compile Include="Requests\Message\UpdatePrivateMessageAsReadQuery.cs" />
+    <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
+    <Compile Include="Requests\Announcement\SpecificationParameter.cs" />
     <Compile Include="ViewModels\HotAnnouncementViewModel.cs" />
+    <Compile Include="ViewModels\LatestMessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

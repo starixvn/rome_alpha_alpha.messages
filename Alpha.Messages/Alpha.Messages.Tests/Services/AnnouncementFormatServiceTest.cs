@@ -1,18 +1,15 @@
-﻿using Alpha.Messages.Services;
-using NSubstitute;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ploeh.AutoFixture;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using KellermanSoftware.CompareNetObjects;
-
-namespace Alpha.Messages.Tests.Services
+﻿namespace Alpha.Messages.Tests.Services
 {
+    using Alpha.Messages.Models.Announcement;
+    using Alpha.Messages.Params.Announcement;
+    using Alpha.Messages.Services;
+    using KellermanSoftware.CompareNetObjects;
+    using NUnit.Framework;
+    using Ploeh.AutoFixture;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class AnnouncementFormatServiceTest
     {
         private readonly Fixture fixture = new Fixture();

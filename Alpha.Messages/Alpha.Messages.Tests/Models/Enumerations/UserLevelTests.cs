@@ -1,13 +1,9 @@
-﻿using Alpha.Messages.Models.Enumerations;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Tests.Models.Enumerations
+﻿namespace Alpha.Messages.Tests.Models.Enumerations
 {
+    using Alpha.Messages.Models.Constants;
+    using NUnit.Framework;
+
+
     public class UserLevelTests
     {
         [Test]

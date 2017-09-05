@@ -6,7 +6,7 @@
     using Controllers;
     using Fanex.Data.Repository;
     using MediatR;
-    using Models;
+    using Models.Announcement;
     using Requests;
     using Services;
     using SimpleInjector;
@@ -74,6 +74,7 @@
         private static void RegisterServices(Container container)
         {
             container.RegisterSingleton<IUserSession, UserSessionExt>();
+            container.RegisterPerWebRequest<MessageService, MessageServiceImpl>();
             container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
             container.RegisterSingleton<AnnouncementFromApiService, AnnoucementFromApiServiceImpl>();
             container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();            

@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Requests
 {
     using Alpha.Announcements.Models;
-    using Alpha.Messages.Models;
-    using Alpha.Messages.Params;
     using MediatR;
+    using Models.Announcement;
+    using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
     using System.Collections.Generic;
 

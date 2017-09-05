@@ -1,13 +1,8 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Alpha.Messages.Criteria;
-
-namespace Alpha.Messages.Tests.Criteria
+﻿namespace Alpha.Messages.Tests.Criteria
 {
+    using Alpha.Messages.Criteria.Announcement;
+    using NUnit.Framework;
+
     [TestFixture]
     public class GetMessageTypeListCriteriaTest
     {

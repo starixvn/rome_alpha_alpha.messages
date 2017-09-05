@@ -65,7 +65,7 @@
             if (!Request.IsLocal)
             {
                 if (ex.Message.Contains("Extend Token Error UserID") ||
-                    ex.Message.Contains("'0' is not a valid value in Alpha.Main.Models.Enumerations.UserLevel"))
+                    ex.Message.Contains("'0' is not a valid value in Alpha.Messages.Models.Enumerations.UserLevel"))
                 {
                     return;
                 }

@@ -1,11 +1,11 @@
-﻿using Alpha.Messages.Criteria;
-using Alpha.Messages.Models;
-using NSubstitute;
-using NUnit.Framework;
-using System.Globalization;
-
-namespace Alpha.Messages.Tests.Criteria
+﻿namespace Alpha.Messages.Tests.Criteria
 {
+    using Alpha.Messages.Criteria.Announcement;
+    using Alpha.Messages.Models.Announcement;
+    using NSubstitute;
+    using NUnit.Framework;
+    using System.Globalization;
+
     public class InsertPersonalMessageCriteriaTest
     {
         private ResourceManager resourceManager;

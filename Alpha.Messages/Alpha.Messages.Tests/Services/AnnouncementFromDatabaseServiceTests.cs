@@ -1,17 +1,17 @@
-﻿using Alpha.Messages.Configurations;
-using Alpha.Messages.Criteria;
-using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using Alpha.Messages.Services;
-using Fanex.Data.Repository;
-using NSubstitute;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-
-namespace Alpha.Messages.Tests.Services
+﻿namespace Alpha.Messages.Tests.Services
 {
+    using Alpha.Messages.Configurations;
+    using Alpha.Messages.Criteria.Announcement;
+    using Alpha.Messages.Models.Announcement;
+    using Alpha.Messages.Params.Announcement;
+    using Alpha.Messages.Services;
+    using Fanex.Data.Repository;
+    using NSubstitute;
+    using NUnit.Framework;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Linq;
+
     public class AnnouncementFromDatabaseServiceTests
     {
         private IDynamicRepository dynamicRepository;
