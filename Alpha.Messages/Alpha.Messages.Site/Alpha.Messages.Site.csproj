@@ -58,6 +58,10 @@
       <HintPath>..\..\packages\Alpha.Auth.3.0.1.4\lib\net40\Alpha.Auth.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Alpha.RemotingRef, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.RemotingRef.1.0.0.2\lib\net40\Alpha.RemotingRef.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.Web, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.Web.1.0.0.9-announcement-01\lib\net40\Alpha.Web.dll</HintPath>
       <Private>True</Private>
@@ -235,6 +239,7 @@
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Alpha.Messages.Site.ruleset" />
     <Content Include="Views\Announcement\HeaderAnnouncement.cshtml" />
+    <Content Include="Views\BaioAnnouncement\Index.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -335,6 +340,7 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
+    <Compile Include="Controllers\BaioAnnouncementController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

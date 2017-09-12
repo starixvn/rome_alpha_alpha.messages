@@ -70,6 +70,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet Setting Follows.
+        /// </summary>
+        public static string BetSettingFollows {
+            get {
+                return ResourceManager.GetString("BetSettingFollows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string close {
@@ -79,20 +88,29 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to less.
+        ///   Looks up a localized string similar to Commission Setting Follows.
         /// </summary>
-        public static string less {
+        public static string CommissionSettingFollows {
             get {
-                return ResourceManager.GetString("less", resourceCulture);
+                return ResourceManager.GetString("CommissionSettingFollows", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More.
+        ///   Looks up a localized string similar to New Bet Type.
         /// </summary>
-        public static string more {
+        public static string NewBetType {
             get {
-                return ResourceManager.GetString("more", resourceCulture);
+                return ResourceManager.GetString("NewBetType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New bet types of Basketball with effect from {0}:.
+        /// </summary>
+        public static string NewBetTypeEffectDate {
+            get {
+                return ResourceManager.GetString("NewBetTypeEffectDate", resourceCulture);
             }
         }
         
@@ -106,38 +124,11 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your minimum position taking value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        ///   Looks up a localized string similar to Position Taking Setting Follows.
         /// </summary>
-        public static string Notice_1 {
+        public static string PositionTakingSettingFollows {
             get {
-                return ResourceManager.GetString("Notice_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your minimum position taking and betting limit value have been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
-        /// </summary>
-        public static string Notice_1_2 {
-            get {
-                return ResourceManager.GetString("Notice_1_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your betting limit value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
-        /// </summary>
-        public static string Notice_2 {
-            get {
-                return ResourceManager.GetString("Notice_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings..
-        /// </summary>
-        public static string Notice_3 {
-            get {
-                return ResourceManager.GetString("Notice_3", resourceCulture);
+                return ResourceManager.GetString("PositionTakingSettingFollows", resourceCulture);
             }
         }
     }
