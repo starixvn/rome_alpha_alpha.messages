@@ -1,12 +1,13 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
     using System.Collections.Generic;
-    using Alpha.Messages.Services;
-    using Alpha.Messages.Site.Requests;
-    using Alpha.Messages.Site.ViewModels;
     using MediatR;
     using Models.Announcement;
+    using Models;
+    using Requests;
+    using Services;
     using Sunplus.Agent.Utilities;
+    using ViewModels;
 
     public class AnnouncementHandler :
          IRequestHandler<PopupAnnouncementQuery, HotAnnouncementViewModel>,

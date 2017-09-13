@@ -23,19 +23,19 @@
             compareLogic = new CompareLogic();
         }
 
-        [Test]
-        public void Format_NoMatchCode_NoReplaceContent()
-        {
-            //// Arrange
-            var announcements = fixture.CreateMany<HotAnnouncement>();
-            formatService.ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
+        //[Test]
+        //public void Format_NoMatchCode_NoReplaceContent()
+        //{
+        //    //// Arrange
+        //    var announcements = fixture.CreateMany<HotAnnouncement>();
+        //    formatService.ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
 
-            //// Act
-            var act = formatService.Format(announcements, new GetHotAnnouncementsParams());
+        //    //// Act
+        //    var act = formatService.Format(announcements, new GetHotAnnouncementsParams());
 
-            //// Assert
-            Assert.True(compareLogic.Compare(act.ToList(), announcements.ToList()).AreEqual);
-        }
+        //    //// Assert
+        //    Assert.True(compareLogic.Compare(act.ToList(), announcements.ToList()).AreEqual);
+        //}
 
         [Test]
         public void Format_MatchSiteMainCode_ReplaceSiteMain()

@@ -64,12 +64,15 @@
                 System = AppSettings.SiteGroup
             };
 
-            var allNouncementsToday = ConfiguredCacheService.GetOrSet(
-                $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
-                () => announcementClient.GetAnnouncements(request)
-                .OrderBy(i => i.Ordinal)
-                .ThenBy(i => i.CreatedDate),
-                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
+            var allNouncementsToday = announcementClient.GetAnnouncements(request);
+
+
+           //var allNouncementsToday = ConfiguredCacheService.GetOrSet(
+           //     $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
+           //     () => announcementClient.GetAnnouncements(request)
+           //     .OrderBy(i => i.Ordinal)
+           //     .ThenBy(i => i.CreatedDate),
+           //     new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             return allNouncementsToday;
         }
@@ -84,7 +87,7 @@
                 {
                     var message = GetMessageByLanguage(announcement.Contents, announcementParams.Language);
 
-                    yield return new HotAnnouncement(PrefixId + announcement.Id.ToString(), message.Text, announcement.Code, message.Url);
+                    yield return new HotAnnouncement(PrefixId + announcement.Id.ToString(), message.Text, announcement.Code, message.Url, announcement.Specifications);
                 }
             }
         }
