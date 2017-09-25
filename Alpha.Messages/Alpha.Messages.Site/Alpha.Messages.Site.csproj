@@ -50,6 +50,10 @@
       <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.UnsynchronizedSetting.1.0.0.1-unconfirmSetting02\lib\net40\Alpha.Announcements.UnsynchronizedSetting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.Announcements.UplineIdRule.1.0.0.1\lib\net40\Alpha.Announcements.UplineIdRule.dll</HintPath>
       <Private>True</Private>
@@ -428,7 +432,9 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Web.AppSettings.config" />
+    <Content Include="Web.AppSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -518,7 +524,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59860</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

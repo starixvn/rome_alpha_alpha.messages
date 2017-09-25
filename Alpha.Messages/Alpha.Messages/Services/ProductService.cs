@@ -4,9 +4,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using Criteria.Announcement;
+    using Criteria;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Models.Announcement;
+    using Models;
 
     public interface ProductService
     {
@@ -28,22 +30,13 @@
         }
 
         public IEnumerable<Product> GetOfferedProductsByCustomer(int custId)
-        {
-            var products = GetAllProducts()
-                        .Where(product => canViewProduct(product.Id));
-
-            return products;
-        }
+            => GetAllProducts().Where(product => canViewProduct(product.Id));
 
         private IEnumerable<Product> GetAllProducts()
-        {
-            var products = ConfiguredCacheService
+            => ConfiguredCacheService
                 .GetOrSet(
                 ProductsCacheKey,
                 () => dynamicRepository.Fetch<Product>(new GetProductsCriteria()),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromDays(1)));
-
-            return products;
-        }
     }
 }

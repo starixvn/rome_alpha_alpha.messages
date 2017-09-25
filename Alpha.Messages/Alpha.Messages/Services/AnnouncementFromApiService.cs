@@ -3,21 +3,25 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Alpha.Announcements.Models;
-    using Alpha.Announcements.Services;
-    using Alpha.Messages.Client;
-    using Alpha.Messages.Client.Requests;
-    using Alpha.Messages.Configurations;
-    using Fanex.Caching;
     using Models.Announcement;
     using Params.Announcement;
-
+    using Announcements.Models;
+    using Announcements.Services;
+    using Announcements.UnsynchronizedSetting.Specs;
+    using Client;
+    using Client.Requests;
+    using Configurations;
+    using Fanex.Caching;
+    using Models;
+    using Params;
 
     public interface AnnouncementFromApiService
     {
         IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams);
 
         IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams);
+
+        IEnumerable<int> GetUnconfirmSettingProductIds();
     }
 
     public class AnnoucementFromApiServiceImpl : AnnouncementFromApiService
@@ -25,6 +29,8 @@
         private const int CachedSecondAnnouncement = 1;
         private const string DefaultLanguage = "en-US";
         private const string PrefixId = "M7";
+
+        public Dictionary<string, Func<Announcement, bool>> DoubleCheckActivedAnnnouncements { get; set; }
 
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
@@ -36,6 +42,12 @@
         {
             this.announcementClient = announcementClient;
             this.specificationService = specificationSerivce;
+
+            DoubleCheckActivedAnnnouncements = new Dictionary<string, Func<Announcement, bool>>
+            {
+                // Implement double-check actived announcements by conditions here
+                {"8102702",  DoubleCheckActivedAnnnouncementContainsUnsyncedSetting}
+            };
         }
 
         public IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams)
@@ -46,6 +58,15 @@
 
             return userAnnouncements;
         }
+
+        public IEnumerable<int> GetUnconfirmSettingProductIds()
+           => new List<int>
+            {
+                21,
+                12,
+                6,
+                22    
+            };
 
         public IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams)
         {
@@ -64,17 +85,14 @@
                 System = AppSettings.SiteGroup
             };
 
-            var allNouncementsToday = announcementClient.GetAnnouncements(request);
+            var allNouncementsToday = ConfiguredCacheService.GetOrSet(
+                 $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
+                 () => announcementClient.GetAnnouncements(request)
+                 .OrderBy(i => i.Ordinal)
+                 .ThenBy(i => i.CreatedDate),
+                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
-
-           //var allNouncementsToday = ConfiguredCacheService.GetOrSet(
-           //     $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
-           //     () => announcementClient.GetAnnouncements(request)
-           //     .OrderBy(i => i.Ordinal)
-           //     .ThenBy(i => i.CreatedDate),
-           //     new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
-
-            return allNouncementsToday;
+            return allNouncementsToday.Where(announcement => DoubleCheckActivedAnnnouncements[announcement.Code](announcement));
         }
 
         private IEnumerable<HotAnnouncement> GetPopupAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
@@ -124,10 +142,21 @@
         }
 
         private static MessageContent GetMessageContentDefault(IEnumerable<MessageContent> messages)
-        {
-            var contentDefault = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
+            => messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
-            return contentDefault;
+        private bool DoubleCheckActivedAnnnouncementContainsUnsyncedSetting(Announcement announcement)
+        {
+            var existedUnsynchronizedSettingSpec = (UnsynchronizedSettingSpecification)announcement.Specifications
+                .Single(spec => spec.GetType() == typeof(UnsynchronizedSettingSpecification));
+
+            if (existedUnsynchronizedSettingSpec != null)
+            {
+                existedUnsynchronizedSettingSpec.ProductIds = GetUnconfirmSettingProductIds();
+                return existedUnsynchronizedSettingSpec.ProductIds.Any();
+            }
+
+            return true;
         }
+
     }
 }
