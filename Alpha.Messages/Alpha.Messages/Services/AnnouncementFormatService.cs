@@ -66,9 +66,21 @@
             GetHotAnnouncementsParams param, 
             IEnumerable<ISpecification<IParam>> specs)
         {
+            var unsynchronizedSettingSpecification = (UnsynchronizedSettingSpecification)specs.FirstOrDefault(rule => rule.GetType() == typeof(UnsynchronizedSettingSpecification));
+
+            if (unsynchronizedSettingSpecification != null)
+            {
+                return content.Replace(ProductsTag, BuildProductTag(unsynchronizedSettingSpecification, param));
+            }
+
+            return content;
+        }
+
+        private static string BuildProductTag(
+            UnsynchronizedSettingSpecification unsynchronizedSettingSpecification,
+            GetHotAnnouncementsParams param)
+        {
             StringBuilder builder = new StringBuilder();
-            var spec = specs.FirstOrDefault(rule => rule.GetType() == typeof(UnsynchronizedSettingSpecification));
-            var unsynchronizedSettingSpecification = (UnsynchronizedSettingSpecification)spec;
 
             foreach (var productId in unsynchronizedSettingSpecification.ProductIds)
             {
@@ -76,7 +88,7 @@
                 builder.Append($"<div><a href='{hrefLink}' target='main'>{CacheRef.GetProductName(productId)}</a></div>");
             }
 
-            return content.Replace(ProductsTag, builder.ToString());
+            return builder.ToString();
         }
     }
 }

@@ -26,7 +26,7 @@
 
     public class AnnoucementFromApiServiceImpl : AnnouncementFromApiService
     {
-        private const int CachedSecondAnnouncement = 1;
+        private const int CachedSecondAnnouncement = 30;
         private const string DefaultLanguage = "en-US";
         private const string PrefixId = "M7";
 
@@ -38,10 +38,10 @@
 
         public AnnoucementFromApiServiceImpl(
             AnnouncementClient announcementClient,
-            SpecificationService specificationSerivce)
+            SpecificationService specificationService)
         {
             this.announcementClient = announcementClient;
-            this.specificationService = specificationSerivce;
+            this.specificationService = specificationService;
 
             DoubleCheckActivedAnnnouncements = new Dictionary<string, Func<Announcement, bool>>
             {
@@ -51,13 +51,10 @@
         }
 
         public IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams)
-        {
-            var allNouncementsToday = GetAllAnnouncementToday();
+            => GetPopupAnnouncementsByUser(GetAllAnnouncementToday(), announcementParams);
 
-            var userAnnouncements = GetPopupAnnouncementsByUser(allNouncementsToday, announcementParams);
-
-            return userAnnouncements;
-        }
+        public IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams)
+            => GetHeaderAnnouncementsByUser(GetAllAnnouncementToday(), announcementParams);
 
         public IEnumerable<int> GetUnconfirmSettingProductIds()
            => new List<int>
@@ -67,15 +64,6 @@
                 6,
                 22    
             };
-
-        public IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams)
-        {
-            var allNouncementsToday = GetAllAnnouncementToday();
-
-            var userAnnouncements = GetHeaderAnnouncementsByUser(allNouncementsToday, announcementParams);
-
-            return userAnnouncements;
-        }
 
         private IEnumerable<Announcement> GetAllAnnouncementToday()
         {
@@ -92,7 +80,8 @@
                  .ThenBy(i => i.CreatedDate),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
-            return allNouncementsToday.Where(announcement => DoubleCheckActivedAnnnouncements[announcement.Code](announcement));
+            return allNouncementsToday.Where(announcement => 
+                    !DoubleCheckActivedAnnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnnouncements[announcement.Code](announcement));
         }
 
         private IEnumerable<HotAnnouncement> GetPopupAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
@@ -147,7 +136,7 @@
         private bool DoubleCheckActivedAnnnouncementContainsUnsyncedSetting(Announcement announcement)
         {
             var existedUnsynchronizedSettingSpec = (UnsynchronizedSettingSpecification)announcement.Specifications
-                .Single(spec => spec.GetType() == typeof(UnsynchronizedSettingSpecification));
+                .FirstOrDefault(spec => spec.GetType() == typeof(UnsynchronizedSettingSpecification));
 
             if (existedUnsynchronizedSettingSpec != null)
             {
@@ -155,8 +144,7 @@
                 return existedUnsynchronizedSettingSpec.ProductIds.Any();
             }
 
-            return true;
+            return false;
         }
-
     }
 }
