@@ -10,10 +10,13 @@
     using Models.Announcement;
     using Models.Constants;
     using Params.Announcement;
+    using Params;
 
     public interface AnnouncementFromDatabaseService
     {
         HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams parameters);
+
+        IEnumerable<int> GetUnconfirmSettingProductIds(int custId);
     }
 
     public class AnnouncementFromDatabaseServiceImpl : AnnouncementFromDatabaseService
@@ -116,5 +119,8 @@
                 dynamicRepository.Fetch<bool>(new UpdateViewStatus(custId, isViewed: true, typeId: Converter.ToInt(subType)));
             }
         }
+
+        public IEnumerable<int> GetUnconfirmSettingProductIds(int custId)
+            => dynamicRepository.Fetch<int>(new UnsynchronizedSettingCriteria(custId));
     }
 }

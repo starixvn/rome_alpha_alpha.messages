@@ -4,15 +4,15 @@
 
     public class UnsynchronizedSettingCriteria : CriteriaBase
     {
-        public UnsynchronizedSettingCriteria(int userId)
+        public UnsynchronizedSettingCriteria(int custId)
         {
-            UserId = userId;
+            CustId = custId;
         }
 
-        public int UserId { get; }
+        public int CustId { get; }
 
-        public override string GetSettingKey() => "Age_MessageNoticeUpdStatus";
+        public override string GetSettingKey() => "Acc_CustomerSelUnSyncProducts";
 
-        public override bool IsValid() => UserId > 0;
+        public override bool IsValid() => CustId > 0;
     }
 }

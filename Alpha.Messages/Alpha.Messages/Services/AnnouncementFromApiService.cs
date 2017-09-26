@@ -20,8 +20,6 @@
         IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams);
 
         IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams);
-
-        IEnumerable<int> GetUnconfirmSettingProductIds();
     }
 
     public class AnnoucementFromApiServiceImpl : AnnouncementFromApiService
@@ -30,20 +28,22 @@
         private const string DefaultLanguage = "en-US";
         private const string PrefixId = "M7";
 
-        public Dictionary<string, Func<Announcement, bool>> DoubleCheckActivedAnnnouncements { get; set; }
+        public Dictionary<string, Func<Announcement, int, bool>> DoubleCheckActivedAnnnouncements { get; set; }
 
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
-
+        private readonly AnnouncementFromDatabaseService announcementFromDatabaseService;
 
         public AnnoucementFromApiServiceImpl(
             AnnouncementClient announcementClient,
-            SpecificationService specificationService)
+            SpecificationService specificationService,
+            AnnouncementFromDatabaseService announcementFromDatabaseService)
         {
             this.announcementClient = announcementClient;
             this.specificationService = specificationService;
+            this.announcementFromDatabaseService = announcementFromDatabaseService;
 
-            DoubleCheckActivedAnnnouncements = new Dictionary<string, Func<Announcement, bool>>
+            DoubleCheckActivedAnnnouncements = new Dictionary<string, Func<Announcement, int, bool>>
             {
                 // Implement double-check actived announcements by conditions here
                 {"8102702",  DoubleCheckActivedAnnnouncementContainsUnsyncedSetting}
@@ -51,21 +51,12 @@
         }
 
         public IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams)
-            => GetPopupAnnouncementsByUser(GetAllAnnouncementToday(), announcementParams);
+            => GetPopupAnnouncementsByUser(GetAllAnnouncementToday(announcementParams.CustId), announcementParams);
 
         public IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams)
-            => GetHeaderAnnouncementsByUser(GetAllAnnouncementToday(), announcementParams);
+            => GetHeaderAnnouncementsByUser(GetAllAnnouncementToday(announcementParams.CustId), announcementParams);
 
-        public IEnumerable<int> GetUnconfirmSettingProductIds()
-           => new List<int>
-            {
-                21,
-                12,
-                6,
-                22    
-            };
-
-        private IEnumerable<Announcement> GetAllAnnouncementToday()
+        private IEnumerable<Announcement> GetAllAnnouncementToday(int custId)
         {
             var request = new QueryAnnouncementRequest
             {
@@ -81,7 +72,7 @@
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             return allNouncementsToday.Where(announcement => 
-                    !DoubleCheckActivedAnnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnnouncements[announcement.Code](announcement));
+                    !DoubleCheckActivedAnnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnnouncements[announcement.Code](announcement, custId));
         }
 
         private IEnumerable<HotAnnouncement> GetPopupAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)
@@ -133,14 +124,14 @@
         private static MessageContent GetMessageContentDefault(IEnumerable<MessageContent> messages)
             => messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
-        private bool DoubleCheckActivedAnnnouncementContainsUnsyncedSetting(Announcement announcement)
+        private bool DoubleCheckActivedAnnnouncementContainsUnsyncedSetting(Announcement announcement, int custId)
         {
             var existedUnsynchronizedSettingSpec = (UnsynchronizedSettingSpecification)announcement.Specifications
                 .FirstOrDefault(spec => spec.GetType() == typeof(UnsynchronizedSettingSpecification));
 
             if (existedUnsynchronizedSettingSpec != null)
             {
-                existedUnsynchronizedSettingSpec.ProductIds = GetUnconfirmSettingProductIds();
+                existedUnsynchronizedSettingSpec.ProductIds = announcementFromDatabaseService.GetUnconfirmSettingProductIds(custId);
                 return existedUnsynchronizedSettingSpec.ProductIds.Any();
             }
 
