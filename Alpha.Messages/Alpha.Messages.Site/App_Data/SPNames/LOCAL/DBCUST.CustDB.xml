@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
   <Function Name="Unsynced Setting">
-    <Setting Key="Acc_CustomerSelUnSyncProducts" SpName="Age_CustomerSelNewMembers" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" TimeOut="600"/>
+    <Setting Key="Acc_CustomerSelUnSyncProducts" SpName="Acc_CustomerSelUnSyncProducts_UAT1" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" TimeOut="600" />
   </Function>
 </Functions>

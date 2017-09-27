@@ -215,9 +215,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBTXN.BODB02.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
@@ -227,18 +229,22 @@
     <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\MNL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\MNL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\MNL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\PRO\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\PRO\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\PRO\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\SIT\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\SIT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\SIT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\SIT\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
