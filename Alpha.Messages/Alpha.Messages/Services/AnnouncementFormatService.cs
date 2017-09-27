@@ -84,7 +84,7 @@
 
             foreach (var productId in unsynchronizedSettingSpecification.ProductIds)
             {
-                var hrefLink = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}?productId={productId}";
+                var hrefLink = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}?productUnSync={productId}";
                 builder.Append($"<div><a href='{hrefLink}' target='main'>{CacheRef.GetProductName(productId)}</a></div>");
             }
 
