@@ -28,8 +28,6 @@
         private const string DefaultLanguage = "en-US";
         private const string PrefixId = "M7";
 
-        public Dictionary<string, Func<Announcement, int, bool>> DoubleCheckActivedAnnnouncements { get; set; }
-
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
         private readonly AnnouncementFromDatabaseService announcementFromDatabaseService;
@@ -43,20 +41,22 @@
             this.specificationService = specificationService;
             this.announcementFromDatabaseService = announcementFromDatabaseService;
 
-            DoubleCheckActivedAnnnouncements = new Dictionary<string, Func<Announcement, int, bool>>
+            DoubleCheckActivedAnnouncements = new Dictionary<string, Func<Announcement, int, bool>>
             {
                 // Implement double-check actived announcements by conditions here
-                {"8102702",  DoubleCheckActivedAnnnouncementContainsUnsyncedSetting}
+                {"72973",  DoubleCheckActivedAnnnouncementContainsUnsyncedSetting}
             };
         }
 
+        public Dictionary<string, Func<Announcement, int, bool>> DoubleCheckActivedAnnouncements { get; set; }
+
         public IEnumerable<HotAnnouncement> GetPopupAnnouncements(GetHotAnnouncementsParams announcementParams)
-            => GetPopupAnnouncementsByUser(GetAllAnnouncementToday(announcementParams.CustId), announcementParams);
+            => GetPopupAnnouncementsByUser(GetAllAnnouncementsToday(announcementParams.CustId), announcementParams);
 
         public IEnumerable<HotAnnouncement> GetHeaderAnnouncements(GetHotAnnouncementsParams announcementParams)
-            => GetHeaderAnnouncementsByUser(GetAllAnnouncementToday(announcementParams.CustId), announcementParams);
+            => GetHeaderAnnouncementsByUser(GetAllAnnouncementsToday(announcementParams.CustId), announcementParams);
 
-        private IEnumerable<Announcement> GetAllAnnouncementToday(int custId)
+        private IEnumerable<Announcement> GetAllAnnouncementsToday(int custId)
         {
             var request = new QueryAnnouncementRequest
             {
@@ -64,15 +64,15 @@
                 System = AppSettings.SiteGroup
             };
 
-            var allNouncementsToday = ConfiguredCacheService.GetOrSet(
+            var allAnnouncementsToday = ConfiguredCacheService.GetOrSet(
                  $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
                  () => announcementClient.GetAnnouncements(request)
                  .OrderBy(i => i.Ordinal)
                  .ThenBy(i => i.CreatedDate),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
-            return allNouncementsToday.Where(announcement => 
-                    !DoubleCheckActivedAnnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnnouncements[announcement.Code](announcement, custId));
+            return allAnnouncementsToday.Where(announcement => 
+                    !DoubleCheckActivedAnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnouncements[announcement.Code](announcement, custId));
         }
 
         private IEnumerable<HotAnnouncement> GetPopupAnnouncementsByUser(IEnumerable<Announcement> announcements, GetHotAnnouncementsParams announcementParams)

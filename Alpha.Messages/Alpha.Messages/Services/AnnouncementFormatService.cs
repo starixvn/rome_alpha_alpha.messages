@@ -19,15 +19,14 @@
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
     {
-        public Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>> ReplacementCode { get; set; }
-        public const string SiteMain = "{site-main}";
-        public const string ProductsTag = "{products}";
-
         private static Dictionary<int, string> customerListUrls = new Dictionary<int, string> {
             {2, "_MemberInfo/CustomerList/Agent/MemberList.aspx" },
             {3, "_MemberInfo/CustomerList/Master/AgentList.aspx" },
             {4, "_MemberInfo/CustomerList/Super/MasterList.aspx" }
         };
+
+        public const string SiteMain = "{site-main}";
+        public const string ProductsTag = "{products}";
 
         public AnnouncementFormatServiceImpl()
         {
@@ -35,9 +34,10 @@
             ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>
             {
                 {"2222", ReplaceSiteMain },
-                {"8102702", RenderUnsyncedProducts}
+                {"72973", RenderUnsyncedProducts}
             };
         }
+        public Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>> ReplacementCode { get; set; }
 
         public IEnumerable<HotAnnouncement> Format(
             IEnumerable<HotAnnouncement> announcements, 
@@ -45,8 +45,7 @@
         {
             foreach (var announcement in announcements)
             {
-                var containsCode = ReplacementCode.ContainsKey(announcement.Code);
-                if (containsCode)
+                if (ReplacementCode.ContainsKey(announcement.Code))
                 {
                     announcement.Content = ReplacementCode[announcement.Code](announcement.Content, message, announcement.Specifications);
                 }
@@ -80,15 +79,10 @@
             UnsynchronizedSettingSpecification unsynchronizedSettingSpecification,
             GetHotAnnouncementsParams param)
         {
-            StringBuilder builder = new StringBuilder();
+            var url = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}";
 
-            foreach (var productId in unsynchronizedSettingSpecification.ProductIds)
-            {
-                var hrefLink = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}?productUnSync={productId}";
-                builder.Append($"<div><a href='{hrefLink}' target='main'>{CacheRef.GetProductName(productId)}</a></div>");
-            }
-
-            return builder.ToString();
+            return string.Join(string.Empty, unsynchronizedSettingSpecification.ProductIds
+                .Select(productId => $"<div><a href='{url}?productUnsynchronized={productId}' target='main'>{CacheRefFactory.CacheRef.GetProductName(productId)}</a></div>"));;
         }
     }
 }

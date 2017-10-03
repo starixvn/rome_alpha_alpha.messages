@@ -9,6 +9,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Announcements.Models;
+    using Announcements.Specs;
+    using KellermanSoftware.CompareNetObjects;
+    using Messages.Models;
+    using Messages.Services;
+    using NUnit.Framework;
+    using Params;
+    using Ploeh.AutoFixture;
 
     public class AnnouncementFormatServiceTest
     {
@@ -23,19 +31,19 @@
             compareLogic = new CompareLogic();
         }
 
-        //[Test]
-        //public void Format_NoMatchCode_NoReplaceContent()
-        //{
-        //    //// Arrange
-        //    var announcements = fixture.CreateMany<HotAnnouncement>();
-        //    formatService.ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
+        [Test]
+        public void Format_NoMatchCode_NoReplaceContent()
+        {
+            //// Arrange
+            var announcements = fixture.CreateMany<HotAnnouncement>();
+            formatService.ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>();
 
-        //    //// Act
-        //    var act = formatService.Format(announcements, new GetHotAnnouncementsParams());
+            //// Act
+            var act = formatService.Format(announcements, new GetHotAnnouncementsParams());
 
-        //    //// Assert
-        //    Assert.True(compareLogic.Compare(act.ToList(), announcements.ToList()).AreEqual);
-        //}
+            //// Assert
+            Assert.True(compareLogic.Compare(act.ToList(), announcements.ToList()).AreEqual);
+        }
 
         [Test]
         public void Format_MatchSiteMainCode_ReplaceSiteMain()
