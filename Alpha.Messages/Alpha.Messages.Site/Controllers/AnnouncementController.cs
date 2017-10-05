@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Controllers
 {
+    using System.Web.Mvc;
     using Announcements.Models;
     using MediatR;
     using Requests;
-    using System.Web.Mvc;
 
     public class AnnouncementController : SiteBaseController
     {

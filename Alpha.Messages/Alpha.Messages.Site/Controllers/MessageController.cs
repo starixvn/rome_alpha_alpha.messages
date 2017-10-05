@@ -1,13 +1,11 @@
 ﻿namespace Alpha.Messages.Site.Controllers
 {
+    using System.Web.Mvc;
     using MediatR;
     using Requests.Message;
     using Sunplus.Agent.Model.Entities;
-    using System.Web.Mvc;
-    using System.Web.SessionState;
     using Web;
 
-    [SessionState(SessionStateBehavior.ReadOnly)]
     public class MessageController : BaseController
     {
         private readonly IMediator mediator;

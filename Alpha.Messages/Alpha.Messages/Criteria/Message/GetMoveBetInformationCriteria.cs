@@ -1,7 +1,7 @@
-﻿using Fanex.Data.Repository;
-
-namespace Alpha.Messages.Criteria.Message
+﻿namespace Alpha.Messages.Criteria.Message
 {
+    using Fanex.Data.Repository;
+
     public class GetMoveBetInformationCriteria : CriteriaBase
     {
         public override string GetSettingKey() => "Age_MoveBetsProcessNotification";

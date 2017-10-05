@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Criteria.Announcement
 {
+    using System.Globalization;
     using Fanex.Data;
     using Fanex.Data.Repository;
     using Models.Announcement;
-    using System.Globalization;
 
     public class InsertPersonalMessageCriteria : CriteriaBase
     {

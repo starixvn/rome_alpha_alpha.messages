@@ -1,5 +1,9 @@
 ﻿namespace Alpha.Messages.Site.App_Start
 {
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
+    using System.Web.Mvc;
     using Announcements.Models;
     using Announcements.Services;
     using Client;
@@ -15,10 +19,6 @@
     using Sunplus.Agent.Model.Base;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
-    using System.Web.Mvc;
 
     public static class DependencyConfig
     {

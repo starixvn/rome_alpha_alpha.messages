@@ -1,5 +1,8 @@
 ﻿namespace Alpha.Messages.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Alpha.Messages.AppResources;
     using Criteria.Announcement;
     using Fanex.Common;
@@ -7,9 +10,6 @@
     using Models.Announcement;
     using Models.Constants;
     using Params.Announcement;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public interface AnnouncementFromDatabaseService
     {

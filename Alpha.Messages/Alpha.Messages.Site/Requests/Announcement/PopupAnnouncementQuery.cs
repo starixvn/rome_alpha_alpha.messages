@@ -1,12 +1,12 @@
 ﻿namespace Alpha.Messages.Site.Requests
 {
+    using System.Web;
     using Alpha.Announcements.Models;
     using Alpha.Messages.Configurations;
     using Alpha.Messages.Site.ViewModels;
     using MediatR;
     using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
-    using System.Web;
 
     public class PopupAnnouncementQuery : IRequest<HotAnnouncementViewModel>
     {

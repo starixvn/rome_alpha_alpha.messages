@@ -1,7 +1,7 @@
-﻿using Alpha.Messages.Models.Message;
-
-namespace Alpha.Messages.Site.ViewModels.Message
+﻿namespace Alpha.Messages.Site.ViewModels.Message
 {
+    using Alpha.Messages.Models.Message;
+
     public class LatestMessageViewModel
     {        
         public GeneralLatestMessage PublicMessage { get; set; }

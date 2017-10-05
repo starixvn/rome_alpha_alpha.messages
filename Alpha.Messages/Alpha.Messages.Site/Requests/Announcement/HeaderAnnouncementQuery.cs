@@ -1,11 +1,11 @@
 ﻿namespace Alpha.Messages.Site.Requests
 {
+    using System.Collections.Generic;
     using Alpha.Announcements.Models;
     using MediatR;
     using Models.Announcement;
     using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
-    using System.Collections.Generic;
 
     public class HeaderAnnouncementQuery : IRequest<IEnumerable<HotAnnouncement>>
     {

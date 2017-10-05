@@ -1,7 +1,5 @@
 ﻿namespace Alpha.Messages.Client.Requests
 {
-    using System;
-
     public class QueryAnnouncementRequest
     {
         public string Environment { get; set; }

@@ -1,7 +1,7 @@
 ﻿namespace Alpha.Messages.Site.ViewModels
 {
-    using Models.Announcement;
     using System.Collections.Generic;
+    using Models.Announcement;
 
     public class HotAnnouncementViewModel
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using Alpha.Messages.Models;
+using Alpha.Messages.Models.Announcement;
 using NUnit.Framework;
 
 namespace Alpha.Messages.Tests.Models

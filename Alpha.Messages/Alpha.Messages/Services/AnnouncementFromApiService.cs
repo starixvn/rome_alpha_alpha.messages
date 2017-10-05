@@ -1,17 +1,16 @@
 ﻿namespace Alpha.Messages.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Alpha.Announcements.Models;
     using Alpha.Announcements.Services;
     using Alpha.Messages.Client;
-
     using Alpha.Messages.Client.Requests;
     using Alpha.Messages.Configurations;
     using Fanex.Caching;
     using Models.Announcement;
     using Params.Announcement;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
 
     public interface AnnouncementFromApiService

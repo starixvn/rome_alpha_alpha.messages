@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Helpers
 {
-    using Alpha.Messages.Site.Requests;
-    using Sunplus.Agent.Model.Entities;
     using System;
     using System.Web.Mvc;
+    using Alpha.Messages.Site.Requests;
+    using Sunplus.Agent.Model.Entities;
 
     public class QueryEntityModelBinder : DefaultModelBinder
     {

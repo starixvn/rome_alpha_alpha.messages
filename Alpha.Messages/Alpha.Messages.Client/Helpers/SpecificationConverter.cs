@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Client.Helpers
 {
+    using System;
     using Announcements.Models;
     using Announcements.Specs;
     using Newtonsoft.Json.Linq;
-    using System;
 
     public class SpecificationConverter : JsonCreationConverter<ISpecification<IParam>>
     {

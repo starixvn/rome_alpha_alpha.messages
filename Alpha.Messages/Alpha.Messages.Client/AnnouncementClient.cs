@@ -1,15 +1,15 @@
 ﻿namespace Alpha.Messages.Client
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
     using Announcements.Models;
     using Configurations;
     using Helpers;
     using Newtonsoft.Json;
     using Requests;
     using RestSharp;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
 
     public interface AnnouncementClient
     {

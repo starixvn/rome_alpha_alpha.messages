@@ -1,7 +1,7 @@
 ﻿namespace Alpha.Messages.Site.Controllers
 {
-    using MediatR;
     using System.Web.Mvc;
+    using MediatR;
     using Web;
 
     public abstract class SiteBaseController : BaseController

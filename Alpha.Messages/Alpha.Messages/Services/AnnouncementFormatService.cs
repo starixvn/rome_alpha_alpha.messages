@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Messages.Services
 {
+    using System;
+    using System.Collections.Generic;
     using Alpha.Web.Helpers;
     using Models.Announcement;
     using Params.Announcement;
-    using System;
-    using System.Collections.Generic;
 
     public interface AnnouncementFormatService
     {

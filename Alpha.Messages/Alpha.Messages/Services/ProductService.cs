@@ -1,12 +1,12 @@
 ﻿namespace Alpha.Messages.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Criteria.Announcement;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Models.Announcement;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public interface ProductService
     {

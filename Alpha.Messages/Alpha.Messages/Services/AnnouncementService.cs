@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Services
 {
-    using Models.Announcement;
-    using Params.Announcement;
     using System.Collections.Generic;
     using System.Linq;
+    using Models.Announcement;
+    using Params.Announcement;
 
     public interface AnnouncementService
     {

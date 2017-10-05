@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Messages.Client.Helpers
 {
+    using System;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System;
 
     public abstract class JsonCreationConverter<T> : JsonConverter
     {

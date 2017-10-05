@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Messages.Services
 {
+    using System;
     using Configurations;
     using Criteria.Message;
     using Fanex.Caching;
@@ -7,7 +8,6 @@
     using Models.Constants;
     using Models.Message;
     using Params.Message;
-    using System;
 
     public interface MessageService
     {
@@ -45,7 +45,7 @@
 
         public GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey)
         {
-            string key = "__Sunplus.Agent.Model.BL.UserMessage.UserMessageBO.NotificationMoveBets__";
+            string key = "Alpha.Message.Services.NotificationMoveBets__";
 
             var message = ConfiguredCacheService.GetOrSet(
                 key,

@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Messages.Site.Requests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Alpha.Announcements.Models;
     using Alpha.Messages.Services;
     using Sunplus.Agent.Model.Entities;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class SpecificationParameter : IParam
     {
