@@ -1,13 +1,13 @@
-﻿using Alpha.Messages.Models;
-using Alpha.Messages.Services;
-using Alpha.Messages.Site.Requests;
-using NSubstitute;
-using NUnit.Framework;
-using Sunplus.Agent.Model.Entities;
-using System.Linq;
-
-namespace Alpha.Messages.Site.Tests.Requests
+﻿namespace Alpha.Messages.Site.Tests.Requests
 {
+    using Alpha.Messages.Models.Announcement;
+    using Alpha.Messages.Services;
+    using Alpha.Messages.Site.Requests;
+    using NSubstitute;
+    using NUnit.Framework;
+    using Sunplus.Agent.Model.Entities;
+    using System.Linq;
+
     public class SpecificationParameterTests
     {
 #pragma warning disable CS0618 // Type or member is obsolete

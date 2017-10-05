@@ -1,16 +1,11 @@
-﻿
-using Alpha.Messages.Configurations;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Tests.Configurations
+﻿namespace Alpha.Messages.Tests.Configurations
 {
+    using Alpha.Messages.Configurations;
+    using NUnit.Framework;
+    using System.Collections.Specialized;
+    using System.Configuration;
+    using System.Linq;
+
     public class AppSettingsTests
     {
         [Test]

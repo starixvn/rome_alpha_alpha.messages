@@ -1,8 +1,8 @@
-﻿using Fanex.Caching;
-using NSubstitute;
-
-namespace Alpha.Messages.Tests.Fixtures
+﻿namespace Alpha.Messages.Tests.Fixtures
 {
+    using Fanex.Caching;
+    using NSubstitute;
+
     public class FanexCacheFixture
     {
         public FanexCacheFixture()

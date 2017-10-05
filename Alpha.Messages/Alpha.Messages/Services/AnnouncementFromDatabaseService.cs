@@ -1,12 +1,12 @@
 ﻿namespace Alpha.Messages.Services
 {
     using Alpha.Messages.AppResources;
-    using Alpha.Messages.Criteria;
-    using Alpha.Messages.Models;
-    using Alpha.Messages.Models.Enumerations;
-    using Alpha.Messages.Params;
+    using Criteria.Announcement;
     using Fanex.Common;
     using Fanex.Data.Repository;
+    using Models.Announcement;
+    using Models.Constants;
+    using Params.Announcement;
     using System;
     using System.Collections.Generic;
     using System.Linq;

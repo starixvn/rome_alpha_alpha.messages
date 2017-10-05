@@ -1,25 +1,22 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Announcements.Services;
-using Alpha.Announcements.Specs;
-using Alpha.Messages.Client;
-using Alpha.Messages.Client.Requests;
-using Alpha.Messages.Configurations;
-using Alpha.Messages.Params;
-using Alpha.Messages.Services;
-using Alpha.Messages.Tests.Fixtures;
-using NSubstitute;
-using NUnit.Framework;
-using Ploeh.AutoFixture;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Tests.Services
+﻿namespace Alpha.Messages.Tests.Services
 {
+    using Alpha.Announcements.Models;
+    using Alpha.Announcements.Services;
+    using Alpha.Announcements.Specs;
+    using Alpha.Messages.Client;
+    using Alpha.Messages.Client.Requests;
+    using Alpha.Messages.Configurations;
+    using Alpha.Messages.Params.Announcement;
+    using Alpha.Messages.Services;
+    using Alpha.Messages.Tests.Fixtures;
+    using NSubstitute;
+    using NUnit.Framework;
+    using Ploeh.AutoFixture;
+    using RestSharp;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Linq;
+
     public class AnnouncementFromApiServiceTest
     {
         private readonly Fixture fixture = new Fixture();

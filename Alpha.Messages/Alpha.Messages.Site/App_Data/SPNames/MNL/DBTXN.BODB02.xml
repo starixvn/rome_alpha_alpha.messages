@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function Name="Notification During Move-bet Process">
+    <Setting Key="Age_MoveBetsProcessNotification" SpName="Age_MoveBetsProcessNotification" DbName="DBTXN.bodb02.BODBDownlineNet" Plain="0" >
+      <Mapping DataField="Content_EN" ObjectProperty="ContentEn" />
+      <Mapping DataField="Content_CS" ObjectProperty="ContentCs" />
+      <Mapping DataField="Content_CH" ObjectProperty="ContentCh" />
+      <Mapping DataField="Content_JP" ObjectProperty="ContentJp" />
+      <Mapping DataField="Content_TH" ObjectProperty="ContentTh" />
+      <Mapping DataField="Content_KO" ObjectProperty="ContentKo" />
+      <Mapping DataField="Content_VI" ObjectProperty="ContentVn" />
+      <Mapping DataField="MBBUEndTime" ObjectProperty="MoveBetEndTime" />
+
+    </Setting>
+  </Function>
+</Functions>

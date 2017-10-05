@@ -1,4 +1,4 @@
-﻿namespace Alpha.Messages.Models
+﻿namespace Alpha.Messages.Models.Announcement
 {
     using Alpha.Messages.AppResources;
     using System.Globalization;

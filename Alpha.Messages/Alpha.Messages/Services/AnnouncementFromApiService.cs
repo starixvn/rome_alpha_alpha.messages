@@ -6,9 +6,9 @@
 
     using Alpha.Messages.Client.Requests;
     using Alpha.Messages.Configurations;
-    using Alpha.Messages.Models;
-    using Alpha.Messages.Params;
     using Fanex.Caching;
+    using Models.Announcement;
+    using Params.Announcement;
     using System;
     using System.Collections.Generic;
     using System.Linq;

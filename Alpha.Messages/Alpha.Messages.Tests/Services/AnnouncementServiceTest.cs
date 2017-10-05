@@ -1,16 +1,13 @@
-﻿using Alpha.Messages.Models;
-using Alpha.Messages.Params;
-using Alpha.Messages.Services;
-using NSubstitute;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Tests.Services
+﻿namespace Alpha.Messages.Tests.Services
 {
+    using Alpha.Messages.Models.Announcement;
+    using Alpha.Messages.Params.Announcement;
+    using Alpha.Messages.Services;
+    using NSubstitute;
+    using NUnit.Framework;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class AnnouncementServiceImplTest
     {
         private AnnouncementFromApiService apiService;

@@ -110,6 +110,12 @@
     <Compile Include="Criteria\GetProductsCriteriaTest.cs" />
     <Compile Include="Criteria\InsertPersonalMessageCriteriaTest.cs" />
     <Compile Include="Criteria\InsertPersonalMessageTargetCriteriaTest.cs" />
+    <Compile Include="Criteria\Message\CountPrivateMessageCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
+    <Compile Include="Criteria\Message\GetMoveBetInformationCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\UpdatePrivateMessageAsReadTests.cs" />
     <Compile Include="Criteria\UpdateViewStatusTest.cs" />
     <Compile Include="Fixtures\AnnouncementFixture.cs" />
     <Compile Include="Fixtures\FanexCacheFixture.cs" />
@@ -120,6 +126,7 @@
     <Compile Include="Services\AnnouncementFromApiServiceTest.cs" />
     <Compile Include="Services\AnnouncementFromDatabaseServiceTests.cs" />
     <Compile Include="Services\AnnouncementServiceTest.cs" />
+    <Compile Include="Services\MessageServiceImplTests.cs" />
     <Compile Include="Services\ProductServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>

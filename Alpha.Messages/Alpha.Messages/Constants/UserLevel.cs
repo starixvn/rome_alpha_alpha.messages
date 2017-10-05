@@ -1,11 +1,11 @@
-﻿namespace Alpha.Messages.Models.Enumerations
+﻿namespace Alpha.Messages.Models.Constants
 {
     public static class UserLevel
     {
-        private const int Member = 1;
-        private const int Agent = 2;
-        private const int Master = 3;
-        private const int Super = 4;
+        public const int Member = 1;
+        public const int Agent = 2;
+        public const int Master = 3;
+        public const int Super = 4;
 
         public static bool IsMemberLevel(int level)
         {

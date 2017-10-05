@@ -1,4 +1,4 @@
-﻿namespace Alpha.Messages.Params
+﻿namespace Alpha.Messages.Params.Announcement
 {
     using Alpha.Announcements.Models;
     using System;

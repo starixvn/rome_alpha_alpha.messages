@@ -2,9 +2,9 @@
 {
     using Alpha.Announcements.Models;
     using Alpha.Messages.Configurations;
-    using Alpha.Messages.Params;
     using Alpha.Messages.Site.ViewModels;
     using MediatR;
+    using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
     using System.Web;
 

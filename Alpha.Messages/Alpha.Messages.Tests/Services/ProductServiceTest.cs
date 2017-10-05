@@ -1,18 +1,16 @@
-﻿using Alpha.Messages.Criteria;
-using Alpha.Messages.Models;
-using Alpha.Messages.Services;
-using Alpha.Messages.Tests.Fixtures;
-using Fanex.Data.Repository;
-using NSubstitute;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Tests.Services
+﻿namespace Alpha.Messages.Tests.Services
 {
+    using Alpha.Messages.Models.Announcement;
+    using Alpha.Messages.Services;
+    using Alpha.Messages.Tests.Fixtures;
+    using Fanex.Data.Repository;
+    using Messages.Criteria.Announcement;
+    using NSubstitute;
+    using NUnit.Framework;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ProductServiceTest
     {
         private IDynamicRepository dynamicRepository;

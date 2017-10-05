@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Messages.Services
 {
-    using Alpha.Messages.Criteria;
-    using Alpha.Messages.Models;
+    using Criteria.Announcement;
     using Fanex.Caching;
     using Fanex.Data.Repository;
+    using Models.Announcement;
     using System;
     using System.Collections.Generic;
     using System.Linq;
