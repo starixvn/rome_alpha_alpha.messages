@@ -1,21 +1,16 @@
-﻿using Alpha.Announcements.Models;
-using Alpha.Messages.Configurations;
-using Alpha.Messages.Site.Controllers;
-using Alpha.Messages.Site.Requests;
-using Alpha.Messages.Site.Tests.Fixtures;
-using KellermanSoftware.CompareNetObjects;
-using MediatR;
-using NSubstitute;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Site.Tests.Controllers
+﻿namespace Alpha.Messages.Site.Tests.Controllers
 {
+    using System.Collections.Specialized;
+    using Alpha.Announcements.Models;
+    using Alpha.Messages.Configurations;
+    using Alpha.Messages.Site.Controllers;
+    using Alpha.Messages.Site.Requests;
+    using Alpha.Messages.Site.Tests.Fixtures;
+    using KellermanSoftware.CompareNetObjects;
+    using MediatR;
+    using NSubstitute;
+    using NUnit.Framework;
+
     public class AnnouncementControllerTest
     {
         private UserSessionFixture fixtures;

@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-namespace Alpha.Messages.Tests.Criteria.Message
+﻿namespace Alpha.Messages.Tests.Criteria.Message
 {
     using Alpha.Messages.Criteria.Message;
     using NUnit.Framework;
@@ -56,6 +55,34 @@ namespace Alpha.Messages.Tests.Criteria.Message
             Assert.AreEqual("222", criteria.Site1);
             Assert.AreEqual("333", criteria.Site2);
             Assert.AreEqual("4444", criteria.Site3);
+        }
+
+        [Test]
+        public void LatestMessageId_Always_Return0()
+        {
+            //// Arrange
+            var value0 = 0;
+            var criteria = new GetLatestPublicMessageCriteria(3, "3000", true);
+
+            //// Act
+            var act = criteria.LatestMessageId;
+
+            //// Assert
+            Assert.AreEqual(value0, act);
+        }
+
+        [Test]
+        public void IsTest_Always_ReturnValueInConstructor()
+        {
+            //// Arrange
+            var valueInConstructor = true;
+            var criteria = new GetLatestPublicMessageCriteria(3, "3000", valueInConstructor);
+
+            //// Act
+            var act = criteria.IsTest;
+
+            //// Assert
+            Assert.AreEqual(valueInConstructor, act);
         }
     }
 }

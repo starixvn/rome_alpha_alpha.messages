@@ -1,18 +1,13 @@
-﻿using Alpha.Messages.Client.Configurations;
-using Alpha.Messages.Client.Helpers;
-using NSubstitute;
-using NUnit.Framework;
-using RestSharp;
-using RestSharp.Authenticators;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Client.Tests.Helpers
+﻿namespace Alpha.Messages.Client.Tests.Helpers
 {
+    using System.Collections.Specialized;
+    using System.Linq;
+    using Alpha.Messages.Client.Configurations;
+    using Alpha.Messages.Client.Helpers;
+    using NUnit.Framework;
+    using RestSharp;
+    using RestSharp.Authenticators;
+
     public class HmacAuthenticatorTests
     {
         private IAuthenticator hmacAuthenticator;

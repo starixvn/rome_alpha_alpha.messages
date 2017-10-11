@@ -1,12 +1,12 @@
 ﻿namespace Alpha.Messages.Site.Tests.Requests
 {
+    using System.Linq;
     using Alpha.Messages.Models.Announcement;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Sunplus.Agent.Model.Entities;
-    using System.Linq;
 
     public class SpecificationParameterTests
     {
@@ -203,6 +203,90 @@
 
             //// Act
             var act = parameter.EnableYesterdayTransfer;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void MRecommendId_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = 123;
+            userSession.MRecommendId.Returns(expectedValue);
+
+            //// Act
+            var act = parameter.MRecommendId;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void SRecommendId_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = 123;
+            userSession.SRecommendId.Returns(expectedValue);
+
+            //// Act
+            var act = parameter.SRecommendId;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void IsSuper_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+            userSession.IsSuper.Returns(expectedValue);
+
+            //// Act
+            var act = parameter.IsSuper;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void IsMaster_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+            userSession.IsMaster.Returns(expectedValue);
+
+            //// Act
+            var act = parameter.IsMaster;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void IsAgent_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+            userSession.IsAgent.Returns(expectedValue);
+
+            //// Act
+            var act = parameter.IsAgent;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void IsIMBCCustomer_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+            userSession.IsIMBCCustomer.Returns(expectedValue);
+
+            //// Act
+            var act = parameter.IsIMBCCustomer;
 
             //// Assert
             Assert.AreEqual(expectedValue, act);

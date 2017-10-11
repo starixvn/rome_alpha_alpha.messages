@@ -119,7 +119,10 @@
     <Compile Include="Criteria\UpdateViewStatusTest.cs" />
     <Compile Include="Fixtures\AnnouncementFixture.cs" />
     <Compile Include="Fixtures\FanexCacheFixture.cs" />
+    <Compile Include="Models\Announcement\HotAnnouncementTests.cs" />
     <Compile Include="Models\Enumerations\UserLevelTests.cs" />
+    <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
+    <Compile Include="Models\Message\MultiLanguagueTests.cs" />
     <Compile Include="Models\ProductTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatServiceTest.cs" />

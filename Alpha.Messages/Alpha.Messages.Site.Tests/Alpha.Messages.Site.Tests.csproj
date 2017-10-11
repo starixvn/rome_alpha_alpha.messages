@@ -168,8 +168,10 @@
     <Compile Include="Fixtures\UserSessionFixture.cs" />
     <Compile Include="Handlers\AnnouncementHandlerTest.cs" />
     <Compile Include="Handlers\MessageHandlerTest.cs" />
+    <Compile Include="Helpers\QueryEntityModelBinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\SpecificationParameterTests.cs" />
+    <Compile Include="ViewModel\HotAnnouncementViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

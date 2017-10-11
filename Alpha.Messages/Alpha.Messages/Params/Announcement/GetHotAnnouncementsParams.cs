@@ -1,7 +1,7 @@
 ﻿namespace Alpha.Messages.Params.Announcement
 {
-    using Alpha.Announcements.Models;
     using System;
+    using Alpha.Announcements.Models;
 
     public class GetHotAnnouncementsParams
     {
