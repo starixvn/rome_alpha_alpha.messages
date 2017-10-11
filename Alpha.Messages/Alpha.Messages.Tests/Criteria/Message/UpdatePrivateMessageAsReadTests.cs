@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-namespace Alpha.Messages.Tests.Criteria.Message
+﻿namespace Alpha.Messages.Tests.Criteria.Message
 {
     using Alpha.Messages.Criteria.Message;
     using NUnit.Framework;

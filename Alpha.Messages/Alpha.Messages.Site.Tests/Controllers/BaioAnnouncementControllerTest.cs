@@ -1,9 +1,9 @@
-﻿using System.Web.Mvc;
-using Alpha.Messages.Site.Controllers;
-using NUnit.Framework;
-
-namespace Alpha.Messages.Site.Tests.Controllers
+﻿namespace Alpha.Messages.Site.Tests.Controllers
 {
+    using System.Web.Mvc;
+    using Alpha.Messages.Site.Controllers;
+    using NUnit.Framework;
+
     [TestFixture]
     public class BaioAnnouncementControllerTest
     {

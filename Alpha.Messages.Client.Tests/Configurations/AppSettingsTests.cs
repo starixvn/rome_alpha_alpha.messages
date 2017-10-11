@@ -1,10 +1,10 @@
-﻿using Alpha.Messages.Client.Configurations;
-using NUnit.Framework;
-using System.Collections.Specialized;
-using System.Configuration;
-
-namespace Alpha.Messages.Client.Tests.Configurations
+﻿namespace Alpha.Messages.Client.Tests.Configurations
 {
+    using System.Collections.Specialized;
+    using System.Configuration;
+    using Alpha.Messages.Client.Configurations;
+    using NUnit.Framework;
+
     public class AppSettingsTests
     {
         [Test]

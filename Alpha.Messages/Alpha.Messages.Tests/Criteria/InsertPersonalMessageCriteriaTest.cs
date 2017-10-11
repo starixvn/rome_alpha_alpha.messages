@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Messages.Tests.Criteria
 {
+    using System.Globalization;
     using Alpha.Messages.Criteria.Announcement;
     using Alpha.Messages.Models.Announcement;
     using NSubstitute;
     using NUnit.Framework;
-    using System.Globalization;
 
     public class InsertPersonalMessageCriteriaTest
     {

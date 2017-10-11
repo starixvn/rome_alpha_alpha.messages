@@ -1,12 +1,12 @@
 ﻿namespace Alpha.Main.Site.Tests.Controllers
 {
+    using System.Web.Mvc;
     using Alpha.Messages.Site.Controllers;
     using MediatR;
     using Messages.Site.Requests.Message;
     using NSubstitute;
     using NUnit.Framework;
     using Sunplus.Agent.Model.Entities;
-    using System.Web.Mvc;
 
     [TestFixture]
     public class MessageControllerTests

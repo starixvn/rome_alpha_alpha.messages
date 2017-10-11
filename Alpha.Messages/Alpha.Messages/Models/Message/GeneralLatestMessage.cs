@@ -1,7 +1,5 @@
 ﻿namespace Alpha.Messages.Models.Message
 {
-    using System;
-
     public class GeneralLatestMessage
     {
         public GeneralLatestMessage()

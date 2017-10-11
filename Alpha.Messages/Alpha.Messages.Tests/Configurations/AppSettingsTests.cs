@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Messages.Tests.Configurations
 {
-    using Alpha.Messages.Configurations;
-    using NUnit.Framework;
     using System.Collections.Specialized;
     using System.Configuration;
     using System.Linq;
+    using Alpha.Messages.Configurations;
+    using NUnit.Framework;
 
     public class AppSettingsTests
     {

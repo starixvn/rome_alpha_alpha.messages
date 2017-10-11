@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Messages.Site.Tests.Handlers
 {
+    using System.Collections.Generic;
     using Alpha.Messages.Models.Announcement;
     using Alpha.Messages.Params.Announcement;
     using Alpha.Messages.Services;
@@ -8,7 +9,6 @@
     using Alpha.Messages.Site.Tests.Fixtures;
     using NSubstitute;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     public class AnnouncementHandlerTest
     {

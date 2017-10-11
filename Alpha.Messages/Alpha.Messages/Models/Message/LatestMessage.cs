@@ -50,9 +50,6 @@
 
         public int Id { get; private set; }
 
-        public string ContentIT { get; private set; }
-
-
         public DateTime PostTime { get; private set; }
 
         public DateTime CreateTime { get; private set; }

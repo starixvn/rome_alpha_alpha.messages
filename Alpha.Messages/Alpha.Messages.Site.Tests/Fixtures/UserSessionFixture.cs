@@ -1,13 +1,8 @@
-﻿using NSubstitute;
-using Sunplus.Agent.Model.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Site.Tests.Fixtures
+﻿namespace Alpha.Messages.Site.Tests.Fixtures
 {
+    using NSubstitute;
+    using Sunplus.Agent.Model.Entities;
+
     public class UserSessionFixture
     {
         public UserSessionFixture()

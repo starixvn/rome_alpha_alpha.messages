@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-namespace Alpha.Messages.Tests.Criteria.Message
+﻿namespace Alpha.Messages.Tests.Criteria.Message
 {
     using Alpha.Messages.Criteria.Message;
     using NUnit.Framework;
@@ -58,5 +57,19 @@ namespace Alpha.Messages.Tests.Criteria.Message
             //// Assert
             Assert.AreEqual(0, act);
         }
+
+        [Test]
+        public void IsTest_Always_ReturnValueInConstructor()
+        {
+            //// Arrange
+            var valueInConstructor = true;
+            var criteria = new GetLatestPrivateMessageCriteria(263, valueInConstructor);
+
+            //// Act
+            var act = criteria.IsTest;
+
+            //// Assert
+            Assert.AreEqual(valueInConstructor, act);
+        }        
     }
 }

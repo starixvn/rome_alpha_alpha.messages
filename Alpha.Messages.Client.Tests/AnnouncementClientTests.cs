@@ -1,18 +1,18 @@
-﻿using Alpha.Messages.Client.Configurations;
-using Alpha.Messages.Client.Requests;
-using NSubstitute;
-using NUnit.Framework;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Messages.Client.Tests
+﻿namespace Alpha.Messages.Client.Tests
 {
+    using Alpha.Messages.Client.Configurations;
+    using Alpha.Messages.Client.Requests;
+    using NSubstitute;
+    using NUnit.Framework;
+    using RestSharp;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Linq;
+    using System.Net;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class AnnouncementClientTests
     {
         private IRestClient restClient;

@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-namespace Alpha.Messages.Tests.Criteria.Message
+﻿namespace Alpha.Messages.Tests.Criteria.Message
 {
     using Alpha.Messages.Criteria.Message;
     using NUnit.Framework;
@@ -31,19 +30,20 @@ namespace Alpha.Messages.Tests.Criteria.Message
 
             //// Assert
             Assert.IsFalse(act);
-        }
+        }        
 
         [Test]
-        public void IsValid_ValidParameter_ReturnTrue()
+        public void IsTest_ValidParameter_ReturnValueInConstructor()
         {
             //// Arrange
-            var criteria = new GetLatestPrivateMessageCriteria(263, false);
+            var valueInConstructor = true;
+            var criteria = new HasLatestPrivateMessageCriteria(263, valueInConstructor);
 
             //// Act
-            var act = criteria.IsValid();
+            var act = criteria.IsTest;
 
             //// Assert
-            Assert.IsTrue(act);
-        }        
+            Assert.AreEqual(valueInConstructor, act);
+        }
     }
 }
