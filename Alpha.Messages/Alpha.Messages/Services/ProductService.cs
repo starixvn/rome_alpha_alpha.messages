@@ -4,11 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using Criteria.Announcement;
-    using Criteria;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Models.Announcement;
-    using Models;
 
     public interface ProductService
     {

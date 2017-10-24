@@ -1,12 +1,12 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
-    using Alpha.Messages.Models.Announcement;
-    using Alpha.Messages.Params.Announcement;
-    using Alpha.Messages.Services;
-    using NSubstitute;
-    using NUnit.Framework;
     using System.Collections.Generic;
     using System.Linq;
+    using Messages.Models.Announcement;
+    using Messages.Services;
+    using NSubstitute;
+    using NUnit.Framework;
+    using Params.Announcement;
 
     public class AnnouncementServiceImplTest
     {

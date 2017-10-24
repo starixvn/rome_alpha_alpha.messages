@@ -1,6 +1,6 @@
 ﻿namespace Alpha.Messages.Tests.Models.Message
 {
-    using Alpha.Messages.Models.Message;
+    using Messages.Models.Message;
     using NUnit.Framework;
 
     public class GeneralMoveBetsMessageTests

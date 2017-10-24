@@ -1,15 +1,15 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
-    using Alpha.Messages.Models.Announcement;
-    using Alpha.Messages.Services;
-    using Alpha.Messages.Tests.Fixtures;
-    using Fanex.Data.Repository;
-    using Messages.Criteria.Announcement;
-    using NSubstitute;
-    using NUnit.Framework;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Fanex.Data.Repository;
+    using Fixtures;
+    using Messages.Criteria.Announcement;
+    using Messages.Models.Announcement;
+    using Messages.Services;
+    using NSubstitute;
+    using NUnit.Framework;
 
     public class ProductServiceTest
     {

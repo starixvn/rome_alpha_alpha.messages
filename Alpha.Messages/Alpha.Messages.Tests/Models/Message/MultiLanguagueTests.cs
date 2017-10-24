@@ -1,7 +1,7 @@
 ﻿namespace Alpha.Messages.Tests.Models.Message
 {
-    using Alpha.Messages.Constants;
-    using Alpha.Messages.Models.Message;
+    using Constants;
+    using Messages.Models.Message;
     using NUnit.Framework;
 
     public class MultiLanguagueTests

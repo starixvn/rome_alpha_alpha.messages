@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Models.Announcement;
-    using Params.Announcement;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.UnsynchronizedSetting.Specs;
@@ -12,8 +10,8 @@
     using Client.Requests;
     using Configurations;
     using Fanex.Caching;
-    using Models;
-    using Params;
+    using Models.Announcement;
+    using Params.Announcement;
 
     public interface AnnouncementFromApiService
     {

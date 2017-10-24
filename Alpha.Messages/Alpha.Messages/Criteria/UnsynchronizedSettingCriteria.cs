@@ -1,4 +1,4 @@
-﻿namespace Alpha.Messages.Criteria.Criteria
+﻿namespace Alpha.Messages.Criteria
 {
     using Fanex.Data.Repository;
 

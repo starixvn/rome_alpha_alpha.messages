@@ -1,21 +1,15 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
-    using Alpha.Messages.Models.Announcement;
-    using Alpha.Messages.Params.Announcement;
-    using Alpha.Messages.Services;
-    using KellermanSoftware.CompareNetObjects;
-    using NUnit.Framework;
-    using Ploeh.AutoFixture;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Announcements.Models;
     using Announcements.Specs;
     using KellermanSoftware.CompareNetObjects;
-    using Messages.Models;
+    using Messages.Models.Announcement;
     using Messages.Services;
     using NUnit.Framework;
-    using Params;
+    using Params.Announcement;
     using Ploeh.AutoFixture;
 
     public class AnnouncementFormatServiceTest

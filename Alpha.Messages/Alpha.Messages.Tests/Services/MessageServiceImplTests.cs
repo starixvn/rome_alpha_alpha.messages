@@ -1,18 +1,18 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
+    using System;
+    using System.Collections.Specialized;
     using Fanex.Data.Repository;
     using Fixtures;
     using Messages.Configurations;
     using Messages.Criteria.Message;
     using Messages.Models.Constants;
     using Messages.Models.Message;
-    using Messages.Params.Message;
     using Messages.Services;
     using NSubstitute;
     using NUnit.Framework;
+    using Params.Message;
     using Ploeh.AutoFixture;
-    using System;
-    using System.Collections.Specialized;
     using Assert = NUnit.Framework.Assert;
 
     [TestFixture]
