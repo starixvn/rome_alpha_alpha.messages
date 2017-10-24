@@ -16,7 +16,7 @@
 
         public ActionResult PopupAnnouncement(PopupAnnouncementQuery message)
         {
-            message.Specification = specificationParam;            
+            message.Specification = specificationParam;
 
             return View(message);
         }
