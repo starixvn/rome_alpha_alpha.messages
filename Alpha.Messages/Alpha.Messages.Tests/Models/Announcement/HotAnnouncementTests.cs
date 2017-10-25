@@ -1,6 +1,6 @@
 ﻿namespace Alpha.Messages.Tests.Models.Announcement
 {
-    using Alpha.Messages.Models.Announcement;
+    using Messages.Models.Announcement;
     using NUnit.Framework;
 
     class HotAnnouncementTests

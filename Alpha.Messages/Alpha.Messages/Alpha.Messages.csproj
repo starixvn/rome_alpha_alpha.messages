@@ -38,8 +38,16 @@
       <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.UnsynchronizedSetting.1.0.0.1\lib\net40\Alpha.Announcements.UnsynchronizedSetting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.Announcements.UplineIdRule.1.0.0.1\lib\net40\Alpha.Announcements.UplineIdRule.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Alpha.RemotingRef, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.RemotingRef.1.0.0.2\lib\net40\Alpha.RemotingRef.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Web, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
@@ -151,6 +159,7 @@
     <Compile Include="Criteria\Announcement\GetProductsCriteria.cs" />
     <Compile Include="Criteria\Announcement\InsertPersonalMessageCriteria.cs" />
     <Compile Include="Criteria\Announcement\InsertPersonalMessageTargetCriteria.cs" />
+    <Compile Include="Criteria\UnsynchronizedSettingCriteria.cs" />
     <Compile Include="Criteria\Message\CountPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
@@ -182,7 +191,9 @@
     <None Include="Alpha.Messages.Debug.ruleset" />
     <None Include="Alpha.Messages.ruleset" />
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AppResources\Lang.ja-JP.resx">

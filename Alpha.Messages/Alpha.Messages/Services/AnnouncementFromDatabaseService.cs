@@ -3,7 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Alpha.Messages.AppResources;
+    using AppResources;
+    using Criteria;
     using Criteria.Announcement;
     using Fanex.Common;
     using Fanex.Data.Repository;
@@ -14,6 +15,8 @@
     public interface AnnouncementFromDatabaseService
     {
         HotAnnouncement GetFirstHotAnnouncement(GetHotAnnouncementsParams parameters);
+
+        IEnumerable<int> GetUnconfirmSettingProductIds(int custId);
     }
 
     public class AnnouncementFromDatabaseServiceImpl : AnnouncementFromDatabaseService
@@ -116,5 +119,8 @@
                 dynamicRepository.Fetch<bool>(new UpdateViewStatus(custId, isViewed: true, typeId: Converter.ToInt(subType)));
             }
         }
+
+        public IEnumerable<int> GetUnconfirmSettingProductIds(int custId)
+            => dynamicRepository.Fetch<int>(new UnsynchronizedSettingCriteria(custId));
     }
 }

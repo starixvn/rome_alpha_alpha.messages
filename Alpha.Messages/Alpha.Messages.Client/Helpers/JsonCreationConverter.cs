@@ -3,6 +3,7 @@
     using System;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using Sunplus.Agent.Utilities;
 
     public abstract class JsonCreationConverter<T> : JsonConverter
     {
@@ -25,20 +26,28 @@
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            ValidateInputParams(reader, objectType, serializer);
-
-            if (reader.TokenType == JsonToken.Null)
+            try
             {
+                ValidateInputParams(reader, objectType, serializer);
+
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    return null;
+                }
+
+                JObject obj = CreateJObject(reader);
+                T target = Create(objectType, obj);
+                JsonReader jsonReader = obj.CreateReader();
+                jsonReader.FloatParseHandling = reader.FloatParseHandling;
+                serializer.Populate(jsonReader, target);
+
+                return target;
+            }
+            catch (Exception ex)
+            {
+                Logs.WriteWarn(ex);
                 return null;
             }
-
-            JObject obj = CreateJObject(reader);
-            T target = Create(objectType, obj);
-            JsonReader jsonReader = obj.CreateReader();
-            jsonReader.FloatParseHandling = reader.FloatParseHandling;
-            serializer.Populate(jsonReader, target);
-
-            return target;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

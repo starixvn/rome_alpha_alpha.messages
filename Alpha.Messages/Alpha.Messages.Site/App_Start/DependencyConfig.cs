@@ -79,6 +79,7 @@
             container.RegisterSingleton<AnnouncementFromApiService, AnnoucementFromApiServiceImpl>();
             container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();            
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
+
             container.Register<ProductService>(
                 () => new ProductServiceImpl(
                     container.GetInstance<IDynamicRepository>(),

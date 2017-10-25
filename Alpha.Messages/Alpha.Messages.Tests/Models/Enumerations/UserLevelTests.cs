@@ -1,6 +1,6 @@
 ﻿namespace Alpha.Messages.Tests.Models.Enumerations
 {
-    using Alpha.Messages.Models.Constants;
+    using Messages.Models.Constants;
     using NUnit.Framework;
 
 

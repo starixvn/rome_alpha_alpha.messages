@@ -1,26 +1,27 @@
-﻿namespace Alpha.Messages.Tests.Services
-{
-    using Alpha.Announcements.Models;
-    using Alpha.Announcements.Services;
-    using Alpha.Announcements.Specs;
-    using Alpha.Messages.Client;
-    using Alpha.Messages.Client.Requests;
-    using Alpha.Messages.Configurations;
-    using Alpha.Messages.Params.Announcement;
-    using Alpha.Messages.Services;
-    using Alpha.Messages.Tests.Fixtures;
-    using NSubstitute;
-    using NUnit.Framework;
-    using Ploeh.AutoFixture;
-    using RestSharp;
-    using System.Collections.Generic;
-    using System.Collections.Specialized;
-    using System.Linq;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using Alpha.Announcements.Models;
+using Alpha.Announcements.Services;
+using Alpha.Announcements.Specs;
+using Alpha.Messages.Client;
+using Alpha.Messages.Client.Requests;
+using Alpha.Messages.Configurations;
+using Alpha.Messages.Params.Announcement;
+using Alpha.Messages.Services;
+using Alpha.Messages.Tests.Fixtures;
+using NSubstitute;
+using NUnit.Framework;
+using Ploeh.AutoFixture;
+using RestSharp;
 
+namespace Alpha.Messages.Tests.Services
+{
     public class AnnouncementFromApiServiceTest
     {
         private readonly Fixture fixture = new Fixture();
         private AnnouncementFromApiService apiService;
+        private AnnouncementFromDatabaseService announcementFromDatabaseService;
         private AnnouncementClient announcementClient;
         private AnnouncementClient announcementClientImpl;
         private IRestClient restClient;
@@ -33,6 +34,7 @@
             restClient = Substitute.For<RestClient>();
             announcementClientImpl = new AnnouncementClientImpl(restClient);
             announcementClient = Substitute.For<AnnouncementClient>();
+            announcementFromDatabaseService = Substitute.For<AnnouncementFromDatabaseService>();
             specificationService = Substitute.For<SpecificationService>();
             specificationService.IsSatisfied(Arg.Any<IEnumerable<ISpecification<IParam>>>(), Arg.Any<IParam>()).Returns(true);
 
@@ -48,7 +50,7 @@
         public void GetPopupAnnouncement_NotExistedCache_CallApi()
         {
             //// Arrange     
-            apiService = new AnnoucementFromApiServiceImpl(announcementClient, specificationService);
+            apiService = new AnnoucementFromApiServiceImpl(announcementClient, specificationService, announcementFromDatabaseService);
             announcementClient.GetAnnouncements(Arg.Any<QueryAnnouncementRequest>()).Returns(Enumerable.Empty<Announcement>());
 
             //// Act
@@ -67,7 +69,7 @@
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Content = AnnouncementFixture.AllContent
             });
-            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService, announcementFromDatabaseService);
 
             //// Act
             var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "xxx" });
@@ -80,7 +82,7 @@
         public void GetHeaderAnnouncement_NotExistedCache_CallApi()
         {
             //// Arrange
-            apiService = new AnnoucementFromApiServiceImpl(announcementClient, specificationService);
+            apiService = new AnnoucementFromApiServiceImpl(announcementClient, specificationService, announcementFromDatabaseService);
             announcementClient.GetAnnouncements(Arg.Any<QueryAnnouncementRequest>()).Returns(Enumerable.Empty<Announcement>());
 
             //// Act
@@ -99,7 +101,7 @@
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Content = AnnouncementFixture.AllContent
             });
-            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService, announcementFromDatabaseService);
 
             //// Act
             var act = apiService.GetHeaderAnnouncements(new GetHotAnnouncementsParams { Language = "en-US" });
@@ -117,7 +119,7 @@
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Content = AnnouncementFixture.AllContent
             });
-            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService, announcementFromDatabaseService);
 
             //// Act
             var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "ja-JP" }).ToList();
@@ -137,7 +139,7 @@
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Content = AnnouncementFixture.PopupContent
             });
-            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService);
+            apiService = new AnnoucementFromApiServiceImpl(announcementClientImpl, specificationService, announcementFromDatabaseService);
 
             //// Act
             var act = apiService.GetPopupAnnouncements(new GetHotAnnouncementsParams { Language = "ja-JP" }).ToList();

@@ -1,16 +1,16 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
-    using Alpha.Messages.Configurations;
-    using Alpha.Messages.Criteria.Announcement;
-    using Alpha.Messages.Models.Announcement;
-    using Alpha.Messages.Params.Announcement;
-    using Alpha.Messages.Services;
-    using Fanex.Data.Repository;
-    using NSubstitute;
-    using NUnit.Framework;
     using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.Linq;
+    using Fanex.Data.Repository;
+    using Messages.Configurations;
+    using Messages.Criteria.Announcement;
+    using Messages.Models.Announcement;
+    using Messages.Services;
+    using NSubstitute;
+    using NUnit.Framework;
+    using Params.Announcement;
 
     public class AnnouncementFromDatabaseServiceTests
     {

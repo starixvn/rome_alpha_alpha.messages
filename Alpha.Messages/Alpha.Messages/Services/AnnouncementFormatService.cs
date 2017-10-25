@@ -2,46 +2,88 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Alpha.Web.Helpers;
+    using Announcements.Models;
+    using Announcements.Specs;
+    using Announcements.UnsynchronizedSetting.Specs;
     using Models.Announcement;
     using Params.Announcement;
+    using RemotingRef;
 
     public interface AnnouncementFormatService
     {
         IEnumerable<HotAnnouncement> Format(IEnumerable<HotAnnouncement> announcements, GetHotAnnouncementsParams message);
-
     }
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
     {
-        public Dictionary<string, Func<string, GetHotAnnouncementsParams, string>> ReplacementCode { get; set; }
+        private static Dictionary<int, string> customerListUrls = new Dictionary<int, string> {
+            {2, "_MemberInfo/CustomerList/Agent/MemberList.aspx" },
+            {3, "_MemberInfo/CustomerList/Master/AgentList.aspx" },
+            {4, "_MemberInfo/CustomerList/Super/MasterList.aspx" }
+        };
+
         public const string SiteMain = "{site-main}";
+        public const string ProductsTag = "{products}";
 
         public AnnouncementFormatServiceImpl()
         {
-            ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, string>>();
-
             // Add Code & proccessed Function to replace
-            ReplacementCode.Add("2222", ReplaceSiteMain);
+            ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>
+            {
+                {"2222", ReplaceSiteMain },
+                {"72973", RenderUnsyncedProducts}
+            };
         }
+        public Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>> ReplacementCode { get; set; }
 
-        public IEnumerable<HotAnnouncement> Format(IEnumerable<HotAnnouncement> announcements, GetHotAnnouncementsParams message)
+        public IEnumerable<HotAnnouncement> Format(
+            IEnumerable<HotAnnouncement> announcements, 
+            GetHotAnnouncementsParams message)
         {
             foreach (var announcement in announcements)
             {
-                var containsCode = ReplacementCode.ContainsKey(announcement.Code);
-                if (containsCode)
+                if (ReplacementCode.ContainsKey(announcement.Code))
                 {
-                    announcement.Content = ReplacementCode[announcement.Code](announcement.Content, message);
+                    announcement.Content = ReplacementCode[announcement.Code](announcement.Content, message, announcement.Specifications);
                 }
 
                 yield return announcement;
             }
         }
 
-        private static string ReplaceSiteMain(string content, GetHotAnnouncementsParams param)
+        private static string ReplaceSiteMain(
+            string content, 
+            GetHotAnnouncementsParams param, 
+            IEnumerable<ISpecification<IParam>> specs)
+            => content.Replace(SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
+
+        // TODO : Will be remove after resolve unsynced products
+        private static string RenderUnsyncedProducts(
+            string content, 
+            GetHotAnnouncementsParams param, 
+            IEnumerable<ISpecification<IParam>> specs)
         {
-            return content.Replace(SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
-        }        
+            var unsynchronizedSettingSpecification = (UnsynchronizedSettingSpecification)specs.FirstOrDefault(rule => rule.GetType() == typeof(UnsynchronizedSettingSpecification));
+
+            if (unsynchronizedSettingSpecification != null)
+            {
+                return content.Replace(ProductsTag, BuildProductTag(unsynchronizedSettingSpecification, param));
+            }
+
+            return content;
+        }
+
+        // TODO : Will be remove after resolve unsynced products
+        private static string BuildProductTag(
+            UnsynchronizedSettingSpecification unsynchronizedSettingSpecification,
+            GetHotAnnouncementsParams param)
+        {
+            var url = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}";
+
+            return string.Join(string.Empty, unsynchronizedSettingSpecification.ProductIds
+                .Select(productId => $"<div><a href='{url}?productUnsynchronized={productId}' target='main'>{CacheRefFactory.CacheRef.GetProductName(productId)}</a></div>"));
+        }
     }
 }

@@ -28,22 +28,13 @@
         }
 
         public IEnumerable<Product> GetOfferedProductsByCustomer(int custId)
-        {
-            var products = GetAllProducts()
-                        .Where(product => canViewProduct(product.Id));
-
-            return products;
-        }
+            => GetAllProducts().Where(product => canViewProduct(product.Id));
 
         private IEnumerable<Product> GetAllProducts()
-        {
-            var products = ConfiguredCacheService
+            => ConfiguredCacheService
                 .GetOrSet(
                 ProductsCacheKey,
                 () => dynamicRepository.Fetch<Product>(new GetProductsCriteria()),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromDays(1)));
-
-            return products;
-        }
     }
 }

@@ -1,6 +1,9 @@
 ﻿namespace Alpha.Messages.Models.Announcement
 {
-    using AlphaAppSettings = Alpha.Web.Configurations.AppSettings;
+    using System.Collections.Generic;
+    using Announcements.Models;
+    using Announcements.Specs;
+    using AlphaAppSettings = Web.Configurations.AppSettings;
 
     public class HotAnnouncement
     {
@@ -11,12 +14,18 @@
             Source = string.Empty;
         }
 
-        public HotAnnouncement(string id, string content, string code, string source)
+        public HotAnnouncement(
+            string id,
+            string content, 
+            string code, 
+            string source,
+            IEnumerable<ISpecification<IParam>> specifications = null)
         {
             Id = id;
             Content = content;
             Code = code;
             Source = string.IsNullOrEmpty(source) ? source : $"{AlphaAppSettings.MessageAppPath}/{source}";
+            Specifications = specifications;
         }
 
         public string Id { get; }
@@ -26,5 +35,7 @@
         public string Code { get; }
 
         public string Source { get; }
+
+        public IEnumerable<ISpecification<IParam>> Specifications { get; }
     }
 }
