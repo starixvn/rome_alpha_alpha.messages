@@ -1,20 +1,22 @@
 ﻿namespace Alpha.Messages.Site
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Reflection;
-    using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
     using App_Start;
     using Auth.Filters;
     using Configurations;
     using Fanex.Data;
+    using Fanex.Data.CrossCutting.WrappingException;
     using Fanex.Data.OldConnectionStringProvider;
+    using Fanex.Logging.Extensions.Database;
+    using Fanex.Logging.Extensions.Web;
     using Helpers;
     using ONEbook.UM.Filters;
     using Sunplus.Agent.Model.Entities;
-    using Sunplus.Agent.Utilities;
     using Web;
     using Web.Helpers;
     using ClientAppSettings = Client.Configurations.AppSettings;
@@ -39,9 +41,8 @@
             DbSettingProviderManager
                 .StartNewSession()
                 .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider(
-                    resourcePath: AppSettings.StoreProcedurePath,
-                    enableWatching: true)
+                .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoreProcedurePath, enableWatching: true)
+                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
                 .Run();
 
             ShareSession.Init();
@@ -52,28 +53,31 @@
             ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
             StaticResources.Init(GetBuildVersion());
+
+            var loggingConfiguration = new LoggingConfiguration()
+                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+
+            ExceptionHandler.UseConfig(loggingConfiguration);
         }
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            Exception ex = Server.GetLastError().GetBaseException();
-            if (ex is HttpException)
+            if (Request.IsLocal)
             {
                 return;
             }
 
-            if (!Request.IsLocal)
-            {
-                if (ex.Message.Contains("Extend Token Error UserID") ||
-                    ex.Message.Contains("'0' is not a valid value in Alpha.Messages.Models.Enumerations.UserLevel"))
-                {
-                    return;
-                }
+            Exception ex = Server.GetLastError();
+            var currentCustomer = UserSession.Current;
 
-                Logs.FilterInfoWarnOrError(
-                    ex,
-                    UserSession.Current != null ? UserSession.Current.CustId : 0);
-            }
+            ExceptionHandler.Handle(ex,
+                new Dictionary<string, object>
+                {
+                    ["CustId"] = currentCustomer?.CustId,
+                    ["CustName"] = currentCustomer?.UserName,
+                    ["SubAccountName"] = currentCustomer?.SubUserName,
+                    ["AdminName"] = currentCustomer?.AdminName
+                });
         }
 
         private static string GetBuildVersion()
