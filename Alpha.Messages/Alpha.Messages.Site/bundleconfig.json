@@ -4,5 +4,18 @@
     "inputFiles": [
       "assets/styles/site.css"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/default-message.js",
+    "inputFiles": [
+      "Assets/scripts/core.js",
+      "Assets/scripts/message/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/default-message.css",
+    "inputFiles": [
+      "Assets/styles/message/message.css"
+    ]
   }
 ]

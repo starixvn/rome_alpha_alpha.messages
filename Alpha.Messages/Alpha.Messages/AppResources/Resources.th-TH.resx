@@ -150,4 +150,25 @@
   <data name="NewBetTypeEffectDate1" xml:space="preserve">
     <value>ประเภทเดิมพันใหม่ของฟุตบอล มีผลตั้งแต่ {0}:</value>
   </data>
+  <data name="announcement" xml:space="preserve">
+    <value>ประกาศ</value>
+  </data>
+  <data name="normalAnnouncement" xml:space="preserve">
+    <value>ประกาศธรรมดา</value>
+  </data>
+  <data name="specialAnnouncement" xml:space="preserve">
+    <value>ข้อความ เฉพาะ</value>
+  </data>
+  <data name="personalMessage" xml:space="preserve">
+    <value>ข้อความส่วนตัว</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>จาก</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>ถึง</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>ตกลง</value>
+  </data>
 </root>

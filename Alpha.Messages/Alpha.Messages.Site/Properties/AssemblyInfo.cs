@@ -33,3 +33,6 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.1")]
 [assembly: AssemblyFileVersion("1.0.0.1")]
+
+[assembly: InternalsVisibleTo("Alpha.Messages.Site.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

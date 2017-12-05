@@ -97,6 +97,24 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        public static string from {
+            get {
+                return ResourceManager.GetString("from", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string message {
+            get {
+                return ResourceManager.GetString("message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Bet Type.
         /// </summary>
         public static string NewBetType {
@@ -169,11 +187,101 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Normal Announcement.
+        /// </summary>
+        public static string normalAnnouncement {
+            get {
+                return ResourceManager.GetString("normalAnnouncement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your minimum position taking value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        /// </summary>
+        public static string Notice_1 {
+            get {
+                return ResourceManager.GetString("Notice_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your minimum position taking and betting limit value have been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        /// </summary>
+        public static string Notice_1_2 {
+            get {
+                return ResourceManager.GetString("Notice_1_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your betting limit value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        /// </summary>
+        public static string Notice_2 {
+            get {
+                return ResourceManager.GetString("Notice_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings..
+        /// </summary>
+        public static string Notice_3 {
+            get {
+                return ResourceManager.GetString("Notice_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Message.
+        /// </summary>
+        public static string personalMessage {
+            get {
+                return ResourceManager.GetString("personalMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Position Taking Setting Follows.
         /// </summary>
         public static string PositionTakingSettingFollows {
             get {
                 return ResourceManager.GetString("PositionTakingSettingFollows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Announcement.
+        /// </summary>
+        public static string specialAnnouncement {
+            get {
+                return ResourceManager.GetString("specialAnnouncement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string submit {
+            get {
+                return ResourceManager.GetString("submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string to {
+            get {
+                return ResourceManager.GetString("to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Announcement.
+        /// </summary>
+        public static string viewAnnouncement {
+            get {
+                return ResourceManager.GetString("viewAnnouncement", resourceCulture);
             }
         }
     }

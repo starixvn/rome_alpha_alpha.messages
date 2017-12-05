@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -24,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,6 +74,10 @@
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Age.Utility, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Age.Utility.3.0.0.1\lib\net40\Fanex.Age.Utility.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -264,8 +270,45 @@
     <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
+    <Content Include="assets\bundles\default-message.css" />
+    <Content Include="assets\bundles\default-message.js" />
+    <Content Include="assets\bundles\default-message.min.css">
+      <DependentUpon>default-message.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\default-message.min.js">
+      <DependentUpon>default-message.js</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\default.css" />
     <Content Include="assets\bundles\default.min.css" />
+    <Content Include="assets\scripts\tests\libs\bootstrap-datetimepicker.js" />
+    <Content Include="assets\scripts\tests\libs\bootstrap-modal.js" />
+    <Content Include="assets\scripts\tests\libs\datepicker.js" />
+    <Content Include="assets\scripts\tests\libs\jasmine-jquery.js" />
+    <Content Include="assets\scripts\tests\libs\jasmine.js" />
+    <Content Include="assets\scripts\tests\libs\jquery-blockui.js" />
+    <Content Include="assets\scripts\tests\libs\jquery.js" />
+    <Content Include="assets\scripts\tests\libs\moment.js" />
+    <Content Include="assets\scripts\tests\libs\store.js" />
+    <Content Include="assets\scripts\tests\libs\tooltip.js" />
+    <Content Include="assets\styles\Home\Images\flag_sprite.png" />
+    <Content Include="assets\styles\Home\Images\icon_close.jpg" />
+    <Content Include="assets\styles\Home\Images\minptarrow.png" />
+    <Content Include="assets\styles\Home\Images\minptbg.png" />
+    <Content Include="assets\styles\Home\Images\minptclose.png" />
+    <Content Include="assets\styles\Home\Images\minptleft.png" />
+    <Content Include="assets\styles\Home\Images\minptright.png" />
+    <Content Include="assets\styles\Home\Images\profileTooltip_bg.png" />
+    <Content Include="assets\styles\Home\Images\profileTooltip_left.png" />
+    <Content Include="assets\styles\Home\Images\profileTooltip_right.png" />
+    <Content Include="assets\styles\Home\Images\tooltip_bg.png" />
+    <Content Include="assets\styles\Home\Images\tooltip_left.png" />
+    <Content Include="assets\styles\Home\Images\tooltip_right.png" />
+    <Content Include="assets\styles\message\message.css">
+      <DependentUpon>message.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\message\message.min.css">
+      <DependentUpon>message.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
     <Content Include="Views\Announcement\PopupAnnouncement.cshtml" />
@@ -277,6 +320,32 @@
     <Content Include="Views\Announcement\HeaderAnnouncement.cshtml" />
     <Content Include="Views\BaioAnnouncement\Index.cshtml" />
     <Content Include="Views\PhaioAnnouncement\Index.cshtml" />
+    <Content Include="Views\Message\HiddenFields.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Messages.cshtml" />
+    <Content Include="assets\styles\message\message.scss" />
+    <Content Include="assets\styles\Home\home.scss" />
+    <Content Include="assets\styles\Home\old-main.scss" />
+    <Content Include="assets\styles\Home\page.scss" />
+    <Content Include="assets\styles\Home\pageIElower10.scss" />
+    <Content Include="assets\styles\Home\popup-message.scss" />
+    <Content Include="assets\styles\Home\tooltip.scss" />
+    <Content Include="assets\styles\Home\_mixins.scss" />
+    <Content Include="assets\styles\Home\_mixins2.scss" />
+    <Content Include="assets\styles\Home\_variables.scss" />
+    <Content Include="typings\globals\bootstrap\typings.json" />
+    <Content Include="typings\globals\hammerjs\typings.json" />
+    <Content Include="typings\globals\jasmine-jquery\typings.json" />
+    <Content Include="typings\globals\jasmine\typings.json" />
+    <Content Include="typings\globals\jquery.blockui\typings.json" />
+    <Content Include="typings\globals\jquery.cookie\typings.json" />
+    <Content Include="typings\globals\jqueryui\typings.json" />
+    <Content Include="typings\globals\jquery\typings.json" />
+    <Content Include="typings\globals\moment\typings.json" />
+    <Content Include="typings\globals\storejs\typings.json" />
+    <Content Include="typings\globals\toastr\typings.json" />
+    <Content Include="assets\scripts\tests\chutzpah.json" />
+    <Content Include="typings.json" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -434,14 +503,19 @@
     <Compile Include="Handlers\AnnouncementHandler.cs" />
     <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Helpers\QueryEntityModelBinder.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Announcement\HeaderAnnouncementQuery.cs" />
     <Compile Include="Requests\Message\LatestMessageQuery.cs" />
+    <Compile Include="Requests\Message\MessageQuery.cs" />
     <Compile Include="Requests\Message\UpdatePrivateMessageAsReadQuery.cs" />
     <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\Announcement\SpecificationParameter.cs" />
     <Compile Include="ViewModels\HotAnnouncementViewModel.cs" />
     <Compile Include="ViewModels\LatestMessageViewModel.cs" />
+    <Compile Include="ViewModels\MessageLevel.cs" />
+    <Compile Include="ViewModels\MessagesViewModel.cs" />
+    <Compile Include="ViewModels\MessageWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -522,7 +596,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\scripts\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
@@ -540,11 +613,32 @@
     <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="assets\scripts\message\index.ts" />
+    <TypeScriptCompile Include="assets\scripts\tests\app\message\message-tests.ts" />
+    <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\hammerjs\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery.blockui\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery.cookie\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jqueryui\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\storejs\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\toastr\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

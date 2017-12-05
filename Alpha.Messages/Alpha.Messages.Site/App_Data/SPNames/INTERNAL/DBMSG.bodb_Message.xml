@@ -44,4 +44,13 @@
     <Setting Key="Dot_Msg_SetPriMsgRead" SpName="Dot_Msg_SetPriMsgRead" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0" />
 
   </Function>
+
+  <Function Name="MessageHistory">
+    <Setting Key="Dot_Msg_GetPublicMessage" SpName="Dot_Msg_GetPublicMessage" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
+    </Setting>
+    <Setting Key="Dot_Msg_GetSpecialMessage" SpName="Dot_Msg_GetSpecialMessage" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
+    </Setting>
+    <Setting Key="Dot_Msg_GetPrivateMessage" SpName="Dot_Msg_GetPrivateMessage" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
+    </Setting>
+  </Function>
 </Functions>

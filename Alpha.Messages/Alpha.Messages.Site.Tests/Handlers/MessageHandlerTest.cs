@@ -1,6 +1,11 @@
 ﻿namespace Alpha.Messages.Site.Tests.Handlers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Constants;
+    using Helpers;
+    using KellermanSoftware.CompareNetObjects;
     using Models.Message;
     using NSubstitute;
     using NUnit.Framework;
@@ -9,8 +14,8 @@
     using Services;
     using Site.Handlers;
     using Site.Requests.Message;
-    using Site.ViewModels.Message;
     using Sunplus.Agent.Model.Entities;
+    using ViewModels;
 
     [TestFixture]
     public class MessageHanlderTests
@@ -105,6 +110,93 @@
 
             //// Assert
             Assert.IsTrue(act);
-        }        
+        }
+
+        [Test]
+        public void HandleMessageQuery_NullQuery_ThrowArgumentNullException()
+        {
+            // Arrange
+            MessageQuery nullQuery = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => messageHandler.Handle(nullQuery));
+        }
+
+        [Test]
+        public void HandleMessageQuery_NotNullQuery_CallGetMessageService()
+        {
+            // Arrange
+            var messages = FakeDataHelper.CreateMany<Message>().ToList();
+            FakeReturnGetMessagesService(messages);
+
+            var query = new MessageQuery(
+                userSession,
+                1,
+                DateTime.Today,
+                DateTime.Today,
+                false);
+
+            // Act
+            messageHandler.Handle(query);
+
+            // Assert
+            messageService
+                .Received()
+                .GetMessagesHistory(
+                    Arg.Is<int>(cud => cud == query.CustId),
+                    Arg.Is<string>(ps => ps == query.ParentSites),
+                    Arg.Is<int>(st => st == query.SpecialType),
+                    Arg.Is<int>(tm => tm == query.TotalMessage),
+                    Arg.Is<DateTime>(st => st == query.StartDate),
+                    Arg.Is<DateTime>(ed => ed == query.EndDate),
+                    Arg.Is<bool>(it => it == query.IsTest),
+                    Arg.Is<int>(mt => mt == query.MessageType));
+        }
+
+        [Test]
+        public void HandleMessageQuery_NotNullQuery_ReturnMessagesViewModel()
+        {
+            // Arrange
+            var compareLogic = new CompareLogic();
+            UrlHelperTestSetUp.SetUp();
+
+            var messages = FakeDataHelper.CreateMany<Message>().ToList();
+            FakeReturnGetMessagesService(messages);
+
+            var query = new MessageQuery(
+                userSession,
+                1,
+                DateTime.Today,
+                DateTime.Today,
+                false);
+            var messageWrappers = new List<MessageWrapper>(messages.Select(m => new MessageWrapper(m, query.CurrentLang)));
+
+            var expectedViewModel = new MessagesViewModel(
+                messageWrappers,
+                query.StartDate,
+                query.EndDate,
+                query.MessageType,
+                query.RoleId);
+
+            // Act
+            var viewModel = messageHandler.Handle(query);
+
+            // Assert
+            Assert.IsTrue(compareLogic.Compare(expectedViewModel, viewModel).AreEqual);
+        }
+
+        private void FakeReturnGetMessagesService(List<Message> messages)
+        {
+            messageService.GetMessagesHistory(
+                        Arg.Any<int>(),
+                        Arg.Any<string>(),
+                        Arg.Any<int>(),
+                        Arg.Any<int>(),
+                        Arg.Any<DateTime>(),
+                        Arg.Any<DateTime>(),
+                        Arg.Any<bool>(),
+                        Arg.Any<int>())
+                  .Returns(messages);
+        }
     }
 }

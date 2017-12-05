@@ -1,11 +1,14 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
     using System;
+    using System.Linq;
     using System.Collections.Specialized;
+    using Constants;
     using Fanex.Data.Repository;
     using Fixtures;
     using Messages.Configurations;
     using Messages.Criteria.Message;
+    using Messages.DataAccesses;
     using Messages.Models.Constants;
     using Messages.Models.Message;
     using Messages.Services;
@@ -13,6 +16,7 @@
     using NUnit.Framework;
     using Params.Message;
     using Ploeh.AutoFixture;
+    using Site.Tests.Helpers;
     using Assert = NUnit.Framework.Assert;
 
     [TestFixture]
@@ -20,6 +24,7 @@
     {
         private MessageServiceImpl messageService;
         private IDynamicRepository dynamicRepository;
+        private MessageDataAccess messageDataAccess;
         private Fixture fixture;
         private const string SiteSuperId = "234";
         private const string SiteMasterId = "2345";
@@ -28,7 +33,8 @@
         public void SetUp()
         {
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            messageService = new MessageServiceImpl(dynamicRepository);
+            messageDataAccess = Substitute.For<MessageDataAccess>();
+            messageService = new MessageServiceImpl(dynamicRepository, messageDataAccess);
             fixture = new Fixture();
             AppSettings.AppSettingValues = new NameValueCollection
             {
@@ -37,7 +43,7 @@
                 ["Message:Agent"] = SiteAgentId
             };
             new FanexCacheFixture();
-        }       
+        }
 
         [Test]
         public void CountUnreadPrivateMessage_Always_CallGetOfDynamicRepository()
@@ -280,5 +286,47 @@
             //// Assert
             dynamicRepository.Received().Execute(Arg.Any<UpdatePrivateMessageAsReadCriteria>());
         }
+
+        [Test]
+        public void GetMessages_CustIdIsInvalidAndParentSitesIsNullOrEmpty_ReturnEmpty()
+        {
+            // Arrange
+            var messages = messageService.GetMessagesHistory(
+                CustId.InvalidId,
+                string.Empty,
+                1,
+                1,
+                DateTime.Today,
+                DateTime.Today,
+                false,
+                1);
+
+            // Act & Assert
+            Assert.AreEqual(0, messages.Count());
+        }
+
+        [Test]
+        public void GetMessages_CustIdIsValidAndParentSitesIsNotNullorEmpty_ReturnMessages()
+        {
+            // Arrange
+            var messages = FakeDataHelper.CreateMany<Message>();
+
+            messageDataAccess.GetMessagesHistory(Arg.Any<ICriteria>()).Returns(messages);
+
+            // Act
+            var actualMessages = messageService.GetMessagesHistory(
+                CustId.ValidId,
+                "1",
+                1,
+                1,
+                DateTime.Today,
+                DateTime.Today,
+                false,
+                1);
+
+            // Assert
+            Assert.AreEqual(messages, actualMessages);
+        }
+
     }
 }

@@ -28,6 +28,8 @@
             }
         }
 
+        public static bool LocalTest => GetConfigValue("LocalTest") == "1";
+
         public static string SiteGroup => GetConfigValue("SiteGroup");
 
         public static string Environment => GetConfigValue("Environment");

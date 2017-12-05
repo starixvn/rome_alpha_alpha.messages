@@ -1,8 +1,10 @@
 ﻿namespace Alpha.Messages.Services
 {
     using System;
+    using System.Collections.Generic;
     using Configurations;
     using Criteria.Message;
+    using DataAccesses;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Models.Constants;
@@ -20,16 +22,28 @@
         void UpdatePrivateAsRead(UpdatePrivateMessageAsReadParam param);
 
         GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey);
+
+        IEnumerable<Message> GetMessagesHistory(
+            int custId,
+            string parentSites,
+            int specialType,
+            int totalMessage,
+            DateTime startDate,
+            DateTime endDate,
+            bool isTest,
+            int messageType);
     }
 
     public class MessageServiceImpl : MessageService
     {
         private const int CachedSecond = 30;
         private readonly IDynamicRepository dynamicRepository;
+        private readonly MessageDataAccess messageRepository;
 
-        public MessageServiceImpl(IDynamicRepository dynamicRepository)
+        public MessageServiceImpl(IDynamicRepository dynamicRepository, MessageDataAccess messageRepository)
         {
             this.dynamicRepository = dynamicRepository;
+            this.messageRepository = messageRepository;
         }
 
         public int CountUnreadPrivateMessage(int userId, string userName)
@@ -83,6 +97,29 @@
             }
 
             return generalMessage;
+        }
+
+        public IEnumerable<Message> GetMessagesHistory(
+            int custId,
+            string parentSites,
+            int specialType,
+            int totalMessage,
+            DateTime startDate,
+            DateTime endDate,
+            bool isTest,
+            int messageType)
+        {
+            var criteria = new GetMessageCriteria(
+                custId,
+                parentSites,
+                specialType,
+                totalMessage,
+                startDate,
+                endDate,
+                isTest,
+                messageType);
+
+            return messageRepository.GetMessagesHistory(criteria);
         }
 
         private bool HasLatestPrivateMessage(int custId, bool isTest)
