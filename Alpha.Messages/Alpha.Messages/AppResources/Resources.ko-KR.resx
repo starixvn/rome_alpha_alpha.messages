@@ -168,4 +168,10 @@
   <data name="submit" xml:space="preserve">
     <value>확인</value>
   </data>
+  <data name="highlights" xml:space="preserve">
+    <value>HIGHLIGHTS</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>자세히</value>
+  </data>
 </root>

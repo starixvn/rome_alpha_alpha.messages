@@ -106,11 +106,29 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HIGHLIGHTS.
+        /// </summary>
+        public static string highlights {
+            get {
+                return ResourceManager.GetString("highlights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message.
         /// </summary>
         public static string message {
             get {
                 return ResourceManager.GetString("message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More.
+        /// </summary>
+        public static string more {
+            get {
+                return ResourceManager.GetString("more", resourceCulture);
             }
         }
         

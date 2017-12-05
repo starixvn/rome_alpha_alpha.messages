@@ -346,6 +346,8 @@
     <Content Include="typings\globals\toastr\typings.json" />
     <Content Include="assets\scripts\tests\chutzpah.json" />
     <Content Include="typings.json" />
+    <Content Include="Views\Notice\Index.cshtml" />
+    <Content Include="Views\Notice\NoticeMessages.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -494,6 +496,7 @@
     <Compile Include="Controllers\PhaioAnnouncementController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\BaioAnnouncementController.cs" />
+    <Compile Include="Controllers\NoticeController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />
     <Compile Include="Global.asax.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
@@ -502,6 +505,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\AnnouncementHandler.cs" />
     <Compile Include="Handlers\MessageHandler.cs" />
+    <Compile Include="Handlers\NoticeHandler.cs" />
     <Compile Include="Helpers\QueryEntityModelBinder.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -511,11 +515,16 @@
     <Compile Include="Requests\Message\UpdatePrivateMessageAsReadQuery.cs" />
     <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\Announcement\SpecificationParameter.cs" />
+    <Compile Include="Requests\Notice\MarkMessageAsReadQuery.cs" />
+    <Compile Include="Requests\Notice\NoticeQuery.cs" />
     <Compile Include="ViewModels\HotAnnouncementViewModel.cs" />
     <Compile Include="ViewModels\LatestMessageViewModel.cs" />
     <Compile Include="ViewModels\MessageLevel.cs" />
     <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\MessageWrapper.cs" />
+    <Compile Include="ViewModels\Notice\NoticeMessagesViewModel.cs" />
+    <Compile Include="ViewModels\Notice\NoticeMessageWrapper.cs" />
+    <Compile Include="ViewModels\Notice\NoticeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

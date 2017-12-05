@@ -77,6 +77,7 @@
         {
             container.RegisterSingleton<IUserSession, UserSessionExt>();
             container.RegisterPerWebRequest<MessageService, MessageServiceImpl>();
+            container.RegisterPerWebRequest<NoticeService, NoticeServiceImpl>();
             container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
             container.RegisterSingleton<AnnouncementFromApiService, AnnoucementFromApiServiceImpl>();
             container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();            

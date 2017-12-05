@@ -161,6 +161,8 @@
     <Compile Include="Criteria\Announcement\InsertPersonalMessageCriteria.cs" />
     <Compile Include="Criteria\Announcement\InsertPersonalMessageTargetCriteria.cs" />
     <Compile Include="Criteria\Message\GetMessageCriteria.cs" />
+    <Compile Include="Criteria\Notice\GetNoticeMessagesCriteria.cs" />
+    <Compile Include="Criteria\Notice\MarkMessageAsReadCriteria.cs" />
     <Compile Include="Criteria\UnsynchronizedSettingCriteria.cs" />
     <Compile Include="Criteria\Message\CountPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteria.cs" />
@@ -181,6 +183,7 @@
     <Compile Include="Constants\UserLevel.cs" />
     <Compile Include="Models\Announcement\HotAnnouncement.cs" />
     <Compile Include="Models\Announcement\Product.cs" />
+    <Compile Include="Models\Notice\NoticeMessage.cs" />
     <Compile Include="Params\Announcement\GetHotAnnouncementsParams.cs" />
     <Compile Include="Params\Message\UpdatePrivateMessageAsReadParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,6 +192,7 @@
     <Compile Include="Services\AnnouncementFromDatabaseService.cs" />
     <Compile Include="Services\AnnouncementService.cs" />
     <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\NoticeService.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>

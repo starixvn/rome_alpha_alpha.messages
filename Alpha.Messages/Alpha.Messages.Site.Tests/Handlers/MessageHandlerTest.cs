@@ -6,6 +6,7 @@
     using Constants;
     using Helpers;
     using KellermanSoftware.CompareNetObjects;
+    using Messages.Constants;
     using Models.Message;
     using NSubstitute;
     using NUnit.Framework;

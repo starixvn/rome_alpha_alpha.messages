@@ -124,6 +124,8 @@
     <Compile Include="Criteria\Message\GetMoveBetInformationCriteriaTests.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteriaTests.cs" />
     <Compile Include="Criteria\Message\UpdatePrivateMessageAsReadTests.cs" />
+    <Compile Include="Criteria\Notice\GetNoticeMessagesCriteriaTests.cs" />
+    <Compile Include="Criteria\Notice\MarkMessageAsReadCriteriaTests.cs" />
     <Compile Include="Criteria\UpdateViewStatusTest.cs" />
     <Compile Include="DataAccesses\MessageDataAccessImplTests.cs" />
     <Compile Include="Database\MessageDatabase.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
     <Compile Include="Models\Message\MessageTests.cs" />
     <Compile Include="Models\Message\MultiLanguagueTests.cs" />
+    <Compile Include="Models\Notice\NoticeMessageTests.cs" />
     <Compile Include="Models\ProductTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatServiceTest.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Services\AnnouncementFromDatabaseServiceTests.cs" />
     <Compile Include="Services\AnnouncementServiceTest.cs" />
     <Compile Include="Services\MessageServiceImplTests.cs" />
+    <Compile Include="Services\NoticeServiceImplTests.cs" />
     <Compile Include="Services\ProductServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>

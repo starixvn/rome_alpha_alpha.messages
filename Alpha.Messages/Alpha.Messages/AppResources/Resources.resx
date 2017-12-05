@@ -180,4 +180,10 @@
   <data name="message" xml:space="preserve">
     <value>Message</value>
   </data>
+  <data name="highlights" xml:space="preserve">
+    <value>HIGHLIGHTS</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>More</value>
+  </data>
 </root>

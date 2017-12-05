@@ -161,23 +161,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\CustId.cs" />
     <Compile Include="Constants\RoleId.cs" />
     <Compile Include="Controllers\MessageControllerTest.cs" />
     <Compile Include="Controllers\AnnouncementControllerTest.cs" />
     <Compile Include="Controllers\BaioAnnouncementControllerTest.cs" />
+    <Compile Include="Controllers\NoticeControllerTests.cs" />
     <Compile Include="Fixtures\UserSessionFixture.cs" />
     <Compile Include="Handlers\AnnouncementHandlerTest.cs" />
     <Compile Include="Handlers\MessageHandlerTest.cs" />
+    <Compile Include="Handlers\NoticeHandlerTests.cs" />
     <Compile Include="Helpers\ParametersAmountConstructorQuery.cs" />
     <Compile Include="Helpers\FakeDataHelper.cs" />
     <Compile Include="Helpers\QueryEntityModelBinderTests.cs" />
     <Compile Include="Helpers\UrlHelperTestSetUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\MessageQueryTests.cs" />
+    <Compile Include="Requests\Notice\NoticeQueryTests.cs" />
     <Compile Include="Requests\SpecificationParameterTests.cs" />
     <Compile Include="ViewModel\HotAnnouncementViewModelTests.cs" />
     <Compile Include="ViewModel\MessagesViewModelTests.cs" />
     <Compile Include="ViewModel\MessageWrapperTests.cs" />
+    <Compile Include="ViewModel\Notice\NoticeMessageWrapperTests.cs" />
+    <Compile Include="ViewModel\Notice\NoticeViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
