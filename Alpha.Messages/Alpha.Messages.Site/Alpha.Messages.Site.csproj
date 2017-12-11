@@ -276,6 +276,7 @@
     <Content Include="Alpha.Messages.Site.ruleset" />
     <Content Include="Views\Announcement\HeaderAnnouncement.cshtml" />
     <Content Include="Views\BaioAnnouncement\Index.cshtml" />
+    <Content Include="Views\PhaioAnnouncement\Index.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -421,6 +422,7 @@
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
     <Compile Include="Controllers\AnnouncementController.cs" />
+    <Compile Include="Controllers\PhaioAnnouncementController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\BaioAnnouncementController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />

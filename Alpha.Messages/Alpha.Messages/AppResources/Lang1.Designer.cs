@@ -61,6 +61,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1st Hdp.
+        /// </summary>
+        public static string Label1HHDC {
+            get {
+                return ResourceManager.GetString("Label1HHDC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1 X 2.
         /// </summary>
         public static string Label1x2 {

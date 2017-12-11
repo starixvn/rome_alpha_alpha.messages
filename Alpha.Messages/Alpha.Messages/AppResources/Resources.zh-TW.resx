@@ -147,4 +147,7 @@
   <data name="Notice_3" xml:space="preserve">
     <value>您的上線已開啟“捕魚天下”予您的下線。請到您的設定頁面進行配置</value>
   </data>
+  <data name="NewBetTypeEffectDate1" xml:space="preserve">
+    <value>足球的新投注類別將於{0}開始生效</value>
+  </data>
 </root>

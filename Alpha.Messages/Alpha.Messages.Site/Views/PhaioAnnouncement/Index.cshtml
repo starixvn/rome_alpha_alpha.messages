@@ -1,0 +1,91 @@
+﻿@using Alpha.RemotingRef
+<html>    
+    <head>
+        <title></title>
+        @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
+        @StaticResources.AssetStyles.Render("/bundles/site-reports/default")
+        @StaticResources.RenderStyles("~/assets/bundles/default")
+    </head>
+<body>
+    <div class="baio-title-effect-date-format">@string.Format(Resources.NewBetTypeEffectDate1, "14/12/2017")</div>
+    <table class="tblRpt tblRpt-bordered alternative-row-table width-100per tablesorter tblRpt-hover" id="tbl-report" style="padding: 0px;">
+        <thead class="tableFloatingHeaderOriginal">
+            <tr>
+                <th>@Resources.NewBetType</th>
+                <th>@Resources.BetSettingFollows</th>
+                <th>@Resources.CommissionSettingFollows</th>
+                <th>@Resources.PositionTakingSettingFollows</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(448)</td>
+                <td class="center" rowspan="21">@CacheRef.GetSportName(1)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(449)</td>                
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(450)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(451)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(452)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(453)</td>
+                <td class="center">@Lang.LabelAsianHDC_OU_OE</td>
+                <td class="center">@Lang.Label1HHDC</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(454)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(455)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(456)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(457)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(458)</td>
+                <td class="center">@Lang.Label1x2</td>
+                <td class="center">@Lang.Label1x2</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(459)</td>
+                <td class="center">@Lang.Label1x2</td>
+                <td class="center">@Lang.Label1x2</td>
+            </tr>
+            <tr>
+                <td class="baio-bettypes-content-bg">@CacheRef.GetBetTypeName(460)</td>
+                <td class="center">@Lang.LabelOtherTypes</td>
+                <td class="center">@Lang.Others</td>
+            </tr>
+                                  
+        </tbody>
+    </table>
+</body>
+</html>

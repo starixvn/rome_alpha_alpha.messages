@@ -141,4 +141,7 @@
   <data name="Others" xml:space="preserve">
     <value>อื่นๆ</value>
   </data>
+  <data name="Label1HHDC" xml:space="preserve">
+    <value>ราคาต่อรอง ครึ่งแรก</value>
+  </data>
 </root>
