@@ -147,4 +147,7 @@
   <data name="Notice_3" xml:space="preserve">
     <value>Cấp dưới của bạn đã được kích hoạt sản phẩm Fishing World. Vui lòng thiết lập thông số Position Taking của bản thân.</value>
   </data>
+  <data name="NewBetTypeEffectDate1" xml:space="preserve">
+    <value>Các loại cược mới của Bóng Đá sẽ có hiệu lực từ {0}:</value>
+  </data>
 </root>

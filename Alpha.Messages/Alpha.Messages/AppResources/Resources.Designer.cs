@@ -115,11 +115,56 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New bet types of Soccer with effect from {0}:.
+        /// </summary>
+        public static string NewBetTypeEffectDate1 {
+            get {
+                return ResourceManager.GetString("NewBetTypeEffectDate1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No information is available.
         /// </summary>
         public static string NoInformationIsAvailable {
             get {
                 return ResourceManager.GetString("NoInformationIsAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your minimum position taking value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        /// </summary>
+        public static string Notice_1 {
+            get {
+                return ResourceManager.GetString("Notice_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your minimum position taking and betting limit value have been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        /// </summary>
+        public static string Notice_1_2 {
+            get {
+                return ResourceManager.GetString("Notice_1_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your betting limit value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
+        /// </summary>
+        public static string Notice_2 {
+            get {
+                return ResourceManager.GetString("Notice_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings..
+        /// </summary>
+        public static string Notice_3 {
+            get {
+                return ResourceManager.GetString("Notice_3", resourceCulture);
             }
         }
         

@@ -141,4 +141,7 @@
   <data name="Others" xml:space="preserve">
     <value>其他</value>
   </data>
+  <data name="Label1HHDC" xml:space="preserve">
+    <value>上半场亚洲盘</value>
+  </data>
 </root>
