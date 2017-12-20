@@ -205,11 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AppResources\Lang.ja-JP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.ja-JP1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.ko-KR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.ko-KR1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.resx">
@@ -217,19 +215,15 @@
       <LastGenOutput>Lang1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.th-TH.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.th-TH1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.vi-VN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.vi-VN1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.zh-CN1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.zh-TW.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.zh-TW1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Resources.ja-JP.resx" />

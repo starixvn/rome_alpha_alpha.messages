@@ -15,8 +15,8 @@ namespace Alpha.Messages.Site.Tests.Handlers
     using NUnit.Framework;
     using Services;
     using Site.Handlers;
+    using Site.ViewModels;
     using Sunplus.Agent.Model.Entities;
-    using ViewModels;
 
     [TestFixture]
     public class NoticeHandlerTests

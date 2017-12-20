@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Constants;
     using Helpers;
     using KellermanSoftware.CompareNetObjects;
     using Messages.Constants;
@@ -15,8 +14,8 @@
     using Services;
     using Site.Handlers;
     using Site.Requests.Message;
+    using Site.ViewModels;
     using Sunplus.Agent.Model.Entities;
-    using ViewModels;
 
     [TestFixture]
     public class MessageHanlderTests
@@ -27,6 +26,7 @@
         private IUserSession userSession;
 #pragma warning restore CS0618 // Type or member is obsolete
         private Fixture fixture;
+
         [SetUp]
         public void SetUp()
         {
@@ -41,7 +41,7 @@
             userSession.RoleId.Returns(RoleId.Agent);
             fixture = new Fixture();
         }
-        
+
         [Test]
         public void HandleLatestMessageQuery_Always_Call4Methods()
         {
