@@ -17,5 +17,19 @@
     "inputFiles": [
       "Assets/styles/message/message.css"
     ]
+  },
+  {
+    "outputFileName": "assets/bundles/announcements.css",
+    "inputFiles": [
+      "assets/styles/announcement/announcements.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/bundles/popup-announcement.js",
+    "inputFiles": [
+      "assets/scripts/announcement/annoucement-counter.js",
+      "assets/scripts/announcement/popup-announcement.js",
+      "assets/scripts/announcement/popup-announcement-mobile.js"
+    ]
   }
 ]

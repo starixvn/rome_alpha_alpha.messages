@@ -270,6 +270,10 @@
     <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
+    <Content Include="assets\bundles\announcements.css" />
+    <Content Include="assets\bundles\announcements.min.css">
+      <DependentUpon>announcements.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\default-message.css" />
     <Content Include="assets\bundles\default-message.js" />
     <Content Include="assets\bundles\default-message.min.css">
@@ -280,6 +284,10 @@
     </Content>
     <Content Include="assets\bundles\default.css" />
     <Content Include="assets\bundles\default.min.css" />
+    <Content Include="assets\bundles\popup-announcement.js" />
+    <Content Include="assets\bundles\popup-announcement.min.js">
+      <DependentUpon>popup-announcement.js</DependentUpon>
+    </Content>
     <Content Include="assets\scripts\tests\libs\bootstrap-datetimepicker.js" />
     <Content Include="assets\scripts\tests\libs\bootstrap-modal.js" />
     <Content Include="assets\scripts\tests\libs\datepicker.js" />
@@ -290,6 +298,12 @@
     <Content Include="assets\scripts\tests\libs\moment.js" />
     <Content Include="assets\scripts\tests\libs\store.js" />
     <Content Include="assets\scripts\tests\libs\tooltip.js" />
+    <Content Include="assets\styles\announcement\announcements.css">
+      <DependentUpon>announcements.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\announcement\announcements.min.css">
+      <DependentUpon>announcements.css</DependentUpon>
+    </Content>
     <Content Include="assets\styles\Home\Images\flag_sprite.png" />
     <Content Include="assets\styles\Home\Images\icon_close.jpg" />
     <Content Include="assets\styles\Home\Images\minptarrow.png" />
@@ -312,8 +326,6 @@
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
     <Content Include="Views\Announcement\PopupAnnouncement.cshtml" />
-    <Content Include="Views\Announcement\PopupAnnouncementWithSource.cshtml" />
-    <Content Include="Views\Announcement\PopupAnnouncementWithText.cshtml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Alpha.Messages.Site.ruleset" />
@@ -348,6 +360,7 @@
     <Content Include="typings.json" />
     <Content Include="Views\Notice\Index.cshtml" />
     <Content Include="Views\Notice\NoticeMessages.cshtml" />
+    <Content Include="assets\styles\announcement\announcements.scss" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
@@ -627,6 +640,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="assets\scripts\announcement\annoucement-counter.ts" />
+    <TypeScriptCompile Include="assets\scripts\announcement\popup-announcement-mobile.ts" />
+    <TypeScriptCompile Include="assets\scripts\announcement\popup-announcement.ts" />
     <TypeScriptCompile Include="assets\scripts\message\index.ts" />
     <TypeScriptCompile Include="assets\scripts\tests\app\message\message-tests.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
@@ -686,7 +702,7 @@
       assets.build.cmd
       if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
       start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

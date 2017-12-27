@@ -6,5 +6,9 @@
   {
     "outputFile": "Assets/styles/message/message.css",
     "inputFile": "Assets/styles/message/message.scss"
+  },
+  {
+    "outputFile": "assets/styles/announcement/announcements.css",
+    "inputFile": "assets/styles/announcement/announcements.scss"
   }
 ]

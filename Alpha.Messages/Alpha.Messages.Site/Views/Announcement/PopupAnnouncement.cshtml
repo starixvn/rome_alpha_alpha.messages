@@ -3,27 +3,40 @@
     Layout = null;
     var index = 0;
 }
-@if (Model.Announcements.Any())
-{
-    foreach (var announcement in Model.Announcements)
+<html>
+<head>
+    <title></title>
+    @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
+    @StaticResources.RenderStyles("~/assets/bundles/announcements")
+</head>
+<body>
+    @if (Model.Announcements.Any())
     {
-        index++;
-        if (!string.IsNullOrEmpty(announcement.Source))
+        foreach (var announcement in Model.Announcements)
         {
-            <div id="announcement_@announcement.Id" class="js-announcement">
-                @Html.Partial("PopupAnnouncementWithSource", announcement)
-                @Html.Hidden("AnnouncementId", announcement.Id)
-            </div>
+            index++;
+            if (!string.IsNullOrEmpty(announcement.Source))
+            {
+                <div id="announcement_@announcement.Id" class="js-announcement">
+                    @Html.Hidden("AnnouncementSource", announcement.Source)
+                    @Html.Hidden("AnnouncementId", announcement.Id)
+                </div>
+            }
+            else if (!string.IsNullOrEmpty(announcement.Content))
+            {
+                <div id="announcement_@announcement.Id" class="js-announcement hidden">
+                    @Html.Raw(announcement.Content)
+                    @Html.Hidden("AnnouncementId", announcement.Id)
+                </div>
+            }
         }
-        else if (!string.IsNullOrEmpty(announcement.Content))
-        {
-            <div id="announcement_@announcement.Id" class="js-announcement">
-                @Html.Partial("PopupAnnouncementWithText", announcement)
-                @Html.Hidden("AnnouncementId", announcement.Id)
-            </div>
-        }
+        <div class="list-action">
+            <div class="icon-chevron-left prevButton"></div>
+            <div class="icon-chevron-right nextButton"></div>
+        </div>
+        @Html.Hidden("announcement-cookies-id", Model.CookiesId)
     }
-
-    @Html.Hidden("announcement-cookies-id", Model.CookiesId)
-    @Html.Hidden("no-info", Resources.NoInformationIsAvailable);
-}
+    @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
+    @StaticResources.RenderScripts("~/assets/bundles/popup-announcement")
+</body>
+</html>
