@@ -32,7 +32,7 @@
         };
 
         cacheElements = () => {
-            this.domElements.announcementModal = this.topWindow.$('.announcement-modal');
+            this.domElements.announcementModal = this.topWindow.$('#announcement-modal');
             this.domElements.announcementIframe = this.topWindow.$('#annoucement-iframe');
             this.domElements.announcementSections = this.$('.js-announcement');
             this.domElements.announcementCookieId = this.$('#announcement-cookies-id');
