@@ -1,8 +1,12 @@
-﻿namespace Alpha.Main.Site.Tests.Controllers
+﻿namespace Alpha.Messages.Site.Tests.Controllers
 {
+    using System;
     using System.Web.Mvc;
     using Alpha.Messages.Site.Controllers;
+    using KellermanSoftware.CompareNetObjects;
     using MediatR;
+    using Messages.Configurations;
+    using Messages.Constants;
     using Messages.Site.Requests.Message;
     using NSubstitute;
     using NUnit.Framework;
@@ -77,6 +81,41 @@
 
             //// Assert
             Assert.IsInstanceOf(typeof(JsonResult), act);
+        }
+
+        [Test]
+        public void Index_Always_CallsMediatorSendMessageQuery()
+        {
+            userSession.RoleId.Returns(RoleId.Agent);
+
+            // Act
+            messageController.Index();
+
+            // Assert
+            mediator.Received().Send(Arg.Any<MessageQuery>());
+        }
+
+        [Test]
+        public void Messages_Always_CallsMediatorSendMessageQuery()
+        {
+            var compareLogic = new CompareLogic();
+            var startDate = DateTime.Today.AddDays(-3);
+            var endDate = DateTime.Today;
+            userSession.RoleId.Returns(RoleId.Agent);
+
+            // Arrange
+            var query = new MessageQuery(
+                userSession,
+                MessageType.Public,
+                startDate,
+                endDate,
+                AppSettings.LocalTest);
+
+            // Act
+            messageController.Messages(startDate, endDate);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<MessageQuery>(p => compareLogic.Compare(p, query).AreEqual));
         }
     }
 }

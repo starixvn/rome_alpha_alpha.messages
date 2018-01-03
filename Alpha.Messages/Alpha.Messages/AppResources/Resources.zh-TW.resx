@@ -150,4 +150,31 @@
   <data name="NewBetTypeEffectDate1" xml:space="preserve">
     <value>足球的新投注類別將於{0}開始生效</value>
   </data>
+  <data name="announcement" xml:space="preserve">
+    <value>通告</value>
+  </data>
+  <data name="normalAnnouncement" xml:space="preserve">
+    <value>一般公告</value>
+  </data>
+  <data name="specialAnnouncement" xml:space="preserve">
+    <value>特殊公告</value>
+  </data>
+  <data name="personalMessage" xml:space="preserve">
+    <value>個人訊息</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>從</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>到</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="highlights" xml:space="preserve">
+    <value>HIGHLIGHTS</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>更多</value>
+  </data>
 </root>

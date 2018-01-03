@@ -147,4 +147,22 @@
   <data name="Notice_3" xml:space="preserve">
     <value>Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings.</value>
   </data>
+  <data name="announcement" xml:space="preserve">
+    <value>Announcement</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>送金元</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>から</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="highlights" xml:space="preserve">
+    <value>HIGHLIGHTS</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>more</value>
+  </data>
 </root>

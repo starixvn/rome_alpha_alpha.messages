@@ -3,7 +3,7 @@
     using MediatR;
     using Sunplus.Agent.Model.BL.Definitions;
     using Sunplus.Agent.Model.Entities;
-    using ViewModels.Message;
+    using ViewModels;
 
     public class LatestMessageQuery : IRequest<LatestMessageViewModel>
     {

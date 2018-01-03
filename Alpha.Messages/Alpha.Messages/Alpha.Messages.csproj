@@ -155,10 +155,14 @@
     </Compile>
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Constants\Language.cs" />
+    <Compile Include="Constants\MessageType.cs" />
     <Compile Include="Criteria\Announcement\GetNoticeListIsNoViewedCriteria.cs" />
     <Compile Include="Criteria\Announcement\GetProductsCriteria.cs" />
     <Compile Include="Criteria\Announcement\InsertPersonalMessageCriteria.cs" />
     <Compile Include="Criteria\Announcement\InsertPersonalMessageTargetCriteria.cs" />
+    <Compile Include="Criteria\Message\GetMessageCriteria.cs" />
+    <Compile Include="Criteria\Notice\GetNoticeMessagesCriteria.cs" />
+    <Compile Include="Criteria\Notice\MarkMessageAsReadCriteria.cs" />
     <Compile Include="Criteria\UnsynchronizedSettingCriteria.cs" />
     <Compile Include="Criteria\Message\CountPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteria.cs" />
@@ -166,9 +170,11 @@
     <Compile Include="Criteria\Message\GetMoveBetInformationCriteria.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\UpdatePrivateMessageAsReadCriteria.cs" />
+    <Compile Include="DataAccesses\MessageDataAccess.cs" />
     <Compile Include="Models\Message\GeneralLatestMessage.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />
     <Compile Include="Models\Message\LatestMessage.cs" />
+    <Compile Include="Models\Message\Message.cs" />
     <Compile Include="Models\Message\MoveBetsMessage.cs" />
     <Compile Include="Models\Message\MultiLanguague.cs" />
     <Compile Include="Models\Announcement\ResourceManager.cs" />
@@ -177,6 +183,7 @@
     <Compile Include="Constants\UserLevel.cs" />
     <Compile Include="Models\Announcement\HotAnnouncement.cs" />
     <Compile Include="Models\Announcement\Product.cs" />
+    <Compile Include="Models\Notice\NoticeMessage.cs" />
     <Compile Include="Params\Announcement\GetHotAnnouncementsParams.cs" />
     <Compile Include="Params\Message\UpdatePrivateMessageAsReadParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,6 +192,7 @@
     <Compile Include="Services\AnnouncementFromDatabaseService.cs" />
     <Compile Include="Services\AnnouncementService.cs" />
     <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Services\NoticeService.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,11 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AppResources\Lang.ja-JP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.ja-JP1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.ko-KR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.ko-KR1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.resx">
@@ -209,19 +215,15 @@
       <LastGenOutput>Lang1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.th-TH.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.th-TH1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.vi-VN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.vi-VN1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.zh-CN1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Lang.zh-TW.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.zh-TW1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources\Resources.ja-JP.resx" />

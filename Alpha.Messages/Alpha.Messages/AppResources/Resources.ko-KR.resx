@@ -147,4 +147,31 @@
   <data name="Notice_3" xml:space="preserve">
     <value>Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings.</value>
   </data>
+  <data name="announcement" xml:space="preserve">
+    <value>공지사항</value>
+  </data>
+  <data name="normalAnnouncement" xml:space="preserve">
+    <value>일반 공지 사항</value>
+  </data>
+  <data name="specialAnnouncement" xml:space="preserve">
+    <value>특별 공지사항</value>
+  </data>
+  <data name="personalMessage" xml:space="preserve">
+    <value>개인 메세지</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>종료일</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="highlights" xml:space="preserve">
+    <value>HIGHLIGHTS</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>자세히</value>
+  </data>
 </root>

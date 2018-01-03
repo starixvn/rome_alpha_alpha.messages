@@ -8,6 +8,7 @@
     using Announcements.Services;
     using Client;
     using Controllers;
+    using DataAccesses;
     using Fanex.Data.Repository;
     using MediatR;
     using Models.Announcement;
@@ -69,12 +70,14 @@
         private static void RegisterDataAccesses(Container container)
         {
             container.Register<IDynamicRepository, DynamicRepository>(Lifestyle.Singleton);
+            container.RegisterPerWebRequest<MessageDataAccess, MessageDataAccessImpl>();
         }
 
         private static void RegisterServices(Container container)
         {
             container.RegisterSingleton<IUserSession, UserSessionExt>();
             container.RegisterPerWebRequest<MessageService, MessageServiceImpl>();
+            container.RegisterPerWebRequest<NoticeService, NoticeServiceImpl>();
             container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
             container.RegisterSingleton<AnnouncementFromApiService, AnnoucementFromApiServiceImpl>();
             container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();            

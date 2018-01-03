@@ -43,4 +43,34 @@
     <Setting Key="Dot_Msg_HasPriMessage24" SpName="Dot_Msg_HasPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
     <Setting Key="Dot_Msg_SetPriMsgRead" SpName="Dot_Msg_SetPriMsgRead" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
   </Function>
+
+  <Function Name="MessageHistory">
+    <Setting Key="Dot_Msg_GetPublicMessage" SpName="Dot_Msg_GetPublicMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    </Setting>
+    <Setting Key="Dot_Msg_GetSpecialMessage" SpName="Dot_Msg_GetSpecialMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    </Setting>
+    <Setting Key="Dot_Msg_GetPrivateMessage" SpName="Dot_Msg_GetPrivateMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    </Setting>
+  </Function>
+
+  <Function Name="Notice">
+    <Setting Key="Age_CustomerSelMessages" SpName="Age_CustomerSelMessages" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+      <Mapping DataField="MessageId" ObjectProperty="Id" />
+      <Mapping DataField="Content_en" ObjectProperty="ContentEn" />
+      <Mapping DataField="Content_cs" ObjectProperty="ContentCs" />
+      <Mapping DataField="Content_ch" ObjectProperty="ContentCh" />
+      <Mapping DataField="Content_jp" ObjectProperty="ContentJp" />
+      <Mapping DataField="Content_th" ObjectProperty="ContentTh" />
+      <Mapping DataField="Content_it" ObjectProperty="ContentIt" />
+      <Mapping DataField="Content_ko" ObjectProperty="ContentKo" />
+      <Mapping DataField="Content_es" ObjectProperty="ContentEs" />
+      <Mapping DataField="Content_vn" ObjectProperty="ContentVn" />
+      <Mapping DataField="MsgType" ObjectProperty="Type" />
+      <Mapping DataField="bettransid" ObjectProperty="BetTransId" />
+      <Mapping DataField="isRead" ObjectProperty="IsRead" />
+    </Setting>
+
+    <Setting Key="Age_CustomerUpdMessagesRead" SpName="Age_CustomerUpdMessagesRead" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    </Setting>
+  </Function>
 </Functions>

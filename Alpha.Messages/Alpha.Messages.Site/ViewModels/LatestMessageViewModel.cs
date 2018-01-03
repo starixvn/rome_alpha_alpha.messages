@@ -1,4 +1,4 @@
-﻿namespace Alpha.Messages.Site.ViewModels.Message
+﻿namespace Alpha.Messages.Site.ViewModels
 {
     using Alpha.Messages.Models.Message;
 

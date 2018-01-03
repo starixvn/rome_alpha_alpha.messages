@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alpha.Messages.AppResources {
-    using System;
-    
-    
+namespace Alpha.Messages.AppResources
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,158 +22,302 @@ namespace Alpha.Messages.AppResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
-        
+    public class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        public static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alpha.Messages.AppResources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
-            get {
+        public static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Announcement.
         /// </summary>
-        public static string announcement {
-            get {
+        public static string announcement
+        {
+            get
+            {
                 return ResourceManager.GetString("announcement", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bet Setting Follows.
         /// </summary>
-        public static string BetSettingFollows {
-            get {
+        public static string BetSettingFollows
+        {
+            get
+            {
                 return ResourceManager.GetString("BetSettingFollows", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        public static string close {
-            get {
+        public static string close
+        {
+            get
+            {
                 return ResourceManager.GetString("close", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Commission Setting Follows.
         /// </summary>
-        public static string CommissionSettingFollows {
-            get {
+        public static string CommissionSettingFollows
+        {
+            get
+            {
                 return ResourceManager.GetString("CommissionSettingFollows", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        public static string from
+        {
+            get
+            {
+                return ResourceManager.GetString("from", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to HIGHLIGHTS.
+        /// </summary>
+        public static string highlights
+        {
+            get
+            {
+                return ResourceManager.GetString("highlights", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string message
+        {
+            get
+            {
+                return ResourceManager.GetString("message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to More.
+        /// </summary>
+        public static string more
+        {
+            get
+            {
+                return ResourceManager.GetString("more", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to New Bet Type.
         /// </summary>
-        public static string NewBetType {
-            get {
+        public static string NewBetType
+        {
+            get
+            {
                 return ResourceManager.GetString("NewBetType", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to New bet types of Basketball with effect from {0}:.
         /// </summary>
-        public static string NewBetTypeEffectDate {
-            get {
+        public static string NewBetTypeEffectDate
+        {
+            get
+            {
                 return ResourceManager.GetString("NewBetTypeEffectDate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to New bet types of Soccer with effect from {0}:.
         /// </summary>
-        public static string NewBetTypeEffectDate1 {
-            get {
+        public static string NewBetTypeEffectDate1
+        {
+            get
+            {
                 return ResourceManager.GetString("NewBetTypeEffectDate1", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No information is available.
         /// </summary>
-        public static string NoInformationIsAvailable {
-            get {
+        public static string NoInformationIsAvailable
+        {
+            get
+            {
                 return ResourceManager.GetString("NoInformationIsAvailable", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Your minimum position taking value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
         /// </summary>
-        public static string Notice_1 {
-            get {
+        public static string Notice_1
+        {
+            get
+            {
                 return ResourceManager.GetString("Notice_1", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Your minimum position taking and betting limit value have been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
         /// </summary>
-        public static string Notice_1_2 {
-            get {
+        public static string Notice_1_2
+        {
+            get
+            {
                 return ResourceManager.GetString("Notice_1_2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Your betting limit value has been changed by the upline.&lt;br&gt;Please kindly be informed and have a check the details for your downlines..
         /// </summary>
-        public static string Notice_2 {
-            get {
+        public static string Notice_2
+        {
+            get
+            {
                 return ResourceManager.GetString("Notice_2", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Your upline has enabled Fishing World for your downlines. Please go to setting page to configure your own PT settings..
         /// </summary>
-        public static string Notice_3 {
-            get {
+        public static string Notice_3
+        {
+            get
+            {
                 return ResourceManager.GetString("Notice_3", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Normal Announcement.
+        /// </summary>
+        public static string normalAnnouncement
+        {
+            get
+            {
+                return ResourceManager.GetString("normalAnnouncement", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Message.
+        /// </summary>
+        public static string personalMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("personalMessage", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Position Taking Setting Follows.
         /// </summary>
-        public static string PositionTakingSettingFollows {
-            get {
+        public static string PositionTakingSettingFollows
+        {
+            get
+            {
                 return ResourceManager.GetString("PositionTakingSettingFollows", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Special Announcement.
+        /// </summary>
+        public static string specialAnnouncement
+        {
+            get
+            {
+                return ResourceManager.GetString("specialAnnouncement", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string submit
+        {
+            get
+            {
+                return ResourceManager.GetString("submit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string to
+        {
+            get
+            {
+                return ResourceManager.GetString("to", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to View Announcement.
+        /// </summary>
+        public static string viewAnnouncement
+        {
+            get
+            {
+                return ResourceManager.GetString("viewAnnouncement", resourceCulture);
             }
         }
     }

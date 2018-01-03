@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Messages.Tests.Models.Message
 {
     using Constants;
+    using Messages.Constants;
     using Messages.Models.Message;
     using NUnit.Framework;
 
