@@ -126,8 +126,15 @@
             var announcementId = this.$("#announcement_" + id).find("#AnnouncementId").val();
             this.announcementCookie.increaseCounter(announcementId);
         };
+
+        openLink = (siteId: string, virtualPath: string) => {
+            var sitePath = this.topWindow.$('#' + siteId).val();
+            window.open(sitePath + virtualPath, '_blank');
+        };
     }
 }
+
+let OpenLink: Function;
 
 $(document).ready(() => {
     let counter = new PopupAnnouncement.AnnouncementCounter($);
@@ -136,8 +143,10 @@ $(document).ready(() => {
     if (currentWindowWidth < 768) {
         const mobileAnnouncement = new PopupAnnouncement.Mobile($, counter, window.top);
         mobileAnnouncement.init();
+        OpenLink = mobileAnnouncement.openLink;
     } else {
         const announcement = new PopupAnnouncement.Base($, counter, window.top);
         announcement.init();
+        OpenLink = announcement.openLink;
     }
 })
