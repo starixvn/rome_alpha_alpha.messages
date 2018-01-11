@@ -54,7 +54,7 @@
 
             ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
-            StaticResources.Init(GetBuildVersion());
+            StaticResources.Init(StaticResources.GetBuildVersion());
 
             var loggingConfiguration = new LoggingConfiguration()
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
@@ -80,14 +80,6 @@
                     ["SubAccountName"] = currentCustomer?.SubUserName,
                     ["AdminName"] = currentCustomer?.AdminName
                 });
-        }
-
-        private static string GetBuildVersion()
-        {
-            Assembly assembly = Assembly.GetCallingAssembly();
-            FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-
-            return versionInfo.FileVersion;
         }
     }
 }
