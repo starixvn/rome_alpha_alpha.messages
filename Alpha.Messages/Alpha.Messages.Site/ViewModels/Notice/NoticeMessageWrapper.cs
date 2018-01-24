@@ -56,7 +56,12 @@
             {
                 int length = Math.Min(DefaultMaxContentLength, Content.Length);
 
-                return Content.Substring(0, length) + Ellipsis;
+                var content = Content.Substring(0, length)
+                    .Replace("<font color=red>", string.Empty)
+                    .Replace("</font>", string.Empty)
+                    + Ellipsis;
+
+                return content;
             }
         }
 
@@ -72,11 +77,16 @@
                     content = ReflectionUtil.GetValue(CurrentMessage, DefaultContentPropName) ?? string.Empty;
                 }
 
-                var result = content.ToString().Replace("@@", CurrentMessage.BetTransId);
+                var result = content.ToString()
+                    .Replace("@@", CurrentMessage.BetTransId)
+                    .Replace("<font color=red>", string.Empty)
+                    .Replace("</font>", string.Empty);
 
                 return result;
             }
         }
+
+        public string GetStyleMessage => Content.Contains("</font>") ? "text-red" : string.Empty;
 
         private string GetCurrentContentPropertyNameByLanguage(string lang)
         {
