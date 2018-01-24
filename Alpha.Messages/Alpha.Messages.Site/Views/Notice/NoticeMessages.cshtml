@@ -21,10 +21,10 @@
                             <div class="highlight-date-format">@message.PostTime.ToString("hh:mm:ss tt")</div>
                         </div>
                         <div class="content short-content @message.GetStyleMessage">
-                            @Html.Raw(message.ShortContent)
+                            @message.ShortContent
                         </div>
                         <div class="content full-content @message.GetStyleMessage">
-                            @Html.Raw(message.Content)
+                            @message.Content
                         </div>
                     </div>
                 </div>
@@ -50,10 +50,10 @@
                         @message.PostTime.ToLongTimeString()
                     </div>
                     <div class="content short-content @message.GetStyleMessage">
-                        @Html.Raw(message.ShortContent)
+                        @message.ShortContent
                     </div>
                     <div class="content full-content @message.GetStyleMessage">
-                        @Html.Raw(@message.Content)
+                        @message.Content
                     </div>
                 </div>
             </div>

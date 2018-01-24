@@ -69,6 +69,20 @@
         {
             get
             {
+                var result = RawContent.Replace("@@", CurrentMessage.BetTransId)
+                    .Replace("<font color=red>", string.Empty)
+                    .Replace("</font>", string.Empty);
+
+                return result;
+            }
+        }
+
+        public string GetStyleMessage => RawContent.Contains("</font>") ? "text-red" : string.Empty;
+
+        private string RawContent
+        {
+            get
+            {
                 var contentPropName = GetCurrentContentPropertyNameByLanguage(currentLang);
                 var content = ReflectionUtil.GetValue(CurrentMessage, contentPropName);
 
@@ -77,16 +91,9 @@
                     content = ReflectionUtil.GetValue(CurrentMessage, DefaultContentPropName) ?? string.Empty;
                 }
 
-                var result = content.ToString()
-                    .Replace("@@", CurrentMessage.BetTransId)
-                    .Replace("<font color=red>", string.Empty)
-                    .Replace("</font>", string.Empty);
-
-                return result;
+                return content.ToString();
             }
-        }
-
-        public string GetStyleMessage => Content.Contains("</font>") ? "text-red" : string.Empty;
+        }        
 
         private string GetCurrentContentPropertyNameByLanguage(string lang)
         {

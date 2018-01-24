@@ -87,5 +87,61 @@
             // Assert
             Assert.AreEqual(expectedShortContent + "...", viewModel.ShortContent);
         }
+
+        [Test]
+        public void GetStyleMessage_NoHighlight_ReturenEmpty()
+        {
+            // Arrange
+            var noticeMessage = FakeDataHelper.Create<NoticeMessage>("contentEN", "content message");
+            var viewModel = new NoticeMessageWrapper(noticeMessage, Language.English);
+
+            // Act
+            var act = viewModel.GetStyleMessage;
+
+            // Assert
+            Assert.IsEmpty(act);
+        }
+
+        [Test]
+        public void GetStyleMessage_Highlight_ReturnRedText()
+        {
+            // Arrange
+            var noticeMessage = FakeDataHelper.Create<NoticeMessage>("contentEN", "content message has </font>");
+            var viewModel = new NoticeMessageWrapper(noticeMessage, Language.English);
+
+            // Act
+            var act = viewModel.GetStyleMessage;
+
+            // Assert
+            Assert.AreEqual("text-red", act);
+        }
+
+        [Test]
+        public void Content_HasFontTag_RemoveFontTag()
+        {
+            // Arrange
+            var noticeMessage = FakeDataHelper.Create<NoticeMessage>("contentEN", "content message <font color=red>has</font>");
+            var viewModel = new NoticeMessageWrapper(noticeMessage, Language.English);
+
+            // Act
+            var act = viewModel.Content;
+
+            // Assert
+            Assert.AreEqual("content message has", act);
+        }
+
+        [Test]
+        public void ShortContent_HasFontTag_RemoveFontTag()
+        {
+            // Arrange
+            var noticeMessage = FakeDataHelper.Create<NoticeMessage>("contentEN", "content message <font color=red>has</font>");
+            var viewModel = new NoticeMessageWrapper(noticeMessage, Language.English);
+
+            // Act
+            var act = viewModel.ShortContent;
+
+            // Assert
+            Assert.AreEqual("content message has...", act);
+        }
     }
 }
