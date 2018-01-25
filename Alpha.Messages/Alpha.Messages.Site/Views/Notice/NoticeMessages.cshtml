@@ -15,12 +15,16 @@
                 <div class="msg-contents">
                     <div id="@message.CurrentMessage.Id"
                          class="message pointer @message.MessageType @(!message.CurrentMessage.IsRead ? "bold" : string.Empty)">
-                        <div class="time"><span class="icon icon-plus"></span>@message.PostTime.ToString("M/d/yyyy")<div class="highlight-date-format">@message.PostTime.ToString("hh:mm:ss tt")</div></div>
-                        <div class="content short-content">
-                            @message.ShortContent
+                        <div class="time">
+                            <span class="icon icon-plus"></span>
+                            @message.PostTime.ToString("M/d/yyyy")
+                            <div class="highlight-date-format">@message.PostTime.ToString("hh:mm:ss tt")</div>
                         </div>
-                        <div class="content full-content">
-                            @message.Content
+                        <div class="content short-content @message.GetStyleMessage">
+                            @Html.Raw(message.ShortContent)
+                        </div>
+                        <div class="content full-content @message.GetStyleMessage">
+                            @Html.Raw(message.Content)
                         </div>
                     </div>
                 </div>
@@ -41,12 +45,15 @@
             <div class="msg-contents">
                 <div id="@message.CurrentMessage.Id"
                      class="message pointer @message.MessageType @(!message.CurrentMessage.IsRead ? "bold" : string.Empty)">
-                    <div class="time"><span class="icon icon-plus"></span>@message.PostTime.ToLongTimeString()</div>
-                    <div class="content short-content">
-                        @message.ShortContent
+                    <div class="time">
+                        <span class="icon icon-plus"></span>
+                        @message.PostTime.ToLongTimeString()
                     </div>
-                    <div class="content full-content">
-                        @message.Content
+                    <div class="content short-content @message.GetStyleMessage">
+                        @Html.Raw(message.ShortContent)
+                    </div>
+                    <div class="content full-content @message.GetStyleMessage">
+                        @Html.Raw(@message.Content)
                     </div>
                 </div>
             </div>
