@@ -127,9 +127,9 @@
             this.announcementCookie.increaseCounter(announcementId);
         };
 
-        openLink = (siteId: string, virtualPath: string) => {
-            var sitePath = this.topWindow.$('#' + siteId).val();
-            window.open(sitePath + virtualPath, '_blank');
+        openLink = (sitePath: string, virtualPath: string) => {
+            var path = this.topWindow.$('#' + sitePath).val();
+            window.open(path + virtualPath, '_blank');
         };
     }
 }
@@ -140,13 +140,10 @@ $(document).ready(() => {
     let counter = new PopupAnnouncement.AnnouncementCounter($);
     let currentWindowWidth = window.screen.width;
 
-    if (currentWindowWidth < 768) {
-        const mobileAnnouncement = new PopupAnnouncement.Mobile($, counter, window.top);
-        mobileAnnouncement.init();
-        OpenLink = mobileAnnouncement.openLink;
-    } else {
-        const announcement = new PopupAnnouncement.Base($, counter, window.top);
-        announcement.init();
-        OpenLink = announcement.openLink;
-    }
+    const announcement = (currentWindowWidth < 768)
+        ? new PopupAnnouncement.Mobile($, counter, window.top)
+        : new PopupAnnouncement.Base($, counter, window.top);
+
+    announcement.init();
+    OpenLink = announcement.openLink;
 })
