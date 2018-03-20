@@ -3,16 +3,16 @@
     Layout = null;
     var index = 0;
 }
-<html>
-<head>
-    <title></title>
-    @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
-    @StaticResources.RenderStyles("~/assets/bundles/announcements")
-</head>
-<body>
-    @if (Model.Announcements.Any())
-    {
-        foreach (var announcement in Model.Announcements)
+@if (Model.Announcements.Any())
+{
+    <html>
+    <head>
+        <title></title>
+        @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
+        @StaticResources.RenderStyles("~/assets/bundles/announcements")
+    </head>
+    <body>
+        @foreach (var announcement in Model.Announcements)
         {
             index++;
             if (!string.IsNullOrEmpty(announcement.Source))
@@ -35,8 +35,8 @@
             <div class="icon-chevron-right nextButton"></div>
         </div>
         @Html.Hidden("announcement-cookies-id", Model.CookiesId)
-    }
-    @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
-    @StaticResources.RenderScripts("~/assets/bundles/popup-announcement")
-</body>
+        @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
+        @StaticResources.RenderScripts("~/assets/bundles/popup-announcement")
+    </body>
 </html>
+}

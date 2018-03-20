@@ -9,6 +9,7 @@
     public class HotAnnouncementViewModelTests
     {
         private Fixture fixture;
+
         [SetUp]
         public void SetUp()
         {
