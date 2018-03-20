@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
   <Function Name="Notification During Move-bet Process">
-    <Setting Key="Age_MoveBetsProcessNotification" SpName="Age_MoveBetsProcessNotification" DbName="DBTXN.bodb02.BODBDownlineNetView" Plain="0">
+    <Setting Key="Age_MoveBetsProcessNotification" SpName="Acc_ShowNotificationWhenProcessingData" DbName="DBTXN.bodb02.BODBDownlineNetView" Plain="0">
       <Mapping DataField="Content_EN" ObjectProperty="ContentEn" />
       <Mapping DataField="Content_CS" ObjectProperty="ContentCs" />
       <Mapping DataField="Content_CH" ObjectProperty="ContentCh" />
