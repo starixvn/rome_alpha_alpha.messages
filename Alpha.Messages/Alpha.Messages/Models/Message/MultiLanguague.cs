@@ -4,6 +4,10 @@
 
     public class MultiLanguague
     {
+        public MultiLanguague()
+        {
+        }
+
         public MultiLanguague(
             string contentEN,
             string contentCS,

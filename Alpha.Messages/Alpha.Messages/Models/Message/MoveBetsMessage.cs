@@ -5,6 +5,11 @@
     public class MoveBetsMessage : MultiLanguague
     {
         private const int MessageTimeZone = 8;
+
+        public MoveBetsMessage()
+        {
+        }
+
         public MoveBetsMessage(
             string contentEN,
             string contentCS,
