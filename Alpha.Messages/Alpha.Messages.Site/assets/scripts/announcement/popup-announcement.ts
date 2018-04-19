@@ -126,18 +126,24 @@
             var announcementId = this.$("#announcement_" + id).find("#AnnouncementId").val();
             this.announcementCookie.increaseCounter(announcementId);
         };
+
+        openLink = (sitePath: string, virtualPath: string) => {
+            var path = this.topWindow.$('#' + sitePath).val();
+            window.open(path + virtualPath, '_blank');
+        };
     }
 }
+
+let OpenLink: Function;
 
 $(document).ready(() => {
     let counter = new PopupAnnouncement.AnnouncementCounter($);
     let currentWindowWidth = window.screen.width;
 
-    if (currentWindowWidth < 768) {
-        const mobileAnnouncement = new PopupAnnouncement.Mobile($, counter, window.top);
-        mobileAnnouncement.init();
-    } else {
-        const announcement = new PopupAnnouncement.Base($, counter, window.top);
-        announcement.init();
-    }
+    const announcement = (currentWindowWidth < 768)
+        ? new PopupAnnouncement.Mobile($, counter, window.top)
+        : new PopupAnnouncement.Base($, counter, window.top);
+
+    announcement.init();
+    OpenLink = announcement.openLink;
 })
