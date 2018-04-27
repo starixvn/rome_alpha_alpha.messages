@@ -2,10 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using Alpha.Messages.Configurations;
     using Alpha.Messages.Models.Constants;
+    using Constants;
     using MediatR;
     using Sunplus.Agent.Model.Entities;
     using ViewModels;
@@ -45,6 +44,7 @@
             TotalMessage = totalMessage;
             CurrentLang = userSession.Language;
             RoleId = userSession.RoleId;
+            LimitedDateToShowInfo = userSession.GetProperty<DateTime>(SessionKey.CustomerDatelimit);
         }
 
         public int CustId { get; }
@@ -66,6 +66,8 @@
         public string CurrentLang { get; }
 
         public byte RoleId { get; }
+
+        public DateTime LimitedDateToShowInfo { get; }
 
         private Dictionary<byte, string> InitiateParentSitesByLevel()
         {

@@ -1,4 +1,5 @@
-﻿namespace Alpha.Messages.Tests.Services
+﻿using NUnit.Framework;
+namespace Alpha.Messages.Tests.Services
 {
     using System;
     using System.Linq;
@@ -288,7 +289,7 @@
         }
 
         [Test]
-        public void GetMessages_CustIdIsInvalidAndParentSitesIsNullOrEmpty_ReturnEmpty()
+        public void GetMessagesHistory_CustIdIsInvalidAndParentSitesIsNullOrEmpty_ReturnEmpty()
         {
             // Arrange
             var messages = messageService.GetMessagesHistory(
@@ -298,6 +299,7 @@
                 1,
                 DateTime.Today,
                 DateTime.Today,
+                DateTime.MinValue,
                 false,
                 1);
 
@@ -306,7 +308,7 @@
         }
 
         [Test]
-        public void GetMessages_CustIdIsValidAndParentSitesIsNotNullorEmpty_ReturnMessages()
+        public void GetMessagesHistory_CustIdIsValidAndParentSitesIsNotNullorEmpty_ReturnMessages()
         {
             // Arrange
             var messages = FakeDataHelper.CreateMany<Message>();
@@ -321,6 +323,7 @@
                 1,
                 DateTime.Today,
                 DateTime.Today,
+                DateTime.MinValue,
                 false,
                 1);
 
@@ -328,5 +331,26 @@
             Assert.AreEqual(messages, actualMessages);
         }
 
+        [Test]
+        public void GetMessagesHistory_UserIsInLimitedDateRange_UseLimitedDate()
+        {
+            //// Arrange
+            var privateMesssageType = 0;
+            var limitedDate = DateTime.Today.AddDays(1);
+
+            //// Act
+            messageService.GetMessagesHistory(CustId.ValidId,
+                "1",
+                1,
+                1,
+                DateTime.Today,
+                DateTime.Today,
+                limitedDate,
+                false,
+                privateMesssageType);
+
+            //// Assert
+            messageDataAccess.Received().GetMessagesHistory(Arg.Is<GetMessageCriteria>(i => i.StartDate == limitedDate));
+        }        
     }
 }
