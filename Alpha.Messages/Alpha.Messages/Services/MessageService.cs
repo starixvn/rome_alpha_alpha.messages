@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Configurations;
+    using Constants;
     using Criteria.Message;
     using DataAccesses;
     using Fanex.Caching;
@@ -30,6 +31,7 @@
             int totalMessage,
             DateTime startDate,
             DateTime endDate,
+            DateTime limitedDate,
             bool isTest,
             int messageType);
     }
@@ -106,15 +108,18 @@
             int totalMessage,
             DateTime startDate,
             DateTime endDate,
+            DateTime limitedDate,
             bool isTest,
             int messageType)
         {
+            var fromDate = messageType == MessageType.Private && startDate < limitedDate ? limitedDate : startDate;
+
             var criteria = new GetMessageCriteria(
                 custId,
                 parentSites,
                 specialType,
                 totalMessage,
-                startDate,
+                fromDate,
                 endDate,
                 isTest,
                 messageType);

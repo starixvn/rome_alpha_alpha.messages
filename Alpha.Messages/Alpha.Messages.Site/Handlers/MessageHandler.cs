@@ -57,6 +57,7 @@
                                 message.TotalMessage,
                                 message.StartDate,
                                 message.EndDate,
+                                message.LimitedDateToShowInfo,
                                 message.IsTest,
                                 message.MessageType);
 

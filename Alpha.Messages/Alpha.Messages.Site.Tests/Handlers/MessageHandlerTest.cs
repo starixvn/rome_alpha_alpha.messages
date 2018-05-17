@@ -39,6 +39,7 @@
             userSession.Language.Returns(Language.English);
             userSession.CustId.Returns(263);
             userSession.RoleId.Returns(RoleId.Agent);
+            userSession.GetProperty<DateTime>(SessionKey.CustomerDatelimit).Returns(DateTime.MinValue);
             fixture = new Fixture();
         }
 
@@ -150,6 +151,7 @@
                     Arg.Is<int>(tm => tm == query.TotalMessage),
                     Arg.Is<DateTime>(st => st == query.StartDate),
                     Arg.Is<DateTime>(ed => ed == query.EndDate),
+                    Arg.Is<DateTime>(ed => ed == query.LimitedDateToShowInfo),
                     Arg.Is<bool>(it => it == query.IsTest),
                     Arg.Is<int>(mt => mt == query.MessageType));
         }
@@ -193,6 +195,7 @@
                         Arg.Any<string>(),
                         Arg.Any<int>(),
                         Arg.Any<int>(),
+                        Arg.Any<DateTime>(),
                         Arg.Any<DateTime>(),
                         Arg.Any<DateTime>(),
                         Arg.Any<bool>(),
