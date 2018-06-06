@@ -7,6 +7,7 @@
     <Setting Key="Dot_Msg_SetUsrMessage" SpName="Dot_Msg_SetUsrMessage" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
     </Setting>
 
+    <Setting Key="Dot_Msg_GetPriMsgCount" SpName="Dot_Msg_GetPriMsgCount" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0" />
     <Setting Key="Dot_Msg_GetTopPriMessage24" SpName="Dot_Msg_GetTopPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
@@ -41,7 +42,9 @@
     </Setting>
     <Setting Key="Dot_Msg_HasPriMessage24" SpName="Dot_Msg_HasPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0" />
     <Setting Key="Dot_Msg_SetPriMsgRead" SpName="Dot_Msg_SetPriMsgRead" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0" />
+
   </Function>
+
   <Function Name="MessageHistory">
     <Setting Key="Dot_Msg_GetPublicMessage" SpName="Dot_Msg_GetPublicMessage" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
     </Setting>
@@ -66,9 +69,6 @@
       <Mapping DataField="MsgType" ObjectProperty="Type" />
       <Mapping DataField="bettransid" ObjectProperty="BetTransId" />
       <Mapping DataField="isRead" ObjectProperty="IsRead" />
-    </Setting>
-
-    <Setting Key="Age_CustomerUpdMessagesRead" SpName="Age_CustomerUpdMessagesRead" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0">
     </Setting>
   </Function>
 </Functions>
