@@ -6,10 +6,11 @@
     }
 
     registerEvents = () => {
-        this.$('.nav-tabs > li').on('click', () => {
-            this.$.blockUI();
+        var self = this;
+        this.$('.nav-tabs > li').on('click', function () {
+            self.$.blockUI();
+            self.$(this).find('span').val('');
         });
-
         this.$('.btn-submit').on('click', () => {
             this.$.blockUI();
         });
@@ -24,6 +25,7 @@
             format: 'MM/DD/YYYY'
         });
     }
+
 }
 
 $(() => {

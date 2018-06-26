@@ -13,7 +13,9 @@
 
     public interface AnnouncementClient
     {
-        IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request);
+        IEnumerable<Announcement> GetAnnouncementsToday(AnnouncementTodayRequest request);
+
+        IEnumerable<Announcement> GetAnnouncementsHistory(AnnouncementHistoryRequest request);
     }
 
     public class AnnouncementClientImpl : AnnouncementClient
@@ -33,11 +35,27 @@
             };
         }
 
-        public IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request)
+        public IEnumerable<Announcement> GetAnnouncementsToday(AnnouncementTodayRequest request)
         {
             var restRequest = new RestRequest("AnnouncementApi/GetAnnouncements", Method.POST);
             restRequest.AddQueryParameter("environment", request.Environment);
             restRequest.AddQueryParameter("system", request.System);
+            IRestResponse response = restClient.Execute(restRequest);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(
+                    response.Content,
+                    new SpecificationConverter());
+            }
+
+            // write log
+            return Enumerable.Empty<Announcement>();
+        }
+
+        public IEnumerable<Announcement> GetAnnouncementsHistory(AnnouncementHistoryRequest request)
+        {
+            var restRequest = new RestRequest("AnnouncementApi/GetAnnouncementsHistory", Method.POST);            
+            restRequest.AddJsonBody(request);
             IRestResponse response = restClient.Execute(restRequest);
             if (response.StatusCode == HttpStatusCode.OK)
             {

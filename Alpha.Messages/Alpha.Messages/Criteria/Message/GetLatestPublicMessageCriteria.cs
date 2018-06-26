@@ -9,7 +9,6 @@
         {
             MessageType = messageType;
             IsTest = isTest;
-            LatestMessageId = 0;
 
             Site = site;
         }
@@ -51,7 +50,7 @@
         }
 
         [SpParam(SqlParamName = "latestmsgid")]
-        public int LatestMessageId { get; }
+        public int LatestMessageId => 0;
 
         public bool IsTest { get; }
 

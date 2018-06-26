@@ -1,11 +1,11 @@
 ﻿namespace Alpha.Messages.Site.Tests.Requests
 {
     using System.Linq;
-    using Alpha.Messages.Models.Announcement;
     using Alpha.Messages.Services;
-    using Alpha.Messages.Site.Requests;
+    using Models.Product;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Requests.Announcement;
     using Sunplus.Agent.Model.Entities;
 
     public class SpecificationParameterTests

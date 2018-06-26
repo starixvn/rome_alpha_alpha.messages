@@ -25,7 +25,7 @@
             client = new AnnouncementClientImpl(restClient);
         }
 
-        [Test]        
+        [Test]
         public void AnnouncementClientImpl_Always_NoThrowException()
         {
             //// Arrange
@@ -33,44 +33,44 @@
             {
                 ["Announcement:ApiUrl"] = "http://ha.nexdev.net:7426/Local01/api/"
             };
-            
+
             //// Act && Assert
             Assert.DoesNotThrow(() => new AnnouncementClientImpl());
         }
 
         [Test]
-        public void GetAnnouncements_Always_CallApi()
+        public void GetAnnouncementsToday_Always_CallApi()
         {
             //// Arrange
-            var request = new QueryAnnouncementRequest();
+            var request = new AnnouncementTodayRequest("Local", "IBCBet");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse());
 
             //// Act
-            var act = client.GetAnnouncements(request);
+            var act = client.GetAnnouncementsToday(request);
 
             //// Assert
             restClient.Received().Execute(Arg.Any<IRestRequest>());
         }
 
         [Test]
-        public void GetAnnouncements_ApiError_ReturnEmptyList()
+        public void GetAnnouncementsToday_ApiError_ReturnEmptyList()
         {
             //// Arrange
-            var request = new QueryAnnouncementRequest();
+            var request = new AnnouncementTodayRequest("Local", "IBCBet");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse() { StatusCode = HttpStatusCode.BadRequest });
 
             //// Act
-            var act = client.GetAnnouncements(request);
+            var act = client.GetAnnouncementsToday(request);
 
             //// Assert
             Assert.False(act.Any());
         }
 
         [Test]
-        public void GetAnnouncements_ApiOK_NotThrowException()
+        public void GetAnnouncementsToday_ApiOK_NotThrowException()
         {
             //// Arrange
-            var request = new QueryAnnouncementRequest();
+            var request = new AnnouncementTodayRequest("Local", "IBCBet");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(
                 new RestResponse
                 {
@@ -79,7 +79,55 @@
                 });
 
             //// Act
-            var act = client.GetAnnouncements(request);
+            var act = client.GetAnnouncementsToday(request);
+
+            //// Assert
+            Assert.Pass();
+
+        }
+
+        [Test]
+        public void GetAnnouncementsHistory_Always_CallApi()
+        {
+            //// Arrange
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now, "Local", "IBCBet");
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse());
+
+            //// Act
+            var act = client.GetAnnouncementsHistory(request);
+
+            //// Assert
+            restClient.Received().Execute(Arg.Any<IRestRequest>());
+        }
+
+        [Test]
+        public void GetAnnouncementsHistory_ApiError_ReturnEmptyList()
+        {
+            //// Arrange
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "IBCBet");
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse() { StatusCode = HttpStatusCode.BadRequest });
+
+            //// Act
+            var act = client.GetAnnouncementsHistory(request);
+
+            //// Assert
+            Assert.False(act.Any());
+        }
+
+        [Test]
+        public void GetAnnouncementsHistory_ApiOK_NotThrowException()
+        {
+            //// Arrange
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "IBCBet");
+            restClient.Execute(Arg.Any<IRestRequest>()).Returns(
+                new RestResponse
+                {
+                    StatusCode = HttpStatusCode.OK,
+                    Content = FixtureAnnouncementContent.Content
+                });
+
+            //// Act
+            var act = client.GetAnnouncementsHistory(request);
 
             //// Assert
             Assert.Pass();

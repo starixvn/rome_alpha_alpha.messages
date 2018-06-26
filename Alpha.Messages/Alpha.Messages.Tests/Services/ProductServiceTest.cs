@@ -5,8 +5,11 @@
     using System.Linq;
     using Fanex.Data.Repository;
     using Fixtures;
+    using Messages.Criteria;
     using Messages.Criteria.Announcement;
+    using Messages.Criteria.Product;
     using Messages.Models.Announcement;
+    using Messages.Models.Product;
     using Messages.Services;
     using NSubstitute;
     using NUnit.Framework;
@@ -67,6 +70,18 @@
 
             //// Assert
             canViewProduct.Received();
+        }
+
+        [Test]
+        public void GetGetUnconfirmSettingProductIds_Always_AlwaysCallDynamicRepository()
+        {
+            //// Arrange
+
+            //// Act
+            productService.GetUnconfirmSettingProductIds(263);
+
+            //// Assert
+            dynamicRepository.Received().Fetch<int>(Arg.Any<UnsynchronizedSettingCriteria>());
         }
     }
 }

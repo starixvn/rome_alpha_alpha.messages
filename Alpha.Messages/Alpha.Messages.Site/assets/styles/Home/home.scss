@@ -8,12 +8,6 @@ html {
     touch-action: manipulation;
 }
 
-body {
-    background-color: transparent;
-    font-size: $font-size;
-    font-family: $font-family;
-}
-
 .badge-title {
     display: inline-block;
     padding: 2px 4px;
@@ -293,6 +287,11 @@ body {
     }
 }
 
+.visible-mobile {
+    display: none !important;
+}
+
+
 @media only screen and (min-device-width : $screen-device-greater768) {
     body {
         line-height: 30px;
@@ -445,6 +444,10 @@ body {
         overflow: hidden;
     }
 
+    .hidden-mobile {
+        display: none !important;
+    }
+
     .popup-guidelines {
         width: 90% !important;
     }
@@ -578,7 +581,7 @@ body {
         .panel-title {
             display: none;
         }
-    }    
+    }
 }
 
 
@@ -617,8 +620,8 @@ body {
 
 @media only screen and (max-width : 800px) and (max-height : 1128px) {
     .scroll-tabs {
-        height: auto;       
-    }    
+        height: auto;
+    }
 }
 
 @media \0screen\,screen\9 {
@@ -710,7 +713,8 @@ body {
         }
     }
 }
-.highlight-date-format{
+
+.highlight-date-format {
     text-indent: 20px;
     line-height: 15px;
 }

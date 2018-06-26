@@ -1,80 +1,85 @@
 ﻿namespace Alpha.Messages.Models.Message
 {
+    using System;
+    using System.Collections.Generic;
     using Alpha.Messages.Constants;
 
     public class MultiLanguague
     {
+        private readonly Dictionary<string, string> Contents = new Dictionary<string, string>();
+
         public MultiLanguague()
         {
+
         }
 
         public MultiLanguague(
             string contentEN,
             string contentCS,
             string contentCH,
-            string contentJP,
             string contentTH,
+            string contentJP,
             string contentKO,
-            string contentVN)
+            string contentVI)
         {
-            ContentEN = string.IsNullOrEmpty(contentEN) ? string.Empty : contentEN;
-            ContentCS = string.IsNullOrEmpty(contentCS) ? string.Empty : contentCS;
-            ContentCH = string.IsNullOrEmpty(contentCH) ? string.Empty : contentCH;
-            ContentJP = string.IsNullOrEmpty(contentJP) ? string.Empty : contentJP;
-            ContentTH = string.IsNullOrEmpty(contentTH) ? string.Empty : contentTH;
-            ContentKO = string.IsNullOrEmpty(contentKO) ? string.Empty : contentKO;
-            ContentVN = string.IsNullOrEmpty(contentVN) ? string.Empty : contentVN;
+            Contents.Add(Language.English, contentEN ?? string.Empty);
+            Contents.Add(Language.ChineseSimplified, contentCS ?? string.Empty);
+            Contents.Add(Language.ChineseTraditional, contentCH ?? string.Empty);
+            Contents.Add(Language.Japanese, contentJP ?? string.Empty);
+            Contents.Add(Language.Thai, contentTH ?? string.Empty);
+            Contents.Add(Language.Korean, contentKO ?? string.Empty);
+            Contents.Add(Language.Vietnamese, contentVI ?? string.Empty);
         }
 
-        public string ContentEN { get; internal set; }
-
-        public string ContentCS { get; internal set; }
-
-        public string ContentCH { get; internal set; }
-
-        public string ContentJP { get; internal set; }
-
-        public string ContentTH { get; internal set; }
-
-        public string ContentKO { get; internal set; }
-
-        public string ContentVN { get; internal set; }
-
-        public string GetContentByKey(string languageKey)
+        public string ContentEN
         {
-            var content = string.Empty;
-            switch (languageKey)
+            get
             {
-                case Language.Thai:
-                    content = ContentTH;
-                    break;
-
-                case Language.ChineseSimplified:
-                    content = ContentCS;
-                    break;
-
-                case Language.ChineseTraditional:
-                    content = string.IsNullOrEmpty(ContentCH) ? ContentCS : ContentCH;
-                    break;
-
-                case Language.Japanese:
-                    content = ContentJP;
-                    break;
-
-                case Language.Korean:
-                    content = ContentKO;
-                    break;
-
-                case Language.Vietnamese:
-                    content = ContentVN;
-                    break;
-
-                default:
-                    content = ContentEN;
-                    break;
+                return GetContentByKey(Language.English);
             }
 
-            return string.IsNullOrEmpty(content) ? ContentEN : content;
+            internal set { Contents[Language.English] = value; }
+        }
+
+        public string ContentCS
+        {
+            get
+            {
+                return GetContentByKey(Language.ChineseSimplified);
+            }
+
+            internal set { Contents[Language.ChineseSimplified] = value; }
+        }
+
+        public string ContentCH => GetContentByKey(Language.ChineseTraditional);
+
+        public string ContentJP => GetContentByKey(Language.Japanese);
+
+        public string ContentTH => GetContentByKey(Language.Thai);
+
+        public string ContentKO => GetContentByKey(Language.Korean);
+
+        public string ContentVI => GetContentByKey(Language.Vietnamese);
+
+        public string GetContentByKey(string languageKey)
+            => Contents.ContainsKey(languageKey) && !string.IsNullOrEmpty(Contents[languageKey])
+            ? Contents[languageKey]
+            : Contents.ContainsKey(Language.English)
+            ? Contents[Language.English]
+            : string.Empty;
+
+        public void ReplaceBetTransId(string betTransId, bool isBatch)
+        {
+            if (isBatch)
+            {
+                Contents[Language.English] = Contents[Language.English].Replace("@@", betTransId);
+                Contents[Language.ChineseSimplified] = Contents[Language.ChineseSimplified].Replace("@@", betTransId);
+                Contents[Language.ChineseTraditional] = Contents[Language.ChineseTraditional].Replace("@@", betTransId);
+                Contents[Language.Japanese] = Contents[Language.Japanese].Replace("@@", betTransId);
+                Contents[Language.Thai] = Contents[Language.Thai].Replace("@@", betTransId);
+                Contents[Language.Korean] = Contents[Language.Korean].Replace("@@", betTransId);
+                Contents[Language.Vietnamese] = Contents[Language.Vietnamese].Replace("@@", betTransId);
+            }
         }
     }
 }

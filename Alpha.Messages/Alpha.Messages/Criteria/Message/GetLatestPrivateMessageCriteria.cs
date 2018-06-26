@@ -9,13 +9,12 @@
         {
             UserId = userId;
             IsTest = isTest;
-            LatestMessageId = 0;
         }
 
         public int UserId { get; }
 
         [SpParam(SqlParamName = "latestmsgid")]
-        public int LatestMessageId { get; }
+        public int LatestMessageId => 0;
 
         public bool IsTest { get; }
 

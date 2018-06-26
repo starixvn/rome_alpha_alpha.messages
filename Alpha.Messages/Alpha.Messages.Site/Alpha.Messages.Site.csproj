@@ -35,8 +35,9 @@
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Alpha.Messages.Site.Debug.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\SonarQube\Alpha-MessageCSharp.ruleset</CodeAnalysisRuleSet>
     <NoWarn>618</NoWarn>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,8 +49,8 @@
     <CodeAnalysisRuleSet>Alpha.Messages.Site.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2-RenovateAnnouncement-01\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -157,6 +158,10 @@
       <HintPath>..\..\packages\EnterpriseLibrary.Unity.5.0.414.0\lib\net40\Microsoft.Practices.Unity.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ONEbook.UM, Version=2.0.2.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ONEbook.UM.2.0.2.7\lib\net40\ONEbook.UM.dll</HintPath>
       <Private>True</Private>
@@ -246,7 +251,9 @@
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBCUST.CustDB.xml" />
-    <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
@@ -271,13 +278,11 @@
     <Content Include="App_Data\SPNames\SIT\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBCUST.CustDB.xml" />
-    <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
-    <Content Include="assets\bundles\announcements.css" />
-    <Content Include="assets\bundles\announcements.min.css">
-      <DependentUpon>announcements.css</DependentUpon>
-    </Content>
     <Content Include="assets\bundles\default-message.css" />
     <Content Include="assets\bundles\default-message.js" />
     <Content Include="assets\bundles\default-message.min.css">
@@ -285,12 +290,6 @@
     </Content>
     <Content Include="assets\bundles\default-message.min.js">
       <DependentUpon>default-message.js</DependentUpon>
-    </Content>
-    <Content Include="assets\bundles\default.css" />
-    <Content Include="assets\bundles\default.min.css" />
-    <Content Include="assets\bundles\popup-announcement.js" />
-    <Content Include="assets\bundles\popup-announcement.min.js">
-      <DependentUpon>popup-announcement.js</DependentUpon>
     </Content>
     <Content Include="assets\scripts\tests\libs\bootstrap-datetimepicker.js" />
     <Content Include="assets\scripts\tests\libs\bootstrap-modal.js" />
@@ -302,11 +301,17 @@
     <Content Include="assets\scripts\tests\libs\moment.js" />
     <Content Include="assets\scripts\tests\libs\store.js" />
     <Content Include="assets\scripts\tests\libs\tooltip.js" />
-    <Content Include="assets\styles\announcement\announcements.css">
-      <DependentUpon>announcements.scss</DependentUpon>
+    <Content Include="assets\styles\extendMessage.css">
+      <DependentUpon>extendMessage.scss</DependentUpon>
     </Content>
-    <Content Include="assets\styles\announcement\announcements.min.css">
-      <DependentUpon>announcements.css</DependentUpon>
+    <Content Include="assets\styles\extendMessage.min.css">
+      <DependentUpon>extendMessage.css</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\Home\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\Home\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
     </Content>
     <Content Include="assets\styles\Home\Images\flag_sprite.png" />
     <Content Include="assets\styles\Home\Images\icon_close.jpg" />
@@ -329,23 +334,11 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
-    <Content Include="Views\Announcement\PopupAnnouncement.cshtml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
-    <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Alpha.Messages.Site.ruleset" />
-    <Content Include="Views\Announcement\HeaderAnnouncement.cshtml" />
-    <Content Include="Views\BaioAnnouncement\Index.cshtml" />
-    <Content Include="Views\PhaioAnnouncement\Index.cshtml" />
-    <Content Include="Views\Message\HiddenFields.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Message\Messages.cshtml" />
+    <Content Include="Views\MessageHistory\Index.cshtml" />
     <Content Include="assets\styles\message\message.scss" />
     <Content Include="assets\styles\Home\home.scss" />
-    <Content Include="assets\styles\Home\old-main.scss" />
-    <Content Include="assets\styles\Home\page.scss" />
-    <Content Include="assets\styles\Home\pageIElower10.scss" />
-    <Content Include="assets\styles\Home\popup-message.scss" />
-    <Content Include="assets\styles\Home\tooltip.scss" />
     <Content Include="assets\styles\Home\_mixins.scss" />
     <Content Include="assets\styles\Home\_mixins2.scss" />
     <Content Include="assets\styles\Home\_variables.scss" />
@@ -362,15 +355,13 @@
     <Content Include="typings\globals\toastr\typings.json" />
     <Content Include="assets\scripts\tests\chutzpah.json" />
     <Content Include="typings.json" />
-    <Content Include="Views\Notice\Index.cshtml" />
-    <Content Include="Views\Notice\NoticeMessages.cshtml" />
-    <Content Include="assets\styles\announcement\announcements.scss" />
+    <Content Include="Views\PortalMessage\Index.cshtml" />
+    <Content Include="Views\PortalMessage\Messages.cshtml" />
+    <Content Include="Views\MessageHistory\HiddenFields.cshtml" />
+    <Content Include="Views\Announcement\Index.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
-    <Content Include="Views\Announcement\Template\Flash\testing.swf" />
-    <Content Include="Views\Announcement\Template\Testing.html" />
-    <Content Include="Views\Announcement\Template\Testing.css" />
     <Content Include="Web.AppSettings.backupMNL.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
@@ -380,7 +371,7 @@
     <Content Include="Web.AppSettings.backupMNL3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.backupMNL4.config">
+    <Content Include="Web.AppSettings.backupMNL4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.backupMNLExNap.config">
@@ -392,7 +383,7 @@
     <Content Include="Web.AppSettings.backupMNLExNap3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.backupMNLExNap4.config">
+    <Content Include="Web.AppSettings.backupMNLExNap4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.backupMNLNap.config">
@@ -404,7 +395,7 @@
     <Content Include="Web.AppSettings.backupMNLNap3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.backupMNLNap4.config">
+    <Content Include="Web.AppSettings.backupMNLNap4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.napexternal.config">
@@ -416,7 +407,7 @@
     <Content Include="Web.AppSettings.napexternal3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.napexternal4.config">
+    <Content Include="Web.AppSettings.napexternal4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.napinternal.config">
@@ -428,7 +419,7 @@
     <Content Include="Web.AppSettings.napinternal3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.napinternal4.config">
+    <Content Include="Web.AppSettings.napinternal4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.pro.config">
@@ -440,7 +431,7 @@
     <Content Include="Web.AppSettings.pro3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.pro4.config">
+    <Content Include="Web.AppSettings.pro4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.staging.config">
@@ -452,7 +443,7 @@
     <Content Include="Web.AppSettings.staging3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.staging4.config">
+    <Content Include="Web.AppSettings.staging4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.stagingnap.config">
@@ -464,7 +455,7 @@
     <Content Include="Web.AppSettings.stagingnap3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.stagingnap4.config">
+    <Content Include="Web.AppSettings.stagingnap4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.stagingext.config">
@@ -476,7 +467,7 @@
     <Content Include="Web.AppSettings.stagingext3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.stagingext4.config">
+    <Content Include="Web.AppSettings.stagingext4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.sit.config">
@@ -488,7 +479,7 @@
     <Content Include="Web.AppSettings.sit3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.sit4.config">
+    <Content Include="Web.AppSettings.sit4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.uat.config">
@@ -500,7 +491,7 @@
     <Content Include="Web.AppSettings.uat3.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-	<Content Include="Web.AppSettings.uat4.config">
+    <Content Include="Web.AppSettings.uat4.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.backupMNL.config">
@@ -512,7 +503,7 @@
     <Content Include="Web.backupMNL3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.backupMNL4.config">
+    <Content Include="Web.backupMNL4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.backupMNLExNap.config">
@@ -524,7 +515,7 @@
     <Content Include="Web.backupMNLExNap3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.backupMNLExNap4.config">
+    <Content Include="Web.backupMNLExNap4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.backupMNLNap.config">
@@ -536,7 +527,7 @@
     <Content Include="Web.backupMNLNap3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.backupMNLNap4.config">
+    <Content Include="Web.backupMNLNap4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.local.config">
@@ -551,39 +542,40 @@
     <Compile Include="App_Start\RouteConfig.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
+    <Compile Include="Controllers\NewMessageController.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
-    <Compile Include="Controllers\PhaioAnnouncementController.cs" />
-    <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="Controllers\BaioAnnouncementController.cs" />
-    <Compile Include="Controllers\NoticeController.cs" />
+    <Compile Include="Controllers\PortalMessageController.cs" />
+    <Compile Include="Controllers\MarqueeMessageController.cs" />
+    <Compile Include="Controllers\MessageHistoryController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />
     <Compile Include="Global.asax.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\NewMessageHandler.cs" />
     <Compile Include="Handlers\AnnouncementHandler.cs" />
-    <Compile Include="Handlers\MessageHandler.cs" />
-    <Compile Include="Handlers\NoticeHandler.cs" />
+    <Compile Include="Handlers\MarqueeMessageHandler.cs" />
+    <Compile Include="Handlers\MessageHistoryHandler.cs" />
+    <Compile Include="Handlers\PortalMessageHandler.cs" />
     <Compile Include="Helpers\QueryEntityModelBinder.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\Announcement\HeaderAnnouncementQuery.cs" />
-    <Compile Include="Requests\Message\LatestMessageQuery.cs" />
-    <Compile Include="Requests\Message\MessageQuery.cs" />
-    <Compile Include="Requests\Message\UpdatePrivateMessageAsReadQuery.cs" />
-    <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
+    <Compile Include="Requests\Announcement\AnnouncementsHistoryQuery.cs" />
+    <Compile Include="Requests\NewMessage\NumberOfNewMessageQuery.cs" />
+    <Compile Include="Requests\MarqueeMessage\MarqueeMessageQuery.cs" />
+    <Compile Include="Requests\MessageHistory\MessageHistoryQuery.cs" />
     <Compile Include="Requests\Announcement\SpecificationParameter.cs" />
-    <Compile Include="Requests\Notice\MarkMessageAsReadQuery.cs" />
-    <Compile Include="Requests\Notice\NoticeQuery.cs" />
-    <Compile Include="ViewModels\HotAnnouncementViewModel.cs" />
-    <Compile Include="ViewModels\LatestMessageViewModel.cs" />
+    <Compile Include="Requests\PortalMessage\MarkMessageAsReadQuery.cs" />
+    <Compile Include="Requests\PortalMessage\PortalMessageQuery.cs" />
+    <Compile Include="ViewModels\AnnouncementHistoryViewModel.cs" />
+    <Compile Include="ViewModels\MarqueeMessageViewModel.cs" />
+    <Compile Include="ViewModels\MessageBase.cs" />
     <Compile Include="ViewModels\MessageLevel.cs" />
-    <Compile Include="ViewModels\MessagesViewModel.cs" />
-    <Compile Include="ViewModels\MessageWrapper.cs" />
-    <Compile Include="ViewModels\Notice\NoticeMessagesViewModel.cs" />
-    <Compile Include="ViewModels\Notice\NoticeMessageWrapper.cs" />
-    <Compile Include="ViewModels\Notice\NoticeViewModel.cs" />
+    <Compile Include="ViewModels\MessagesHistoryViewModel.cs" />
+    <Compile Include="ViewModels\MessageHistoryWrapper.cs" />
+    <Compile Include="ViewModels\PortalMessage\PortalMessagesViewModel.cs" />
+    <Compile Include="ViewModels\PortalMessage\PortalMessageWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -594,7 +586,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="App_Data\AuthorizationSection.config" />
-    <Content Include="assets\styles\site.scss" />
+    <Content Include="assets\styles\extendMessage.scss" />
     <Content Include="assets\styles\_variables.scss" />
     <Content Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
@@ -617,7 +609,7 @@
     <Content Include="Web.napexternal3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.napexternal4.config">
+    <Content Include="Web.napexternal4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.napinternal.config">
@@ -629,7 +621,7 @@
     <Content Include="Web.napinternal3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.napinternal4.config">
+    <Content Include="Web.napinternal4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.pro.config">
@@ -644,7 +636,7 @@
     <Content Include="Web.staging3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.staging4.config">
+    <Content Include="Web.staging4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
@@ -656,7 +648,7 @@
     <Content Include="Web.pro3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.pro4.config">
+    <Content Include="Web.pro4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.sit.config">
@@ -668,7 +660,7 @@
     <Content Include="Web.sit3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.sit4.config">
+    <Content Include="Web.sit4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.uat.config">
@@ -677,12 +669,12 @@
     <Content Include="Web.uat3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-	<Content Include="Web.uat4.config">
+    <Content Include="Web.uat4.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Home\" />
+    <Folder Include="Controllers\StaticMessage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alpha.Messages.Client\Alpha.Messages.Client.csproj">
@@ -704,9 +696,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="assets\scripts\announcement\annoucement-counter.ts" />
-    <TypeScriptCompile Include="assets\scripts\announcement\popup-announcement-mobile.ts" />
-    <TypeScriptCompile Include="assets\scripts\announcement\popup-announcement.ts" />
     <TypeScriptCompile Include="assets\scripts\message\index.ts" />
     <TypeScriptCompile Include="assets\scripts\tests\app\message\message-tests.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

@@ -1,4 +1,4 @@
-﻿namespace Alpha.Messages.Site.Requests
+﻿namespace Alpha.Messages.Site.Requests.Announcement
 {
     using System.Collections.Generic;
     using System.Linq;

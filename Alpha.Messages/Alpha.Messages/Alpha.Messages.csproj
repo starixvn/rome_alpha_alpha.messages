@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>Alpha.Messages.Debug.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\SonarQube\Alpha-MessageCSharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,8 +34,8 @@
     <CodeAnalysisRuleSet>Alpha.Messages.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2-RenovateAnnouncement-01\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -110,6 +110,10 @@
       <HintPath>..\..\packages\EnterpriseLibrary.Unity.5.0.414.0\lib\net40\Microsoft.Practices.Unity.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ploeh.AutoFixture, Version=3.50.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AutoFixture.3.50.6\lib\net40\Ploeh.AutoFixture.dll</HintPath>
       <Private>True</Private>
@@ -159,50 +163,55 @@
     </Compile>
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Constants\Language.cs" />
+    <Compile Include="Constants\MessageConstants.cs" />
+    <Compile Include="Constants\DataBaseMessageType.cs" />
     <Compile Include="Constants\MessageType.cs" />
     <Compile Include="Constants\SessionKey.cs" />
-    <Compile Include="Criteria\Announcement\GetNoticeListIsNoViewedCriteria.cs" />
-    <Compile Include="Criteria\Announcement\GetProductsCriteria.cs" />
-    <Compile Include="Criteria\Announcement\InsertPersonalMessageCriteria.cs" />
-    <Compile Include="Criteria\Announcement\InsertPersonalMessageTargetCriteria.cs" />
-    <Compile Include="Criteria\Message\GetMessageCriteria.cs" />
-    <Compile Include="Criteria\Notice\GetNoticeMessagesCriteria.cs" />
-    <Compile Include="Criteria\Notice\MarkMessageAsReadCriteria.cs" />
-    <Compile Include="Criteria\UnsynchronizedSettingCriteria.cs" />
-    <Compile Include="Criteria\Message\CountPrivateMessageCriteria.cs" />
+    <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
+    <Compile Include="Criteria\Message\MarkMessageAsReadCommand.cs" />
+    <Compile Include="Criteria\NewMessage\GetUnreadMessagesOnUserCriteria.cs" />
+    <Compile Include="Criteria\Product\GetProductsCriteria.cs" />
+    <Compile Include="Criteria\NewMessage\InsertPersonalMessageCriteria.cs" />
+    <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteria.cs" />
+    <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteria.cs" />
+    <Compile Include="Criteria\Announcement\UpdateLasteSeenAnnouncementCriteria.cs" />
+    <Compile Include="Criteria\Message\GetUnreadMessageCriteria.cs" />
+    <Compile Include="Criteria\Message\GetPortalMessagesCriteria.cs" />
+    <Compile Include="Criteria\Product\UnsynchronizedSettingCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetMoveBetInformationCriteria.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteria.cs" />
-    <Compile Include="Criteria\Message\UpdatePrivateMessageAsReadCriteria.cs" />
     <Compile Include="DataAccesses\MessageDataAccess.cs" />
-    <Compile Include="Models\Message\GeneralLatestMessage.cs" />
+    <Compile Include="Models\Announcement\LastSeenAnnouncement.cs" />
+    <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />
-    <Compile Include="Models\Message\LatestMessage.cs" />
-    <Compile Include="Models\Message\Message.cs" />
+    <Compile Include="Models\Message\MarqueeMessage.cs" />
+    <Compile Include="Models\Message\MessageHistory.cs" />
     <Compile Include="Models\Message\MoveBetsMessage.cs" />
     <Compile Include="Models\Message\MultiLanguague.cs" />
     <Compile Include="Models\Announcement\ResourceManager.cs" />
-    <Compile Include="Criteria\Announcement\UpdateViewStatus.cs" />
+    <Compile Include="Criteria\NewMessage\UpdateMessageAsReadOnUserCritria.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Constants\UserLevel.cs" />
-    <Compile Include="Models\Announcement\HotAnnouncement.cs" />
-    <Compile Include="Models\Announcement\Product.cs" />
-    <Compile Include="Models\Notice\NoticeMessage.cs" />
-    <Compile Include="Params\Announcement\GetHotAnnouncementsParams.cs" />
-    <Compile Include="Params\Message\UpdatePrivateMessageAsReadParam.cs" />
+    <Compile Include="Models\Announcement\AlphaAnnouncement.cs" />
+    <Compile Include="Models\Product\Product.cs" />
+    <Compile Include="Models\Message\NumberOfUnreadMessage.cs" />
+    <Compile Include="Models\Message\PortalMessage.cs" />
+    <Compile Include="Params\Announcement\AnnouncementsHistoryParams.cs" />
+    <Compile Include="Params\Announcement\NumberOfNewAnnouncementsParams.cs" />
+    <Compile Include="Params\Announcement\BaseAnnouncementsParams.cs" />
+    <Compile Include="Params\MessageHistoryParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatService.cs" />
-    <Compile Include="Services\AnnouncementFromApiService.cs" />
-    <Compile Include="Services\AnnouncementFromDatabaseService.cs" />
     <Compile Include="Services\AnnouncementService.cs" />
-    <Compile Include="Services\MessageService.cs" />
-    <Compile Include="Services\NoticeService.cs" />
+    <Compile Include="Services\MarqueeMessageService.cs" />
+    <Compile Include="Services\MessageHistoryService.cs" />
+    <Compile Include="Services\NewMessageService.cs" />
+    <Compile Include="Services\PortalMessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Alpha.Messages.Debug.ruleset" />
-    <None Include="Alpha.Messages.ruleset" />
     <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

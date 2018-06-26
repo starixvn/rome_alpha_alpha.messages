@@ -2,14 +2,15 @@
 <Functions>
   <Function Name="Notification During Move-bet Process">
     <Setting Key="Age_MoveBetsProcessNotification" SpName="Acc_ShowNotificationWhenProcessingData" DbName="DBTXN.bodb02.BODBDownlineNetView" Plain="0">
-      <Mapping DataField="Content_EN" ObjectProperty="ContentEn" />
-      <Mapping DataField="Content_CS" ObjectProperty="ContentCs" />
-      <Mapping DataField="Content_CH" ObjectProperty="ContentCh" />
-      <Mapping DataField="Content_JP" ObjectProperty="ContentJp" />
-      <Mapping DataField="Content_TH" ObjectProperty="ContentTh" />
-      <Mapping DataField="Content_KO" ObjectProperty="ContentKo" />
-      <Mapping DataField="Content_VI" ObjectProperty="ContentVn" />
-      <Mapping DataField="MBBUEndTime" ObjectProperty="MoveBetEndTime" />
+      <Mapping DataField="Content_EN" ObjectProperty="contentEN" />
+      <Mapping DataField="Content_CS" ObjectProperty="contentCS" />
+      <Mapping DataField="Content_CH" ObjectProperty="contentCH" />
+      <Mapping DataField="Content_CN" ObjectProperty="contentCN" />
+      <Mapping DataField="Content_JP" ObjectProperty="contentJP" />
+      <Mapping DataField="Content_TH" ObjectProperty="contentTH" />
+      <Mapping DataField="Content_KO" ObjectProperty="contentKO" />
+      <Mapping DataField="Content_VI" ObjectProperty="contentVI" />
+      <Mapping DataField="MBBUEndTime" ObjectProperty="moveBetEndTime" />
     </Setting>
   </Function>
 </Functions>

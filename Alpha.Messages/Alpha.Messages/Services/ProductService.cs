@@ -3,14 +3,15 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Criteria.Announcement;
+    using Criteria.Product;
     using Fanex.Caching;
     using Fanex.Data.Repository;
-    using Models.Announcement;
+    using Models.Product;
 
     public interface ProductService
     {
         IEnumerable<Product> GetOfferedProductsByCustomer(int custId);
+        IEnumerable<int> GetUnconfirmSettingProductIds(int custId);
     }
 
     public class ProductServiceImpl: ProductService
@@ -26,6 +27,9 @@
             this.dynamicRepository = dynamicRepository;
             this.canViewProduct = canViewProduct;
         }
+
+        public IEnumerable<int> GetUnconfirmSettingProductIds(int custId)
+            => dynamicRepository.Fetch<int>(new UnsynchronizedSettingCriteria(custId));
 
         public IEnumerable<Product> GetOfferedProductsByCustomer(int custId)
             => GetAllProducts().Where(product => canViewProduct(product.Id));

@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2-RenovateAnnouncement-01\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -44,6 +44,10 @@
     </Reference>
     <Reference Include="Alpha.Web, Version=1.0.1.3, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.Web.1.0.1.3\lib\net40\Alpha.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Caching.2.1.0\lib\net461\Fanex.Caching.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Common, Version=1.0.404.97, Culture=neutral, processorArchitecture=MSIL">
@@ -95,6 +99,10 @@
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NSubstitute, Version=2.0.3.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NSubstitute.2.0.3\lib\net45\NSubstitute.dll</HintPath>
       <Private>True</Private>
@@ -132,6 +140,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -167,27 +176,31 @@
   <ItemGroup>
     <Compile Include="Constants\CustId.cs" />
     <Compile Include="Constants\RoleId.cs" />
-    <Compile Include="Controllers\MessageControllerTest.cs" />
+    <Compile Include="Controllers\NewMessageControllerTests.cs" />
+    <Compile Include="Controllers\MarqueeMessageControllerTests.cs" />
+    <Compile Include="Controllers\MessageHistoryControllerTests.cs" />
     <Compile Include="Controllers\AnnouncementControllerTest.cs" />
-    <Compile Include="Controllers\BaioAnnouncementControllerTest.cs" />
-    <Compile Include="Controllers\NoticeControllerTests.cs" />
+    <Compile Include="Controllers\PortalMessageControllerTests.cs" />
     <Compile Include="Fixtures\UserSessionFixture.cs" />
+    <Compile Include="Handlers\NewMessageHandlerTests.cs" />
     <Compile Include="Handlers\AnnouncementHandlerTest.cs" />
-    <Compile Include="Handlers\MessageHandlerTest.cs" />
-    <Compile Include="Handlers\NoticeHandlerTests.cs" />
+    <Compile Include="Handlers\MessageHistoryHandlerTest.cs" />
+    <Compile Include="Handlers\PortalMessageHandlerTest.cs" />
+    <Compile Include="Handlers\MarqueeMessageHandlerTest.cs" />
+    <Compile Include="Handlers\PortalMessageHandlerTests.cs" />
     <Compile Include="Helpers\ParametersAmountConstructorQuery.cs" />
     <Compile Include="Helpers\FakeDataHelper.cs" />
     <Compile Include="Helpers\QueryEntityModelBinderTests.cs" />
     <Compile Include="Helpers\UrlHelperTestSetUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\MessageQueryTests.cs" />
-    <Compile Include="Requests\Notice\NoticeQueryTests.cs" />
+    <Compile Include="Requests\MessageHistory\MessageHistoryQueryTests.cs" />
+    <Compile Include="Requests\MarqueeMessage\MarqueeMessageQueryTests.cs" />
     <Compile Include="Requests\SpecificationParameterTests.cs" />
-    <Compile Include="ViewModel\HotAnnouncementViewModelTests.cs" />
-    <Compile Include="ViewModel\MessagesViewModelTests.cs" />
-    <Compile Include="ViewModel\MessageWrapperTests.cs" />
-    <Compile Include="ViewModel\Notice\NoticeMessageWrapperTests.cs" />
-    <Compile Include="ViewModel\Notice\NoticeViewModelTests.cs" />
+    <Compile Include="ViewModel\AnnouncementHistoryViewModelTests.cs" />
+    <Compile Include="ViewModel\MessageHistoryWrapperTests.cs" />
+    <Compile Include="ViewModel\MessagesHistoryViewModelTests.cs" />
+    <Compile Include="ViewModel\PortalMessage\PortalMessageWrapperTests.cs" />
+    <Compile Include="ViewModel\PortalMessage\PortalMessagesViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -208,6 +221,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Requests\Announcement\" />
+    <Folder Include="Requests\NewMessage\" />
+    <Folder Include="Requests\PortalMessage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

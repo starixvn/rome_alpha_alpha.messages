@@ -13,7 +13,7 @@
 
     public interface AnnouncementFormatService
     {
-        IEnumerable<HotAnnouncement> Format(IEnumerable<HotAnnouncement> announcements, GetHotAnnouncementsParams message);
+        IEnumerable<AlphaAnnouncement> Format(IEnumerable<AlphaAnnouncement> announcements, BaseAnnouncementsParams message);
     }
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
@@ -30,17 +30,17 @@
         public AnnouncementFormatServiceImpl()
         {
             // Add Code & proccessed Function to replace
-            ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>
+            ReplacementCode = new Dictionary<string, Func<string, BaseAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>
             {
                 {"2222", ReplaceSiteMain },
                 {"72973", RenderUnsyncedProducts}
             };
         }
-        public Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>> ReplacementCode { get; set; }
+        public Dictionary<string, Func<string, BaseAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>> ReplacementCode { get; set; }
 
-        public IEnumerable<HotAnnouncement> Format(
-            IEnumerable<HotAnnouncement> announcements, 
-            GetHotAnnouncementsParams message)
+        public IEnumerable<AlphaAnnouncement> Format(
+            IEnumerable<AlphaAnnouncement> announcements,
+            BaseAnnouncementsParams message)
         {
             foreach (var announcement in announcements)
             {
@@ -54,15 +54,15 @@
         }
 
         private static string ReplaceSiteMain(
-            string content, 
-            GetHotAnnouncementsParams param, 
+            string content,
+            BaseAnnouncementsParams param, 
             IEnumerable<ISpecification<IParam>> specs)
             => content.Replace(SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
 
         // TODO : Will be remove after resolve unsynced products
         private static string RenderUnsyncedProducts(
-            string content, 
-            GetHotAnnouncementsParams param, 
+            string content,
+            BaseAnnouncementsParams param, 
             IEnumerable<ISpecification<IParam>> specs)
         {
             var unsynchronizedSettingSpecification = (UnsynchronizedSettingSpecification)specs.FirstOrDefault(rule => rule.GetType() == typeof(UnsynchronizedSettingSpecification));
@@ -78,7 +78,7 @@
         // TODO : Will be remove after resolve unsynced products
         private static string BuildProductTag(
             UnsynchronizedSettingSpecification unsynchronizedSettingSpecification,
-            GetHotAnnouncementsParams param)
+            BaseAnnouncementsParams param)
         {
             var url = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}";
 

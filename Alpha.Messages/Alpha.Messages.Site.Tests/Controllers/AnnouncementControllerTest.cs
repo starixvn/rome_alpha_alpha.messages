@@ -1,15 +1,13 @@
 ﻿namespace Alpha.Messages.Site.Tests.Controllers
 {
-    using System.Collections.Specialized;
     using Alpha.Announcements.Models;
-    using Alpha.Messages.Configurations;
     using Alpha.Messages.Site.Controllers;
-    using Alpha.Messages.Site.Requests;
     using Alpha.Messages.Site.Tests.Fixtures;
     using KellermanSoftware.CompareNetObjects;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Requests.Announcement;
 
     public class AnnouncementControllerTest
     {
@@ -25,52 +23,34 @@
             mediator = NSubstitute.Substitute.For<IMediator>();
             specificationParam = Substitute.For<IParam>();
             compareLogic = new CompareLogic();
-            AppSettings.AppSettingValues = new NameValueCollection
-            {
-                ["NoticeTypes"] = "xxx"
-            };
         }
 
         [Test]
-        public void PopupAnnouncement_Always_SetSpecificationToQuery()
+        public void Index_Always_SetSpecificationToQuery()
         {
             //// Arrange
-            var query = new PopupAnnouncementQuery(fixtures.UserSession, false);
+            var query = new AnnouncementsHistoryQuery(fixtures.UserSession);
             var controller = new AnnouncementController(mediator, specificationParam);
 
             //// Act
-            controller.PopupAnnouncement(query);
+            controller.Index(query);
 
             //// Assert
             Assert.True(compareLogic.Compare(specificationParam, query.Specification).AreEqual);
         }
 
         [Test]
-        public void PopupAnnouncement_Always_SendQueryToMediator()
+        public void Index_Always_SendQueryToMediator()
         {
             //// Arrange
-            var query = new PopupAnnouncementQuery(fixtures.UserSession, false);
+            var query = new AnnouncementsHistoryQuery(fixtures.UserSession);
             var controller = new AnnouncementController(mediator, specificationParam);
 
             //// Act
-            controller.PopupAnnouncement(query);
+            controller.Index(query);
 
             //// Assert
             mediator.Received().Send(query);
-        }
-
-        [Test]
-        public void HeaderAnnouncement_Always_SendQueryToMediator()
-        {
-            //// Arrange
-            var query = new HeaderAnnouncementQuery(fixtures.UserSession);
-            var controller = new AnnouncementController(mediator, specificationParam);
-
-            //// Act
-            controller.HeaderAnnouncement(query);
-
-            //// Assert
-            mediator.Received().Send(query);
-        }
+        }        
     }
 }

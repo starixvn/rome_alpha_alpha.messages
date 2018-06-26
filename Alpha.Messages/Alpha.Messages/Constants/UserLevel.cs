@@ -17,14 +17,16 @@
         public const int Master = 3;
         public const int Super = 4;
 
-        public static bool IsMemberLevel(int level) => Member == level;
+        public static bool IsMember(int level) => Member == level;
 
-        public static bool IsAgentLevel(int level) => Agent == level;
+        public static bool IsAgent(int level) => Agent == level;
 
-        public static bool IsMasterLevel(int level) => Master == level;
+        public static bool IsMaster(int level) => Master == level;
 
-        public static bool IsSuperLevel(int level) => Super == level;
+        public static bool IsSuper(int level) => Super == level;
 
+        public static bool IsNotAgent(int level) => !IsAgent(level);
+        
         public static string GetDisplayName(int level) => levels[level];
     }
 }

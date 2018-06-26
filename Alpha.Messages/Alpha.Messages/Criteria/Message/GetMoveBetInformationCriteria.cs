@@ -4,7 +4,12 @@
 
     public class GetMoveBetInformationCriteria : CriteriaBase
     {
-        public int TimeZone { get; set; } = 8;
+        public GetMoveBetInformationCriteria()
+        {
+            TimeZone = 8;
+        }
+
+        public int TimeZone { get; }
 
         public override string GetSettingKey() => "Age_MoveBetsProcessNotification";
 

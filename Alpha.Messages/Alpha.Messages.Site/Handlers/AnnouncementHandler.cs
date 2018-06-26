@@ -1,50 +1,42 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
-    using System.Collections.Generic;
+    using Constants;
     using MediatR;
-    using Models.Announcement;
-    using Requests;
+    using Requests.Announcement;
     using Services;
-    using Sunplus.Agent.Utilities;
     using ViewModels;
 
     public class AnnouncementHandler :
-         IRequestHandler<PopupAnnouncementQuery, HotAnnouncementViewModel>,
-        IRequestHandler<HeaderAnnouncementQuery, IEnumerable<HotAnnouncement>>
+        IRequestHandler<AnnouncementsHistoryQuery, AnnouncementHistoryViewModel>
     {
         private readonly AnnouncementService announcementService;
-        private readonly AnnouncementFromApiService announcementApiService;
         private readonly AnnouncementFormatService formatAnnouncementService;
-
+        private readonly NewMessageService messageService;
         public AnnouncementHandler(
             AnnouncementService announcementService,
             AnnouncementFormatService formatService,
-            AnnouncementFromApiService announcementApiService)
+            NewMessageService messageService)
         {
             this.announcementService = announcementService;
             this.formatAnnouncementService = formatService;
-            this.announcementApiService = announcementApiService;
+            this.messageService = messageService;
         }
-
-        public HotAnnouncementViewModel Handle(PopupAnnouncementQuery message)
+      
+        public AnnouncementHistoryViewModel Handle(AnnouncementsHistoryQuery message)
         {
+            var unreadMessage = messageService.GetNumberOfUnreadMessage(message.CustId);
+
             var parameters = message.ConvertToParameters();
+            var announcements = announcementService.GetAnnouncementsHistory(parameters);
+            var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);            
 
-            var announcements = announcementService.GetPopupAnnouncement(parameters);
-            var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);
-
-            var cookiesId = Encryption.PearsonEncode(message.UserName + message.CustId + message.SubAccId);
-
-            return new HotAnnouncementViewModel(formatedAnnouncements, cookiesId);
-        }
-
-        public IEnumerable<HotAnnouncement> Handle(HeaderAnnouncementQuery message)
-        {
-            var parameters = message.ConvertToParameters();
-
-            var announcements = announcementApiService.GetHeaderAnnouncements(parameters);
-
-            return announcements;
+            return new AnnouncementHistoryViewModel(
+                formatedAnnouncements
+                , parameters.FromDate
+                , parameters.ToDate
+                , MessageType.System
+                , message.RoleId
+                , unreadMessage);
         }
     }
 }

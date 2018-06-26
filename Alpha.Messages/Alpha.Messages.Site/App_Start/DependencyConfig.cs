@@ -12,7 +12,7 @@
     using Fanex.Data.Repository;
     using MediatR;
     using Models.Announcement;
-    using Requests;
+    using Requests.Announcement;
     using Services;
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
@@ -76,11 +76,11 @@
         private static void RegisterServices(Container container)
         {
             container.RegisterSingleton<IUserSession, UserSessionExt>();
-            container.RegisterPerWebRequest<MessageService, MessageServiceImpl>();
-            container.RegisterPerWebRequest<NoticeService, NoticeServiceImpl>();
-            container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
-            container.RegisterSingleton<AnnouncementFromApiService, AnnoucementFromApiServiceImpl>();
-            container.RegisterSingleton<AnnouncementFromDatabaseService, AnnouncementFromDatabaseServiceImpl>();            
+            container.RegisterPerWebRequest<NewMessageService, NewMessageServiceImpl>();
+            container.RegisterPerWebRequest<MessageHistoryService, MessageHistoryServiceImpl>();
+            container.RegisterPerWebRequest<MarqueeMessageService, MarqueeMessageServiceImpl>();
+            container.RegisterPerWebRequest<PortalMessageService, PortalMessageServiceImpl>();
+            container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();            
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
 
             container.Register<ProductService>(
