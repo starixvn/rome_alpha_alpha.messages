@@ -69,7 +69,6 @@
             var custId = 69;
             var parentSites = "1";
             var specialType = 1;
-            var totalMessage = 50;
             var startDate = DateTime.Today;
             var endDate = DateTime.Today;
             var isTest = false;
@@ -79,7 +78,6 @@
                 custId,
                 parentSites,
                 specialType,
-                totalMessage,
                 startDate,
                 endDate,
                 isTest,
@@ -89,7 +87,6 @@
             Assert.IsTrue(custId == criteria.CustId &&
                           parentSites == criteria.ParentSites &&
                           specialType == criteria.Special &&
-                          totalMessage == criteria.TotalMessasge &&
                           startDate == criteria.StartDate &&
                           endDate == criteria.EndDate &&
                           isTest == criteria.IsTest);

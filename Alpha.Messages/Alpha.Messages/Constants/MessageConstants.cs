@@ -22,5 +22,6 @@
 
         public const string ContentFontStartMarkup = "<font color=red>";
         public const string ContentFontEndMarkup = "</font>";
+        public const int DefaultTotalMessageHistory = 50;
     }
 }

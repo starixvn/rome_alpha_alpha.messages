@@ -36,55 +36,7 @@
 
             //// Act && Assert
             Assert.DoesNotThrow(() => new AnnouncementClientImpl());
-        }
-
-        [Test]
-        public void GetAnnouncementsToday_Always_CallApi()
-        {
-            //// Arrange
-            var request = new AnnouncementTodayRequest("Local", "IBCBet");
-            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse());
-
-            //// Act
-            var act = client.GetAnnouncementsToday(request);
-
-            //// Assert
-            restClient.Received().Execute(Arg.Any<IRestRequest>());
-        }
-
-        [Test]
-        public void GetAnnouncementsToday_ApiError_ReturnEmptyList()
-        {
-            //// Arrange
-            var request = new AnnouncementTodayRequest("Local", "IBCBet");
-            restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse() { StatusCode = HttpStatusCode.BadRequest });
-
-            //// Act
-            var act = client.GetAnnouncementsToday(request);
-
-            //// Assert
-            Assert.False(act.Any());
-        }
-
-        [Test]
-        public void GetAnnouncementsToday_ApiOK_NotThrowException()
-        {
-            //// Arrange
-            var request = new AnnouncementTodayRequest("Local", "IBCBet");
-            restClient.Execute(Arg.Any<IRestRequest>()).Returns(
-                new RestResponse
-                {
-                    StatusCode = HttpStatusCode.OK,
-                    Content = FixtureAnnouncementContent.Content
-                });
-
-            //// Act
-            var act = client.GetAnnouncementsToday(request);
-
-            //// Assert
-            Assert.Pass();
-
-        }
+        }        
 
         [Test]
         public void GetAnnouncementsHistory_Always_CallApi()

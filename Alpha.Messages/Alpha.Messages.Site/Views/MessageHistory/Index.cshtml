@@ -1,17 +1,18 @@
-﻿@model MessagesHistoryViewModel
+﻿@using Alpha.Messages.Extensions
+@model MessagesHistoryViewModel
 
 <div role="tabpanel" class="tab-pane active">
 
     @if (Model.MessageType != MessageType.Special)
     {
         <div class="filter">
-            @using (Html.BeginForm("Messages", "MessageHistory", new { messageType = Model.MessageType }))
+            @using (Html.BeginForm("Messages", "MessageHistory", new { messageType = Model.MessageType }, FormMethod.Post, new { id = "report-form" }))
             {
                 <div class="form-group">
                     <label class="txt">@Resources.from</label>
                     <div class="control date">
                         <div class="input-group date" id="fromDateContainer">
-                            <input class="form-control" id="fromDate" name="StartDate" type="text" value=@Model.StartDate />
+                            <input class="form-control" id="FromDate" name="FromDate" type="text" value=@Model.FromDate />
                             <span class="input-group-addon">
                                 <span class="icon-calendar"></span>
                             </span>
@@ -22,7 +23,7 @@
                     <label class="txt">@Resources.to</label>
                     <div class="control date">
                         <div class="input-group date" id="toDateContainer">
-                            <input class="form-control" id="toDate" name="EndDate" type="text" value=@Model.EndDate />
+                            <input class="form-control" id="ToDate" name="ToDate" type="text" value=@Model.ToDate />
                             <span class="input-group-addon">
                                 <span class="icon-calendar"></span>
                             </span>
@@ -56,12 +57,12 @@
                     <td class="col-order">@(message.index + 1)</td>
                     <td>
                         <div class="row-first">
-                        @message.value.CurrentMessage.PostTime
-                        <span class="messageId">@message.value.CurrentMessage.Id</span>
+                            @message.value.CurrentMessage.PostTime
+                            <span class="messageId">@message.value.CurrentMessage.Id</span>
                             @if (message.value.IsNewMessage)
                             {
-                                <span class="badge-title">New</span>
-                            } 
+                                <span class="badge-title">@Resources.New</span>
+                            }
                         </div>
                         <div class="message-content @(message.value.HasRedColor ? "text-red" : string.Empty)">@Html.Raw(message.value.Content)</div>
                     </td>
@@ -71,3 +72,7 @@
     </table>
 </div>
 @Html.Partial("HiddenFields", Model)
+
+@section Scripts{
+    @StaticResources.RenderScripts("~/assets/bundles/message")
+}

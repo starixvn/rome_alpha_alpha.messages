@@ -15,7 +15,7 @@ namespace Alpha.Messages.Tests.Criteria.Announcement
         {
             //// Arrange
             var custId = 123;
-            var criteria = new GetLastSeenAnnouncementCriteria(custId);
+            var criteria = new GetLastSeenAnnouncementCriteria(custId, 0);
 
             //// Act
             var act = criteria.CustId;
@@ -29,7 +29,7 @@ namespace Alpha.Messages.Tests.Criteria.Announcement
         {
             //// Arrange
             var key = "Age_MsgCustReadStatus_Sel";
-            var criteria = new GetLastSeenAnnouncementCriteria(123);
+            var criteria = new GetLastSeenAnnouncementCriteria(123, 0);
 
             //// Act
             var act = criteria.GetSettingKey();
@@ -42,7 +42,7 @@ namespace Alpha.Messages.Tests.Criteria.Announcement
         public void IsValid_CustIdIsZero_ReturnFalse()
         {
             //// Arrange
-            var criteria = new GetLastSeenAnnouncementCriteria(0);
+            var criteria = new GetLastSeenAnnouncementCriteria(0, 0);
 
             //// Act
             var act = criteria.IsValid();
@@ -55,7 +55,7 @@ namespace Alpha.Messages.Tests.Criteria.Announcement
         public void IsValid_CustIdIsMoreThanZero_ReturnTrue()
         {
             //// Arrange
-            var criteria = new GetLastSeenAnnouncementCriteria(1000);
+            var criteria = new GetLastSeenAnnouncementCriteria(1000, 0);
 
             //// Act
             var act = criteria.IsValid();

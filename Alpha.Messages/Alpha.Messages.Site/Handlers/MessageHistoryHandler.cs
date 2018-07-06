@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using MediatR;
+    using Models.Message;
     using Params;
+    using Params.Announcement;
     using Requests.MessageHistory;
     using Services;
     using ViewModels;
@@ -25,24 +27,14 @@
 
         public MessagesHistoryViewModel Handle(MessageHistoryQuery message)
         {
-            var lastSeenMessage = announcementService.GetLastSeenAnnouncement(message.CustId);
-            var messageParams = new MessageHistoryParams(
-                    message.UserId,                    
-                    message.CustId,
-                    message.IsAdminUser,
-                    message.ParentSites,
-                    message.SpecialType,
-                    message.TotalMessage,
-                    message.StartDate,
-                    message.EndDate,
-                    message.LimitedDateToShowInfo,
-                    message.IsTest,
-                    message.MessageType);
+            var lastSeenMessage = announcementService.GetLastSeenAnnouncement(message.CustId, message.SubAccId);
+            var lastSeenDate = lastSeenMessage.GetLastSeenByType(message.MessageType);
+            var messageParams = message.ConvertToMessageParameters();
             var messages = messageService.GetMessagesHistory(messageParams);
+            var messageWrappers = new List<MessageHistoryWrapper>(messages.Select(m => new MessageHistoryWrapper(m, lastSeenDate, message.Language)));
 
-            var messageWrappers = new List<MessageHistoryWrapper>(messages.Select(m => new MessageHistoryWrapper(m, lastSeenMessage, message.CurrentLang)));
-            var numberOfUnreadMessage = newMessageService.GetNumberOfUnreadMessage(message.CustId);
-            
+            var numberOfUnreadMessage = newMessageService.GetNumberOfUnreadMessage(message.ConvertToBaseAnnouncementParameters());
+
             return new MessagesHistoryViewModel(
                 messageWrappers,
                 messageParams.StartDate,

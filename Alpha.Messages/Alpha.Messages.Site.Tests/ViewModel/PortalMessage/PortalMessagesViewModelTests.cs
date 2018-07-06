@@ -5,7 +5,7 @@
     using System.Linq;
     using Helpers;
     using NUnit.Framework;
-    using Site.ViewModels.PortalMessage;
+    using Site.ViewModels;
 
     [TestFixture]
     public class PortalMessagesViewModelTests

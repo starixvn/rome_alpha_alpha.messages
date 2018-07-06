@@ -32,7 +32,7 @@
 
             messageDataAccess = new MessageDataAccessImpl();
         }
-       
+
         [Test]
         public void GetMessages_EmptyDataReturnFromDb_ReturnsDefaultData()
         {
@@ -41,7 +41,7 @@
             var dataReader = dataTable.CreateDataReader();
             objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
             var expectedData = new List<MessageHistory>();
-            var criteria = new GetMessagesHistoryCriteria(1, "1", 0, 0, DateTime.Now, DateTime.Now, true, MessageType.Personal);
+            var criteria = new GetMessagesHistoryCriteria(1, "1", 0, DateTime.Now, DateTime.Now, true, MessageType.Personal);
 
             // Act
             var actualData = messageDataAccess.GetMessagesHistory(criteria);
@@ -87,7 +87,7 @@
                     "agent01",
                     0)
             };
-            var criteria = new GetMessagesHistoryCriteria(1, "1", 0, 0, DateTime.Now, DateTime.Now, true, MessageType.Personal);
+            var criteria = new GetMessagesHistoryCriteria(1, "1", 0, DateTime.Now, DateTime.Now, true, MessageType.Personal);
 
             // Act
             var actualData = messageDataAccess.GetMessagesHistory(criteria);

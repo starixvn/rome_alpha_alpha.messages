@@ -11,6 +11,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using Params;
+    using Params.Announcement;
     using Ploeh.AutoFixture;
     using Services;
     using Site.Handlers;
@@ -50,6 +51,7 @@
             // Arrange
             var messages = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(messages);
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(new LastSeenAnnouncement());
 
             var query = new MessageHistoryQuery(
                 userSession,
@@ -67,7 +69,6 @@
                 .GetMessagesHistory(Arg.Is<MessageHistoryParams>(i => i.CustId == query.CustId
                 && i.ParentSites == query.ParentSites
                 && i.SpecialType == query.SpecialType
-                && i.TotalMessage == query.TotalMessage
                 && i.StartDate == query.StartDate
                 && i.EndDate == query.EndDate
                 && i.LimitedDate == query.LimitedDateToShowInfo
@@ -81,13 +82,14 @@
             // Arrange
             var compareLogic = new CompareLogic();
             UrlHelperTestSetUp.SetUp();
+            var now = DateTime.Now;
 
             var messages = FakeDataHelper.CreateMany<MessageHistory>().ToList();
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
+            var lastSeenAnnouncement = new LastSeenAnnouncement(263, now, now, now, now);
             var numberOfUnReadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
-            newMessageService.GetNumberOfUnreadMessage(Arg.Any<int>()).Returns(numberOfUnReadMessage);
+            newMessageService.GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>()).Returns(numberOfUnReadMessage);
             messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(messages);
-            announcementService.GetLastSeenAnnouncement(Arg.Any<int>()).Returns(lastSeenAnnouncement);
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
 
             var query = new MessageHistoryQuery(
                 userSession,
@@ -95,7 +97,7 @@
                 DateTime.Today,
                 DateTime.Today,
                 false);
-            var messageWrappers = new List<MessageHistoryWrapper>(messages.Select(m => new MessageHistoryWrapper(m, lastSeenAnnouncement, query.CurrentLang)));
+            var messageWrappers = new List<MessageHistoryWrapper>(messages.Select(m => new MessageHistoryWrapper(m, now, query.Language)));
 
             var expectedViewModel = new MessagesHistoryViewModel(
                 messageWrappers,

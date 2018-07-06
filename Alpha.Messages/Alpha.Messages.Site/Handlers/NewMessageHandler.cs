@@ -9,13 +9,10 @@
     public class NewMessageHandler :
          IRequestHandler<NumberOfNewMessageQuery, NumberOfUnreadMessage>
     {
-        private readonly AnnouncementService announcementService;
         private readonly NewMessageService messageService;
         public NewMessageHandler(
-            AnnouncementService announcementService,
             NewMessageService messageService)
         {
-            this.announcementService = announcementService;
             this.messageService = messageService;
         }
 
@@ -23,16 +20,11 @@
         {
             messageService.MoveNewMessage(message.CustId, message.UserName, message.RoleId, message.IsAdminUser);
 
-            var parameters = message.ConvertToParameters();
-            var numberOfNewAnnouncements = announcementService.GetNumberOfNewAnnouncements(parameters);
+            var parameters = message.ConvertToBaseAnnouncementParameters();
 
-            var unreadMessage = messageService.GetNumberOfUnreadMessage(message.CustId);
+            var unreadMessage = messageService.GetNumberOfUnreadMessage(parameters);
 
-            return new NumberOfUnreadMessage(
-                unreadMessage.Normal
-                , unreadMessage.Special
-                , numberOfNewAnnouncements
-                , unreadMessage.Personal);
+            return unreadMessage;
         }      
     }
 }

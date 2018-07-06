@@ -6,6 +6,7 @@
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Handlers;
     using Alpha.Messages.Site.Tests.Fixtures;
+    using Messages.Constants;
     using Models.Message;
     using NSubstitute;
     using NUnit.Framework;
@@ -14,7 +15,6 @@
 
     public class NewMessageHandlerTests
     {
-        private AnnouncementService announcementService;
         private NewMessageService messageService;
         private NewMessageHandler handler;
         private UserSessionFixture fixture;
@@ -22,10 +22,10 @@
         [SetUp]
         public void SetUp()
         {
-            announcementService = Substitute.For<AnnouncementService>();
             messageService = Substitute.For<NewMessageService>();
-            handler = new NewMessageHandler(announcementService, messageService);
+            handler = new NewMessageHandler(messageService);
             fixture = new UserSessionFixture();
+            fixture.UserSession.RoleId.Returns(RoleId.Agent);
         }
 
         [Test]
@@ -34,7 +34,7 @@
             //// Arrange
             var query = new NumberOfNewMessageQuery(fixture.UserSession);
             var unreadMessage = fixtureData.Create<NumberOfUnreadMessage>();
-            messageService.GetNumberOfUnreadMessage(Arg.Any<int>()).Returns(unreadMessage);
+            messageService.GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>()).Returns(unreadMessage);
             
 
             //// Act
@@ -42,8 +42,7 @@
 
             //// Assert
             messageService.Received().MoveNewMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<int>(), Arg.Any<bool>());
-            messageService.Received().GetNumberOfUnreadMessage(Arg.Any<int>());
-            announcementService.Received().GetNumberOfNewAnnouncements(Arg.Any<NumberOfNewAnnouncementsParams>());
+            messageService.Received().GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>());            
         }
 
         [Test]
@@ -53,7 +52,7 @@
             var announcements = new List<AlphaAnnouncement>();
             var query = new NumberOfNewMessageQuery(fixture.UserSession);
             var unreadMessage = fixtureData.Create<NumberOfUnreadMessage>();
-            messageService.GetNumberOfUnreadMessage(Arg.Any<int>()).Returns(unreadMessage);
+            messageService.GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>()).Returns(unreadMessage);
 
             //// Act
             var act = handler.Handle(query);

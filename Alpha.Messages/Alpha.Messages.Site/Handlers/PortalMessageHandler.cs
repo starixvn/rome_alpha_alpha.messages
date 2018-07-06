@@ -5,7 +5,7 @@
     using MediatR;
     using Messsages.Site.Requests.PortalMessage;
     using Services;
-    using ViewModels.PortalMessage;
+    using ViewModels;
 
     public class PortalMessageHandler :
         IRequestHandler<PortalMessageQuery, PortalMessagesViewModel>,

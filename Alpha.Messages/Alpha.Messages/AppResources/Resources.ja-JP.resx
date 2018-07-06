@@ -165,4 +165,7 @@
   <data name="more" xml:space="preserve">
     <value>more</value>
   </data>
+  <data name="SystemUpdate" xml:space="preserve">
+    <value>System Update</value>
+  </data>
 </root>

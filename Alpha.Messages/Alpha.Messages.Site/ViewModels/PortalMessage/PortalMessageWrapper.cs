@@ -1,4 +1,4 @@
-﻿namespace Alpha.Messages.Site.ViewModels.PortalMessage
+﻿namespace Alpha.Messages.Site.ViewModels
 {
     using System;
     using Constants;

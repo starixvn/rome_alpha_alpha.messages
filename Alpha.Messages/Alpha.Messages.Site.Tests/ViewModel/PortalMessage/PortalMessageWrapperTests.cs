@@ -5,7 +5,7 @@
     using Messages.Constants;
     using Models.Message;
     using NUnit.Framework;
-    using Site.ViewModels.PortalMessage;
+    using Site.ViewModels;
 
     [TestFixture]
     public class PortalMessageWrapperTests

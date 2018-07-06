@@ -182,27 +182,8 @@
                 false);
 
             // Assert
-            Assert.AreEqual(currentLang, query.CurrentLang);
-        }
-
-        [Test]
-        public void TotalMessage_Always_EqualsValueSetFromCtor()
-        {
-            // Arrange
-            var totalMessage = 69;
-
-            // Act
-            var query = new MessageHistoryQuery(
-                userSession,
-                MessageType.Normal,
-                DateTime.Today,
-                DateTime.Today,
-                false,
-                totalMessage);
-
-            // Assert
-            Assert.AreEqual(totalMessage, query.TotalMessage);
-        }
+            Assert.AreEqual(currentLang, query.Language);
+        }        
 
         [Test]
         public void RoleId_Always_EqualsValueSetFromCtor()
@@ -216,8 +197,7 @@
                 MessageType.Normal,
                 DateTime.Today,
                 DateTime.Today,
-                false,
-                50);
+                false);
 
             // Assert
             Assert.AreEqual(RoleId.Agent, query.RoleId);

@@ -28,7 +28,7 @@
                 numberOfUnreadMessage);
 
             // Assert
-            Assert.AreEqual(startDate, viewModel.StartDate);
+            Assert.AreEqual(startDate, viewModel.FromDate);
         }
 
         [Test]
@@ -49,7 +49,7 @@
                 numberOfUnreadMessage);
 
             // Assert
-            Assert.AreEqual(endDate, viewModel.EndDate);
+            Assert.AreEqual(endDate, viewModel.ToDate);
         }
 
         [Test]

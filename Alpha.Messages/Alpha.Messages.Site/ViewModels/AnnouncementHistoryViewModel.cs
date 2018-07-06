@@ -13,19 +13,18 @@
             DateTime toDate,
             int messageType,
             byte roleId,
-            NumberOfUnreadMessage unreadMessage) : base(messageType, roleId, unreadMessage)
+            NumberOfUnreadMessage unreadMessage) : base(messageType, roleId, fromDate, toDate, unreadMessage)
         {
             Announcements = announcements;
-            FromDate = fromDate;
-            ToDate = toDate;
             MessageType = Constants.MessageType.System;
         }
 
         public IEnumerable<AlphaAnnouncement> Announcements { get; }
 
-        public DateTime FromDate { get; }
+        public DateTime MinDate => DateTime.MinValue;
 
-        public DateTime ToDate { get; }
+        public DateTime MaxDate => DateTime.Now;
 
+        public DateTime CurrentDate => DateTime.Now;
     }
 }

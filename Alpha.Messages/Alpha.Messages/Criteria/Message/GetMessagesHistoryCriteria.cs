@@ -21,7 +21,6 @@
             int custId,
             string parentSites,
             int specialType,
-            int totalMessage,
             DateTime startDate,
             DateTime endDate,
             bool isTest,
@@ -31,7 +30,7 @@
             CustId = custId;
             ParentSites = parentSites;
             Special = specialType;
-            TotalMessasge = totalMessage;
+            TotalMessasge = MessageConstants.DefaultTotalMessageHistory;
             StartDate = startDate;
             EndDate = endDate;
             IsTest = isTest;

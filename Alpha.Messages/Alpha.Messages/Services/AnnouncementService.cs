@@ -11,7 +11,6 @@
     using Configurations;
     using Constants;
     using Criteria.Announcement;
-    using Criteria.Message;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Models.Announcement;
@@ -19,10 +18,10 @@
 
     public interface AnnouncementService
     {
-        int GetNumberOfNewAnnouncements(NumberOfNewAnnouncementsParams announcementParams);
-        void UpdateLastSeenAnnouncement(int userId, int custId, int messageType, bool isAdminUser);
+        int GetNumberOfNewAnnouncements(BaseAnnouncementsParams announcementParams);
+        void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId);
         IEnumerable<AlphaAnnouncement> GetAnnouncementsHistory(AnnouncementsHistoryParams announcementParams);
-        LastSeenAnnouncement GetLastSeenAnnouncement(int custId);
+        LastSeenAnnouncement GetLastSeenAnnouncement(int custId, int subAccId);
     }
 
     public class AnnouncementServiceImpl : AnnouncementService
@@ -55,43 +54,41 @@
 
         public Dictionary<string, Func<Announcement, int, bool>> DoubleCheckActivedAnnouncements { get; set; }
 
-        public void UpdateLastSeenAnnouncement(int userId, int custId, int messageType, bool isAdminUser)
+        public void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId)
         {
             if (!isAdminUser)
             {
-                dynamicRepository.Execute(new UpdateLasteSeenAnnouncementCriteria(userId, custId, messageType));
+                dynamicRepository.Execute(new UpdateLasteSeenAnnouncementCriteria(custId, messageType, subAccId));
             }
         }
 
-        public int GetNumberOfNewAnnouncements(NumberOfNewAnnouncementsParams announcementParams)
+        public int GetNumberOfNewAnnouncements(BaseAnnouncementsParams announcementParams)
         {
-            var announcementToday = GetAllAnnouncementsToday(announcementParams.CustId);
-            var lastSeenAnnouncement = GetLastSeenAnnouncement(announcementParams.CustId);
+            var lastSeenAnnouncement = GetLastSeenAnnouncement(announcementParams.CustId, announcementParams.SubAccId);
+            var fromDate = GetAvailableLastSeenDate(DateTime.MinValue, lastSeenAnnouncement.LastSeenSystem);
 
-            var announcements = GetAnnouncementsByUser(announcementToday, announcementParams, lastSeenAnnouncement.LastSeenSystem);
+            var newAnnouncements = GetNewAnnouncements(announcementParams.CustId, fromDate);
+
+            var announcements = GetAnnouncementsByUser(newAnnouncements, announcementParams, lastSeenAnnouncement.LastSeenSystem);
 
             return announcements.Count(i => i.ReleasedDate >= lastSeenAnnouncement.LastSeenSystem);
         }
 
         public IEnumerable<AlphaAnnouncement> GetAnnouncementsHistory(AnnouncementsHistoryParams announcementParams)
         {
-            var lastSeenAnnouncement = GetLastSeenAnnouncement(announcementParams.CustId);
+            var lastSeenAnnouncement = GetLastSeenAnnouncement(announcementParams.CustId, announcementParams.SubAccId);
             announcementParams.FromDate = GetAvailableLastSeenDate(announcementParams.FromDate, lastSeenAnnouncement.LastSeenSystem);
-            var announcementsHistory = announcementClient.GetAnnouncementsHistory(
-                new AnnouncementHistoryRequest(
-                    announcementParams.FromDate,
-                    announcementParams.ToDate,
-                    AppSettings.Environment,
-                    AppSettings.SiteGroup));
+
+            var announcementsHistory = GetAnnouncementsHistory(announcementParams.CustId, announcementParams.FromDate, announcementParams.ToDate);
             var announcements = GetAnnouncementsByUser(announcementsHistory, announcementParams, lastSeenAnnouncement.LastSeenSystem);
 
-            UpdateLastSeenAnnouncement(announcementParams.UserId, announcementParams.CustId, MessageType.System, announcementParams.IsAdminUser);
+            UpdateLastSeenAnnouncement(announcementParams.CustId, MessageType.System, announcementParams.IsAdminUser, announcementParams.SubAccId);
 
             return announcements.OrderByDescending(i => i.ReleasedDate);
         }
 
-        public LastSeenAnnouncement GetLastSeenAnnouncement(int custId)
-            => dynamicRepository.Get<LastSeenAnnouncement>(new GetLastSeenAnnouncementCriteria(custId));
+        public LastSeenAnnouncement GetLastSeenAnnouncement(int custId, int subAccId)
+            => dynamicRepository.Get<LastSeenAnnouncement>(new GetLastSeenAnnouncementCriteria(custId, subAccId));
 
         private static DateTime GetAvailableLastSeenDate(DateTime fromDate, DateTime lastSeenDate)
         {
@@ -116,16 +113,22 @@
             return fromDate;
         }
 
-        private IEnumerable<Announcement> GetAllAnnouncementsToday(int custId)
+        private IEnumerable<Announcement> GetNewAnnouncements(int custId, DateTime fromDate)
         {
-            var request = new AnnouncementTodayRequest(AppSettings.Environment, AppSettings.SiteGroup);
-
-            var allAnnouncementsToday = ConfiguredCacheService.GetOrSet(
-                 $"Alpha.Messages.HotAnnouncement_{AppSettings.SiteGroup}",
-                 () => announcementClient.GetAnnouncementsToday(request)
-                 .OrderBy(i => i.Ordinal)
-                 .ThenBy(i => i.CreatedDate),
+            var newAnnouncements = ConfiguredCacheService.GetOrSet(
+                 $"Alpha.Messages.Announcement_{fromDate}_{AppSettings.SiteGroup}",
+                 () => GetAnnouncementsHistory(custId, fromDate, DateTime.Now),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
+
+            return newAnnouncements;
+        }
+
+        private IEnumerable<Announcement> GetAnnouncementsHistory(int custId, DateTime fromDate, DateTime toDate)
+        {
+            var request = new AnnouncementHistoryRequest(fromDate, toDate, AppSettings.Environment, AppSettings.SiteGroup);
+
+            var allAnnouncementsToday = announcementClient.GetAnnouncementsHistory(request)
+                .OrderBy(i => i.ReleasedDate);
 
             return allAnnouncementsToday.Where(announcement =>
                     !DoubleCheckActivedAnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnouncements[announcement.Code](announcement, custId));

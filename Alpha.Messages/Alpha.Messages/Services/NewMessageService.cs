@@ -2,17 +2,17 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Criteria.Announcement;
     using Criteria.Message;
     using Criteria.NewMessage;
     using Fanex.Data.Repository;
     using Models.Announcement;
     using Models.Constants;
     using Models.Message;
+    using Params.Announcement;
 
     public interface NewMessageService
     {
-        NumberOfUnreadMessage GetNumberOfUnreadMessage(int custId);
+        NumberOfUnreadMessage GetNumberOfUnreadMessage(BaseAnnouncementsParams announcementParams);
 
         void MoveNewMessage(int custId, string custName, int levelId, bool isUserAdmin);
     }
@@ -21,13 +21,16 @@
     {
         private const int FishingWorld = 3;
         private readonly IDynamicRepository dynamicRepository;
+        private readonly AnnouncementService announcementService;
 
         private readonly ResourceManager resourceManager;
         public NewMessageServiceImpl(IDynamicRepository dynamicRepository
-            , ResourceManager resourceManager)
+            , ResourceManager resourceManager
+            , AnnouncementService announcementService)
         {
             this.dynamicRepository = dynamicRepository;
             this.resourceManager = resourceManager;
+            this.announcementService = announcementService;
         }
 
         public void MoveNewMessage(int custId, string custName, int levelId, bool isUserAdmin)
@@ -42,9 +45,24 @@
             }
         }
 
-        public NumberOfUnreadMessage GetNumberOfUnreadMessage(int custId)
-            =>dynamicRepository.Get<NumberOfUnreadMessage>(new GetUnreadMessageCriteria(custId));            
-        
+        public NumberOfUnreadMessage GetNumberOfUnreadMessage(BaseAnnouncementsParams announcementParams)
+        {
+            var unreadMessage = dynamicRepository.Get<NumberOfUnreadMessage>(
+                new GetNumberOfUnreadMessageCriteria(
+                    announcementParams.CustId,
+                    announcementParams.SubAccId,
+                    announcementParams.ParentSites)
+                );
+            var unreadAnnouncement = announcementService.GetNumberOfNewAnnouncements(announcementParams);
+
+            return new NumberOfUnreadMessage(
+                unreadMessage.Normal,
+                unreadMessage.Special,
+                unreadAnnouncement,
+                unreadMessage.Personal);
+        }
+
+
         private void UpdateMessageAsReadOnUser(int custId, int messageType)
             => dynamicRepository.Fetch<bool>(new UpdateMessageAsReadOnUserCritria(custId, messageType));
 
@@ -72,7 +90,7 @@
                 }
             }
 
-            return newMessage;
-        }        
+            return newMessage.Distinct();
+        }
     }
 }

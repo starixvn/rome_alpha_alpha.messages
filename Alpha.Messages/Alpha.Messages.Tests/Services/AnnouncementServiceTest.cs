@@ -52,7 +52,7 @@ namespace Alpha.Messages.Tests.Services
             dynamicRepository.Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
 
             //// Act
-            service.UpdateLastSeenAnnouncement(321, 121, 332, false);
+            service.UpdateLastSeenAnnouncement(121, 332, false, 0);
 
             //// Assert
             dynamicRepository.Received().Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
@@ -62,7 +62,7 @@ namespace Alpha.Messages.Tests.Services
         public void GetNumberOfNewAnnouncement_TodayHasNoNewMessage_ReturnZero()
         {
             //// Arrange
-            announcementClient.GetAnnouncementsToday(Arg.Any<AnnouncementTodayRequest>()).Returns(Enumerable.Empty<Announcement>());
+            announcementClient.GetAnnouncementsHistory(Arg.Any<AnnouncementHistoryRequest>()).Returns(Enumerable.Empty<Announcement>());
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
 
@@ -79,7 +79,7 @@ namespace Alpha.Messages.Tests.Services
             //// Arrange
             var newAnnouncements = CreateAnnouncements(DateTime.Now);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, DateTime.Now.AddMonths(-1), DateTime.Now.AddMonths(-1), DateTime.Now.AddMonths(-1), DateTime.Now.AddMonths(-1));
-            announcementClient.GetAnnouncementsToday(Arg.Any<AnnouncementTodayRequest>()).Returns(newAnnouncements);
+            announcementClient.GetAnnouncementsHistory(Arg.Any<AnnouncementHistoryRequest>()).Returns(newAnnouncements);
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
 
             //// Act
@@ -95,7 +95,7 @@ namespace Alpha.Messages.Tests.Services
             //// Arrange
             var newAnnouncements = CreateAnnouncements(DateTime.Now);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, DateTime.Now.AddSeconds(10), DateTime.Now.AddSeconds(10), DateTime.Now.AddSeconds(10), DateTime.Now.AddSeconds(10));
-            announcementClient.GetAnnouncementsToday(Arg.Any<AnnouncementTodayRequest>()).Returns(newAnnouncements);
+            announcementClient.GetAnnouncementsHistory(Arg.Any<AnnouncementHistoryRequest>()).Returns(newAnnouncements);
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
 
             //// Act

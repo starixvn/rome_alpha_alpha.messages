@@ -54,17 +54,16 @@
             var oneYearAgo = DateTime.Now.AddYears(-1);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, oneYearAgo, oneYearAgo, oneYearAgo, oneYearAgo);
             var limitedDate = DateTime.Today.AddDays(1);
-            announcementService.GetLastSeenAnnouncement(Arg.Any<int>()).Returns(lastSeenAnnouncement);
-            announcementService.UpdateLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>(), Arg.Any<int>(), false);
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
+            announcementService.UpdateLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>(), false, Arg.Any<int>());
 
             //// Act
             messageService.GetMessagesHistory(
                 new MessageHistoryParams(
-                    123,
                     CustId.ValidId,
-                    false,
-                    "1",
-                    1,
+                    0,
+                    0,
+                    "1",                   
                     1,
                     DateTime.Today,
                     DateTime.Today,
@@ -83,16 +82,15 @@
             var personalType = 1;
             var threeDayAgo = DateTime.Now.AddDays(-3);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
-            announcementService.GetLastSeenAnnouncement(Arg.Any<int>()).Returns(lastSeenAnnouncement);
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
 
             //// Act
             messageService.GetMessagesHistory(
                 new MessageHistoryParams(
-                    123,
                     CustId.ValidId,
-                    false,
-                    "1",
-                    1,
+                    0,
+                    0,
+                    "1",                    
                     1,
                     DateTime.MinValue,
                     DateTime.Now,
@@ -111,16 +109,15 @@
             var personalType = 1;
             var newReleaseDate = DateTime.Now.AddMonths(-3);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, newReleaseDate, newReleaseDate, newReleaseDate, newReleaseDate);
-            announcementService.GetLastSeenAnnouncement(Arg.Any<int>()).Returns(lastSeenAnnouncement);
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
 
             //// Act
             messageService.GetMessagesHistory(
                 new MessageHistoryParams(
-                    321,
                     CustId.ValidId,
-                    false,
+                    0,
+                    0,
                     "1",
-                    1,
                     1,
                     DateTime.MinValue,
                     DateTime.Now,
@@ -140,16 +137,15 @@
             var lastLoginDate = DateTime.Now.AddYears(-1);
             var sixMonthAgo = DateTime.Now.AddMonths(-6);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, lastLoginDate, lastLoginDate, lastLoginDate, lastLoginDate);
-            announcementService.GetLastSeenAnnouncement(Arg.Any<int>()).Returns(lastSeenAnnouncement);
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
 
             //// Act
             messageService.GetMessagesHistory(
                 new MessageHistoryParams(
-                    321,
                     CustId.ValidId,
-                    false,
+                    0,
+                    0,
                     "1",
-                    1,
                     1,
                     DateTime.MinValue,
                     DateTime.Now,

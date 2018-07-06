@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="~/favico.ico" />
     @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
-    @StaticResources.AssetStyles.Render($"/bundles/site-main/message/message-{Model.RoleName}")
+    @StaticResources.AssetStyles.Render($"/bundles/site-messages/message-{Model.RoleName}")
     @StaticResources.RenderStyles("~/assets/bundles/default-message")
 
     @RenderSection("Styles", required: false)
@@ -48,7 +48,7 @@
                     @Resources.SystemUpdate
                 </span>
                 <span class="visible-mobile">
-                    @Resources.System
+                    @Resources.SystemUpdate
                 </span>
 
                 @if (Model.UnreadMessage.System > 0)
@@ -77,8 +77,8 @@
     </div>
 
     @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
-    @StaticResources.AssetScripts.Render("/bundles/site-main/message/message-default")
-    @StaticResources.RenderScripts("~/assets/bundles/default-message")
+    @StaticResources.AssetScripts.Render("/bundles/site-messages/message-default")    
+    @RenderSection("Scripts", required: false)
     @GoogleAnalyticHepler.Render()
 </body>
 </html>

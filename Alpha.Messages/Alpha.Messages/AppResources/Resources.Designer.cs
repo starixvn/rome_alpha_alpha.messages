@@ -133,6 +133,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        public static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Bet Type.
         /// </summary>
         public static string NewBetType {
@@ -273,15 +282,6 @@ namespace Alpha.Messages.AppResources {
         public static string submit {
             get {
                 return ResourceManager.GetString("submit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System.
-        /// </summary>
-        public static string System {
-            get {
-                return ResourceManager.GetString("System", resourceCulture);
             }
         }
         

@@ -13,7 +13,7 @@
     using Ploeh.AutoFixture;
     using Services;
     using Site.Handlers;
-    using Site.ViewModels.PortalMessage;
+    using Site.ViewModels;
     using Sunplus.Agent.Model.Entities;
 
     [TestFixture]

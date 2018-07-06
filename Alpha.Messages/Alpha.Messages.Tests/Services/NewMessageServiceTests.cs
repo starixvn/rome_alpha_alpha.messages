@@ -12,12 +12,13 @@
     using Messages.Models.Message;
     using NSubstitute;
     using NUnit.Framework;
+    using Params.Announcement;
 
     public class NewMessageServiceTests
     {
         private NewMessageService service;
         private ResourceManager resourceManager;
-
+        private AnnouncementService announcementService;
         private IDynamicRepository dynamicRepository;
 
         [SetUp]
@@ -25,10 +26,12 @@
         {
             dynamicRepository = Substitute.For<IDynamicRepository>();
             resourceManager = Substitute.For<ResourceManager>();
+            announcementService = Substitute.For<AnnouncementService>();
+
             resourceManager.GetString("Notice_1", Arg.Any<CultureInfo>()).Returns("notice1");
             resourceManager.GetString("Notice_2", Arg.Any<CultureInfo>()).Returns("notice2");
             resourceManager.GetString("Notice_3", Arg.Any<CultureInfo>()).Returns("fishing world");
-            service = new NewMessageServiceImpl(dynamicRepository, resourceManager);
+            service = new NewMessageServiceImpl(dynamicRepository, resourceManager, announcementService);
         }
 
         [Test]
@@ -150,12 +153,14 @@
         public void GetNumberOfUnreadMessage_Always_CallDynamicRepository()
         {
             //// Arrange
+            dynamicRepository.Get<NumberOfUnreadMessage>(Arg.Any<GetNumberOfUnreadMessageCriteria>()).Returns(new NumberOfUnreadMessage());
 
             //// Act
-            service.GetNumberOfUnreadMessage(1212);
+            service.GetNumberOfUnreadMessage(new BaseAnnouncementsParams());
 
             //// Assert
-            dynamicRepository.Received().Get<NumberOfUnreadMessage>(Arg.Any<GetUnreadMessageCriteria>());
-        }        
+            dynamicRepository.Received().Get<NumberOfUnreadMessage>(Arg.Any<GetNumberOfUnreadMessageCriteria>());
+            announcementService.Received().GetNumberOfNewAnnouncements(Arg.Any<BaseAnnouncementsParams>());
+        }
     }
 }

@@ -16,7 +16,6 @@ namespace Alpha.Messages.Site.Tests.Handlers
     using Services;
     using Site.Handlers;
     using Site.ViewModels;
-    using Site.ViewModels.PortalMessage;
     using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
@@ -91,11 +90,11 @@ namespace Alpha.Messages.Site.Tests.Handlers
 
             // Numbers of notice message
             var expectedCount = expectedNoticeMessages
-                .Where(m => m.TopLevel >= (byte)MessageLevel.Range.Normal)
+                .Where(m => m.TopLevel >= (byte)MessageRange.Normal)
                 .Count();
 
             // Assert
-            Assert.AreEqual(expectedCount, viewModel.NoticeMessages.Count);
+            Assert.AreEqual(expectedCount, viewModel.NormalMessages.Count());
         }
 
         [Test]
@@ -111,10 +110,10 @@ namespace Alpha.Messages.Site.Tests.Handlers
             var viewModel = noticeHandler.Handle(query);
 
             // Numbers of highlight message
-            var expectedCount = expectedNoticeMessages.Where(m => m.TopLevel <= (byte)MessageLevel.Range.Highlight).Count();
+            var expectedCount = expectedNoticeMessages.Where(m => m.TopLevel <= (byte)MessageRange.Highlight).Count();
 
             // Assert
-            Assert.AreEqual(expectedCount, viewModel.HighlightMessages.Count);
+            Assert.AreEqual(expectedCount, viewModel.HighlightMessages.Count());
         }
 
         [Test]
@@ -144,7 +143,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
             var viewModel = noticeHandler.Handle(query);
 
             // Assert
-            Assert.True(compareLogic.Compare(expectedMessages, viewModel.HighlightMessages).AreEqual);
+            Assert.True(compareLogic.Compare(expectedMessages, viewModel.HighlightMessages.ToList()).AreEqual);
         }
 
         [Test]
@@ -174,7 +173,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
             var viewModel = noticeHandler.Handle(query);
 
             // Assert
-            Assert.True(compareLogic.Compare(expectedMessages, viewModel.NoticeMessages).AreEqual);
+            Assert.True(compareLogic.Compare(expectedMessages, viewModel.NormalMessages.ToList()).AreEqual);
         }
 
         private void FakeReturnGetNoticeMessagesService(List<PortalMessage> noticeMessages)

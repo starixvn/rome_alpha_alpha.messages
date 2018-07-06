@@ -144,7 +144,7 @@
             dynamicRepository.Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>()).Returns(messageData);
 
             //// Act
-            var act = messageService.GetLatestPublicMessage(1, "zh-CN", true);
+            var act = messageService.GetLatestPublicMessage(UserLevel.Agent, "zh-CN", true);
 
             //// Assert
             Assert.AreEqual(contentEN, act.Content);

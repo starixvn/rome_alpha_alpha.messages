@@ -5,8 +5,6 @@
 
     public class BaseAnnouncementsParams
     {
-        public int UserId { get; set; }
-
         public int SubAccId { get; set; }
 
         public byte RoleId { get; set; }
@@ -24,6 +22,8 @@
         public string Site { get; set; }        
 
         public bool IsMobileDevice { get; set; }
+
+        public string ParentSites { get; set; }
 
         public IParam SpecificationParamter { get; set; }        
     }

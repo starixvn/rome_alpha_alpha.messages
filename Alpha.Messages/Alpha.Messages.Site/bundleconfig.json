@@ -7,7 +7,15 @@
     ]
   },
   {
-    "outputFileName": "Assets/bundles/default-message.js",
+    "outputFileName": "Assets/bundles/announcement.js",
+    "inputFiles": [
+      "Assets/scripts/core.js",
+      "Assets/scripts/announcement/index.js",
+      "Assets/scripts/components/daterangepicker.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/message.js",
     "inputFiles": [
       "Assets/scripts/core.js",
       "Assets/scripts/message/index.js"

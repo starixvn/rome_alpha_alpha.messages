@@ -4,7 +4,6 @@
     {
         public NumberOfUnreadMessage()
         {
-
         }
 
         public NumberOfUnreadMessage(int normal, int special, int system, int personal)

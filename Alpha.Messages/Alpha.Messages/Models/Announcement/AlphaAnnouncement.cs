@@ -12,7 +12,6 @@
         {
             Content = string.Empty;
             Code = string.Empty;
-            Source = string.Empty;
         }
 
         public AlphaAnnouncement(
@@ -28,18 +27,15 @@
             ReleasedDate = releasedDate;
             Content = content;
             Code = code;
-            Source = string.IsNullOrEmpty(source) ? source : $"{AlphaAppSettings.MessageAppPath}/{source}";
             Specifications = specifications;
-            IsNewAnnouncement = releasedDate > lastSeenDate;
+            IsNewAnnouncement = releasedDate >= lastSeenDate;
         }
 
         public int Id { get; }
 
         public string Content { get; set; }
 
-        public string Code { get; }
-
-        public string Source { get; }
+        public string Code { get; }        
 
         public DateTime ReleasedDate { get; }
 

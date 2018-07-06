@@ -53,11 +53,11 @@
 
         public int Id { get; private set; }
         
-        public DateTime PostTime { get; private set; }
+        public DateTime PostTime { get; internal set; }
 
         public DateTime CreateTime { get; private set; }
 
-        public DateTime LastUpdateTime { get; internal set; }
+        public DateTime LastUpdateTime { get; private set; }
 
         public byte MessageType { get; internal set; }
 

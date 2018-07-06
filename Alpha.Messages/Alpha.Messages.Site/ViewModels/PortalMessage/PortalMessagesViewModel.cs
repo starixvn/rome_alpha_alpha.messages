@@ -1,30 +1,29 @@
-﻿namespace Alpha.Messages.Site.ViewModels.PortalMessage
+﻿namespace Alpha.Messages.Site.ViewModels
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Constants;
 
     public class PortalMessagesViewModel
     {
-        public PortalMessagesViewModel(List<PortalMessageWrapper> noticeMessages)
+        public PortalMessagesViewModel(List<PortalMessageWrapper> messages)
         {
-            NoticeMessages = noticeMessages
-                .Where(m => m.CurrentMessage.TopLevel >= (byte)MessageLevel.Range.Normal)
-                .OrderByDescending(m => m.CurrentMessage.PostTime)
-                .ToList();
+            NormalMessages = messages
+                .Where(m => m.CurrentMessage.TopLevel >= (byte)MessageRange.Normal)
+                .OrderByDescending(m => m.CurrentMessage.PostTime);
 
-            HighlightMessages = noticeMessages
-                .Where(m => m.CurrentMessage.TopLevel <= (byte)MessageLevel.Range.Highlight)
+            HighlightMessages = messages
+                .Where(m => m.CurrentMessage.TopLevel <= (byte)MessageRange.Highlight)
                 .OrderBy(m => m.CurrentMessage.TopLevel)
-                .ThenByDescending(m => m.PostTime)
-                .ToList();
+                .ThenByDescending(m => m.PostTime);
 
-            LastMessagePostTime = noticeMessages.Any() ? noticeMessages.Last().PostTime : DateTime.MinValue;
+            LastMessagePostTime = messages.Any() ? messages.Last().PostTime : DateTime.MinValue;
         }
 
-        public List<PortalMessageWrapper> NoticeMessages { get; }
+        public IEnumerable<PortalMessageWrapper> NormalMessages { get; }
 
-        public List<PortalMessageWrapper> HighlightMessages { get; }
+        public IEnumerable<PortalMessageWrapper> HighlightMessages { get; }
 
         public DateTime LastMessagePostTime { get; }
     }

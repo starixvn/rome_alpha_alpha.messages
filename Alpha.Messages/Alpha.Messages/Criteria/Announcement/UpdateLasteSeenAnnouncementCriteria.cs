@@ -4,14 +4,14 @@
 
     public class UpdateLasteSeenAnnouncementCriteria : NonQueryCommand
     {
-        public UpdateLasteSeenAnnouncementCriteria(int userId, int custId, int messageType)
+        public UpdateLasteSeenAnnouncementCriteria(int custId, int messageType, int subAccId)
         {
-            UserId = userId;
             CustId = custId;
+            SubAccId = subAccId;
             MessageType = Constants.MessageType.ToString(messageType);
         }
 
-        public int UserId { get; }
+        public int SubAccId { get; }
 
         public int CustId { get; }
 
@@ -23,6 +23,6 @@
 
         public override string GetSettingKey() => "Age_MsgCustReadStatus_Upd";
 
-        public override bool IsValid() => CustId > 0;
+        public override bool IsValid() => CustId > 0 && !string.IsNullOrEmpty(MessageType);
     }
 }

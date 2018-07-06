@@ -2,6 +2,7 @@
 {
     using System;
     using Configurations;
+    using Constants;
     using Criteria.Message;
     using Fanex.Caching;
     using Fanex.Data.Repository;
@@ -42,13 +43,11 @@
 
         public GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest)
         {
-            var messageType = 3;
-
-            var siteId = GetSiteIdByRoleId(roleId);
+            var siteId = MessageConstants.ParentSitesByLevel[roleId];
 
             var message = ConfiguredCacheService.GetOrSet(
-                $"{messageType}_{siteId}",
-                () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(messageType, siteId, isTest)),
+                $"{DataBaseMessageType.Others}_{siteId}",
+                () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest)),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));
 
             return new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey));
@@ -75,22 +74,6 @@
             var id = dynamicRepository.Get<int>(new HasLatestPrivateMessageCriteria(custId, isTest));
 
             return id > 0;
-        }
-
-        private static string GetSiteIdByRoleId(byte roleId)
-        {
-            var siteId = AppSettings.MessageAgent;
-            if (roleId == UserLevel.Super)
-            {
-                siteId = AppSettings.MessageSuper;
-            }
-
-            if (roleId == UserLevel.Master)
-            {
-                siteId = AppSettings.MessageMaster;
-            }
-
-            return siteId;
-        }
+        }        
     }
 }

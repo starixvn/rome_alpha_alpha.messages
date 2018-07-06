@@ -7,7 +7,6 @@
     <Setting Key="Dot_Msg_SetUsrMessage" SpName="Dot_Msg_SetUsrMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
     </Setting>
 
-    <Setting Key="Dot_Msg_GetPriMsgCount" SpName="Dot_Msg_GetPriMsgCount" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
     <Setting Key="Dot_Msg_GetTopPriMessage24" SpName="Dot_Msg_GetTopPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
@@ -41,7 +40,6 @@
       <Mapping DataField="MsgType" ObjectProperty="MessageType" />
     </Setting>
     <Setting Key="Dot_Msg_HasPriMessage24" SpName="Dot_Msg_HasPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
-    <Setting Key="Dot_Msg_SetPriMsgRead" SpName="Dot_Msg_SetPriMsgRead" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
 
   </Function>
   <Function Name="MessageHistory">
@@ -52,7 +50,7 @@
     <Setting Key="Dot_Msg_GetPrivateMessage" SpName="Dot_Msg_GetPrivateMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
     </Setting>
   </Function>
-  <Function Name="Notice">
+  <Function Name="Portal">
     <Setting Key="Age_CustomerSelMessages" SpName="Age_CustomerSelMessages" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />

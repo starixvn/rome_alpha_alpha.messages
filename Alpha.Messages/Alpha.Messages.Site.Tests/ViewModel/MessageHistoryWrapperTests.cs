@@ -30,9 +30,8 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             };
 
             var message = FakeDataHelper.Create<MessageHistory>(parameters);
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, lang);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, lang);
 
             // Assert
             Assert.AreEqual("en", viewModel.Content);
@@ -48,11 +47,10 @@ namespace Alpha.Messages.Site.Tests.ViewModel
         public void Content_ByCurrentLanguage_ReturnContent(string lang, string contentParamName)
         {
             // Arrange
-            var message = FakeDataHelper.Create<MessageHistory>(contentParamName, contentParamName);
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
+            var message = FakeDataHelper.Create<MessageHistory>(contentParamName, contentParamName);            
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, lang);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, lang);
 
             // Assert
             Assert.AreEqual(contentParamName, viewModel.Content);
@@ -62,11 +60,10 @@ namespace Alpha.Messages.Site.Tests.ViewModel
         public void Content_HasFontMarkup_RemoveMarkup()
         {
             // Arrange
-            var message = FakeDataHelper.Create<MessageHistory>("contentEN", "<font color=red>abc</font>");
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
+            var message = FakeDataHelper.Create<MessageHistory>("contentEN", "<font color=red>abc</font>");            
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.AreEqual("abc", viewModel.Content);
@@ -77,10 +74,9 @@ namespace Alpha.Messages.Site.Tests.ViewModel
         {
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>("contentEN", "abc@@");
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.AreEqual("abc" + viewModel.CurrentMessage.BetTransId, viewModel.Content);
@@ -91,10 +87,9 @@ namespace Alpha.Messages.Site.Tests.ViewModel
         {
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>("contentEN", "<font color=red>abc</font>");
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.IsTrue(viewModel.HasRedColor);
@@ -105,10 +100,9 @@ namespace Alpha.Messages.Site.Tests.ViewModel
         {
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>("contentEN", "abc");
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.IsFalse(viewModel.HasRedColor);
@@ -120,12 +114,10 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>();
             message.MessageType = 1;
-            message.LastUpdateTime = DateTime.Now;
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
-            lastSeenAnnouncement.LastSeenPersonal = DateTime.Now.AddDays(-1);
+            message.PostTime = DateTime.Now;
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now.AddDays(-1), Language.English);
 
             // Assert
             Assert.IsTrue(viewModel.IsNewMessage);
@@ -137,12 +129,10 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>();
             message.MessageType = 1;
-            message.LastUpdateTime = DateTime.Now.AddDays(-1);
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
-            lastSeenAnnouncement.LastSeenPersonal = DateTime.Now;
+            message.PostTime = DateTime.Now.AddDays(-1);
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.IsFalse(viewModel.IsNewMessage);
@@ -154,13 +144,11 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>();
             message.MessageType = 3;
-            message.LastUpdateTime = DateTime.Now;
+            message.PostTime = DateTime.Now;
             message.IsSticky = false;
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
-            lastSeenAnnouncement.LastSeenNormal = DateTime.Now.AddDays(-1);
 
-            // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+             // Act
+             var viewModel = new MessageHistoryWrapper(message, DateTime.Now.AddDays(-1), Language.English);
 
             // Assert
             Assert.IsTrue(viewModel.IsNewMessage);
@@ -172,13 +160,11 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>();
             message.MessageType = 3;
-            message.LastUpdateTime = DateTime.Now.AddDays(-1);
+            message.PostTime = DateTime.Now.AddDays(-1);
             message.IsSticky = false;
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
-            lastSeenAnnouncement.LastSeenNormal = DateTime.Now;
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.IsFalse(viewModel.IsNewMessage);
@@ -190,13 +176,11 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>();
             message.MessageType = 3;
-            message.LastUpdateTime = DateTime.Now;
+            message.PostTime = DateTime.Now;
             message.IsSticky = true;
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
-            lastSeenAnnouncement.LastSeenSpecial = DateTime.Now.AddDays(-1);
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now.AddDays(-1), Language.English);
 
             // Assert
             Assert.IsTrue(viewModel.IsNewMessage);
@@ -208,13 +192,11 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             // Arrange
             var message = FakeDataHelper.Create<MessageHistory>();
             message.MessageType = 3;
-            message.LastUpdateTime = DateTime.Now.AddDays(-1);
+            message.PostTime = DateTime.Now.AddDays(-1);
             message.IsSticky = true;
-            var lastSeenAnnouncement = FakeDataHelper.Create<LastSeenAnnouncement>();
-            lastSeenAnnouncement.LastSeenSpecial = DateTime.Now;
 
             // Act
-            var viewModel = new MessageHistoryWrapper(message, lastSeenAnnouncement, Language.English);
+            var viewModel = new MessageHistoryWrapper(message, DateTime.Now, Language.English);
 
             // Assert
             Assert.IsFalse(viewModel.IsNewMessage);

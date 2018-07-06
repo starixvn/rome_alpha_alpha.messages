@@ -1,16 +1,31 @@
-﻿@model AnnouncementHistoryViewModel
+﻿@using Alpha.Messages.Extensions
+
+@model AnnouncementHistoryViewModel
 
 <div role="tabpanel" class="tab-pane active" id="system">
     <div class="filter">
-        @using (Html.BeginForm("Index", "Announcement"))
+        @using (Html.BeginForm("Index", "Announcement", FormMethod.Post, new { id = "report-form" }))
         {
+            <div id="daterange-picker"
+                 class="daterange-picker"
+                 data-currentdate="@Model.CurrentDate.ToShortDateWithSlash()"
+                 data-mindate="@Model.MinDate.ToShortDateWithSlash()"
+                 data-maxdate="@Model.MaxDate.ToShortDateWithSlash()">
+            </div>
+
             <div class="form-group">
                 <label class="txt">@Resources.from</label>
                 <div class="control date">
-                    <div class="input-group date" id="fromDateContainer">
-                        <input class="form-control" id="fromDate" name="FromDate" type="text" value=@Model.FromDate />
+                    <div class="input-group date fromdate" id="from-date-container">
+                        <input type="text"
+                               id="FromDate"
+                               name="FromDate"
+                               readonly="readonly"
+                               autocomplete="off"
+                               class="ui_nexdatepicker_datetextbox ui_nexdatepicker_fromdate form-control"
+                               value="@Model.FromDate.ToShortDateWithSlash()" />
                         <span class="input-group-addon">
-                            <span class="icon-calendar"></span>
+                            <span class="icon-calendar" id="fdate_trigger"></span>
                         </span>
                     </div>
                 </div>
@@ -18,10 +33,17 @@
             <div class="form-group">
                 <label class="txt">@Resources.to</label>
                 <div class="control date">
-                    <div class="input-group date" id="toDateContainer">
-                        <input class="form-control" id="toDate" name="ToDate" type="text" value=@Model.ToDate />
+                    <div id="to-date-container"
+                         class="input-group date todate">
+                        <input type="text"
+                               id="ToDate"
+                               name="ToDate"
+                               readonly="readonly"
+                               autocomplete="off"
+                               class="ui_nexdatepicker_datetextbox ui_nexdatepicker_todate form-control"
+                               value="@Model.ToDate.ToShortDateWithSlash()" />
                         <span class="input-group-addon">
-                            <span class="icon-calendar"></span>
+                            <span class="icon-calendar" id="tdate_trigger"></span>
                         </span>
                     </div>
                 </div>
@@ -56,7 +78,7 @@
                             <span class="messageId">@message.value.Id</span>
                             @if (message.value.IsNewAnnouncement)
                             {
-                                <span class="badge-title">New</span>
+                                <span class="badge-title">@Resources.New</span>
                             }                            
                         </div>
                         <div class="message-content">@Html.Raw(message.value.Content)</div>
@@ -66,3 +88,6 @@
         </tbody>
     </table>
 </div>
+@section Scripts{
+    @StaticResources.RenderScripts("~/assets/bundles/announcement")
+}

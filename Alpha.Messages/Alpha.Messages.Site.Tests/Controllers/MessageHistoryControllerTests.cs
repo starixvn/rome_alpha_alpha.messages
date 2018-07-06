@@ -2,6 +2,7 @@
 {
     using System;
     using Alpha.Messages.Site.Controllers;
+    using Announcements.Models;
     using KellermanSoftware.CompareNetObjects;
     using MediatR;
     using Messages.Configurations;
@@ -17,14 +18,15 @@
         private IMediator mediator;
         private IUserSession userSession;
         private MessageHistoryController messageController;
+        private IParam specificationParam;
 
         [SetUp]
         public void SetUp()
         {
             mediator = Substitute.For<IMediator>();
             userSession = Substitute.For<IUserSession>();
-
-            messageController = new MessageHistoryController(mediator, userSession);
+            specificationParam = Substitute.For<IParam>();
+            messageController = new MessageHistoryController(mediator, userSession, specificationParam);
         }        
 
         [Test]
@@ -54,6 +56,7 @@
                 startDate,
                 endDate,
                 AppSettings.LocalTest);
+            query.Specification = specificationParam;
 
             // Act
             messageController.Messages(startDate, endDate);

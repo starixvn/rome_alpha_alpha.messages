@@ -46,20 +46,7 @@
 
             //// Act && Assert
             Assert.Throws<ConfigurationErrorsException>(() => AppSettings.Verify());
-        }
-
-        [Test]
-        public void NoticeTypes_MissingNoticeTypes_ReturnEmptyList()
-        {
-            //// Arrange
-            AppSettings.AppSettingValues = new NameValueCollection();
-
-            //// Act
-            var act = AppSettings.NoticeTypes;
-
-            //// Assert
-            Assert.False(act.Any());
-        }
+        }       
 
         [Test]
         public void SiteGroup_ExistedKey_ReturnValue()

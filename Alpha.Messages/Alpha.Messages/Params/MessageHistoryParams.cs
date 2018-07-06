@@ -1,16 +1,16 @@
 ﻿namespace Alpha.Messages.Params
 {
     using System;
+    using Announcement;
 
-    public class MessageHistoryParams
+    public class MessageHistoryParams: BaseAnnouncementsParams
     {
         public MessageHistoryParams(
-            int userId,
             int custId,
-            bool isAdminUser,
+            int subAccId,
+            int adminId,
             string parentSites,
             int specialType,
-            int totalMessage,
             DateTime startDate,
             DateTime endDate,
             DateTime limitedDate,
@@ -18,23 +18,18 @@
             int messageType)
         {
             CustId = custId;
+            SubAccId = subAccId;
+            AdminId = adminId;
             ParentSites = parentSites;
             SpecialType = specialType;
-            TotalMessage = totalMessage;
             StartDate = startDate;
             EndDate = endDate;
             LimitedDate = limitedDate;
             IsTest = isTest;
             MessageType = messageType;
-            IsAdminUser = isAdminUser;
         }
-
-        public int CustId { get; }
-        public bool IsAdminUser { get; }
-        public int UserId { get; }
-        public string ParentSites { get; }
+        
         public int SpecialType { get; }
-        public int TotalMessage { get; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; }
         public DateTime LimitedDate { get; }

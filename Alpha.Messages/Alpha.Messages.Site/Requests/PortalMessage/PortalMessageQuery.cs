@@ -2,7 +2,7 @@
 {
     using MediatR;
     using Messages.Constants;
-    using Messages.Site.ViewModels.PortalMessage;
+    using Messages.Site.ViewModels;
     using Sunplus.Agent.Model.Entities;
 
     public class PortalMessageQuery : IRequest<PortalMessagesViewModel>

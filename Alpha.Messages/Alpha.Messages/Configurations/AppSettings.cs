@@ -16,17 +16,7 @@
             get { return appSettingValues ?? ConfigurationManager.AppSettings; }
 
             set { appSettingValues = value; }
-        }
-
-        public static string[] NoticeTypes
-        {
-            get
-            {
-                var splitChars = new[] { "," };
-                var types = GetConfigValue("NoticeTypes");
-                return string.IsNullOrEmpty(types) ? Array.Empty<string>() : types.Split(splitChars, StringSplitOptions.RemoveEmptyEntries);
-            }
-        }
+        }       
 
         public static bool LocalTest => GetConfigValue("LocalTest") == "1";
 

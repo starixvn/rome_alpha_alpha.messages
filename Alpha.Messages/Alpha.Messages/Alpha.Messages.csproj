@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2-RenovateAnnouncement-01\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -165,6 +165,7 @@
     <Compile Include="Constants\Language.cs" />
     <Compile Include="Constants\MessageConstants.cs" />
     <Compile Include="Constants\DataBaseMessageType.cs" />
+    <Compile Include="Constants\MessageRange.cs" />
     <Compile Include="Constants\MessageType.cs" />
     <Compile Include="Constants\SessionKey.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
@@ -175,7 +176,7 @@
     <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteria.cs" />
     <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteria.cs" />
     <Compile Include="Criteria\Announcement\UpdateLasteSeenAnnouncementCriteria.cs" />
-    <Compile Include="Criteria\Message\GetUnreadMessageCriteria.cs" />
+    <Compile Include="Criteria\Message\GetNumberOfUnreadMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetPortalMessagesCriteria.cs" />
     <Compile Include="Criteria\Product\UnsynchronizedSettingCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteria.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Criteria\Message\GetMoveBetInformationCriteria.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteria.cs" />
     <Compile Include="DataAccesses\MessageDataAccess.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Announcement\LastSeenAnnouncement.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />

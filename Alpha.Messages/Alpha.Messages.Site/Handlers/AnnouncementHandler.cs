@@ -11,24 +11,25 @@
     {
         private readonly AnnouncementService announcementService;
         private readonly AnnouncementFormatService formatAnnouncementService;
-        private readonly NewMessageService messageService;
+        private readonly NewMessageService newMessageService;
         public AnnouncementHandler(
             AnnouncementService announcementService,
             AnnouncementFormatService formatService,
-            NewMessageService messageService)
+            NewMessageService newMessageService)
         {
             this.announcementService = announcementService;
             this.formatAnnouncementService = formatService;
-            this.messageService = messageService;
+            this.newMessageService = newMessageService;
         }
       
         public AnnouncementHistoryViewModel Handle(AnnouncementsHistoryQuery message)
         {
-            var unreadMessage = messageService.GetNumberOfUnreadMessage(message.CustId);
-
             var parameters = message.ConvertToParameters();
+
             var announcements = announcementService.GetAnnouncementsHistory(parameters);
-            var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);            
+            var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);
+            
+            var unreadMessage = newMessageService.GetNumberOfUnreadMessage(parameters);            
 
             return new AnnouncementHistoryViewModel(
                 formatedAnnouncements
