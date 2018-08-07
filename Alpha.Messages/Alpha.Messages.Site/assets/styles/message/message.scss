@@ -3,7 +3,7 @@
 
 // To remove the 300-350ms tap delay
 html {
-  touch-action: manipulation;
+    touch-action: manipulation;
 }
 
 body {
@@ -28,7 +28,8 @@ body {
 
     .row-first {
         color: #666;
-        font:{
+
+        font: {
             style: italic;
             size: 12px;
         }
@@ -51,6 +52,27 @@ body {
     }
 }
 
+.badge-title {
+    display: inline-block;
+    padding: 2px 4px;
+    background: #da1625;
+    color: #fff;
+    border-radius: 2px;
+    line-height: 1;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-style: normal;
+}
+
+.icon-new-box {
+    color: #db1828;
+    font-size: 30px;
+}
+
+.visible-mobile {
+        display: none !important;
+    } 
+
 @media only screen and (max-device-width : $conent-device-greater1024) {
     .filter {
         .input-group.date .form-control {
@@ -64,6 +86,14 @@ body {
     body {
         background-color: #fff;
         font-size: $font-size-mobile;
+    }
+
+    .hidden-mobile {
+        display: none !important;
+    }
+
+    .visible-mobile {
+        display: inline-block !important;
     }
 
     .nav-tabs {
@@ -93,6 +123,6 @@ body {
                 height: 36px;
                 margin-right: 0;
             }
-        }        
+        }
     }
 }

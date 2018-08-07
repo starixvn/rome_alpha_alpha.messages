@@ -4,6 +4,7 @@
     using Announcements.Models;
     using MediatR;
     using Requests;
+    using Requests.Announcement;
 
     public class AnnouncementController : SiteBaseController
     {
@@ -14,18 +15,11 @@
             this.specificationParam = specificationParam;
         }
 
-        public ActionResult PopupAnnouncement(PopupAnnouncementQuery message)
+        public ActionResult Index(AnnouncementsHistoryQuery message)
         {
             message.Specification = specificationParam;
-
+            
             return View(message);
-        }
-
-        public ActionResult HeaderAnnouncement(HeaderAnnouncementQuery message)
-        {
-            message.Specification = specificationParam;
-
-            return View(message);
-        }
+        }        
     }
 }

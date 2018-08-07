@@ -7,48 +7,48 @@
     public class UserLevelTests
     {
         [Test]
-        public void IsMemberLevel_ValueIs1_ReturnTrue()
+        public void IsMember_ValueIs1_ReturnTrue()
         {
             //// Arrange
 
             //// Act
-            var act = UserLevel.IsMemberLevel(1);
+            var act = UserLevel.IsMember(1);
 
             //// Assert
             Assert.IsTrue(act);
         }
 
         [Test]
-        public void IsAgentLevel_ValueIs2_ReturnTrue()
+        public void IsAgent_ValueIs2_ReturnTrue()
         {
             //// Arrange
 
             //// Act
-            var act = UserLevel.IsAgentLevel(2);
+            var act = UserLevel.IsAgent(2);
 
             //// Assert
             Assert.IsTrue(act);
         }
 
         [Test]
-        public void IsMasterLevel_ValueIs3_ReturnTrue()
+        public void IsMaster_ValueIs3_ReturnTrue()
         {
             //// Arrange
 
             //// Act
-            var act = UserLevel.IsMasterLevel(3);
+            var act = UserLevel.IsMaster(3);
 
             //// Assert
             Assert.IsTrue(act);
         }
 
         [Test]
-        public void IsSuperLevel_ValueIs4_ReturnTrue()
+        public void IsSuper_ValueIs4_ReturnTrue()
         {
             //// Arrange
 
             //// Act
-            var act = UserLevel.IsSuperLevel(4);
+            var act = UserLevel.IsSuper(4);
 
             //// Assert
             Assert.IsTrue(act);

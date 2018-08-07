@@ -177,4 +177,10 @@
   <data name="more" xml:space="preserve">
     <value>Thêm</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>Mới</value>
+  </data>
+  <data name="SystemUpdate" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
 </root>

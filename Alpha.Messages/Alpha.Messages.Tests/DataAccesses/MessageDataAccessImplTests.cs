@@ -4,6 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Data;
+    using System.Linq;
     using Alpha.Messages.Constants;
     using Alpha.Messages.Criteria.Message;
     using Alpha.Messages.Models.Message;
@@ -33,24 +34,14 @@
         }
 
         [Test]
-        public void GetMessages_NullCriteria_ThrowsArgumentNullException()
-        {
-            // Arrange
-            ICriteria criteria = null;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => messageDataAccess.GetMessagesHistory(criteria));
-        }
-
-        [Test]
         public void GetMessages_EmptyDataReturnFromDb_ReturnsDefaultData()
         {
             // Arrange
             var dataTable = new DataTable();
             var dataReader = dataTable.CreateDataReader();
             objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
-            var expectedData = new List<Message>();
-            var criteria = new GetMessageCriteria(1, "1", 0, 0, DateTime.Now, DateTime.Now, true, MessageType.Private);
+            var expectedData = new List<MessageHistory>();
+            var criteria = new GetMessagesHistoryCriteria(1, "1", 0, DateTime.Now, DateTime.Now, true, MessageType.Personal);
 
             // Act
             var actualData = messageDataAccess.GetMessagesHistory(criteria);
@@ -66,9 +57,9 @@
             var compareLogic = new CompareLogic();
             var dataReader = MessageDatabase.MessageData.CreateDataReader();
             objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
-            var expectedData = new List<Message>
+            var expectedData = new List<MessageHistory>
             {
-                new Message(
+                new MessageHistory(
                     1074241137,
                     "@@",
                     "@@",
@@ -96,13 +87,13 @@
                     "agent01",
                     0)
             };
-            var criteria = new GetMessageCriteria(1, "1", 0, 0, DateTime.Now, DateTime.Now, true, MessageType.Private);
+            var criteria = new GetMessagesHistoryCriteria(1, "1", 0, DateTime.Now, DateTime.Now, true, MessageType.Personal);
 
             // Act
             var actualData = messageDataAccess.GetMessagesHistory(criteria);
 
             // Assert
-            Assert.IsTrue(compareLogic.Compare(expectedData, actualData).AreEqual);
+            Assert.IsTrue(compareLogic.Compare(expectedData, actualData.ToList()).AreEqual);
         }
     }
 }

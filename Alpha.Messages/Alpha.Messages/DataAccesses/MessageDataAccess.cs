@@ -9,36 +9,26 @@
 
     public interface MessageDataAccess
     {
-        IEnumerable<Message> GetMessagesHistory(ICriteria criteria);
+        IEnumerable<MessageHistory> GetMessagesHistory(ICriteria criteria);
     }
 
     public class MessageDataAccessImpl : MessageDataAccess
     {
-        public IEnumerable<Message> GetMessagesHistory(ICriteria criteria)
+        public IEnumerable<MessageHistory> GetMessagesHistory(ICriteria criteria)
         {
-            var messages = new List<Message>();
-
-            if (criteria == null)
-            {
-                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
-            }
-
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 var reader = db.ExecuteReader(criteria.GetSpParams());
 
                 while (reader.Read())
                 {
-                    var message = GetMessageFromReader(reader);
-                    messages.Add(message);
+                    yield return GetMessageFromReader(reader);
                 }
             }
-
-            return messages;
         }
 
-        private static Message GetMessageFromReader(IDataReader reader)
-            => new Message(
+        private static MessageHistory GetMessageFromReader(IDataReader reader)
+            => new MessageHistory(
                        id: !Convert.IsDBNull(reader["MessageId"]) ? Convert.ToInt32(reader["MessageId"]) : 0,
                        contentEN: !Convert.IsDBNull(reader["Content_en"]) ? Convert.ToString(reader["Content_en"]) : string.Empty,
                        contentCS: !Convert.IsDBNull(reader["Content_cs"]) ? Convert.ToString(reader["Content_cs"]) : string.Empty,
@@ -48,15 +38,15 @@
                        contentIT: !Convert.IsDBNull(reader["Content_it"]) ? Convert.ToString(reader["Content_it"]) : string.Empty,
                        contentKO: !Convert.IsDBNull(reader["Content_ko"]) ? Convert.ToString(reader["Content_ko"]) : string.Empty,
                        contentES: !Convert.IsDBNull(reader["Content_es"]) ? Convert.ToString(reader["Content_es"]) : string.Empty,
-                       contentVN: !Convert.IsDBNull(reader["Content_vn"]) ? Convert.ToString(reader["Content_vn"]) : string.Empty,
+                       contentVI: !Convert.IsDBNull(reader["Content_vn"]) ? Convert.ToString(reader["Content_vn"]) : string.Empty,
                        postTime: !Convert.IsDBNull(reader["PostTime"]) ? Convert.ToDateTime(reader["PostTime"]) : DateTime.Today,
                        createTime: !Convert.IsDBNull(reader["CreateTime"]) ? Convert.ToDateTime(reader["CreateTime"]) : DateTime.Today,
                        lastUpdateTime: !Convert.IsDBNull(reader["LastUpdateTime"]) ? Convert.ToDateTime(reader["LastUpdateTime"]) : DateTime.Today,
                        messageType: !Convert.IsDBNull(reader["MsgType"]) ? Convert.ToByte(reader["MsgType"]) : (byte)0,
-                       isSticky: !Convert.IsDBNull(reader["IsSticky"]) ? Convert.ToBoolean(reader["IsSticky"]) : false,
-                       isTest: !Convert.IsDBNull(reader["IsTest"]) ? Convert.ToBoolean(reader["IsTest"]) : false,
+                       isSticky: !Convert.IsDBNull(reader["IsSticky"]) && Convert.ToBoolean(reader["IsSticky"]),
+                       isTest: !Convert.IsDBNull(reader["IsTest"]) && Convert.ToBoolean(reader["IsTest"]),
                        matchId: !Convert.IsDBNull(reader["MatchId"]) ? Convert.ToInt32(reader["MatchId"]) : 0,
-                       isBatch: !Convert.IsDBNull(reader["IsBatch"]) ? Convert.ToBoolean(reader["IsBatch"]) : false,
+                       isBatch: !Convert.IsDBNull(reader["IsBatch"]) && Convert.ToBoolean(reader["IsBatch"]),
                        creator: !Convert.IsDBNull(reader["Creator"]) ? Convert.ToInt32(reader["Creator"]) : 0,
                        lastUpdator: !Convert.IsDBNull(reader["LastUpdator"]) ? Convert.ToInt32(reader["LastUpdator"]) : 0,
                        creatorName: !Convert.IsDBNull(reader["CreatorName"]) ? Convert.ToString(reader["CreatorName"]) : string.Empty,

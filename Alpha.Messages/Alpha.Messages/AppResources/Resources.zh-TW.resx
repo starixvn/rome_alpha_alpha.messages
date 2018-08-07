@@ -177,4 +177,10 @@
   <data name="more" xml:space="preserve">
     <value>更多</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="SystemUpdate" xml:space="preserve">
+    <value>系統更新</value>
+  </data>
 </root>

@@ -177,4 +177,10 @@
   <data name="more" xml:space="preserve">
     <value>เพิ่ม</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>บใหม่</value>
+  </data>
+  <data name="SystemUpdate" xml:space="preserve">
+    <value>อัปเดตระบบ</value>
+  </data>
 </root>

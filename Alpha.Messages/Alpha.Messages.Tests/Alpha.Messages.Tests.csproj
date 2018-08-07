@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -68,6 +68,10 @@
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects, Version=3.9.0.0, Culture=neutral, PublicKeyToken=d970ace04cc85217, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CompareNETObjects.3.09.0.0\lib\net46\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NSubstitute, Version=2.0.3.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
@@ -117,39 +121,43 @@
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\CustId.cs" />
-    <Compile Include="Criteria\GetMessageTypeListCriteriaTest.cs" />
-    <Compile Include="Criteria\GetProductsCriteriaTest.cs" />
-    <Compile Include="Criteria\InsertPersonalMessageCriteriaTest.cs" />
-    <Compile Include="Criteria\InsertPersonalMessageTargetCriteriaTest.cs" />
-    <Compile Include="Criteria\Message\CountPrivateMessageCriteriaTests.cs" />
+    <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteriaTests.cs" />
+    <Compile Include="Criteria\Announcement\UpdateLastSeenAnnouncementCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\GetMessagesHistoryCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\GetPortalMessagesCriteriaTests.cs" />
+    <Compile Include="Criteria\Message\GetUnreadMessageCriteriaTest.cs" />
+    <Compile Include="Criteria\Message\GetUnreadMessagesOnUserCriteriaTest.cs" />
+    <Compile Include="Criteria\Product\GetProductsCriteriaTest.cs" />
+    <Compile Include="Criteria\NewMessage\InsertPersonalMessageCriteriaTest.cs" />
+    <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteriaTest.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
-    <Compile Include="Criteria\Message\GetMessageCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetMoveBetInformationCriteriaTests.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteriaTests.cs" />
-    <Compile Include="Criteria\Message\UpdatePrivateMessageAsReadTests.cs" />
-    <Compile Include="Criteria\Notice\GetNoticeMessagesCriteriaTests.cs" />
-    <Compile Include="Criteria\Notice\MarkMessageAsReadCriteriaTests.cs" />
-    <Compile Include="Criteria\UpdateViewStatusTest.cs" />
+    <Compile Include="Criteria\Message\MarkMessageAsReadCriteriaTests.cs" />
+    <Compile Include="Criteria\NewMessage\UpdateMessageAsReadOnUserCritriaTest.cs" />
+    <Compile Include="Criteria\Product\UnsynchronizedSettingCriteriaTests.cs" />
     <Compile Include="DataAccesses\MessageDataAccessImplTests.cs" />
     <Compile Include="Database\MessageDatabase.cs" />
     <Compile Include="Fixtures\AnnouncementFixture.cs" />
     <Compile Include="Fixtures\FanexCacheFixture.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
-    <Compile Include="Models\Announcement\HotAnnouncementTests.cs" />
+    <Compile Include="Models\Announcement\BaseAnnouncementsParamsTests.cs" />
+    <Compile Include="Models\Announcement\LastSeenAnnouncementTests.cs" />
     <Compile Include="Models\Enumerations\UserLevelTests.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
-    <Compile Include="Models\Message\MessageTests.cs" />
+    <Compile Include="Models\Message\MessageHistoryTests.cs" />
     <Compile Include="Models\Message\MultiLanguagueTests.cs" />
-    <Compile Include="Models\Notice\NoticeMessageTests.cs" />
-    <Compile Include="Models\ProductTest.cs" />
+    <Compile Include="Models\Message\NumberOfUnreadMessageTests.cs" />
+    <Compile Include="Models\Message\PortalMessageTests.cs" />
+    <Compile Include="Models\Product\ProductTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatServiceTest.cs" />
-    <Compile Include="Services\AnnouncementFromApiServiceTest.cs" />
-    <Compile Include="Services\AnnouncementFromDatabaseServiceTests.cs" />
     <Compile Include="Services\AnnouncementServiceTest.cs" />
-    <Compile Include="Services\MessageServiceImplTests.cs" />
-    <Compile Include="Services\NoticeServiceImplTests.cs" />
+    <Compile Include="Services\MarqueeMessageServiceTest.cs" />
+    <Compile Include="Services\MessageHistoryServiceTests.cs" />
+    <Compile Include="Services\NewMessageServiceTests.cs" />
+    <Compile Include="Services\PortalMessageServiceTests.cs" />
     <Compile Include="Services\ProductServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +170,7 @@
       <Name>Alpha.Messages.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\Alpha.Messages.Site.Tests\Alpha.Messages.Site.Tests.csproj">
-      <Project>{9048C900-A47C-4FB9-9E5D-185C350C790E}</Project>
+      <Project>{9048c900-a47c-4fb9-9e5d-185c350c790e}</Project>
       <Name>Alpha.Messages.Site.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Alpha.Messages\Alpha.Messages.csproj">

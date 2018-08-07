@@ -4,23 +4,20 @@
 
     public class MoveBetsMessage : MultiLanguague
     {
-        private const int MessageTimeZone = 8;
-
-        public MoveBetsMessage()
-        {
-        }
-
+        private const int MessageTimeZone = 8;        
+       
         public MoveBetsMessage(
             string contentEN,
             string contentCS,
+            string contentCN,
             string contentCH,
             string contentTH,
             string contentJP,
             string contentKO,
-            string contentVN,
-            DateTime MoveBetEndTime) : base(contentEN, contentCS, contentCH, contentJP, contentTH, contentKO, contentVN)
+            string contentVI,
+            DateTime moveBetEndTime) : base(contentEN, contentCS, contentCH, contentJP, contentTH, contentKO, contentVI)
         {
-            MoveBetsEndTime = string.IsNullOrEmpty(ContentEN) ? string.Empty : new DateTimeOffset(MoveBetEndTime, new TimeSpan(MessageTimeZone, 0, 0)).ToString();            
+            MoveBetsEndTime = string.IsNullOrEmpty(base.ContentEN) ? string.Empty : new DateTimeOffset(moveBetEndTime, new TimeSpan(MessageTimeZone, 0, 0)).ToString();            
         }
 
         public string MoveBetsEndTime { get; }

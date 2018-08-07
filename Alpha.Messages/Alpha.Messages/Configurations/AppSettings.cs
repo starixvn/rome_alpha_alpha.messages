@@ -16,17 +16,7 @@
             get { return appSettingValues ?? ConfigurationManager.AppSettings; }
 
             set { appSettingValues = value; }
-        }
-
-        public static string[] NoticeTypes
-        {
-            get
-            {
-                var splitChars = new[] { "," };
-                var types = GetConfigValue("NoticeTypes");
-                return string.IsNullOrEmpty(types) ? Array.Empty<string>() : types.Split(splitChars, StringSplitOptions.RemoveEmptyEntries);
-            }
-        }
+        }       
 
         public static bool LocalTest => GetConfigValue("LocalTest") == "1";
 
@@ -36,11 +26,11 @@
 
         public static string StoreProcedurePath => GetConfigValue("StoredProcedurePath");
 
-        public static string MessageSuper => GetConfigValue("Message:Super");
+        public static string MessageSuper => string.IsNullOrWhiteSpace(GetConfigValue("Message:Super")) ? "3000,3100" : GetConfigValue("Message:Super");
 
-        public static string MessageMaster => GetConfigValue("Message:Master");
+        public static string MessageMaster => string.IsNullOrWhiteSpace(GetConfigValue("Message:Master")) ? "3000,3200" : GetConfigValue("Message:Master");
 
-        public static string MessageAgent => GetConfigValue("Message:Agent");
+        public static string MessageAgent => string.IsNullOrWhiteSpace(GetConfigValue("Message:Agent")) ? "3000,3300" : GetConfigValue("Message:Agent");
 
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
 

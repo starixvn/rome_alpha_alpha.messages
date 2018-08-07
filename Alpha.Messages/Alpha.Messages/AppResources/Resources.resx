@@ -186,4 +186,19 @@
   <data name="more" xml:space="preserve">
     <value>More</value>
   </data>
+  <data name="SystemUpdate" xml:space="preserve">
+    <value>System Update</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Special</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
 </root>

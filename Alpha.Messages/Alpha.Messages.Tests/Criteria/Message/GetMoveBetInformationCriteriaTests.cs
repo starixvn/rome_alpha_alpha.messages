@@ -1,4 +1,5 @@
-﻿namespace Alpha.Messages.Tests.Criteria.Message
+﻿using NUnit.Framework;
+namespace Alpha.Messages.Tests.Criteria.Message
 {
     using Alpha.Messages.Criteria.Message;
     using NUnit.Framework;
@@ -30,6 +31,20 @@
 
             //// Assert
             Assert.True(act);
+        }
+
+        [Test]
+        public void TimeZone_Always_Equal8()
+        {
+            //// Arrange
+            var criteria = new GetMoveBetInformationCriteria();
+            var expected = 8;
+
+            //// Act
+            var act = criteria.TimeZone;
+
+            //// Assert
+            Assert.AreEqual(expected, act);
         }
     }
 }

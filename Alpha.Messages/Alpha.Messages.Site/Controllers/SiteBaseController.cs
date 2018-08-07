@@ -14,8 +14,9 @@
         }
 
         protected ActionResult View<TResponse>(IRequest<TResponse> message)
-        {
-            return View(mediator.Send(message));
-        }
+            => View(mediator.Send(message));
+
+        protected ActionResult Json<TResponse>(IRequest<TResponse> message)
+            => new JsonResult { Data = mediator.Send(message) };
     }
 }

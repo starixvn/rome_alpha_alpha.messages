@@ -1,0 +1,72 @@
+﻿#pragma warning disable 618, 612
+
+namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
+{
+    using NSubstitute;
+    using NUnit.Framework;
+    using Site.Requests.MarqueeMessage;
+    using Sunplus.Agent.Model.Entities;
+
+    [TestFixture]
+    public class MarqueeMessageQueryTests
+    {
+        private IUserSession userSession;
+
+        [SetUp]
+        public void SetUp()
+        {
+            userSession = Substitute.For<IUserSession>();
+        }
+       
+        public void RoleId_Always_ReturnCorrectInConstructor()
+        {
+            // Arrange
+            byte roleIdInConstructor = 1;
+            userSession.RoleId.Returns(roleIdInConstructor);
+
+            // Act
+            var query = new MarqueeMessageQuery(userSession, false);
+
+            // Assert
+            Assert.AreEqual(roleIdInConstructor, query.RoleId);
+        }
+
+        public void CustId_Always_ReturnCorrectInConstructor()
+        {
+            // Arrange
+            var custId = 1;
+            userSession.CustId.Returns(custId);
+
+            // Act
+            var query = new MarqueeMessageQuery(userSession, false);
+
+            // Assert
+            Assert.AreEqual(custId, query.CustId);
+        }
+
+        public void IsTest_Always_ReturnCorrectInConstructor()
+        {
+            // Arrange
+            var isTest = true;
+
+            // Act
+            var query = new MarqueeMessageQuery(userSession, isTest);
+
+            // Assert
+            Assert.AreEqual(isTest, query.IsTest);
+        }
+
+        public void CurrentLang_Always_ReturnCorrectInConstructor()
+        {
+            // Arrange
+            var currentLang = "EN";
+            userSession.Language.Returns(currentLang);
+
+            // Act
+            var query = new MarqueeMessageQuery(userSession, false);
+
+            // Assert
+            Assert.AreEqual(currentLang, query.CurrentLang);
+        }
+    }
+}

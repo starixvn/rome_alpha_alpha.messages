@@ -5,67 +5,61 @@
     using Alpha.Messages.Params.Announcement;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Handlers;
-    using Alpha.Messages.Site.Requests;
     using Alpha.Messages.Site.Tests.Fixtures;
+    using Messages.Constants;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Requests.Announcement;
+    using Site.ViewModels;
 
     public class AnnouncementHandlerTest
     {
         private AnnouncementService announcementService;
-        private AnnouncementFromApiService announcementApiService;
         private AnnouncementFormatService formatService;
+        private NewMessageService messageService;
         private AnnouncementHandler handler;
         private UserSessionFixture fixture;
         [SetUp]
         public void SetUp()
         {
             announcementService = Substitute.For<AnnouncementService>();
+            messageService = Substitute.For<NewMessageService>();
             formatService = Substitute.For<AnnouncementFormatService>();
-            announcementApiService = Substitute.For<AnnouncementFromApiService>();
-            handler = new AnnouncementHandler(announcementService, formatService, announcementApiService);
+            handler = new AnnouncementHandler(announcementService, formatService, messageService);
             fixture = new UserSessionFixture();
+            fixture.UserSession.RoleId.Returns(RoleId.Agent);
         }
 
         [Test]
-        public void Handle_HeaderAnnouncement_CallGetHotAnnouncement()
+        public void Handle_Alway_CallServices()
         {
             //// Arrange
-            var query = new PopupAnnouncementQuery(fixture.UserSession, false);
+            var announcements = new List<AlphaAnnouncement>();
+            var query = new AnnouncementsHistoryQuery(fixture.UserSession);
+
 
             //// Act
             handler.Handle(query);
 
             //// Assert
-            announcementService.Received().GetPopupAnnouncement(Arg.Any<GetHotAnnouncementsParams>());
+            messageService.Received().GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>());
+            announcementService.Received().GetAnnouncementsHistory(Arg.Any<AnnouncementsHistoryParams>());
+            formatService.Received().Format(Arg.Any<IEnumerable<AlphaAnnouncement>>(), Arg.Any<BaseAnnouncementsParams>());
         }
 
         [Test]
-        public void Handle_HeaderAnnouncement_CallFormatService()
+        public void Handle_Always_ReturnCorrectViewModel()
         {
             //// Arrange
-            var announcements = new List<HotAnnouncement>();
-            var query = new PopupAnnouncementQuery(fixture.UserSession, false);
-            announcementService.GetPopupAnnouncement(Arg.Any<GetHotAnnouncementsParams>()).Returns(announcements);
+            var announcements = new List<AlphaAnnouncement>();
+            var query = new AnnouncementsHistoryQuery(fixture.UserSession);
+
 
             //// Act
-            handler.Handle(query);
+            var act = handler.Handle(query);
 
             //// Assert
-            formatService.Received().Format(announcements, Arg.Any<GetHotAnnouncementsParams>());
-        }
-
-        [Test]
-        public void Handle_HeaderAnnouncement_CallHeaderHotAnnouncementService()
-        {
-            //// Arrange
-            var query = new HeaderAnnouncementQuery(fixture.UserSession);
-
-            //// Act
-            handler.Handle(query);
-
-            //// Assert
-            announcementApiService.Received().GetHeaderAnnouncements(Arg.Any<GetHotAnnouncementsParams>());
+            Assert.IsInstanceOf(typeof(AnnouncementHistoryViewModel), act);
         }
     }
 }

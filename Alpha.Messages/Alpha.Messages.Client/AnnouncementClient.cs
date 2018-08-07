@@ -13,7 +13,7 @@
 
     public interface AnnouncementClient
     {
-        IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request);
+        IEnumerable<Announcement> GetAnnouncementsHistory(AnnouncementHistoryRequest request);
     }
 
     public class AnnouncementClientImpl : AnnouncementClient
@@ -32,12 +32,12 @@
                 Authenticator = new HmacAuthenticator()
             };
         }
+        
 
-        public IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request)
+        public IEnumerable<Announcement> GetAnnouncementsHistory(AnnouncementHistoryRequest request)
         {
-            var restRequest = new RestRequest("AnnouncementApi/GetAnnouncements", Method.POST);
-            restRequest.AddQueryParameter("environment", request.Environment);
-            restRequest.AddQueryParameter("system", request.System);
+            var restRequest = new RestRequest("AnnouncementApi/GetAnnouncementsHistory", Method.POST);            
+            restRequest.AddJsonBody(request);
             IRestResponse response = restClient.Execute(restRequest);
             if (response.StatusCode == HttpStatusCode.OK)
             {

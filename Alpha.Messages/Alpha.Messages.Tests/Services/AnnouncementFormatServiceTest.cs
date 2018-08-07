@@ -29,11 +29,11 @@
         public void Format_NoMatchCode_NoReplaceContent()
         {
             //// Arrange
-            var announcements = fixture.CreateMany<HotAnnouncement>();
-            formatService.ReplacementCode = new Dictionary<string, Func<string, GetHotAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>();
+            var announcements = fixture.CreateMany<AlphaAnnouncement>();
+            formatService.ReplacementCode = new Dictionary<string, Func<string, BaseAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>();
 
             //// Act
-            var act = formatService.Format(announcements, new GetHotAnnouncementsParams());
+            var act = formatService.Format(announcements, new BaseAnnouncementsParams());
 
             //// Assert
             Assert.True(compareLogic.Compare(act.ToList(), announcements.ToList()).AreEqual);
@@ -44,11 +44,11 @@
         {
             //// Arrange
             var content = fixture.Create<string>();
-            var mainCodeAnnouncement = new HotAnnouncement("1", content + "{site-main}", "2222", "");
-            var announcements = new List<HotAnnouncement> { mainCodeAnnouncement };
+            var mainCodeAnnouncement = new AlphaAnnouncement(1, content + "{site-main}", "2222", "", DateTime.Now, DateTime.Now);
+            var announcements = new List<AlphaAnnouncement> { mainCodeAnnouncement };
 
             //// Act
-            var act = formatService.Format(announcements, new GetHotAnnouncementsParams { IsMobileDevice = false });
+            var act = formatService.Format(announcements, new BaseAnnouncementsParams { IsMobileDevice = false });
 
             //// Assert
             Assert.IsFalse(act.Any(i => i.Content.Contains("{site-main}")));

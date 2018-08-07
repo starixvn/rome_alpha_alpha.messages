@@ -55,7 +55,7 @@
             var act = criteria.LatestMessageId;
 
             //// Assert
-            Assert.AreEqual(0, act);
+            Assert.Zero(act);
         }
 
         [Test]

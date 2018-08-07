@@ -12,7 +12,7 @@
         {
             //// Arrange
             var expectedThaiText = "Thai....";
-            var language = new MultiLanguague("EN", "CS", "CH", "JP", expectedThaiText, "KO", "VN");
+            var language = new MultiLanguague("EN", "CS", "CH", expectedThaiText, "JP", "KO", "VN");
 
             //// Act
             var act = language.GetContentByKey(Language.Thai);
@@ -26,7 +26,7 @@
         {
             //// Arrange
             var expectedJPText = "JP....";
-            var language = new MultiLanguague("EN", "CS", "CH", expectedJPText, "TH", "KO", "VN");
+            var language = new MultiLanguague("EN", "CS", "CH", "TH", expectedJPText, "KO", "VN");
 
             //// Act
             var act = language.GetContentByKey(Language.Japanese);
