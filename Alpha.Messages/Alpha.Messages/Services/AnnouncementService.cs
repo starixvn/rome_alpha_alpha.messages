@@ -128,6 +128,7 @@
             var request = new AnnouncementHistoryRequest(fromDate, toDate, AppSettings.Environment, AppSettings.SiteGroup);
 
             var allAnnouncementsToday = announcementClient.GetAnnouncementsHistory(request)
+                .Where(i => i.ReleasedDate <= DateTime.Now)
                 .OrderBy(i => i.ReleasedDate);
 
             return allAnnouncementsToday.Where(announcement =>
