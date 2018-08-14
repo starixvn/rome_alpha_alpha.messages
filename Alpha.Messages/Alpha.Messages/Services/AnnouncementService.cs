@@ -65,6 +65,7 @@
         public int GetNumberOfNewAnnouncements(BaseAnnouncementsParams announcementParams)
         {
             var lastSeenAnnouncement = GetLastSeenAnnouncement(announcementParams.CustId, announcementParams.SubAccId);
+
             var fromDate = GetAvailableLastSeenDate(DateTime.MinValue, lastSeenAnnouncement.LastSeenSystem);
 
             var newAnnouncements = GetNewAnnouncements(announcementParams.CustId, fromDate);
@@ -77,6 +78,7 @@
         public IEnumerable<AlphaAnnouncement> GetAnnouncementsHistory(AnnouncementsHistoryParams announcementParams)
         {
             var lastSeenAnnouncement = GetLastSeenAnnouncement(announcementParams.CustId, announcementParams.SubAccId);
+
             announcementParams.FromDate = GetAvailableLastSeenDate(announcementParams.FromDate, lastSeenAnnouncement.LastSeenSystem);
 
             var announcementsHistory = GetAnnouncementsHistory(announcementParams.CustId, announcementParams.FromDate, announcementParams.ToDate);
@@ -88,7 +90,12 @@
         }
 
         public LastSeenAnnouncement GetLastSeenAnnouncement(int custId, int subAccId)
-            => dynamicRepository.Get<LastSeenAnnouncement>(new GetLastSeenAnnouncementCriteria(custId, subAccId));
+        {
+            var lastSeen = dynamicRepository.Get<LastSeenAnnouncement>(new GetLastSeenAnnouncementCriteria(custId, subAccId));
+
+            return lastSeen ?? new LastSeenAnnouncement(custId, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
+        }
+
 
         private static DateTime GetAvailableLastSeenDate(DateTime fromDate, DateTime lastSeenDate)
         {
@@ -184,6 +191,6 @@
             }
 
             return false;
-        }
+        }        
     }
 }
