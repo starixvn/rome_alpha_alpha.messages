@@ -211,6 +211,26 @@ namespace Alpha.Messages.Tests.Services
             announcementClient.Received().GetAnnouncementsHistory(Arg.Is<AnnouncementHistoryRequest>(i => i.FromDate.Date == sixMonthAgo.Date));
 
         }
+
+        [Test]
+        public void GetLastSeenAnnouncement_CannotFindCustomer_ReturnDefault()
+        {
+            //// Arrange
+            var defaultLastSeen = new LastSeenAnnouncement(123, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
+            LastSeenAnnouncement lastSeen = null;
+            dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeen);
+
+            //// Act
+            var act = service.GetLastSeenAnnouncement(123, 123);
+
+            //// Assert
+            Assert.AreEqual(defaultLastSeen.CustId, act.CustId);
+            Assert.AreEqual(defaultLastSeen.LastSeenNormal, act.LastSeenNormal);
+            Assert.AreEqual(defaultLastSeen.LastSeenPersonal, act.LastSeenPersonal);
+            Assert.AreEqual(defaultLastSeen.LastSeenSpecial, act.LastSeenSpecial);
+            Assert.AreEqual(defaultLastSeen.LastSeenSystem, act.LastSeenSystem);
+        }
+
         private IEnumerable<Announcement> CreateAnnouncements(DateTime dateTime)
             => new List<Announcement>
             {

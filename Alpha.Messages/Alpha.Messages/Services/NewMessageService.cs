@@ -47,21 +47,30 @@
 
         public NumberOfUnreadMessage GetNumberOfUnreadMessage(BaseAnnouncementsParams announcementParams)
         {
+            var numberUnreadMessage = new NumberOfUnreadMessage();
             var unreadMessage = dynamicRepository.Get<NumberOfUnreadMessage>(
                 new GetNumberOfUnreadMessageCriteria(
                     announcementParams.CustId,
                     announcementParams.SubAccId,
                     announcementParams.ParentSites)
                 );
-            var unreadAnnouncement = announcementService.GetNumberOfNewAnnouncements(announcementParams);
 
-            return new NumberOfUnreadMessage(
+            if (CustomerHasInitData(unreadMessage))
+            {
+                var unreadAnnouncement = announcementService.GetNumberOfNewAnnouncements(announcementParams);
+                numberUnreadMessage = new NumberOfUnreadMessage(
                 unreadMessage.Normal,
                 unreadMessage.Special,
                 unreadAnnouncement,
                 unreadMessage.Personal);
+            }
+
+
+            return numberUnreadMessage;
         }
 
+        private static bool CustomerHasInitData(NumberOfUnreadMessage unreadMessage)
+            => unreadMessage != null;
 
         private void UpdateMessageAsReadOnUser(int custId, int messageType)
             => dynamicRepository.Fetch<bool>(new UpdateMessageAsReadOnUserCritria(custId, messageType));

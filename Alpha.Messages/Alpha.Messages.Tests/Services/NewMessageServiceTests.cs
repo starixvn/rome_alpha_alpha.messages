@@ -1,4 +1,5 @@
-﻿namespace Alpha.Messages.Tests.Services
+﻿using NUnit.Framework;
+namespace Alpha.Messages.Tests.Services
 {
     using System.Collections.Generic;
     using System.Globalization;
@@ -161,6 +162,24 @@
             //// Assert
             dynamicRepository.Received().Get<NumberOfUnreadMessage>(Arg.Any<GetNumberOfUnreadMessageCriteria>());
             announcementService.Received().GetNumberOfNewAnnouncements(Arg.Any<BaseAnnouncementsParams>());
+        }
+
+        [Test]
+        public void GetNumberOfUnreadMessage_CannotFindCustomer_ReturnDefault()
+        {
+            //// Arrange
+            var defaultUnRead = new NumberOfUnreadMessage();
+            NumberOfUnreadMessage unreadMessage = null;
+            dynamicRepository.Get<NumberOfUnreadMessage>(Arg.Any<GetNumberOfUnreadMessageCriteria>()).Returns(unreadMessage);
+
+            //// Act
+            var act = service.GetNumberOfUnreadMessage(new BaseAnnouncementsParams());
+
+            //// Assert
+            Assert.AreEqual(defaultUnRead.Normal, act.Normal);
+            Assert.AreEqual(defaultUnRead.Special, act.Special);
+            Assert.AreEqual(defaultUnRead.System, act.System);
+            Assert.AreEqual(defaultUnRead.Personal, act.Personal);
         }
     }
 }
