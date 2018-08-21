@@ -6,7 +6,6 @@
     {
         public Product()
         {
-
         }
 
         public Product(int id, string name, DateTime endOfSupportDate)
@@ -18,5 +17,7 @@
         public int Id { get; }
 
         public string Name { get; }
+
+        public bool IsHidden { get; }
     }
 }

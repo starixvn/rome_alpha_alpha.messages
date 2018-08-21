@@ -394,6 +394,7 @@
     <Content Include="Views\PortalMessage\Messages.cshtml" />
     <Content Include="Views\Announcement\Index.cshtml" />
     <Content Include="Views\Announcement\Popup.cshtml" />
+    <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="assets\styles\popup\index.scss" />
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />

@@ -189,4 +189,10 @@
   <data name="New" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="systemAnnouncement" xml:space="preserve">
+    <value>System Announcement</value>
+  </data>
+  <data name="system" xml:space="preserve">
+    <value>System</value>
+  </data>
 </root>

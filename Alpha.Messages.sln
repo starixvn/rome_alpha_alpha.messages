@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{
 		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Messages.Api", "Alpha.Messages\Alpha.Messages.Api\Alpha.Messages.Api.csproj", "{C15C6CD5-DA08-41CC-AFE3-8DED58EF007F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Messages.Api.Tests", "Alpha.Messages.Api.Tests\Alpha.Messages.Api.Tests.csproj", "{845FE646-444F-44CC-AA4C-BDCEFE618B4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{FAB08E26-566C-4A75-9D8C-C4A609FD4110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAB08E26-566C-4A75-9D8C-C4A609FD4110}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAB08E26-566C-4A75-9D8C-C4A609FD4110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15C6CD5-DA08-41CC-AFE3-8DED58EF007F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15C6CD5-DA08-41CC-AFE3-8DED58EF007F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15C6CD5-DA08-41CC-AFE3-8DED58EF007F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15C6CD5-DA08-41CC-AFE3-8DED58EF007F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845FE646-444F-44CC-AA4C-BDCEFE618B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845FE646-444F-44CC-AA4C-BDCEFE618B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845FE646-444F-44CC-AA4C-BDCEFE618B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845FE646-444F-44CC-AA4C-BDCEFE618B4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +78,7 @@ Global
 		{9048C900-A47C-4FB9-9E5D-185C350C790E} = {5331BE62-366C-4FEB-B2B6-FB6C114EB6FE}
 		{2703095A-0EEB-4C8D-9187-E84D3F1CDA40} = {8807579B-FE90-4852-8A3D-2BACA3803015}
 		{FAB08E26-566C-4A75-9D8C-C4A609FD4110} = {5331BE62-366C-4FEB-B2B6-FB6C114EB6FE}
+		{C15C6CD5-DA08-41CC-AFE3-8DED58EF007F} = {8807579B-FE90-4852-8A3D-2BACA3803015}
+		{845FE646-444F-44CC-AA4C-BDCEFE618B4F} = {5331BE62-366C-4FEB-B2B6-FB6C114EB6FE}
 	EndGlobalSection
 EndGlobal

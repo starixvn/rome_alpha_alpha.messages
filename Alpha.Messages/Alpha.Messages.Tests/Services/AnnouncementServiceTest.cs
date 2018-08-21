@@ -17,6 +17,7 @@
     using NUnit.Framework;
     using Params.Announcement;
     using Ploeh.AutoFixture;
+    using Utils;
 
     public class AnnouncementServiceImplTest
     {
@@ -188,7 +189,6 @@
 
             //// Assert
             announcementClient.Received().GetAnnouncementsHistory(Arg.Is<AnnouncementHistoryRequest>(i => i.FromDate.Date == fiveMonthAgo.Date));
-
         }
 
         [Test]
@@ -207,14 +207,14 @@
 
             //// Assert
             announcementClient.Received().GetAnnouncementsHistory(Arg.Is<AnnouncementHistoryRequest>(i => i.FromDate.Date == sixMonthAgo.Date));
-
         }
 
         [Test]
         public void GetLastSeenAnnouncement_CannotFindCustomer_ReturnDefault()
         {
             //// Arrange
-            var defaultLastSeen = new LastSeenAnnouncement(123, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
+            SystemTime.Now = DateTime.Now;
+            var defaultLastSeen = new LastSeenAnnouncement(123, SystemTime.Now, SystemTime.Now, SystemTime.Now, SystemTime.Now);
             LastSeenAnnouncement lastSeen = null;
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeen);
 
