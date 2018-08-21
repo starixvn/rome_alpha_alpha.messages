@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Announcements.Models;
-    using Announcements.Specs;
     using KellermanSoftware.CompareNetObjects;
     using Messages.Models.Announcement;
     using Messages.Services;
@@ -30,7 +28,6 @@
         {
             //// Arrange
             var announcements = fixture.CreateMany<AlphaAnnouncement>();
-            formatService.ReplacementCode = new Dictionary<string, Func<AlphaAnnouncement, BaseAnnouncementsParams, string>>();
 
             //// Act
             var act = formatService.Format(announcements, new BaseAnnouncementsParams());

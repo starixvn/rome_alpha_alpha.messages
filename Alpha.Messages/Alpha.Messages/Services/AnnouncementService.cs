@@ -5,7 +5,6 @@
     using System.Linq;
     using Announcements.Models;
     using Announcements.Services;
-    using Announcements.UnsynchronizedSetting.Specs;
     using Client;
     using Client.Requests;
     using Configurations;
@@ -35,18 +34,15 @@
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
         private readonly IDynamicRepository dynamicRepository;
-        private readonly ProductService productService;
 
         public AnnouncementServiceImpl(
             AnnouncementClient announcementClient,
             SpecificationService specificationService,
-            ProductService productService,
             IDynamicRepository dynamicRepository)
         {
             this.announcementClient = announcementClient;
             this.specificationService = specificationService;
-            this.dynamicRepository = dynamicRepository;
-            this.productService = productService;           
+            this.dynamicRepository = dynamicRepository;     
         }
         
         public void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId)
@@ -63,7 +59,7 @@
 
             var fromDate = GetAvailableLastSeenDate(DateTime.MinValue, lastSeenAnnouncement.LastSeenSystem);
 
-            var newAnnouncements = GetNewAnnouncements(announcementParams.CustId, fromDate);
+            var newAnnouncements = GetNewAnnouncements(fromDate);
 
             var announcements = GetAnnouncementsByUser(newAnnouncements, announcementParams, lastSeenAnnouncement.LastSeenSystem);
 
@@ -76,7 +72,7 @@
 
             announcementParams.FromDate = GetAvailableLastSeenDate(announcementParams.FromDate, lastSeenAnnouncement.LastSeenSystem);
 
-            var announcementsHistory = GetAnnouncementsHistory(announcementParams.CustId, announcementParams.FromDate, announcementParams.ToDate);
+            var announcementsHistory = GetAnnouncementsHistory(announcementParams.FromDate, announcementParams.ToDate);
             var announcements = GetAnnouncementsByUser(announcementsHistory, announcementParams, lastSeenAnnouncement.LastSeenSystem);
 
             UpdateLastSeenAnnouncement(announcementParams.CustId, MessageType.System, announcementParams.IsAdminUser, announcementParams.SubAccId);
@@ -127,11 +123,11 @@
             return fromDate;
         }
 
-        private IEnumerable<Announcement> GetNewAnnouncements(int custId, DateTime fromDate)
+        private IEnumerable<Announcement> GetNewAnnouncements(DateTime fromDate)
         {
             var newAnnouncements = ConfiguredCacheService.GetOrSet(
                  $"Alpha.Messages.Announcement_{fromDate}_{AppSettings.SiteGroup}",
-                 () => GetAnnouncementsHistory(custId, fromDate, DateTime.Now),
+                 () => GetAnnouncementsHistory(fromDate, DateTime.Now),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             return newAnnouncements;
@@ -149,17 +145,13 @@
             return availablePopupAnnouncements;
         }
 
-        private IEnumerable<Announcement> GetAnnouncementsHistory(int custId, DateTime fromDate, DateTime toDate)
+        private IEnumerable<Announcement> GetAnnouncementsHistory(DateTime fromDate, DateTime toDate)
         {
             var request = new AnnouncementHistoryRequest(fromDate, toDate, AppSettings.Environment, AppSettings.SiteGroup);
 
-            var announcements = announcementClient.GetAnnouncementsHistory(request)
+            return announcementClient.GetAnnouncementsHistory(request)
                 .Where(i => i.ReleasedDate <= DateTime.Now)
                 .OrderBy(i => i.ReleasedDate);
-
-            UpdateUnsyncedProductSetting(announcements, custId);
-
-            return announcements;
         }
 
         private IEnumerable<AlphaAnnouncement> GetAnnouncementsByUser(
@@ -196,24 +188,6 @@
             }
 
             return message == null ? string.Empty : message.Text;
-        }
-
-        private void UpdateUnsyncedProductSetting(IEnumerable<Announcement> announcements, int custId)
-        {
-            var unsyncedProductCode = "72973";
-            foreach (var announcement in announcements)
-            {
-                if (!string.IsNullOrEmpty(announcement.Code) && announcement.Code.Contains(unsyncedProductCode))
-                {
-                    var spec = announcement.Specifications.FirstOrDefault(s => s.GetType() == typeof(UnsynchronizedSettingSpecification));
-
-                    if (spec != null)
-                    {
-                        var unsynchronizedSetting = (UnsynchronizedSettingSpecification)spec;
-                        unsynchronizedSetting.ProductIds = productService.GetUnconfirmSettingProductIds(custId);
-                    }
-                }
-            }
         }
     }
 }

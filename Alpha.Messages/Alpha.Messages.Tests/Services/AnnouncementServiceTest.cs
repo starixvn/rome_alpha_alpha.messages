@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-namespace Alpha.Messages.Tests.Services
+﻿namespace Alpha.Messages.Tests.Services
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +11,6 @@ namespace Alpha.Messages.Tests.Services
     using Fanex.Data.Repository;
     using KellermanSoftware.CompareNetObjects;
     using Messages.Criteria.Announcement;
-    using Messages.Criteria.Message;
     using Messages.Models.Announcement;
     using Messages.Services;
     using NSubstitute;
@@ -25,7 +23,6 @@ namespace Alpha.Messages.Tests.Services
         private AnnouncementClient announcementClient;
         private SpecificationService specificationService;
         private IDynamicRepository dynamicRepository;
-        private ProductService productService;
         private AnnouncementService service;
         private Fixture fixture;
         private CompareLogic compareLogic;
@@ -37,8 +34,7 @@ namespace Alpha.Messages.Tests.Services
             announcementClient = Substitute.For<AnnouncementClient>();
             specificationService = Substitute.For<SpecificationService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            productService = Substitute.For<ProductService>();
-            service = new AnnouncementServiceImpl(announcementClient, specificationService, productService, dynamicRepository);
+            service = new AnnouncementServiceImpl(announcementClient, specificationService, dynamicRepository);
             fixture = new Fixture();
             compareLogic = new CompareLogic();
             cacheForTesting = Substitute.For<Cache>();
