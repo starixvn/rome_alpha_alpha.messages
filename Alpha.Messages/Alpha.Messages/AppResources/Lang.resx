@@ -136,12 +136,33 @@
     <value>Over/Under</value>
   </data>
   <data name="moneyline" xml:space="preserve">
-    <value>Money Line</value>
+    <value>Moneyline</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>Others</value>
+    <value>Others Sports</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>1st Hdp</value>
+  </data>
+  <data name="NewSportType" xml:space="preserve">
+    <value>New Sport Type</value>
+  </data>
+  <data name="BetType" xml:space="preserve">
+    <value>Bet Type</value>
+  </data>
+  <data name="LabelOutright" xml:space="preserve">
+    <value>Outright</value>
+  </data>
+  <data name="TitleAnnouncement" xml:space="preserve">
+    <value>New sports and their bet types affected from {0}:</value>
+  </data>
+  <data name="BetSettingFollows" xml:space="preserve">
+    <value>Bet Setting Follows</value>
+  </data>
+  <data name="CommissionSettingFollows" xml:space="preserve">
+    <value>Commission Setting Follows</value>
+  </data>
+  <data name="PositionTakingSettingFollows" xml:space="preserve">
+    <value>Position Taking Setting Follows</value>
   </data>
 </root>

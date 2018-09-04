@@ -70,29 +70,11 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet Setting Follows.
-        /// </summary>
-        public static string BetSettingFollows {
-            get {
-                return ResourceManager.GetString("BetSettingFollows", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string close {
             get {
                 return ResourceManager.GetString("close", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Commission Setting Follows.
-        /// </summary>
-        public static string CommissionSettingFollows {
-            get {
-                return ResourceManager.GetString("CommissionSettingFollows", resourceCulture);
             }
         }
         
@@ -147,15 +129,6 @@ namespace Alpha.Messages.AppResources {
         public static string NewBetType {
             get {
                 return ResourceManager.GetString("NewBetType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New bet types of Basketball with effect from {0}:.
-        /// </summary>
-        public static string NewBetTypeEffectDate {
-            get {
-                return ResourceManager.GetString("NewBetTypeEffectDate", resourceCulture);
             }
         }
         
@@ -246,15 +219,6 @@ namespace Alpha.Messages.AppResources {
         public static string personalMessage {
             get {
                 return ResourceManager.GetString("personalMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Position Taking Setting Follows.
-        /// </summary>
-        public static string PositionTakingSettingFollows {
-            get {
-                return ResourceManager.GetString("PositionTakingSettingFollows", resourceCulture);
             }
         }
         

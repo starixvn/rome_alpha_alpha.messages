@@ -138,7 +138,19 @@
   <data name="moneyline" xml:space="preserve">
     <value>머니라인(핸디캡 없는 경기)</value>
   </data>
-  <data name="Others" xml:space="preserve">
-    <value>Others</value>
+  <data name="BetType" xml:space="preserve">
+    <value>배팅 유형</value>
+  </data>
+  <data name="LabelOutright" xml:space="preserve">
+    <value>순위,승자 등</value>
+  </data>
+  <data name="BetSettingFollows" xml:space="preserve">
+    <value>Bet Setting Follows</value>
+  </data>
+  <data name="CommissionSettingFollows" xml:space="preserve">
+    <value>Commission Setting Follows</value>
+  </data>
+  <data name="PositionTakingSettingFollows" xml:space="preserve">
+    <value>Position Taking Setting Follows</value>
   </data>
 </root>

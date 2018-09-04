@@ -1,21 +1,22 @@
 ﻿namespace Alpha.Messages.Models.Announcement
 {
     using System;
+    using System.Collections.Generic;
     using Messages.Constants;
 
     public class LastSeenAnnouncement
     {
+        private readonly Dictionary<int, DateTime> lastSeen = new Dictionary<int, DateTime>();
         public LastSeenAnnouncement()
         {
-
         }
 
         public LastSeenAnnouncement(
-            int custId
-            , DateTime lastSeenNormal
-            , DateTime lastSeenPersonal
-            , DateTime lastSeenSpecial
-            , DateTime lastSeenSystem)
+            int custId,
+            DateTime lastSeenNormal,
+            DateTime lastSeenPersonal,
+            DateTime lastSeenSpecial,
+            DateTime lastSeenSystem)
         {
             CustId = custId;
             LastSeenNormal = lastSeenNormal;
@@ -26,32 +27,55 @@
 
         public int CustId { get; set; }
 
-        public DateTime LastSeenNormal { get; set; }
-
-        public DateTime LastSeenSpecial { get; set; }
-
-        public DateTime LastSeenSystem { get; set; }
-
-        public DateTime LastSeenPersonal { get; set; }
-
-        public DateTime GetLastSeenByType(int messageType)
+        public DateTime LastSeenNormal
         {
-            if(messageType == MessageType.Normal)
+            get
             {
-                return LastSeenNormal;
+                return lastSeen[MessageType.Normal];
             }
-            else if(messageType == MessageType.Personal)
+            set
             {
-                return LastSeenPersonal;
-            }
-            else if(messageType == MessageType.Special)
-            {
-                return LastSeenSpecial;
-            }
-            else
-            {
-                return LastSeenSystem;
+                lastSeen[MessageType.Normal] = value;
             }
         }
+
+        public DateTime LastSeenSpecial
+        {
+            get
+            {
+                return lastSeen[MessageType.Special];
+            }
+            set
+            {
+                lastSeen[MessageType.Special] = value;
+            }
+        }
+
+        public DateTime LastSeenPersonal
+        {
+            get
+            {
+                return lastSeen[MessageType.Personal];
+            }
+            set
+            {
+                lastSeen[MessageType.Personal] = value;
+            }
+        }
+
+        public DateTime LastSeenSystem
+        {
+            get
+            {
+                return lastSeen[MessageType.System];
+            }
+            set
+            {
+                lastSeen[MessageType.System] = value;
+            }
+        }
+
+        public DateTime GetLastSeenByType(int messageType)
+            => lastSeen[messageType];
     }
 }

@@ -3,7 +3,6 @@
     using System.Web.Mvc;
     using Announcements.Models;
     using MediatR;
-    using Requests;
     using Requests.Announcement;
 
     public class AnnouncementController : SiteBaseController
@@ -20,6 +19,13 @@
             message.Specification = specificationParam;
             
             return View(message);
-        }        
+        }
+
+        public ActionResult Popup(PopupAnnouncementsQuery message)
+        {
+            message.Specification = specificationParam;
+
+            return View(message);
+        }
     }
 }

@@ -120,20 +120,8 @@
   <data name="NoInformationIsAvailable" xml:space="preserve">
     <value>ไม่มีข้อมูล</value>
   </data>
-  <data name="BetSettingFollows" xml:space="preserve">
-    <value>การตั้งค่าเดิมพันคัดลอกดังต่อไปนี้</value>
-  </data>
-  <data name="CommissionSettingFollows" xml:space="preserve">
-    <value>การตั้งค่าคอมมิชชั่นคัดลอกดังต่อไปนี้</value>
-  </data>
   <data name="NewBetType" xml:space="preserve">
     <value>ประเภทการเดิมพันใหม่</value>
-  </data>
-  <data name="NewBetTypeEffectDate" xml:space="preserve">
-    <value>ประเภทเดิมพันใหม่ของบาสเกตบอล มีผลตั้งแต่{0}</value>
-  </data>
-  <data name="PositionTakingSettingFollows" xml:space="preserve">
-    <value>การตั้งค่าแบ่งสู้คัดลอกดังต่อไปนี้</value>
   </data>
   <data name="Notice_2" xml:space="preserve">
     <value>วงเงินเดิมพัน ของท่าน ถูกเปลี่ยนแปลงเป็นที่เรียบร้อยแล้ว โดยทางต้นสาย  กรุณาตรวจสอบรายละเอียดต่าง ๆ ของลูกค้าของท่านอีกครั้ง</value>

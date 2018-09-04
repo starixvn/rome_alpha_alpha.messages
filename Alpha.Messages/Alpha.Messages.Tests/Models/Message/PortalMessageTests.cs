@@ -8,20 +8,7 @@
 
     [TestFixture]
     public class PortalMessageTests
-    {
-        [Test]
-        public void Id_Always_SetValueFromCtor()
-        {
-            // Arrange
-            int id = 100;
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("id", id);
-
-            // Assert
-            Assert.AreEqual(id, noticeMessage.Id);
-        }
-
+    {      
         [Test]
         public void ContentEN_Always_SetValueFromCtor()
         {
@@ -114,19 +101,6 @@
         }
 
         [Test]
-        public void LastUpdateTime_Always_SetValueFromCtor()
-        {
-            // Arrange
-            DateTime lastUpdateTime = DateTime.Today;
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("lastUpdateTime", lastUpdateTime);
-
-            // Assert
-            Assert.AreEqual(lastUpdateTime, noticeMessage.LastUpdateTime);
-        }
-
-        [Test]
         public void Type_Always_SetValueFromCtor()
         {
             // Arrange
@@ -164,20 +138,7 @@
             // Assert
             Assert.AreEqual(betTransId, noticeMessage.BetTransId);
         }
-
-        [Test]
-        public void IsRead_Always_SetValueFromCtor()
-        {
-            // Arrange
-            bool isRead = false;
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("isRead", isRead);
-
-            // Assert
-            Assert.AreEqual(isRead, noticeMessage.IsRead);
-        }
-
+        
         [Test]
         public void IsTopLevel_Always_SetValueFromCtor()
         {

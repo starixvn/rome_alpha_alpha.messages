@@ -61,6 +61,33 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet Setting Follows.
+        /// </summary>
+        public static string BetSettingFollows {
+            get {
+                return ResourceManager.GetString("BetSettingFollows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bet Type.
+        /// </summary>
+        public static string BetType {
+            get {
+                return ResourceManager.GetString("BetType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commission Setting Follows.
+        /// </summary>
+        public static string CommissionSettingFollows {
+            get {
+                return ResourceManager.GetString("CommissionSettingFollows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1st Hdp.
         /// </summary>
         public static string Label1HHDC {
@@ -115,6 +142,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outright.
+        /// </summary>
+        public static string LabelOutright {
+            get {
+                return ResourceManager.GetString("LabelOutright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Over/Under.
         /// </summary>
         public static string LabelOverUnder {
@@ -124,7 +160,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Money Line.
+        ///   Looks up a localized string similar to Moneyline.
         /// </summary>
         public static string moneyline {
             get {
@@ -133,11 +169,38 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Others.
+        ///   Looks up a localized string similar to New Sport Type.
+        /// </summary>
+        public static string NewSportType {
+            get {
+                return ResourceManager.GetString("NewSportType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others Sports.
         /// </summary>
         public static string Others {
             get {
                 return ResourceManager.GetString("Others", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position Taking Setting Follows.
+        /// </summary>
+        public static string PositionTakingSettingFollows {
+            get {
+                return ResourceManager.GetString("PositionTakingSettingFollows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New sports and their bet types affected from {0}:.
+        /// </summary>
+        public static string TitleAnnouncement {
+            get {
+                return ResourceManager.GetString("TitleAnnouncement", resourceCulture);
             }
         }
     }

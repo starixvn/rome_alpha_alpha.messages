@@ -51,6 +51,34 @@
 
             //// Assert
             mediator.Received().Send(query);
-        }        
+        }
+
+        [Test]
+        public void Popup_Always_SetSpecificationToQuery()
+        {
+            //// Arrange
+            var query = new PopupAnnouncementsQuery(fixtures.UserSession);
+            var controller = new AnnouncementController(mediator, specificationParam);
+
+            //// Act
+            controller.Popup(query);
+
+            //// Assert
+            Assert.True(compareLogic.Compare(specificationParam, query.Specification).AreEqual);
+        }
+
+        [Test]
+        public void Popup_Always_SendQueryToMediator()
+        {
+            //// Arrange
+            var query = new PopupAnnouncementsQuery(fixtures.UserSession);
+            var controller = new AnnouncementController(mediator, specificationParam);
+
+            //// Act
+            controller.Popup(query);
+
+            //// Assert
+            mediator.Received().Send(query);
+        }
     }
 }

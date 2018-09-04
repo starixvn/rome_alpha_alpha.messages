@@ -4,86 +4,80 @@
     using System.Collections.Generic;
     using System.Linq;
     using Alpha.Web.Helpers;
-    using Announcements.Models;
-    using Announcements.Specs;
     using Announcements.UnsynchronizedSetting.Specs;
+    using Constants;
     using Models.Announcement;
+    using Models.Constants;
     using Params.Announcement;
     using RemotingRef;
 
     public interface AnnouncementFormatService
     {
         IEnumerable<AlphaAnnouncement> Format(IEnumerable<AlphaAnnouncement> announcements, BaseAnnouncementsParams message);
+        AlphaAnnouncement Format(AlphaAnnouncement announcement, BaseAnnouncementsParams message);
     }
 
     public class AnnouncementFormatServiceImpl : AnnouncementFormatService
     {
+        internal Dictionary<string, Func<AlphaAnnouncement, BaseAnnouncementsParams, string>> ReplacementCode { get; set; }
         private static Dictionary<int, string> customerListUrls = new Dictionary<int, string> {
-            {2, "_MemberInfo/CustomerList/Agent/MemberList.aspx" },
-            {3, "_MemberInfo/CustomerList/Master/AgentList.aspx" },
-            {4, "_MemberInfo/CustomerList/Super/MasterList.aspx" }
+            {UserLevel.Agent, "_MemberInfo/CustomerList/Agent/MemberList.aspx" },
+            {UserLevel.Master, "_MemberInfo/CustomerList/Master/AgentList.aspx" },
+            {UserLevel.Super, "_MemberInfo/CustomerList/Super/MasterList.aspx" }
         };
-
-        public const string SiteMain = "{site-main}";
-        public const string ProductsTag = "{products}";
 
         public AnnouncementFormatServiceImpl()
         {
-            // Add Code & proccessed Function to replace
-            ReplacementCode = new Dictionary<string, Func<string, BaseAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>
+            ReplacementCode = new Dictionary<string, Func<AlphaAnnouncement, BaseAnnouncementsParams, string>>
             {
-                {"2222", ReplaceSiteMain },
                 {"72973", RenderUnsyncedProducts}
             };
         }
-        public Dictionary<string, Func<string, BaseAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>> ReplacementCode { get; set; }
 
-        public IEnumerable<AlphaAnnouncement> Format(
-            IEnumerable<AlphaAnnouncement> announcements,
-            BaseAnnouncementsParams message)
+        public AlphaAnnouncement Format(AlphaAnnouncement announcement, BaseAnnouncementsParams message)
         {
-            foreach (var announcement in announcements)
+            if (announcement != null)
             {
                 if (ReplacementCode.ContainsKey(announcement.Code))
                 {
-                    announcement.Content = ReplacementCode[announcement.Code](announcement.Content, message, announcement.Specifications);
+                    announcement.Content = ReplacementCode[announcement.Code](announcement, message);
                 }
 
-                yield return announcement;
+                announcement.Content = ReplaceMessageSiteTag(announcement.Content, message.IsMobileDevice);
             }
+
+            return announcement;
         }
 
-        private static string ReplaceSiteMain(
-            string content,
-            BaseAnnouncementsParams param, 
-            IEnumerable<ISpecification<IParam>> specs)
-            => content.Replace(SiteMain, param.IsMobileDevice ? MicroSites.MainUrl("~") : string.Empty);
+        public IEnumerable<AlphaAnnouncement> Format(IEnumerable<AlphaAnnouncement> announcements, BaseAnnouncementsParams message)
+            => announcements.Select(i => Format(i, message));
 
-        // TODO : Will be remove after resolve unsynced products
-        private static string RenderUnsyncedProducts(
-            string content,
-            BaseAnnouncementsParams param, 
-            IEnumerable<ISpecification<IParam>> specs)
+        private static string ReplaceMessageSiteTag(string content, bool isMoblie)
+            => content.Replace(MessageConstants.SiteMessageTag, isMoblie ? MicroSites.MessageUrl("~") : MicroSites.MessageUrl());
+
+        private static string RenderUnsyncedProducts(AlphaAnnouncement annoucement, BaseAnnouncementsParams param)
         {
-            var unsynchronizedSettingSpecification = (UnsynchronizedSettingSpecification)specs.FirstOrDefault(rule => rule.GetType() == typeof(UnsynchronizedSettingSpecification));
+            var content = annoucement.Content;
+            var unsynchronizedSettingSpecification = annoucement.Specifications.FirstOrDefault(rule => rule.GetType() == typeof(UnsynchronizedSettingSpecification));
 
             if (unsynchronizedSettingSpecification != null)
             {
-                return content.Replace(ProductsTag, BuildProductTag(unsynchronizedSettingSpecification, param));
+                var unsynchronizedSetting = (UnsynchronizedSettingSpecification)unsynchronizedSettingSpecification;
+                content = content.Replace(
+                    MessageConstants.ProductsTag,
+                    BuildProductTag(unsynchronizedSetting.ProductIds, param));
             }
 
             return content;
         }
 
-        // TODO : Will be remove after resolve unsynced products
-        private static string BuildProductTag(
-            UnsynchronizedSettingSpecification unsynchronizedSettingSpecification,
-            BaseAnnouncementsParams param)
+        private static string BuildProductTag(IEnumerable<int> productIds, BaseAnnouncementsParams param)
         {
-            var url = $"{MicroSites.OldMainUrl("~") + customerListUrls[param.RoleId]}";
+            var url = MicroSites.OldMainUrl(customerListUrls[param.RoleId]);
 
-            return string.Join(string.Empty, unsynchronizedSettingSpecification.ProductIds
-                .Select(productId => $"<div><a href='{url}?productUnsynchronized={productId}' target='main'>{CacheRefFactory.CacheRef.GetProductName(productId)}</a></div>"));
+            return string.Join(
+                string.Empty,
+                productIds.Select(productId => $"<div><a href='{url}?productUnsynchronized={productId}' target='main'>{CacheRefFactory.CacheRef.GetProductName(productId)}</a></div>"));
         }
     }
 }

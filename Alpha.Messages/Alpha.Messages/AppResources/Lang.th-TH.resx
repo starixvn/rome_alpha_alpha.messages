@@ -139,9 +139,30 @@
     <value>การทายผู้เล่นหรือทีมที่จะชนะ</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>อื่นๆ</value>
+    <value>กีฬาชนิดอื่น</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>ราคาต่อรอง ครึ่งแรก</value>
+  </data>
+  <data name="NewSportType" xml:space="preserve">
+    <value>กีฬาประเภทใหม่</value>
+  </data>
+  <data name="BetType" xml:space="preserve">
+    <value>ประเภทการเดิมพัน</value>
+  </data>
+  <data name="LabelOutright" xml:space="preserve">
+    <value>ทายผลผู้ชนะ</value>
+  </data>
+  <data name="TitleAnnouncement" xml:space="preserve">
+    <value>กีฬาใหม่ประเภทเดิมพันใหม่จะมีผลตั้งแต่ {0}</value>
+  </data>
+  <data name="BetSettingFollows" xml:space="preserve">
+    <value>การตั้งค่าเดิมพันคัดลอกดังต่อไปนี้</value>
+  </data>
+  <data name="CommissionSettingFollows" xml:space="preserve">
+    <value>การตั้งค่าคอมมิชชั่นคัดลอกดังต่อไปนี้</value>
+  </data>
+  <data name="PositionTakingSettingFollows" xml:space="preserve">
+    <value>การตั้งค่าแบ่งสู้คัดลอกดังต่อไปนี้</value>
   </data>
 </root>

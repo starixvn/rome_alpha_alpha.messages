@@ -1,8 +1,6 @@
 ﻿namespace Alpha.Messages.Site.Requests.Announcement
 {
     using System;
-    using Alpha.Announcements.Models;
-    using Constants;
     using MediatR;
     using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
@@ -19,7 +17,7 @@
 
         public DateTime ToDate { get; set; }
 
-        public AnnouncementsHistoryParams ConvertToParameters()
+        override public BaseAnnouncementsParams ConvertToParameters()
         {
             return new AnnouncementsHistoryParams
             {

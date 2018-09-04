@@ -2,30 +2,25 @@
 {
     using System;
     using System.Collections.Specialized;
-    using System.Linq;
     using Constants;
     using Fanex.Data.Repository;
     using Fixtures;
     using Messages.Configurations;
     using Messages.Criteria.Message;
-    using Messages.DataAccesses;
     using Messages.Models.Announcement;
-    using Messages.Models.Constants;
     using Messages.Models.Message;
     using Messages.Services;
     using NSubstitute;
     using NUnit.Framework;
     using Params;
     using Ploeh.AutoFixture;
-    using Site.Tests.Helpers;
-    using Assert = NUnit.Framework.Assert;
 
     [TestFixture]
     public class MessageHistoryServiceTests
     {
         private MessageHistoryService messageService;
         private AnnouncementService announcementService;
-        private MessageDataAccess messageDataAccess;
+        private IDynamicRepository dynamicRepository;
         private Fixture fixture;
         private const string SiteSuperId = "234";
         private const string SiteMasterId = "2345";
@@ -33,9 +28,9 @@
         [SetUp]
         public void SetUp()
         {
-            messageDataAccess = Substitute.For<MessageDataAccess>();
+            dynamicRepository = Substitute.For<IDynamicRepository>();
             announcementService = Substitute.For<AnnouncementService>();
-            messageService = new MessageHistoryServiceImpl(messageDataAccess, announcementService);
+            messageService = new MessageHistoryServiceImpl(announcementService, dynamicRepository);
             fixture = new Fixture();
             AppSettings.AppSettingValues = new NameValueCollection
             {
@@ -63,7 +58,7 @@
                     CustId.ValidId,
                     0,
                     0,
-                    "1",                   
+                    "1",
                     1,
                     DateTime.Today,
                     DateTime.Today,
@@ -72,7 +67,7 @@
                     personalType));
 
             //// Assert
-            messageDataAccess.Received().GetMessagesHistory(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate == limitedDate));
+            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate == limitedDate));
         }
 
         [Test]
@@ -90,7 +85,7 @@
                     CustId.ValidId,
                     0,
                     0,
-                    "1",                    
+                    "1",
                     1,
                     DateTime.MinValue,
                     DateTime.Now,
@@ -99,7 +94,7 @@
                     personalType));
 
             //// Assert
-            messageDataAccess.Received().GetMessagesHistory(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == threeDayAgo.Date));
+            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == threeDayAgo.Date));
         }
 
         [Test]
@@ -126,7 +121,7 @@
                     personalType));
 
             //// Assert
-            messageDataAccess.Received().GetMessagesHistory(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == newReleaseDate.Date));
+            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == newReleaseDate.Date));
         }
 
         [Test]
@@ -154,7 +149,7 @@
                     personalType));
 
             //// Assert
-            messageDataAccess.Received().GetMessagesHistory(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == sixMonthAgo.Date));
+            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == sixMonthAgo.Date));
         }
     }
 }

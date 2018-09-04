@@ -1,4 +1,5 @@
-﻿namespace Alpha.Messages.Tests.Models.Message
+﻿using NUnit.Framework;
+namespace Alpha.Messages.Tests.Models.Message
 {
     using System;
     using Messages.Models.Message;
@@ -111,33 +112,7 @@
             // Assert
             Assert.AreEqual(postTime, message.PostTime);
         }
-
-        [Test]
-        public void CreateTime_Always_SetValueFromCtor()
-        {
-            // Arrange
-            DateTime createTime = DateTime.Today;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("createTime", createTime);
-
-            // Assert
-            Assert.AreEqual(createTime, message.CreateTime);
-        }
-
-        [Test]
-        public void LastUpdateTime_Always_SetValueFromCtor()
-        {
-            // Arrange
-            DateTime lastUpdateTime = DateTime.Today;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("lastUpdateTime", lastUpdateTime);
-
-            // Assert
-            Assert.AreEqual(lastUpdateTime, message.LastUpdateTime);
-        }
-
+      
         [Test]
         public void MessageType_Always_SetValueFromCtor()
         {
@@ -163,124 +138,7 @@
             // Assert
             Assert.AreEqual(isSticky, message.IsSticky);
         }
-
-        [Test]
-        public void IsTest_Always_SetValueFromCtor()
-        {
-            // Arrange
-            bool isTest = false;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("isTest", isTest);
-
-            // Assert
-            Assert.AreEqual(isTest, message.IsTest);
-        }
-
-        [Test]
-        public void MatchId_Always_SetValueFromCtor()
-        {
-            // Arrange
-            int matchId = 1;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("matchId", matchId);
-
-            // Assert
-            Assert.AreEqual(matchId, message.MatchId);
-        }
-
-        [Test]
-        public void IsBatch_Always_SetValueFromCtor()
-        {
-            // Arrange
-            bool isBatch = false;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("isBatch", isBatch);
-
-            // Assert
-            Assert.AreEqual(isBatch, message.IsBatch);
-        }
-
-        [Test]
-        public void CreatorId_Always_SetValueFromCtor()
-        {
-            // Arrange
-            int creatorId = 1;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("creator", creatorId);
-
-            // Assert
-            Assert.AreEqual(creatorId, message.CreatorId);
-        }
-
-        [Test]
-        public void LastUpdatorId_Always_SetValueFromCtor()
-        {
-            // Arrange
-            int lastUpdator = 1;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("lastUpdator", lastUpdator);
-
-            // Assert
-            Assert.AreEqual(lastUpdator, message.LastUpdator);
-        }
-
-        [Test]
-        public void UserId_Always_SetValueFromCtor()
-        {
-            // Arrange
-            int userId = 1;
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("userId", userId);
-
-            // Assert
-            Assert.AreEqual(userId, message.UserId);
-        }
-
-        [Test]
-        public void CreatorName_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string creatorName = "user";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("creatorName", creatorName);
-
-            // Assert
-            Assert.AreEqual(creatorName, message.CreatorName);
-        }
-
-        [Test]
-        public void LastUpdatorName_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string lastUpdateName = "user";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("lastUpdateName", lastUpdateName);
-
-            // Assert
-            Assert.AreEqual(lastUpdateName, message.LastUpdateName);
-        }
-
-        [Test]
-        public void UserName_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string userName = "user";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("userName", userName);
-
-            // Assert
-            Assert.AreEqual(userName, message.UserName);
-        }
-
+        
         [Test]
         public void BettransId_Always_SetValueFromCtor()
         {
@@ -305,6 +163,34 @@
 
             // Assert
             Assert.AreEqual(rowNum, message.RowNum);
+        }
+
+        [Test]
+        public void HasRedColor_RedColor_ReturnTrue()
+        {
+            //// Arrange
+            var message = FakeDataHelper.Create<MessageHistory>("contentEN", "<font color=red>abc</font>");
+
+            //// Act
+            var act = message.HasRedColor;
+
+            //// Assert
+            Assert.IsTrue(act);
+        }
+
+        [Test]
+        public void Content_Always_ReplaceSpecialCharacters()
+        {
+            //// Arrange
+            var message = FakeDataHelper.Create<MessageHistory>("ContentEN", "<font color=red>@@abc</font>");
+
+            //// Act
+            var act = message.Content("en-US");
+
+            //// Assert
+            Assert.IsFalse(act.Contains("@@"));
+            Assert.IsFalse(act.Contains("<font color=red>"));
+            Assert.IsFalse(act.Contains("</font>"));
         }
     }
 }

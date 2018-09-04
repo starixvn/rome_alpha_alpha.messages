@@ -14,13 +14,15 @@
         public void StartDate_Always_EqualsValueSetFromCtor()
         {
             // Arrange
-            var messageWrappers = FakeDataHelper.CreateMany<MessageHistoryWrapper>().ToList();
+            var messages = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var startDate = DateTime.Today;
 
             // Act
             var viewModel = new MessagesHistoryViewModel(
-                messageWrappers,
+                messages,
+                DateTime.Today,
+                Language.Default,
                 startDate,
                 DateTime.Today,
                 MessageType.Normal,
@@ -35,13 +37,15 @@
         public void EndDate_Always_EqualsValueSetFromCtor()
         {
             // Arrange
-            var messageWrappers = FakeDataHelper.CreateMany<MessageHistoryWrapper>().ToList();
+            var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var endDate = DateTime.Today;
 
             // Act
             var viewModel = new MessagesHistoryViewModel(
                 messageWrappers,
+                DateTime.Today,
+                Language.Default,
                 DateTime.Today,
                 endDate,
                 MessageType.Normal,
@@ -56,13 +60,15 @@
         public void MessageType_Always_EqualsValueSetFromCtor()
         {
             // Arrange
-            var messageWrappers = FakeDataHelper.CreateMany<MessageHistoryWrapper>().ToList();
+            var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var msgType = MessageType.Normal;
 
             // Act
             var viewModel = new MessagesHistoryViewModel(
                 messageWrappers,
+                DateTime.Today,
+                Language.Default,
                 DateTime.Today,
                 DateTime.Today,
                 msgType,
@@ -79,11 +85,13 @@
         public void MessageTypeName_Always_ReturnValueByMessageType(int messageType, int messageTypeName)
         {
             // Arrange
-            var messageWrappers = FakeDataHelper.CreateMany<MessageHistoryWrapper>().ToList();
+            var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             // Act
             var viewModel = new MessagesHistoryViewModel(
                 messageWrappers,
+                DateTime.Today,
+                Language.Default,
                 DateTime.Today,
                 DateTime.Today,
                 messageType,
@@ -100,11 +108,13 @@
         public void RoleName_Always_ReturnValueByUserLevel(byte roleId, string userLevelName)
         {
             // Arrange
-            var messageWrappers = FakeDataHelper.CreateMany<MessageHistoryWrapper>().ToList();
+            var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             // Act
             var viewModel = new MessagesHistoryViewModel(
                 messageWrappers,
+                DateTime.Today,
+                Language.Default,
                 DateTime.Today,
                 DateTime.Today,
                 MessageType.Normal,

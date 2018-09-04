@@ -1,7 +1,6 @@
 ﻿namespace Alpha.Messages.Site.Tests.Handlers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Helpers;
     using KellermanSoftware.CompareNetObjects;
@@ -26,7 +25,9 @@
         private NewMessageService newMessageService;
         private AnnouncementService announcementService;
         private MessageHistoryHandler messageHandler;
+#pragma warning disable CS0618 // Type or member is obsolete
         private IUserSession userSession;
+#pragma warning restore CS0618 // Type or member is obsolete
         private Fixture fixture;
 
         [SetUp]
@@ -37,7 +38,9 @@
             announcementService = Substitute.For<AnnouncementService>();
             messageHandler = new MessageHistoryHandler(messageService, newMessageService, announcementService);
 
+#pragma warning disable CS0618 // Type or member is obsolete
             userSession = Substitute.For<IUserSession>();
+#pragma warning restore CS0618 // Type or member is obsolete
             userSession.Language.Returns(Language.English);
             userSession.CustId.Returns(263);
             userSession.RoleId.Returns(RoleId.Agent);
@@ -51,7 +54,8 @@
             // Arrange
             var messages = FakeDataHelper.CreateMany<MessageHistory>().ToList();
             messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(messages);
-            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(new LastSeenAnnouncement());
+            announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>())
+                .Returns(FakeDataHelper.Create<LastSeenAnnouncement>());
 
             var query = new MessageHistoryQuery(
                 userSession,
@@ -97,10 +101,11 @@
                 DateTime.Today,
                 DateTime.Today,
                 false);
-            var messageWrappers = new List<MessageHistoryWrapper>(messages.Select(m => new MessageHistoryWrapper(m, now, query.Language)));
 
             var expectedViewModel = new MessagesHistoryViewModel(
-                messageWrappers,
+                messages,
+                now,
+                Language.Default,
                 query.StartDate,
                 query.EndDate,
                 query.MessageType,
@@ -112,6 +117,6 @@
 
             // Assert
             Assert.IsTrue(compareLogic.Compare(expectedViewModel, viewModel).AreEqual);
-        }        
+        }
     }
 }

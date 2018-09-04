@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Messages.Params.Announcement
 {
-    using System;
     using Announcements.Models;
 
     public class BaseAnnouncementsParams
@@ -25,6 +24,6 @@
 
         public string ParentSites { get; set; }
 
-        public IParam SpecificationParamter { get; set; }        
+        public IParam SpecificationParamter { get; set; }
     }
 }

@@ -21,6 +21,9 @@
         int GetNumberOfNewAnnouncements(BaseAnnouncementsParams announcementParams);
         void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId);
         IEnumerable<AlphaAnnouncement> GetAnnouncementsHistory(AnnouncementsHistoryParams announcementParams);
+
+        AlphaAnnouncement GetPopUpAnnouncements(PopupAnnouncementParams announcementParams);
+
         LastSeenAnnouncement GetLastSeenAnnouncement(int custId, int subAccId);
     }
 
@@ -48,7 +51,7 @@
             DoubleCheckActivedAnnouncements = new Dictionary<string, Func<Announcement, int, bool>>
             {
                 // Implement double-check actived announcements by conditions here
-                {"72973",  DoubleCheckActivedAnnnouncementContainsUnsyncedSetting}
+                {"72973",  IsUnsyncedProductSetting}
             };
         }
 
@@ -68,7 +71,7 @@
 
             var fromDate = GetAvailableLastSeenDate(DateTime.MinValue, lastSeenAnnouncement.LastSeenSystem);
 
-            var newAnnouncements = GetNewAnnouncements(announcementParams.CustId, fromDate);
+            var newAnnouncements = GetNewAnnouncements(fromDate);
 
             var announcements = GetAnnouncementsByUser(newAnnouncements, announcementParams, lastSeenAnnouncement.LastSeenSystem);
 
@@ -81,12 +84,25 @@
 
             announcementParams.FromDate = GetAvailableLastSeenDate(announcementParams.FromDate, lastSeenAnnouncement.LastSeenSystem);
 
-            var announcementsHistory = GetAnnouncementsHistory(announcementParams.CustId, announcementParams.FromDate, announcementParams.ToDate);
+            var announcementsHistory = GetAnnouncementsHistory(announcementParams.FromDate, announcementParams.ToDate);
             var announcements = GetAnnouncementsByUser(announcementsHistory, announcementParams, lastSeenAnnouncement.LastSeenSystem);
 
             UpdateLastSeenAnnouncement(announcementParams.CustId, MessageType.System, announcementParams.IsAdminUser, announcementParams.SubAccId);
 
             return announcements.OrderByDescending(i => i.ReleasedDate);
+        }
+
+        public AlphaAnnouncement GetPopUpAnnouncements(PopupAnnouncementParams announcementParams)
+        {
+            if (announcementParams.IsShowedPopup)
+            {
+                return null;
+            }
+
+            var announcementsHistory = GetAvailablePopUpAnnouncements();
+            var announcements = GetAnnouncementsByUser(announcementsHistory, announcementParams, DateTime.Now);
+
+            return announcements.OrderByDescending(i => i.ReleasedDate).FirstOrDefault();
         }
 
         public LastSeenAnnouncement GetLastSeenAnnouncement(int custId, int subAccId)
@@ -95,7 +111,6 @@
 
             return lastSeen ?? new LastSeenAnnouncement(custId, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
         }
-
 
         private static DateTime GetAvailableLastSeenDate(DateTime fromDate, DateTime lastSeenDate)
         {
@@ -120,26 +135,35 @@
             return fromDate;
         }
 
-        private IEnumerable<Announcement> GetNewAnnouncements(int custId, DateTime fromDate)
+        private IEnumerable<Announcement> GetNewAnnouncements(DateTime fromDate)
         {
             var newAnnouncements = ConfiguredCacheService.GetOrSet(
                  $"Alpha.Messages.Announcement_{fromDate}_{AppSettings.SiteGroup}",
-                 () => GetAnnouncementsHistory(custId, fromDate, DateTime.Now),
+                 () => GetAnnouncementsHistory(fromDate, DateTime.Now),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             return newAnnouncements;
         }
 
-        private IEnumerable<Announcement> GetAnnouncementsHistory(int custId, DateTime fromDate, DateTime toDate)
+        private IEnumerable<Announcement> GetAvailablePopUpAnnouncements()
+        {
+            var request = new AnnouncementHistoryRequest(DateTime.Today.AddDays(-30), DateTime.Now, AppSettings.Environment, AppSettings.SiteGroup);
+            var availablePopupAnnouncements = ConfiguredCacheService.GetOrSet(
+                $"Alpha.Messages.PopupAnnouncement_{AppSettings.SiteGroup}",
+                () => announcementClient.GetAnnouncementsHistory(request)
+                .Where(i => DateTime.Now <= i.ExpiredDate && i.AnnouncementType == AnnouncementType.EmergencyPopup),
+                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
+
+            return availablePopupAnnouncements;
+        }
+
+        private IEnumerable<Announcement> GetAnnouncementsHistory(DateTime fromDate, DateTime toDate)
         {
             var request = new AnnouncementHistoryRequest(fromDate, toDate, AppSettings.Environment, AppSettings.SiteGroup);
 
-            var allAnnouncementsToday = announcementClient.GetAnnouncementsHistory(request)
+            return announcementClient.GetAnnouncementsHistory(request)
                 .Where(i => i.ReleasedDate <= DateTime.Now)
                 .OrderBy(i => i.ReleasedDate);
-
-            return allAnnouncementsToday.Where(announcement =>
-                    !DoubleCheckActivedAnnouncements.ContainsKey(announcement.Code) || DoubleCheckActivedAnnouncements[announcement.Code](announcement, custId));
         }
 
         private IEnumerable<AlphaAnnouncement> GetAnnouncementsByUser(
@@ -151,46 +175,51 @@
             {
                 if (announcement.Specifications == null
                     || !announcement.Specifications.Any()
-                    || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
+                    || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter)
+                    || IsUnsyncedProductSetting(announcement, announcementParams.CustId))
                 {
-                    var message = GetMessageByLanguage(announcement.Contents, announcementParams.Language);
+                    var messageContent = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
 
-                    yield return new AlphaAnnouncement(announcement.Id, message.Text, announcement.Code, "", announcement.ReleasedDate, lastSeenAnnouncement);
+                    yield return new AlphaAnnouncement(
+                        announcement.Id,
+                        messageContent,
+                        announcement.Code,
+                        announcement.ReleasedDate,
+                        lastSeenAnnouncement,
+                        announcement.Specifications);
                 }
             }
         }
 
-        private static MessageContent GetMessageByLanguage(IEnumerable<MessageContent> messages, string languageKey)
+        private static string GetMessageContentByLanguage(IEnumerable<MessageContent> messages, string languageKey)
         {
-            var message = messages.FirstOrDefault(i => i.LanguageKey == languageKey);
-            if (message != null && string.IsNullOrEmpty(message.Text))
-            {
-                message.Text = GetMessageContentDefault(messages).Text;
-            }
+            var message = messages.FirstOrDefault(i => i.LanguageKey.Equals(languageKey) && !string.IsNullOrEmpty(i.Text));
 
             if (message == null)
             {
-                message = GetMessageContentDefault(messages);
+                message = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage) && !string.IsNullOrEmpty(i.Text));
             }
 
-            return message;
+            return message == null ? string.Empty : message.Text;
         }
 
-        private static MessageContent GetMessageContentDefault(IEnumerable<MessageContent> messages)
-            => messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage));
 
-        private bool DoubleCheckActivedAnnnouncementContainsUnsyncedSetting(Announcement announcement, int custId)
+        private bool IsUnsyncedProductSetting(Announcement announcement, int custId)
         {
-            var existedUnsynchronizedSettingSpec = (UnsynchronizedSettingSpecification)announcement.Specifications
-                .FirstOrDefault(spec => spec.GetType() == typeof(UnsynchronizedSettingSpecification));
-
-            if (existedUnsynchronizedSettingSpec != null)
+            if (DoubleCheckActivedAnnouncements.ContainsKey(announcement.Code))
             {
-                existedUnsynchronizedSettingSpec.ProductIds = productService.GetUnconfirmSettingProductIds(custId);
-                return existedUnsynchronizedSettingSpec.ProductIds.Any();
+                var spec = announcement.Specifications.FirstOrDefault(s => s.GetType() == typeof(UnsynchronizedSettingSpecification));
+
+                if (spec != null)
+                {
+                    var unsynchronizedSetting = (UnsynchronizedSettingSpecification)spec;
+                    unsynchronizedSetting.ProductIds = productService.GetUnconfirmSettingProductIds(custId);
+
+                    return unsynchronizedSetting.ProductIds.Any();
+                }
             }
 
-            return false;
-        }        
+            return true;
+        }
     }
 }

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Constants;
     using Criteria.Message;
     using Criteria.NewMessage;
     using Fanex.Data.Repository;
@@ -13,6 +14,8 @@
     public interface NewMessageService
     {
         NumberOfUnreadMessage GetNumberOfUnreadMessage(BaseAnnouncementsParams announcementParams);
+
+        NumberOfUnreadMessage CheckNewUnreadMessage(NumberOfNewMessageParams announcementParams);
 
         void MoveNewMessage(int custId, string custName, int levelId, bool isUserAdmin);
     }
@@ -43,6 +46,13 @@
 
                 UpdateMessageAsReadOnUser(custId, messageType);
             }
+        }
+
+        public NumberOfUnreadMessage CheckNewUnreadMessage(NumberOfNewMessageParams announcementParams)
+        {
+            return announcementParams.UnreadMessage != null && announcementParams.UnreadMessage.Total >= MessageConstants.DefaultTotalMessageHistory ?
+                announcementParams.UnreadMessage :
+                GetNumberOfUnreadMessage(announcementParams);
         }
 
         public NumberOfUnreadMessage GetNumberOfUnreadMessage(BaseAnnouncementsParams announcementParams)

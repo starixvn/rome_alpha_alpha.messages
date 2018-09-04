@@ -1,11 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
-    using System.Collections.Generic;
-    using System.Linq;
+    using System;
     using MediatR;
     using Models.Message;
     using Params;
-    using Params.Announcement;
     using Requests.MessageHistory;
     using Services;
     using ViewModels;
@@ -16,9 +14,10 @@
         private readonly NewMessageService newMessageService;
         private readonly AnnouncementService announcementService;
 
-        public MessageHistoryHandler(MessageHistoryService messageService
-            , NewMessageService newMessageService
-            , AnnouncementService announcementService)
+        public MessageHistoryHandler(
+            MessageHistoryService messageService, 
+            NewMessageService newMessageService,
+            AnnouncementService announcementService)
         {
             this.messageService = messageService;
             this.newMessageService = newMessageService;
@@ -26,22 +25,36 @@
         }
 
         public MessagesHistoryViewModel Handle(MessageHistoryQuery message)
-        {
-            var lastSeenMessage = announcementService.GetLastSeenAnnouncement(message.CustId, message.SubAccId);
-            var lastSeenDate = lastSeenMessage.GetLastSeenByType(message.MessageType);
-            var messageParams = message.ConvertToMessageParameters();
+        {            
+            var lastSeenDate = GetLastSeenDate(message.CustId, message.SubAccId, message.MessageType);
+            var messageParams = (MessageHistoryParams)message.ConvertToParameters();
             var messages = messageService.GetMessagesHistory(messageParams);
-            var messageWrappers = new List<MessageHistoryWrapper>(messages.Select(m => new MessageHistoryWrapper(m, lastSeenDate, message.Language)));
 
-            var numberOfUnreadMessage = newMessageService.GetNumberOfUnreadMessage(message.ConvertToBaseAnnouncementParameters());
+            var numberOfUnreadMessage = newMessageService.GetNumberOfUnreadMessage(messageParams);
+            UpdateUnreadMessageOnSession(message, numberOfUnreadMessage);
 
             return new MessagesHistoryViewModel(
-                messageWrappers,
+                messages,
+                lastSeenDate,
+                message.Language,
                 messageParams.StartDate,
                 message.EndDate,
                 message.MessageType,
                 message.RoleId,
                 numberOfUnreadMessage);
         }
+
+        private static void UpdateUnreadMessageOnSession(MessageHistoryQuery message, NumberOfUnreadMessage unreadMessage)
+        {
+            message.NumberOfUnreadMessage = unreadMessage;
+        }
+
+        private DateTime GetLastSeenDate(int custId, int subAccId, int messageType)
+        {
+            var lastSeenMessage = announcementService.GetLastSeenAnnouncement(custId, subAccId);
+
+            return lastSeenMessage.GetLastSeenByType(messageType);
+        }
+
     }
 }

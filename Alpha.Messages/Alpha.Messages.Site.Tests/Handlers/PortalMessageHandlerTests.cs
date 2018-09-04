@@ -188,9 +188,6 @@ namespace Alpha.Messages.Site.Tests.Handlers
 
         private PortalMessage CreateNoticeMessage(int id, DateTime postTime, byte topLevel)
             => new PortalMessage(
-                id,
-                string.Empty,
-                string.Empty,
                 string.Empty,
                 string.Empty,
                 string.Empty,
@@ -201,9 +198,7 @@ namespace Alpha.Messages.Site.Tests.Handlers
                 postTime,
                 0,
                 true,
-                postTime,
                 string.Empty,
-                true,
                 topLevel);
     }
 }

@@ -34,8 +34,8 @@
     <CodeAnalysisRuleSet>Alpha.Messages.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.2\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Announcements.1.0.0.3-EmegercyPopup-01\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -183,7 +183,6 @@
     <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetMoveBetInformationCriteria.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteria.cs" />
-    <Compile Include="DataAccesses\MessageDataAccess.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Announcement\LastSeenAnnouncement.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
@@ -200,8 +199,9 @@
     <Compile Include="Models\Product\Product.cs" />
     <Compile Include="Models\Message\NumberOfUnreadMessage.cs" />
     <Compile Include="Models\Message\PortalMessage.cs" />
+    <Compile Include="Params\Announcement\NumberOfNewMessageParams.cs" />
+    <Compile Include="Params\Announcement\PopupAnnouncementParams.cs" />
     <Compile Include="Params\Announcement\AnnouncementsHistoryParams.cs" />
-    <Compile Include="Params\Announcement\NumberOfNewAnnouncementsParams.cs" />
     <Compile Include="Params\Announcement\BaseAnnouncementsParams.cs" />
     <Compile Include="Params\MessageHistoryParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
