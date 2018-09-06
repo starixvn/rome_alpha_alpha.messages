@@ -283,19 +283,19 @@
     </Content>
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
+    <Content Include="assets\bundles\announcement.js" />
+    <Content Include="assets\bundles\announcement.min.js" />
     <Content Include="assets\bundles\default-message.css" />
-    <Content Include="assets\bundles\default-message.min.css">
-      <DependentUpon>default-message.css</DependentUpon>
-    </Content>
+    <Content Include="assets\bundles\default-message.min.css" />
     <Content Include="assets\bundles\extendMessage.css" />
     <Content Include="assets\bundles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
     </Content>
+    <Content Include="assets\bundles\message.js" />
+    <Content Include="assets\bundles\message.min.js" />
     <Content Include="assets\bundles\popup.css" />
     <Content Include="assets\bundles\popup.js" />
-    <Content Include="assets\bundles\popup.min.css">
-      <DependentUpon>popup.css</DependentUpon>
-    </Content>
+    <Content Include="assets\bundles\popup.min.css" />
     <Content Include="assets\bundles\popup.min.js">
       <DependentUpon>popup.js</DependentUpon>
     </Content>

@@ -4,13 +4,12 @@
 }
 <html>
 <head>
-    <title></title>
+    <title>New Announcement</title>
     @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
     @StaticResources.AssetStyles.Render("/bundles/site-reports/default")
     @StaticResources.RenderStyles("~/assets/bundles/extendMessage")
 </head>
 <body>
-    <div class="baio-title-effect-date-format">@string.Format(Lang.TitleAnnouncement, "13/09/2018")</div>
     <table class="tblRpt tblRpt-bordered alternative-row-table width-100per tablesorter tblRpt-hover" id="tbl-report" style="padding: 0px;">
         <thead class="tableFloatingHeaderOriginal">
             <tr>
@@ -31,14 +30,7 @@
                     @CacheRef.GetSportName(49)
                     <br>
                     @CacheRef.GetSportName(51)
-                    <br>
-                    @CacheRef.GetSportName(52)
-                    <br>
-                    @CacheRef.GetSportName(53)
-                    <br>
-                    @CacheRef.GetSportName(54)
-                    <br>
-                    @CacheRef.GetSportName(55)
+                    
                 </td>
                 <td class="center">@Lang.LabelHandicapFC</td>
                 <td class="center">@Lang.Others</td>
@@ -66,65 +58,6 @@
                 <td class="center">@Lang.LabelOtherTypes</td>
                 <td class="center">@Lang.Others</td>
                 <td class="center">@Lang.LabelOutright</td>
-            </tr>
-            <tr>
-                <td class="center">@Lang.moneyline</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.Label1x2</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.moneyline</td>
-            </tr>
-
-            <tr>
-                <td class="baio-bettypes-content-bg" rowspan="8">@CacheRef.GetSportName(56)</td>
-                <td class="center">@Lang.LabelHandicapFC</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelAsianHDC_OU_OE</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelHandicapFC</td>
-            </tr>
-            <tr>
-                <td class="center">@Lang.LabelOddEven</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelAsianHDC_OU_OE</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOddEven</td>
-            </tr>
-            <tr>
-                <td class="center">@Lang.LabelOverUnder</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelAsianHDC_OU_OE</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOverUnder</td>
-            </tr>
-            <tr>
-                <td class="center">@CacheRef.GetBetTypeName(7)</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOtherTypes</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelHandicapFC</td>
-            </tr>
-            <tr>
-                <td class="center">@CacheRef.GetBetTypeName(8)</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOtherTypes</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOverUnder</td>
-            </tr>
-            <tr>
-                <td class="center">@Lang.LabelOutright</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOtherTypes</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOutright</td>
-            </tr>
-
-            <tr>
-                <td class="center">@CacheRef.GetBetTypeName(12)</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOtherTypes</td>
-                <td class="center">@Lang.Others</td>
-                <td class="center">@Lang.LabelOddEven</td>
             </tr>
             <tr>
                 <td class="center">@Lang.moneyline</td>
