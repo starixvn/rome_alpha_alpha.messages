@@ -8,84 +8,19 @@
 
     [TestFixture]
     public class PortalMessageTests
-    {      
+    {
         [Test]
-        public void ContentEN_Always_SetValueFromCtor()
+        public void BaseConstructor_Always_Set7Language()
         {
-            // Arrange
-            string contentEN = "value";
+            //// Arrange
+            var message = FakeDataHelper.Create<PortalMessage>();
 
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentEN", contentEN);
+            //// Act           
+            var act = message.Contents;
 
-            // Assert
-            Assert.AreEqual(contentEN, noticeMessage.ContentEN);
+            //// Assert
+            Assert.AreEqual(7, act.Count);
         }
-
-        [Test]
-        public void ContentCS_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentCS = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentCS", contentCS);
-
-            // Assert
-            Assert.AreEqual(contentCS, noticeMessage.ContentCS);
-        }
-
-        [Test]
-        public void ContentCH_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentCH = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentCH", contentCH);
-
-            // Assert
-            Assert.AreEqual(contentCH, noticeMessage.ContentCH);
-        }
-
-        [Test]
-        public void ContentJP_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentJP = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentJP", contentJP);
-
-            // Assert
-            Assert.AreEqual(contentJP, noticeMessage.ContentJP);
-        }
-
-        [Test]
-        public void ContentTH_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentTH = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentTH", contentTH);
-
-            // Assert
-            Assert.AreEqual(contentTH, noticeMessage.ContentTH);
-        }       
-
-        [Test]
-        public void ContentKO_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentKO = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentKO", contentKO);
-
-            // Assert
-            Assert.AreEqual(contentKO, noticeMessage.ContentKO);
-        }    
 
         [Test]
         public void PostTime_Always_SetValueFromCtor()

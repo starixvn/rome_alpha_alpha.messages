@@ -12,7 +12,7 @@
         {
         }
 
-        public NumberOfUnreadMessage CurrentNumberOfUnreadMessage
+        public NumberOfUnreadMessage UnreadMessage
         {
             get
             {
@@ -24,8 +24,7 @@
             }
         }
 
-
-        public NumberOfNewMessageParams ConvertToNumberOfNewMessageParameters()
+        public override BaseAnnouncementsParams ConvertToParameters() 
             => new NumberOfNewMessageParams
             {
                 AdminId = AdminId,
@@ -37,7 +36,7 @@
                 UserName = UserName,
                 SpecificationParamter = Specification,
                 ParentSites = ParentSites,
-                UnreadMessage = CurrentNumberOfUnreadMessage
-            };
+                UnreadMessage = UnreadMessage
+            };        
     }
 }

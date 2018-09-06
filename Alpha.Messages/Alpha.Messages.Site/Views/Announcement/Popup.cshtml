@@ -11,7 +11,7 @@
 <body>
     @if (Model != null)
     {
-        <div id="popupContent">
+        <div id="popupContent" data-messageId="@Model.Id">
             @Html.Raw(Model.Content)
         </div>
     }

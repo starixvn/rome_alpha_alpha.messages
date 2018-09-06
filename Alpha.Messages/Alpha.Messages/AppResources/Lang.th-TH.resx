@@ -153,9 +153,6 @@
   <data name="LabelOutright" xml:space="preserve">
     <value>ทายผลผู้ชนะ</value>
   </data>
-  <data name="TitleAnnouncement" xml:space="preserve">
-    <value>กีฬาใหม่ประเภทเดิมพันใหม่จะมีผลตั้งแต่ {0}</value>
-  </data>
   <data name="BetSettingFollows" xml:space="preserve">
     <value>การตั้งค่าเดิมพันคัดลอกดังต่อไปนี้</value>
   </data>

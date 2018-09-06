@@ -60,22 +60,21 @@
             {
                 int length = Math.Min(DefaultMaxContentLength, Content.Length);
 
-                var content = Content.Substring(0, length)
-                    .Replace("<font color=red>", string.Empty)
-                    .Replace("</font>", string.Empty)
-                    + Ellipsis;
+                var content = Content.Substring(0, length)+ Ellipsis;
 
                 return content;
             }
         }
 
         public string Content
-            => RawContent.Replace("@@", CurrentMessage.BetTransId)
+            => CurrentMessage.GetContentByKey(currentLang)
+            .Replace("@@", CurrentMessage.BetTransId)
             .Replace(MessageConstants.ContentFontStartMarkup, string.Empty)
             .Replace(MessageConstants.ContentFontEndMarkup, string.Empty);
 
-        public string GetStyleMessage => RawContent.Contains(MessageConstants.ContentFontEndMarkup) ? "text-red" : string.Empty;
-
-        private string RawContent => CurrentMessage.GetContentByKey(currentLang);
+        public string GetStyleMessage 
+            => CurrentMessage.GetContentByKey(currentLang).Contains(MessageConstants.ContentFontEndMarkup) ?
+            "text-red" : 
+            string.Empty;
     }
 }

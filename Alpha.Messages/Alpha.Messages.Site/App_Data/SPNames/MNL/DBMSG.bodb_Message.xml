@@ -8,6 +8,7 @@
     </Setting>
 
     <Setting Key="Dot_Msg_GetTopPriMessage24" SpName="Dot_Msg_GetTopPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+      <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
       <Mapping DataField="Content_ch" ObjectProperty="ContentCH" />
@@ -19,6 +20,7 @@
       <Mapping DataField="MsgType" ObjectProperty="MessageType" />
     </Setting>
     <Setting Key="Acc_Msg_GetTopPubMessage" SpName="Acc_Msg_GetTopPubMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" >
+      <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
       <Mapping DataField="Content_ch" ObjectProperty="ContentCH" />

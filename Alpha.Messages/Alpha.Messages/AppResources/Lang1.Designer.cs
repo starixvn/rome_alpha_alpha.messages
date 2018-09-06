@@ -194,14 +194,5 @@ namespace Alpha.Messages.AppResources {
                 return ResourceManager.GetString("PositionTakingSettingFollows", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New sports and their bet types affected from {0}:.
-        /// </summary>
-        public static string TitleAnnouncement {
-            get {
-                return ResourceManager.GetString("TitleAnnouncement", resourceCulture);
-            }
-        }
     }
 }

@@ -24,14 +24,14 @@
         {
             var parameters = (PopupAnnouncementParams)message.ConvertToParameters();
             var announcement = announcementService.GetPopUpAnnouncements(parameters);
-            UpdatePopupIsShowedOnSession(message, announcement != null);            
+            UpdatePopupIsShowedOnSession(message, announcement != null);
 
             return formatAnnouncementService.Format(announcement, parameters);
         }
 
-        private static void UpdatePopupIsShowedOnSession(PopupAnnouncementsQuery message, bool isShowed)
+        private static void UpdatePopupIsShowedOnSession(PopupAnnouncementsQuery message, bool hasAnnouncement)
         {
-            message.IsShowedPopup = isShowed;
+            message.IsShowedPopup = hasAnnouncement ? hasAnnouncement : message.IsShowedPopup;
         }
     }
 }

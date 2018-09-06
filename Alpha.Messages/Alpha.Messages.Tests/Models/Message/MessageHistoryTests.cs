@@ -9,6 +9,7 @@ namespace Alpha.Messages.Tests.Models.Message
     [TestFixture]
     public class MessageHistoryTests
     {
+
         [Test]
         public void Id_Always_SetValueFromCtor()
         {
@@ -23,83 +24,18 @@ namespace Alpha.Messages.Tests.Models.Message
         }
 
         [Test]
-        public void ContentEN_Always_SetValueFromCtor()
+        public void BaseConstructor_Always_Set7Language()
         {
-            // Arrange
-            string contentEN = "value";
+            //// Arrange
+            var message = FakeDataHelper.Create<MessageHistory>();
 
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("contentEN", contentEN);
+            //// Act           
+            var act = message.Contents;
 
-            // Assert
-            Assert.AreEqual(contentEN, message.ContentEN);
+            //// Assert
+            Assert.AreEqual(7, act.Count);
         }
 
-        [Test]
-        public void ContentCS_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentCS = "value";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("contentCS", contentCS);
-
-            // Assert
-            Assert.AreEqual(contentCS, message.ContentCS);
-        }
-
-        [Test]
-        public void ContentCH_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentCH = "value";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("contentCH", contentCH);
-
-            // Assert
-            Assert.AreEqual(contentCH, message.ContentCH);
-        }
-
-        [Test]
-        public void ContentJP_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentJP = "value";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("contentJP", contentJP);
-
-            // Assert
-            Assert.AreEqual(contentJP, message.ContentJP);
-        }
-
-        [Test]
-        public void ContentTH_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentTH = "value";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("contentTH", contentTH);
-
-            // Assert
-            Assert.AreEqual(contentTH, message.ContentTH);
-        }
-        
-        [Test]
-        public void ContentKO_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentKO = "value";
-
-            // Act
-            var message = FakeDataHelper.Create<MessageHistory>("contentKO", contentKO);
-
-            // Assert
-            Assert.AreEqual(contentKO, message.ContentKO);
-        }
-       
         [Test]
         public void PostTime_Always_SetValueFromCtor()
         {

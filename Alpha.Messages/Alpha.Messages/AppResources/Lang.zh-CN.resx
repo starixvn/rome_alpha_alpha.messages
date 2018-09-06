@@ -153,9 +153,6 @@
   <data name="LabelOutright" xml:space="preserve">
     <value>优胜冠军</value>
   </data>
-  <data name="TitleAnnouncement" xml:space="preserve">
-    <value>新体育项目和投注类型将生效于{0}</value>
-  </data>
   <data name="BetSettingFollows" xml:space="preserve">
     <value>投注设定复制跟随</value>
   </data>

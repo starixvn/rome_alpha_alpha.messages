@@ -1,4 +1,4 @@
-﻿@using Alpha.RemotingRef
+﻿@using Alpha.Messages.Services
 @{
     Layout = null;
 }
@@ -23,13 +23,13 @@
         <tbody>
             <tr>
                 <td class="baio-bettypes-content-bg" rowspan="5">
-                    @CacheRef.GetSportName(47)
+                    @AlphaRemotingRefService.GetSportTypeName(47)
                     <br>
-                    @CacheRef.GetSportName(48)
+                    @AlphaRemotingRefService.GetSportTypeName(48)
                     <br>
-                    @CacheRef.GetSportName(49)
+                    @AlphaRemotingRefService.GetSportTypeName(49)
                     <br>
-                    @CacheRef.GetSportName(51)
+                    @AlphaRemotingRefService.GetSportTypeName(51)
                     
                 </td>
                 <td class="center">@Lang.LabelHandicapFC</td>

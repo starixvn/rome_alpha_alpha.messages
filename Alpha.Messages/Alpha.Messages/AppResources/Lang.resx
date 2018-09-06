@@ -153,9 +153,6 @@
   <data name="LabelOutright" xml:space="preserve">
     <value>Outright</value>
   </data>
-  <data name="TitleAnnouncement" xml:space="preserve">
-    <value>New sports and their bet types affected from {0}:</value>
-  </data>
   <data name="BetSettingFollows" xml:space="preserve">
     <value>Bet Setting Follows</value>
   </data>

@@ -48,20 +48,12 @@
             let iframeHeight = contentHeight + iframeHeightPadding;
             announcementContent.css("height", iframeHeight);
         };
-    };
-
-    openLink = (sitePath: string, virtualPath: string) => {
-        var path = this.topWindow.$('#' + sitePath).val();
-        window.open(path + virtualPath, '_blank');
-    };
+    };    
 }
-
-let OpenLink: Function;
 
 $(document).ready(() => {
 
     const announcement = new Popup($, window.top);
 
     announcement.init();
-    OpenLink = announcement.openLink;
 })

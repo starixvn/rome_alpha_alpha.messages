@@ -2,6 +2,7 @@
 {
     using MediatR;
     using Models.Message;
+    using Params.Announcement;
     using Requests.NewMessage;
     using Services;
 
@@ -19,7 +20,7 @@
         {
             messageService.MoveNewMessage(message.CustId, message.UserName, message.RoleId, message.IsAdminUser);
 
-            var parameters = message.ConvertToNumberOfNewMessageParameters();
+            var parameters = (NumberOfNewMessageParams)message.ConvertToParameters();
 
             var unreadMessage = messageService.CheckNewUnreadMessage(parameters);
 
@@ -29,8 +30,8 @@
         }
 
         private static void UpdateUnreadMessageSession(NumberOfNewMessageQuery message, NumberOfUnreadMessage unreadMessage)
-        {            
-            message.CurrentNumberOfUnreadMessage = unreadMessage;
+        {
+            message.UnreadMessage = unreadMessage;
         }
     }
 }

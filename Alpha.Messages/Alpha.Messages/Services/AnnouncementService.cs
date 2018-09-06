@@ -46,17 +46,9 @@
             this.announcementClient = announcementClient;
             this.specificationService = specificationService;
             this.dynamicRepository = dynamicRepository;
-            this.productService = productService;
-
-            DoubleCheckActivedAnnouncements = new Dictionary<string, Func<Announcement, bool>>
-            {
-                // Implement double-check actived announcements by conditions here
-                {"72973",  IsUnsyncedProductSetting}
-            };
+            this.productService = productService;           
         }
-
-        public Dictionary<string, Func<Announcement, bool>> DoubleCheckActivedAnnouncements { get; set; }
-
+        
         public void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId)
         {
             if (!isAdminUser)
@@ -179,8 +171,7 @@
             {
                 if (announcement.Specifications == null
                     || !announcement.Specifications.Any()
-                    || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter)
-                    || IsUnsyncedProductSetting(announcement))
+                    || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
                     var messageContent = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
 
@@ -207,29 +198,12 @@
             return message == null ? string.Empty : message.Text;
         }
 
-
-        private bool IsUnsyncedProductSetting(Announcement announcement)
-        {
-            if (DoubleCheckActivedAnnouncements.ContainsKey(announcement.Code))
-            {
-                var spec = announcement.Specifications.FirstOrDefault(s => s.GetType() == typeof(UnsynchronizedSettingSpecification));
-
-                if (spec != null)
-                {
-                    var unsynchronizedSetting = (UnsynchronizedSettingSpecification)spec;
-
-                    return unsynchronizedSetting.ProductIds.Any();
-                }
-            }
-
-            return true;
-        }
-
         private void UpdateUnsyncedProductSetting(IEnumerable<Announcement> announcements, int custId)
         {
-            foreach(var announcement in announcements)
+            var unsyncedProductCode = "72973";
+            foreach (var announcement in announcements)
             {
-                if (DoubleCheckActivedAnnouncements.ContainsKey(announcement.Code))
+                if (!string.IsNullOrEmpty(announcement.Code) && announcement.Code.Contains(unsyncedProductCode))
                 {
                     var spec = announcement.Specifications.FirstOrDefault(s => s.GetType() == typeof(UnsynchronizedSettingSpecification));
 
@@ -239,7 +213,7 @@
                         unsynchronizedSetting.ProductIds = productService.GetUnconfirmSettingProductIds(custId);
                     }
                 }
-            }            
+            }
         }
     }
 }
