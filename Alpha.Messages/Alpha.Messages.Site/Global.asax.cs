@@ -64,10 +64,10 @@
 
             RefDataTypeContainer
                 .ConnectTo(new Uri(AppSettings.RemoteRefURL))
-                .FromApplication("Alpha Messages");
+                .FromApplication("Alpha.Messages.Site");
         }
 
-        protected void Application_Error(object sender, EventArgs e)
+        protected void Application_Error()
         {
             if (Request.IsLocal)
             {

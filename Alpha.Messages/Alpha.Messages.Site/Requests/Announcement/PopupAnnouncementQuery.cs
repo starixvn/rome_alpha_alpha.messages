@@ -6,9 +6,9 @@
     using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
 
-    public class PoupAnnouncementQuery : MessageHistoryBaseRequest, IRequest<AlphaAnnouncement>
+    public class PopupAnnouncementQuery : MessageHistoryBaseRequest, IRequest<AlphaAnnouncement>
     {
-        public PoupAnnouncementQuery(IUserSession userSession) : base(userSession)
+        public PopupAnnouncementQuery(IUserSession userSession) : base(userSession)
         {            
         }
 
