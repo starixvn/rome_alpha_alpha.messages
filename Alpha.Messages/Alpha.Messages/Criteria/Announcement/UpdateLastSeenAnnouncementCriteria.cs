@@ -2,9 +2,9 @@
 {
     using Fanex.Data.Repository;
 
-    public class UpdateLasteSeenAnnouncementCriteria : NonQueryCommand
+    public class UpdateLastSeenAnnouncementCriteria : NonQueryCommand
     {
-        public UpdateLasteSeenAnnouncementCriteria(int custId, int messageType, int subAccId)
+        public UpdateLastSeenAnnouncementCriteria(int custId, int messageType, int subAccId)
         {
             CustId = custId;
             SubAccId = subAccId;

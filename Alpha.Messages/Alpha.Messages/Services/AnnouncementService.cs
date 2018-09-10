@@ -53,7 +53,7 @@
         {
             if (!isAdminUser)
             {
-                dynamicRepository.Execute(new UpdateLasteSeenAnnouncementCriteria(custId, messageType, subAccId));
+                dynamicRepository.Execute(new UpdateLastSeenAnnouncementCriteria(custId, messageType, subAccId));
             }
         }
 
@@ -108,8 +108,8 @@
         {
             if (fromDate == DateTime.MinValue)
             {
-                var threeDayAgo = DateTime.Now.AddDays(-3);
-                var sixMonthAgo = DateTime.Now.AddMonths(-6);
+                var threeDayAgo = DateTime.Today.AddDays(-3);
+                var sixMonthAgo = DateTime.Today.AddMonths(-6);
                 if (threeDayAgo < lastSeenDate)
                 {
                     return threeDayAgo;

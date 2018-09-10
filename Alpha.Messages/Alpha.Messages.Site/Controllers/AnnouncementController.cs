@@ -21,7 +21,7 @@
             return View(message);
         }
 
-        public ActionResult Popup(PopupAnnouncementsQuery message)
+        public ActionResult Popup(PoupAnnouncementQuery message)
         {
             message.Specification = specificationParam;
 

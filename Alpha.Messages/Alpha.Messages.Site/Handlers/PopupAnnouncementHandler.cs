@@ -7,7 +7,7 @@
     using Services;
 
     public class PopupAnnouncementHandler :
-        IRequestHandler<PopupAnnouncementsQuery, AlphaAnnouncement>
+        IRequestHandler<PoupAnnouncementQuery, AlphaAnnouncement>
     {
         private readonly AnnouncementService announcementService;
         private readonly AnnouncementFormatService formatAnnouncementService;
@@ -20,7 +20,7 @@
             this.formatAnnouncementService = formatService;
         }
 
-        public AlphaAnnouncement Handle(PopupAnnouncementsQuery message)
+        public AlphaAnnouncement Handle(PoupAnnouncementQuery message)
         {
             var parameters = (PopupAnnouncementParams)message.ConvertToParameters();
             var announcement = announcementService.GetPopUpAnnouncements(parameters);
@@ -29,7 +29,7 @@
             return formatAnnouncementService.Format(announcement, parameters);
         }
 
-        private static void UpdatePopupIsShowedOnSession(PopupAnnouncementsQuery message, bool hasAnnouncement)
+        private static void UpdatePopupIsShowedOnSession(PoupAnnouncementQuery message, bool hasAnnouncement)
         {
             message.IsShowedPopup = hasAnnouncement ? hasAnnouncement : message.IsShowedPopup;
         }

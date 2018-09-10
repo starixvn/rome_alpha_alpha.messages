@@ -210,7 +210,7 @@
     <Compile Include="Criteria\NewMessage\InsertPersonalMessageCriteria.cs" />
     <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteria.cs" />
     <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteria.cs" />
-    <Compile Include="Criteria\Announcement\UpdateLasteSeenAnnouncementCriteria.cs" />
+    <Compile Include="Criteria\Announcement\UpdateLastSeenAnnouncementCriteria.cs" />
     <Compile Include="Criteria\Message\GetNumberOfUnreadMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetPortalMessagesCriteria.cs" />
     <Compile Include="Criteria\Product\UnsynchronizedSettingCriteria.cs" />

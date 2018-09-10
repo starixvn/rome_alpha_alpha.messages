@@ -50,8 +50,8 @@
             var lastSeenDate = lastSeenAnnouncement.GetLastSeenByType(messageType);
             if (fromDate == DateTime.MinValue)
             {
-                var threeDayAgo = DateTime.Now.AddDays(-3);
-                var sixMonthAgo = DateTime.Now.AddMonths(-6);
+                var threeDayAgo = DateTime.Today.AddDays(-3);
+                var sixMonthAgo = DateTime.Today.AddMonths(-6);
                 if (threeDayAgo < lastSeenDate)
                 {
                     return threeDayAgo;

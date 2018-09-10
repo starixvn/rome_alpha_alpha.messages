@@ -51,13 +51,13 @@ namespace Alpha.Messages.Tests.Services
         public void UpdateLastSeenAnnouncement_Always_CallDynamicRepository()
         {
             //// Arrange
-            dynamicRepository.Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
+            dynamicRepository.Execute(Arg.Any<UpdateLastSeenAnnouncementCriteria>());
 
             //// Act
             service.UpdateLastSeenAnnouncement(121, 332, false, 0);
 
             //// Assert
-            dynamicRepository.Received().Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
+            dynamicRepository.Received().Execute(Arg.Any<UpdateLastSeenAnnouncementCriteria>());
         }
 
         [Test]
@@ -173,7 +173,7 @@ namespace Alpha.Messages.Tests.Services
             service.GetAnnouncementsHistory(new AnnouncementsHistoryParams());
 
             //// Assert
-            dynamicRepository.Received().Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
+            dynamicRepository.Received().Execute(Arg.Any<UpdateLastSeenAnnouncementCriteria>());
         }
 
         [Test]
