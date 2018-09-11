@@ -178,6 +178,7 @@
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\Announcement\BaseAnnouncementsParamsTests.cs" />
     <Compile Include="Models\Announcement\LastSeenAnnouncementTests.cs" />
+    <Compile Include="Models\Customer\CustomerTests.cs" />
     <Compile Include="Models\Enumerations\UserLevelTests.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
     <Compile Include="Models\Message\MessageHistoryTests.cs" />

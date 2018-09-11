@@ -2,8 +2,7 @@
 {
     using System.Collections.Specialized;
     using System.Configuration;
-    using System.Linq;
-    using Alpha.Messages.Configurations;
+    using Messages.Configurations;
     using NUnit.Framework;
 
     public class AppSettingsTests
@@ -46,7 +45,7 @@
 
             //// Act && Assert
             Assert.Throws<ConfigurationErrorsException>(() => AppSettings.Verify());
-        }       
+        }
 
         [Test]
         public void SiteGroup_ExistedKey_ReturnValue()
@@ -60,6 +59,23 @@
 
             //// Act
             var act = AppSettings.SiteGroup;
+
+            //// Assert
+            Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void RemoteRefURL_ExistedKey_ReturnValue()
+        {
+            //// Arrange
+            var expectedValue = "url";
+            AppSettings.AppSettingValues = new NameValueCollection()
+            {
+                ["RemoteRefURL"] = expectedValue
+            };
+
+            //// Act
+            var act = AppSettings.RemoteRefURL;
 
             //// Assert
             Assert.AreEqual(expectedValue, act);
