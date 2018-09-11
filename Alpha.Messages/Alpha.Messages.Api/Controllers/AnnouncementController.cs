@@ -16,6 +16,7 @@
         }
 
         [HttpPost]
+        [Route("announcements")]
         public IEnumerable<AnnouncementViewModel> GetAnnouncements([FromBody]GetAnnouncementsQuery message)
             => mediator.Send(message);
     }

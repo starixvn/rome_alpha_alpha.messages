@@ -6,7 +6,7 @@
     {
         private readonly IDictionary<int, string> systems = new Dictionary<int, string>
         {
-            [1] = "IBCBET",
+            [1] = "IBCBet",
             [7] = "789Y",
             [8] = "EU88",
             [9] = "Y987",
