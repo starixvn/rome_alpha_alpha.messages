@@ -30,7 +30,7 @@
         {
             //// Arrange
             var announcements = fixture.CreateMany<AlphaAnnouncement>();
-            formatService.ReplacementCode = new Dictionary<string, Func<string, BaseAnnouncementsParams, IEnumerable<ISpecification<IParam>>, string>>();
+            formatService.ReplacementCode = new Dictionary<string, Func<AlphaAnnouncement, BaseAnnouncementsParams, string>>();
 
             //// Act
             var act = formatService.Format(announcements, new BaseAnnouncementsParams());
@@ -40,18 +40,18 @@
         }
 
         [Test]
-        public void Format_MatchSiteMainCode_ReplaceSiteMain()
+        public void Format_Alway_ReplaceSiteMessage()
         {
             //// Arrange
             var content = fixture.Create<string>();
-            var mainCodeAnnouncement = new AlphaAnnouncement(1, content + "{site-main}", "2222", "", DateTime.Now, DateTime.Now);
+            var mainCodeAnnouncement = new AlphaAnnouncement(1, content + "{site-message}", "2222", DateTime.Now, DateTime.Now, null);
             var announcements = new List<AlphaAnnouncement> { mainCodeAnnouncement };
 
             //// Act
             var act = formatService.Format(announcements, new BaseAnnouncementsParams { IsMobileDevice = false });
 
             //// Assert
-            Assert.IsFalse(act.Any(i => i.Content.Contains("{site-main}")));
+            Assert.IsFalse(act.Any(i => i.Content.Contains("{site-message}")));
         }
     }
 }

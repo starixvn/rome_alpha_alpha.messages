@@ -1,4 +1,5 @@
-﻿namespace Alpha.Messages.Site.Tests.ViewModel
+﻿using NUnit.Framework;
+namespace Alpha.Messages.Site.Tests.ViewModel
 {
     using System;
     using System.Collections.Generic;
@@ -27,7 +28,7 @@
             //// Arrange
             var announcements = new List<AlphaAnnouncement>
             {
-                new AlphaAnnouncement(12,"content","code","source",DateTime.Now,DateTime.Now,null)
+                new AlphaAnnouncement(12,"content","code",DateTime.Now,DateTime.Now,null)
             };
             var unreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var viewModel = new AnnouncementHistoryViewModel(announcements, DateTime.Now, DateTime.Now, MessageType.Normal, UserLevel.Agent, unreadMessage);
@@ -45,7 +46,7 @@
             //// Arrange
             var announcements = new List<AlphaAnnouncement>
             {
-                new AlphaAnnouncement(12,"content","code","source",DateTime.Now,DateTime.Now,null)
+                new AlphaAnnouncement(12,"content","code",DateTime.Now,DateTime.Now,null)
             };
             var unreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var fromDate = DateTime.Now.AddDays(-1);
@@ -64,7 +65,7 @@
             //// Arrange
             var announcements = new List<AlphaAnnouncement>
             {
-                new AlphaAnnouncement(12,"content","code","source",DateTime.Now,DateTime.Now,null)
+                new AlphaAnnouncement(12,"content","code",DateTime.Now,DateTime.Now,null)
             };
             var unreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var toDate = DateTime.Now.AddDays(-1);
@@ -75,6 +76,24 @@
 
             //// Assert
             Assert.IsTrue(compareLogic.Compare(toDate, act).AreEqual);
+        }
+
+        [Test]
+        public void MinDate_Always_IsMinValue()
+        {
+            //// Arrange
+            var announcements = new List<AlphaAnnouncement>
+            {
+                new AlphaAnnouncement(12, "content", "code", DateTime.Now, DateTime.Now, null)
+            };
+            var unreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
+            var viewModel = new AnnouncementHistoryViewModel(announcements, DateTime.Now, DateTime.Now, MessageType.Normal, UserLevel.Agent, unreadMessage);
+
+            //// Act
+            var act = viewModel.MinDate;
+
+            //// Assert
+            Assert.AreEqual(DateTime.MinValue, act);
         }
     }
 }

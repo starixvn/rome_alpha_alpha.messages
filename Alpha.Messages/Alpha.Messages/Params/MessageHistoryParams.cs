@@ -3,7 +3,7 @@
     using System;
     using Announcement;
 
-    public class MessageHistoryParams: BaseAnnouncementsParams
+    public class MessageHistoryParams : BaseAnnouncementsParams
     {
         public MessageHistoryParams(
             int custId,
@@ -28,7 +28,7 @@
             IsTest = isTest;
             MessageType = messageType;
         }
-        
+
         public int SpecialType { get; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; }

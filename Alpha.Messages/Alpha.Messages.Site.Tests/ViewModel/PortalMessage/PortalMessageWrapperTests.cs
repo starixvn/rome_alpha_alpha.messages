@@ -1,10 +1,13 @@
-﻿namespace Alpha.Messages.Site.Tests.ViewModels
+﻿using NUnit.Framework;
+namespace Alpha.Messages.Site.Tests.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using Helpers;
     using Messages.Constants;
     using Models.Message;
     using NUnit.Framework;
+    using Ploeh.AutoFixture;
     using Site.ViewModels;
 
     [TestFixture]
@@ -31,61 +34,41 @@
             Assert.AreEqual(expectedType, viewModel.MessageType);
         }
 
-        [TestCase(Language.ChineseSimplified, "contentCS")]
-        [TestCase(Language.ChineseTraditional, "contentCH")]
-        [TestCase(Language.Thai, "contentTH")]
-        [TestCase(Language.Japanese, "contentJP")]
-        [TestCase(Language.Korean, "contentKO")]
-        [TestCase(Language.Vietnamese, "contentVI")]
-        [TestCase(Language.English, "contentEN")]
-        public void Content_WhenCurrentLanguageContentIsNull_ReturnContentDefault(string lang, string contentPropName)
+        [Test]
+        public void Content_Always_ReplaceSpecialCharacters()
         {
-            // Arrange
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>(contentPropName, string.Empty);
+            //// Arrange
+            var message = FakeDataHelper.Create<PortalMessage>();            
+            message.ContentEN = message.ContentEN +
+                MessageConstants.ContentFontStartMarkup +
+                "@@" +
+                MessageConstants.ContentFontEndMarkup;
 
-            // Act
-            var viewModel = new PortalMessageWrapper(noticeMessage, lang);
+            var wrapper = new PortalMessageWrapper(message, Language.English);
 
-            // Assert
-            Assert.AreEqual(noticeMessage.ContentEN, viewModel.Content);
+            //// Act
+            var act = wrapper.Content;
+
+            //// Assert
+            Assert.IsFalse(act.Contains("@@"));
+            Assert.IsFalse(act.Contains(MessageConstants.ContentFontEndMarkup));
+            Assert.IsFalse(act.Contains(MessageConstants.ContentFontStartMarkup));
+            Assert.IsTrue(act.Contains(message.BetTransId));
         }
 
-        [TestCase(Language.ChineseSimplified, "CS")]
-        [TestCase(Language.ChineseTraditional, "CH")]
-        [TestCase(Language.Thai, "TH")]
-        [TestCase(Language.Japanese, "JP")]
-        [TestCase(Language.Korean, "KO")]
-        [TestCase(Language.Vietnamese, "VI")]
-        [TestCase(Language.English, "EN")]
-        public void Content_ByCurrentLanguage_ReturnContent(string lang, string expectedContent)
+        public void ShortContent_ContentMoreThan100Length_ReduceLastCharacter(string lang)
         {
             // Arrange
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("content" + expectedContent, expectedContent);
+            var noticeMessage = FakeDataHelper.Create<PortalMessage>();
+            var fullContent = new string('a', 101);
+            var expectedContent = $"{fullContent.Substring(0, fullContent.Length - 1)}...";
+            noticeMessage.ContentEN = fullContent;
 
             // Act
-            var viewModel = new PortalMessageWrapper(noticeMessage, lang);
+            var viewModel = new PortalMessageWrapper(noticeMessage, Language.English);
 
             // Assert
-            Assert.AreEqual(expectedContent, viewModel.Content);
-        }
-
-        [TestCase(Language.ChineseSimplified, "CS")]
-        [TestCase(Language.ChineseTraditional, "CH")]
-        [TestCase(Language.Thai, "TH")]
-        [TestCase(Language.Japanese, "JP")]
-        [TestCase(Language.Korean, "KO")]
-        [TestCase(Language.Vietnamese, "VI")]
-        [TestCase(Language.English, "EN")]
-        public void ShortContent_Always_ReturnData(string lang, string expectedShortContent)
-        {
-            // Arrange
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("content" + expectedShortContent, expectedShortContent);
-
-            // Act
-            var viewModel = new PortalMessageWrapper(noticeMessage, lang);
-
-            // Assert
-            Assert.AreEqual(expectedShortContent + "...", viewModel.ShortContent);
+            Assert.AreEqual(expectedContent, viewModel.ShortContent);
         }
 
         [Test]

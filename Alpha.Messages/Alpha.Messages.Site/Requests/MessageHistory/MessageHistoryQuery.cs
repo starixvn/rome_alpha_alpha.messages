@@ -3,7 +3,9 @@
     using System;
     using Constants;
     using MediatR;
+    using Models.Message;
     using Params;
+    using Params.Announcement;
     using Sunplus.Agent.Model.Entities;
     using ViewModels;
 
@@ -27,26 +29,38 @@
         public int MessageType { get; }
 
         public int SpecialType { get; }
-        
+
         public DateTime StartDate { get; }
 
         public DateTime EndDate { get; }
 
-        public bool IsTest { get; }        
+        public bool IsTest { get; }
 
         public DateTime LimitedDateToShowInfo { get; }
 
-        public MessageHistoryParams ConvertToMessageParameters()
+        public NumberOfUnreadMessage NumberOfUnreadMessage
+        {
+            get
+            {
+                return userSession.GetProperty<NumberOfUnreadMessage>(SessionKey.NumberOfUnreadMessage);
+            }
+            set
+            {
+                userSession.SetProperty(SessionKey.NumberOfUnreadMessage, value);
+            }
+        }        
+
+        public override BaseAnnouncementsParams ConvertToParameters()
             => new MessageHistoryParams(
-                    this.CustId,
-                    this.SubAccId,
-                    this.AdminId,
-                    this.ParentSites,
-                    this.SpecialType,
-                    this.StartDate,
-                    this.EndDate,
-                    this.LimitedDateToShowInfo,
-                    this.IsTest,
-                    this.MessageType);
+                     CustId,
+                     SubAccId,
+                     AdminId,
+                     ParentSites,
+                     SpecialType,
+                     StartDate,
+                     EndDate,
+                     LimitedDateToShowInfo,
+                     IsTest,
+                     MessageType);
     }
 }

@@ -139,9 +139,24 @@
     <value>Moneyline</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>Others</value>
+    <value>Môn Thể Thao khác</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>Hiệp 1 - Hdp</value>
+  </data>
+  <data name="BetType" xml:space="preserve">
+    <value>Loại cược</value>
+  </data>
+  <data name="LabelOutright" xml:space="preserve">
+    <value>Cược Thắng</value>
+  </data>
+  <data name="BetSettingFollows" xml:space="preserve">
+    <value>Thiết lập Giới Hạn Cược theo</value>
+  </data>
+  <data name="CommissionSettingFollows" xml:space="preserve">
+    <value>Thiết lập Hoa Hồng theo</value>
+  </data>
+  <data name="PositionTakingSettingFollows" xml:space="preserve">
+    <value>Thiết lập Position Taking theo</value>
   </data>
 </root>

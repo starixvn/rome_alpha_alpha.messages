@@ -36,9 +36,8 @@
 
         public string Site => userSession.Site;
 
-        public BaseAnnouncementsParams ConvertToBaseAnnouncementParameters()
-        {
-            return new BaseAnnouncementsParams
+        virtual public BaseAnnouncementsParams ConvertToParameters()
+            => new BaseAnnouncementsParams
             {
                 AdminId = AdminId,
                 CustId = CustId,
@@ -50,6 +49,5 @@
                 SpecificationParamter = Specification,
                 ParentSites = ParentSites
             };
-        }
     }
 }

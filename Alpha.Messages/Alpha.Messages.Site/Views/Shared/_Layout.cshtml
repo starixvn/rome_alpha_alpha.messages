@@ -8,14 +8,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="~/favico.ico" />
     @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
     @StaticResources.AssetStyles.Render($"/bundles/site-messages/message-{Model.RoleName}")
-    @StaticResources.RenderStyles("~/assets/bundles/default-message")
-
+    @StaticResources.RenderStyles("~/assets/bundles/default-message")    
     @RenderSection("Styles", required: false)
 </head>
 <body>
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="@(Model.MessageType == MessageType.Normal ? "active" : string.Empty)">
-            <a href="@Url.Action("Messages", "MessageHistory", new { messageType = MessageType.Normal })">
+            <a href="@Url.Action("Index", "MessageHistory", new { messageType = MessageType.Normal })">
                 <span class="hidden-mobile">
                     @Resources.normalAnnouncement
                 </span>
@@ -29,7 +28,7 @@
             </a>
         </li>
         <li role="presentation" class="@(Model.MessageType == MessageType.Special ? "active" : string.Empty)">
-            <a href="@Url.Action("Messages", "MessageHistory", new { messageType = MessageType.Special })">
+            <a href="@Url.Action("Index", "MessageHistory", new { messageType = MessageType.Special })">
                 <span class="hidden-mobile">
                     @Resources.specialAnnouncement
                 </span>
@@ -58,7 +57,7 @@
             </a>
         </li>
         <li role="presentation" class="@(Model.MessageType == MessageType.Personal ? "active" : string.Empty)">
-            <a href="@Url.Action("Messages", "MessageHistory", new { messageType = MessageType.Personal })">
+            <a href="@Url.Action("Index", "MessageHistory", new { messageType = MessageType.Personal })">
                 <span class="hidden-mobile">
                     @Resources.personalMessage
                 </span>
@@ -77,7 +76,7 @@
     </div>
 
     @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
-    @StaticResources.AssetScripts.Render("/bundles/site-messages/message-default")    
+    @StaticResources.AssetScripts.Render("/bundles/site-messages/message-default")      
     @RenderSection("Scripts", required: false)
     @GoogleAnalyticHepler.Render()
 </body>

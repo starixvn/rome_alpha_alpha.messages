@@ -2,13 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
-    using Helpers;
     using Models.Message;
 
     public class MessagesHistoryViewModel : MessageBase
     {
         public MessagesHistoryViewModel(
-            List<MessageHistoryWrapper> messages,
+            IEnumerable<MessageHistory> messages,
+            DateTime lastSeenAnnouncement,
+            string languageKey,
             DateTime startDate,
             DateTime endDate,
             int messageType,
@@ -16,12 +17,16 @@
             NumberOfUnreadMessage unreadMessage) : base(messageType, roleId, startDate, endDate, unreadMessage)
         {
             Messages = messages;
+            LastSeenAnnouncement = lastSeenAnnouncement;
+            LanguageKey = languageKey;
         }
 
-        public List<MessageHistoryWrapper> Messages { get; }
+        public IEnumerable<MessageHistory> Messages { get; }
 
-        public string OldMainRootPath => UrlHelper.MapOldMainPath("~/");
+        public DateTime LastSeenAnnouncement { get; }
 
-        public string MainRootPath => UrlHelper.MapMainPath("~/");
+        public string LanguageKey { get; }
+
+        public bool IsNewMessage(DateTime postTime) => postTime > LastSeenAnnouncement;
     }
 }

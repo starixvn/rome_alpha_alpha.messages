@@ -196,12 +196,9 @@ namespace Alpha.Messages.Site.Tests.Handlers
                 string.Empty,
                 string.Empty,
                 string.Empty,
-                string.Empty,
-                string.Empty,
                 postTime,
                 0,
                 true,
-                postTime,
                 string.Empty,
                 true,
                 topLevel);

@@ -138,7 +138,16 @@
   <data name="moneyline" xml:space="preserve">
     <value>マネーライン</value>
   </data>
-  <data name="Others" xml:space="preserve">
-    <value>Others</value>
+  <data name="LabelOutright" xml:space="preserve">
+    <value>即座</value>
+  </data>
+  <data name="BetSettingFollows" xml:space="preserve">
+    <value>Bet Setting Follows</value>
+  </data>
+  <data name="CommissionSettingFollows" xml:space="preserve">
+    <value>Commission Setting Follows</value>
+  </data>
+  <data name="PositionTakingSettingFollows" xml:space="preserve">
+    <value>Position Taking Setting Follows</value>
   </data>
 </root>

@@ -34,7 +34,7 @@
             //// Arrange
             var query = new NumberOfNewMessageQuery(fixture.UserSession);
             var unreadMessage = fixtureData.Create<NumberOfUnreadMessage>();
-            messageService.GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>()).Returns(unreadMessage);
+            messageService.CheckNewUnreadMessage(Arg.Any<NumberOfNewMessageParams>()).Returns(unreadMessage);
             
 
             //// Act
@@ -42,7 +42,7 @@
 
             //// Assert
             messageService.Received().MoveNewMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<int>(), Arg.Any<bool>());
-            messageService.Received().GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>());            
+            messageService.Received().CheckNewUnreadMessage(Arg.Any<NumberOfNewMessageParams>());            
         }
 
         [Test]
@@ -52,7 +52,7 @@
             var announcements = new List<AlphaAnnouncement>();
             var query = new NumberOfNewMessageQuery(fixture.UserSession);
             var unreadMessage = fixtureData.Create<NumberOfUnreadMessage>();
-            messageService.GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>()).Returns(unreadMessage);
+            messageService.CheckNewUnreadMessage(Arg.Any<NumberOfNewMessageParams>()).Returns(unreadMessage);
 
             //// Act
             var act = handler.Handle(query);

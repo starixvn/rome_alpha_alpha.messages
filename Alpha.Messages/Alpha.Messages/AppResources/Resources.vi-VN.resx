@@ -120,20 +120,8 @@
   <data name="NoInformationIsAvailable" xml:space="preserve">
     <value>Thông tin chưa được cập nhật</value>
   </data>
-  <data name="BetSettingFollows" xml:space="preserve">
-    <value>Thiết lập Giới Hạn Cược theo</value>
-  </data>
-  <data name="CommissionSettingFollows" xml:space="preserve">
-    <value>Thiết lập Hoa Hồng theo</value>
-  </data>
   <data name="NewBetType" xml:space="preserve">
     <value>Loại cược mới</value>
-  </data>
-  <data name="NewBetTypeEffectDate" xml:space="preserve">
-    <value>Các loại cược mới của Bóng Rổ sẽ có hiệu lực từ {0}:</value>
-  </data>
-  <data name="PositionTakingSettingFollows" xml:space="preserve">
-    <value>Thiết lập Position Taking theo</value>
   </data>
   <data name="Notice_2" xml:space="preserve">
     <value>Giới hạn tiền đặt cược của bạn bị thay đổi bởi cấp trên ..&lt;br&gt;Vui lòng thông báo và kiểm tra chi tiết tất cả những thành viên cấp dưới trực thuộc bạn</value>

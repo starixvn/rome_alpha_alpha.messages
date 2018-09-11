@@ -144,4 +144,22 @@
   <data name="Label1HHDC" xml:space="preserve">
     <value>上半场亚洲盘</value>
   </data>
+  <data name="NewSportType" xml:space="preserve">
+    <value>新体育投注类型</value>
+  </data>
+  <data name="BetType" xml:space="preserve">
+    <value>投注类别</value>
+  </data>
+  <data name="LabelOutright" xml:space="preserve">
+    <value>优胜冠军</value>
+  </data>
+  <data name="BetSettingFollows" xml:space="preserve">
+    <value>投注设定复制跟随</value>
+  </data>
+  <data name="CommissionSettingFollows" xml:space="preserve">
+    <value>佣金设定复制跟随</value>
+  </data>
+  <data name="PositionTakingSettingFollows" xml:space="preserve">
+    <value>占成数设定复制跟随</value>
+  </data>
 </root>

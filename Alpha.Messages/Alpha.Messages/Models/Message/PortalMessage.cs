@@ -4,6 +4,11 @@
 
     public class PortalMessage : MultiLanguague
     {
+        public PortalMessage()
+        {
+
+        }
+
         public PortalMessage(
             int id,
             string contentEN,
@@ -11,14 +16,11 @@
             string contentCH,
             string contentJP,
             string contentTH,
-            string contentIT,
             string contentKO,
-            string contentES,
             string contentVI,
             DateTime postTime,
             byte type,
             bool isSticky,
-            DateTime lastUpdateTime,
             string betTransId,
             bool isRead,
             byte topLevel) : base(contentEN, contentCS, contentCH, contentTH, contentJP, contentKO, contentVI)
@@ -27,7 +29,6 @@
             PostTime = postTime;
             MessageType = type;
             IsSticky = isSticky;
-            LastUpdateTime = lastUpdateTime;
             BetTransId = betTransId;
             IsRead = isRead;
             TopLevel = topLevel;
@@ -40,8 +41,6 @@
         public byte MessageType { get; }
 
         public bool IsSticky { get; }
-
-        public DateTime LastUpdateTime { get; }
 
         public string BetTransId { get; }
 

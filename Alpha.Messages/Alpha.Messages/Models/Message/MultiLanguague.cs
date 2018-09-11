@@ -6,7 +6,7 @@
 
     public class MultiLanguague
     {
-        private readonly Dictionary<string, string> Contents = new Dictionary<string, string>();
+        internal readonly Dictionary<string, string> Contents = new Dictionary<string, string>();
 
         public MultiLanguague()
         {
@@ -51,15 +51,70 @@
             internal set { Contents[Language.ChineseSimplified] = value; }
         }
 
-        public string ContentCH => GetContentByKey(Language.ChineseTraditional);
+        public string ContentCH
+        {
+            get
+            {
+                return GetContentByKey(Language.ChineseTraditional);
+            }
+            
+            set
+            {
+                Contents[Language.ChineseTraditional] = value;
+            }
+        }
 
-        public string ContentJP => GetContentByKey(Language.Japanese);
+        public string ContentJP
+        {
+            get
+            {
+                return GetContentByKey(Language.Japanese);
+            }
+            
+            set
+            {
+                Contents[Language.Japanese] = value;
+            }
+        }
 
-        public string ContentTH => GetContentByKey(Language.Thai);
+        public string ContentTH
+        {
+            get
+            {
+                return GetContentByKey(Language.Thai);
+            }
 
-        public string ContentKO => GetContentByKey(Language.Korean);
+            set
+            {
+                Contents[Language.Thai] = value;
+            }
+        }
 
-        public string ContentVI => GetContentByKey(Language.Vietnamese);
+        public string ContentKO
+        {
+            get
+            {
+                return GetContentByKey(Language.Korean);
+            }
+            
+            set
+            {
+                Contents[Language.Korean] = value;
+            }
+        }
+
+        public string ContentVI
+        {
+            get
+            {
+                return GetContentByKey(Language.Vietnamese);
+            }
+
+            set
+            {
+                Contents[Language.Vietnamese] = value;
+            }
+        }
 
         public string GetContentByKey(string languageKey)
             => Contents.ContainsKey(languageKey) && !string.IsNullOrEmpty(Contents[languageKey])

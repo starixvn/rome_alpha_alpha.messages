@@ -18,10 +18,9 @@
             int id,
             string content, 
             string code, 
-            string source,
             DateTime releasedDate,
             DateTime lastSeenDate,
-            IEnumerable<ISpecification<IParam>> specifications = null)
+            IEnumerable<ISpecification<IParam>> specifications)
         {
             Id = id;
             ReleasedDate = releasedDate;

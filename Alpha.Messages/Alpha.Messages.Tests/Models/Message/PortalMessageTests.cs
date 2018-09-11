@@ -10,95 +10,17 @@
     public class PortalMessageTests
     {
         [Test]
-        public void Id_Always_SetValueFromCtor()
+        public void BaseConstructor_Always_Set7Language()
         {
-            // Arrange
-            int id = 100;
+            //// Arrange
+            var message = FakeDataHelper.Create<PortalMessage>();
 
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("id", id);
+            //// Act           
+            var act = message.Contents;
 
-            // Assert
-            Assert.AreEqual(id, noticeMessage.Id);
+            //// Assert
+            Assert.AreEqual(7, act.Count);
         }
-
-        [Test]
-        public void ContentEN_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentEN = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentEN", contentEN);
-
-            // Assert
-            Assert.AreEqual(contentEN, noticeMessage.ContentEN);
-        }
-
-        [Test]
-        public void ContentCS_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentCS = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentCS", contentCS);
-
-            // Assert
-            Assert.AreEqual(contentCS, noticeMessage.ContentCS);
-        }
-
-        [Test]
-        public void ContentCH_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentCH = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentCH", contentCH);
-
-            // Assert
-            Assert.AreEqual(contentCH, noticeMessage.ContentCH);
-        }
-
-        [Test]
-        public void ContentJP_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentJP = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentJP", contentJP);
-
-            // Assert
-            Assert.AreEqual(contentJP, noticeMessage.ContentJP);
-        }
-
-        [Test]
-        public void ContentTH_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentTH = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentTH", contentTH);
-
-            // Assert
-            Assert.AreEqual(contentTH, noticeMessage.ContentTH);
-        }       
-
-        [Test]
-        public void ContentKO_Always_SetValueFromCtor()
-        {
-            // Arrange
-            string contentKO = "value";
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("contentKO", contentKO);
-
-            // Assert
-            Assert.AreEqual(contentKO, noticeMessage.ContentKO);
-        }    
 
         [Test]
         public void PostTime_Always_SetValueFromCtor()
@@ -111,19 +33,6 @@
 
             // Assert
             Assert.AreEqual(postTime, noticeMessage.PostTime);
-        }
-
-        [Test]
-        public void LastUpdateTime_Always_SetValueFromCtor()
-        {
-            // Arrange
-            DateTime lastUpdateTime = DateTime.Today;
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("lastUpdateTime", lastUpdateTime);
-
-            // Assert
-            Assert.AreEqual(lastUpdateTime, noticeMessage.LastUpdateTime);
         }
 
         [Test]
@@ -164,20 +73,7 @@
             // Assert
             Assert.AreEqual(betTransId, noticeMessage.BetTransId);
         }
-
-        [Test]
-        public void IsRead_Always_SetValueFromCtor()
-        {
-            // Arrange
-            bool isRead = false;
-
-            // Act
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>("isRead", isRead);
-
-            // Assert
-            Assert.AreEqual(isRead, noticeMessage.IsRead);
-        }
-
+        
         [Test]
         public void IsTopLevel_Always_SetValueFromCtor()
         {

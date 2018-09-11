@@ -42,20 +42,22 @@ namespace Alpha.Messages.Tests.Services
             fixture = new Fixture();
             compareLogic = new CompareLogic();
             cacheForTesting = Substitute.For<Cache>();
+#pragma warning disable CS0618 // Type or member is obsolete
             ConfiguredCacheService.SwitchCacheStorage(cacheForTesting);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         [Test]
         public void UpdateLastSeenAnnouncement_Always_CallDynamicRepository()
         {
             //// Arrange
-            dynamicRepository.Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
+            dynamicRepository.Execute(Arg.Any<UpdateLastSeenAnnouncementCriteria>());
 
             //// Act
             service.UpdateLastSeenAnnouncement(121, 332, false, 0);
 
             //// Assert
-            dynamicRepository.Received().Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
+            dynamicRepository.Received().Execute(Arg.Any<UpdateLastSeenAnnouncementCriteria>());
         }
 
         [Test]
@@ -67,7 +69,7 @@ namespace Alpha.Messages.Tests.Services
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
 
             //// Act
-            var act = service.GetNumberOfNewAnnouncements(new NumberOfNewAnnouncementsParams());
+            var act = service.GetNumberOfNewAnnouncements(new BaseAnnouncementsParams());
 
             //// Assert
             Assert.Zero(act);
@@ -83,7 +85,7 @@ namespace Alpha.Messages.Tests.Services
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
 
             //// Act
-            var act = service.GetNumberOfNewAnnouncements(new NumberOfNewAnnouncementsParams());
+            var act = service.GetNumberOfNewAnnouncements(new BaseAnnouncementsParams());
 
             //// Assert
             Assert.AreEqual(newAnnouncements.Count(), act);
@@ -99,7 +101,7 @@ namespace Alpha.Messages.Tests.Services
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
 
             //// Act
-            var act = service.GetNumberOfNewAnnouncements(new NumberOfNewAnnouncementsParams());
+            var act = service.GetNumberOfNewAnnouncements(new BaseAnnouncementsParams());
 
             //// Assert
             Assert.Zero(act);
@@ -110,7 +112,7 @@ namespace Alpha.Messages.Tests.Services
         {
             //// Arrange
             var today = DateTime.Now.AddMinutes(1);
-            var announcements = CreateAnnouncements(today);            
+            var announcements = CreateAnnouncements(today);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, today, today, today, today);
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
             announcementClient.GetAnnouncementsHistory(Arg.Any<AnnouncementHistoryRequest>()).Returns(announcements);
@@ -130,8 +132,8 @@ namespace Alpha.Messages.Tests.Services
             var announcements = CreateAnnouncements(today);
             var expectedAnnouncements = new List<AlphaAnnouncement>
             {
-                new AlphaAnnouncement(0,null,string.Empty,string.Empty,today.AddSeconds(1),today,null),
-                new AlphaAnnouncement(0,null,string.Empty,string.Empty,today,today,null),
+                new AlphaAnnouncement(0,string.Empty,string.Empty,today.AddSeconds(1),today,null),
+                new AlphaAnnouncement(0,string.Empty,string.Empty,today,today,null),
             };
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, today, today, today, today);
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeenAnnouncement);
@@ -171,7 +173,7 @@ namespace Alpha.Messages.Tests.Services
             service.GetAnnouncementsHistory(new AnnouncementsHistoryParams());
 
             //// Assert
-            dynamicRepository.Received().Execute(Arg.Any<UpdateLasteSeenAnnouncementCriteria>());
+            dynamicRepository.Received().Execute(Arg.Any<UpdateLastSeenAnnouncementCriteria>());
         }
 
         [Test]

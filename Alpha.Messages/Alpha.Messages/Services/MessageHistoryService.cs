@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Constants;
     using Criteria.Message;
-    using DataAccesses;
+    using Fanex.Data.Repository;
     using Models.Message;
     using Params;
 
@@ -15,14 +15,14 @@
 
     public class MessageHistoryServiceImpl : MessageHistoryService
     {
-        private readonly MessageDataAccess messageRepository;
+        private readonly IDynamicRepository dynamicRepository;
         private readonly AnnouncementService announcementService;
         public MessageHistoryServiceImpl(
-            MessageDataAccess messageRepository
-            , AnnouncementService announcementService)
+            AnnouncementService announcementService,
+            IDynamicRepository dynamicRepository)
         {
-            this.messageRepository = messageRepository;
             this.announcementService = announcementService;
+            this.dynamicRepository = dynamicRepository;
         }
 
         public IEnumerable<MessageHistory> GetMessagesHistory(MessageHistoryParams messageParams)
@@ -41,7 +41,7 @@
 
             announcementService.UpdateLastSeenAnnouncement(messageParams.CustId, messageParams.MessageType, messageParams.IsAdminUser, messageParams.SubAccId);
 
-            return messageRepository.GetMessagesHistory(criteria);
+            return dynamicRepository.Fetch<MessageHistory>(criteria);
         }
 
         private DateTime GetAvailableLastSeenDate(DateTime fromDate, int messageType, int custId, int subAccId)
@@ -50,8 +50,8 @@
             var lastSeenDate = lastSeenAnnouncement.GetLastSeenByType(messageType);
             if (fromDate == DateTime.MinValue)
             {
-                var threeDayAgo = DateTime.Now.AddDays(-3);
-                var sixMonthAgo = DateTime.Now.AddMonths(-6);
+                var threeDayAgo = DateTime.Today.AddDays(-3);
+                var sixMonthAgo = DateTime.Today.AddMonths(-6);
                 if (threeDayAgo < lastSeenDate)
                 {
                     return threeDayAgo;

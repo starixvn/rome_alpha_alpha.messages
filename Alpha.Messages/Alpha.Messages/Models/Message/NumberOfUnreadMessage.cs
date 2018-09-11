@@ -1,5 +1,8 @@
-﻿namespace Alpha.Messages.Models.Message
+﻿using System;
+
+namespace Alpha.Messages.Models.Message
 {
+    [Serializable]
     public class NumberOfUnreadMessage
     {
         public NumberOfUnreadMessage()
