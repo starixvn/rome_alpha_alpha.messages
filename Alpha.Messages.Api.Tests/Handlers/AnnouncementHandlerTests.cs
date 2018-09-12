@@ -5,6 +5,7 @@
     using System.Linq;
     using Announcements.Models;
     using Api.Handlers;
+    using KellermanSoftware.CompareNetObjects;
     using Messages.Models.Announcement;
     using Messages.Models.Customer;
     using NSubstitute;
@@ -161,6 +162,45 @@
 
             // Assert
             formatAnnouncementService.Received().Format(Arg.Any<IEnumerable<AlphaAnnouncement>>(), Arg.Any<BaseAnnouncementsParams>());
+        }
+
+        [Test]
+        public void Handle_AnnouncementsIsNotNullOrEmpty_ReturnsCorrectResult()
+        {
+            // Arrange
+            var compareLogic = new CompareLogic();
+            var message = CreateGetAnnouncementsQuery();
+            var announcements = new List<Announcement>
+            {
+                new Announcement()
+            };
+            var alphaAnnouncement = new List<AlphaAnnouncement> {
+                new AlphaAnnouncement
+                {
+                    Content="Content"
+                }
+            };
+            announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
+                .Returns(announcements);
+
+            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, 1);
+            customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
+
+            var expectedResult = new List<AnnouncementViewModel>
+            {
+                new AnnouncementViewModel(1, "Content")
+            };
+
+            formatAnnouncementService.Format(
+                Arg.Any<IEnumerable<AlphaAnnouncement>>(),
+                Arg.Any<BaseAnnouncementsParams>())
+                .Returns(alphaAnnouncement);
+
+            // Act
+            var actualResult = announcementHandler.Handle(message);
+
+            // Assert
+            Assert.IsTrue(compareLogic.Compare(expectedResult, actualResult).AreEqual);
         }
 
         private GetAnnouncementsQuery CreateGetAnnouncementsQuery()

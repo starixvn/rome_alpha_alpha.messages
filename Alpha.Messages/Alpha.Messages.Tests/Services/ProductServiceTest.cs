@@ -88,6 +88,10 @@
             // Arrange
             var custId = 1;
             fanexCacheFixture.CacheForTesting.TryGet($"{OfferedProductCacheKey}.{custId}", out productList);
+            dynamicRepository.Fetch<Product>(Arg.Any<GetOfferedProductCriteria>()).Returns(new List<Product>
+            {
+                new Product(1,"name", DateTime.Now)
+            });
 
             // Act
             productService.GetOfferedProductIdsByCustomer(custId);

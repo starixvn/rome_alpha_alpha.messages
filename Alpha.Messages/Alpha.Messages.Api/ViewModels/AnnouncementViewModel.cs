@@ -2,8 +2,14 @@
 {
     public class AnnouncementViewModel
     {
-        public int CustId { get; set; }
+        public AnnouncementViewModel(int custId, string content)
+        {
+            CustId = custId;
+            Content = content;
+        }
 
-        public string Content { get; set; }
+        public int CustId { get; }
+
+        public string Content { get; }
     }
 }

@@ -64,11 +64,7 @@
 
                 var formatedAnnouncements = formatAnnouncementService.Format(filteredAnnouncements, announcementParam);
 
-                var custAnnouncement = formatedAnnouncements.Select(a => new AnnouncementViewModel
-                {
-                    CustId = customer.CustId,
-                    Content = a.Content
-                });
+                var custAnnouncement = formatedAnnouncements.Select(a => new AnnouncementViewModel(customer.CustId, a.Content));
 
                 result.AddRange(custAnnouncement);
             }
