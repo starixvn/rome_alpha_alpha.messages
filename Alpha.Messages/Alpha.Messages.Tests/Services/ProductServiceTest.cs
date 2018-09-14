@@ -90,7 +90,7 @@
             fanexCacheFixture.CacheForTesting.TryGet($"{OfferedProductCacheKey}.{custId}", out productList);
             dynamicRepository.Fetch<Product>(Arg.Any<GetOfferedProductCriteria>()).Returns(new List<Product>
             {
-                new Product(1,"name", DateTime.Now)
+                new Product(1,"name", false)
             });
 
             // Act
