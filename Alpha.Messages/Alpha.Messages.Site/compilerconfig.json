@@ -12,7 +12,7 @@
     "inputFile": "Assets/styles/popup/index.scss"
   },
   {
-    "outputFile": "assets/styles/message/message-calculate-07.css",
-    "inputFile": "assets/styles/message/message-calculate-07.scss"
+    "outputFile": "assets/styles/message/message-mobile-calculate-07.css",
+    "inputFile": "assets/styles/message/message-mobile-calculate-07.scss"
   }
 ]

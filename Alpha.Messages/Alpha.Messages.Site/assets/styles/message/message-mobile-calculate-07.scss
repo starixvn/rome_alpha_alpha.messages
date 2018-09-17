@@ -2,8 +2,31 @@
 @import '../Home/_mixins.scss';
 
 body {
+    background-color: #fff;
     font-size: calculateScale($font-size);
     line-height: calculateScale(20px);
+}
+
+.hidden-mobile {
+    display: none !important;
+}
+
+.visible-mobile {
+    display: inline-block !important;
+}
+
+.nav-tabs {
+    display: table;
+    width: 100%;
+
+    li {
+        display: table-cell;
+        float: none;
+
+        a {
+            text-align: center;
+        }
+    }
 }
 
 .nav.nav-tabs > li {    
@@ -12,18 +35,19 @@ body {
     }
 }
 
+.nav.nav-tabs > li > a {
+    padding: calculateScale(10px) calculateScale(10px) calculateScale(8px);
+    font-size: calculateScale(13px);
+}
+
 .badge-title {
     @include border-radius(calculateScale(3px));
     padding: calculateScale(2px) calculateScale(4px);
     font-size: calculateScale(11px);
 }
 
-.nav.nav-tabs > li > a {
-    font-size: calculateScale(13px);
-    padding: calculateScale(10px) calculateScale(10px) calculateScale(8px);
-}
-
 .filter {
+    display: block;
     padding-top: 10px;
 
     .form-group label {
@@ -53,11 +77,6 @@ body {
     }
 }
 
-@media (max-device-width: 320px) {
-    .filter .group-button .btn-submit {
-        margin-top: 0;
-    }
-}
 
 .input-group.date {
     .form-control {
@@ -86,16 +105,16 @@ body {
 
 @media (max-device-width: 500px) {
     .scroll-tabs {
-        height: auto;
-        -webkit-user-select: none;
         display: block;
-        overflow-y: hidden;
-        padding: 0;
         position: relative;
         top: 0;
+        height: auto;
+        width: 100vw;        
+        padding: 0;        
         -webkit-overflow-scrolling: touch;
         overflow-x: scroll;
-        width: 100vw;
+        overflow-y: hidden;        
+        -webkit-user-select: none;
     }
 
     .nav-tabs {
@@ -115,6 +134,8 @@ body {
     }
 }
 
-@media (min-device-width: 600px) {
-    
+@media (max-device-width: 320px) {
+    .filter .group-button .btn-submit {
+        margin-top: 0;
+    }
 }

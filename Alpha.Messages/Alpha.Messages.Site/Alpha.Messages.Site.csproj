@@ -361,11 +361,11 @@
     <Content Include="assets\styles\Home\_mixins.scss" />
     <Content Include="assets\styles\Home\_mixins2.scss" />
     <Content Include="assets\styles\Home\_variables.scss" />
-    <Content Include="assets\styles\message\message-calculate-07.css">
-      <DependentUpon>message-calculate-07.scss</DependentUpon>
+    <Content Include="assets\styles\message\message-mobile-calculate-07.css">
+      <DependentUpon>message-mobile-calculate-07.scss</DependentUpon>
     </Content>
-    <Content Include="assets\styles\message\message-calculate-07.min.css">
-      <DependentUpon>message-calculate-07.css</DependentUpon>
+    <Content Include="assets\styles\message\message-mobile-calculate-07.min.css">
+      <DependentUpon>message-mobile-calculate-07.css</DependentUpon>
     </Content>
     <Content Include="assets\styles\message\message.css">
       <DependentUpon>message.scss</DependentUpon>
@@ -407,7 +407,7 @@
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
-    <Content Include="assets\styles\message\message-calculate-07.scss" />
+    <Content Include="assets\styles\message\message-mobile-calculate-07.scss" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
