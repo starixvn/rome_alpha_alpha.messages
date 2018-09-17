@@ -1,0 +1,120 @@
+﻿@import '../Home/_variables.scss';
+@import '../Home/_mixins.scss';
+
+body {
+    font-size: calculateScale($font-size);
+    line-height: calculateScale(20px);
+}
+
+.nav.nav-tabs > li {    
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.badge-title {
+    @include border-radius(calculateScale(3px));
+    padding: calculateScale(2px) calculateScale(4px);
+    font-size: calculateScale(11px);
+}
+
+.nav.nav-tabs > li > a {
+    font-size: calculateScale(13px);
+    padding: calculateScale(10px) calculateScale(10px) calculateScale(8px);
+}
+
+.filter {
+    padding-top: 10px;
+
+    .form-group label {
+        display: block;
+    }
+
+    .input-group.date .form-control {
+        @include box-shadow-multiple('none');
+        border: 1px solid $border-color;
+    }
+
+    .form-group .control.date {
+        width: 164px;
+        margin-left: 0;
+    }
+
+    .form-group.group-button {
+        margin-right: 0;
+    }
+
+    .group-button .btn-submit {
+        height: calculateScale(28px);
+        margin-top: 33px;
+        margin-right: 0;
+        padding-left: calculateScale(16px);
+        padding-right: calculateScale(16px);
+    }
+}
+
+@media (max-device-width: 320px) {
+    .filter .group-button .btn-submit {
+        margin-top: 0;
+    }
+}
+
+.input-group.date {
+    .form-control {
+        height: calculateScale(28px);
+        line-height: calculateScale(28px);
+        padding-left: calculateScale(8px);
+        padding-right: calculateScale(8px);
+        font-size: calculateScale(12px);
+    }
+
+    .icon-calendar {
+        font-size: calculateScale(24px);
+    }
+}
+
+.tblRpt {
+    thead th, tbody td, tfoot td {
+        height: calculateScale(28px);
+        padding: calculateScale(4px) calculateScale(8px);
+    }
+    .row-first {
+        font-size: calculateScale(12px);
+    }
+}
+
+
+@media (max-device-width: 500px) {
+    .scroll-tabs {
+        height: auto;
+        -webkit-user-select: none;
+        display: block;
+        overflow-y: hidden;
+        padding: 0;
+        position: relative;
+        top: 0;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: scroll;
+        width: 100vw;
+    }
+
+    .nav-tabs {
+        display: inline-block;
+        position: relative;
+        width: auto;
+        white-space: nowrap;
+        overflow: hidden;
+    } 
+
+    .nav.nav-tabs > li {
+        display: inline-block;
+    
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+@media (min-device-width: 600px) {
+    
+}
