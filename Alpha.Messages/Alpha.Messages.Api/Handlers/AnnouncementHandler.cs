@@ -5,6 +5,7 @@
     using System.Linq;
     using Constants;
     using Extensions;
+    using Fanex.Logging;
     using MediatR;
     using Models;
     using Params.Announcement;
@@ -33,6 +34,7 @@
 
         public IEnumerable<AnnouncementViewModel> Handle(GetAnnouncementsQuery message)
         {
+            Logger.Log.Info("Start Get Announcement");
             if (message.Customers == null || !message.Customers.Any())
             {
                 return Enumerable.Empty<AnnouncementViewModel>();
@@ -40,6 +42,7 @@
 
             var fromTime = message.FromTime.ToLocalTime();
             var toTime = message.ToTime.ToLocalTime();
+
             var announcements = announcementService.GetAnnouncements(fromTime, toTime);
 
             if (announcements == null || !announcements.Any())
@@ -51,9 +54,11 @@
 
             foreach (var customer in message.Customers)
             {
+                Logger.Log.Info(customer.CustId.ToString());
                 var custInfo = customerService.GetCustomerInfo(customer.CustId);
+                Logger.Log.Info(custInfo.UserName);
                 var offeredProductIds = productService.GetOfferedProductIdsByCustomer(customer.CustId);
-
+                Logger.Log.Info(string.Join(",", offeredProductIds));
                 var specificationParam = new SpecificationParam(custInfo, offeredProductIds);
                 var announcementParam = CreateAnnouncementParam(specificationParam, fromTime, toTime, customer.Language);
 
@@ -68,7 +73,7 @@
 
                 result.AddRange(custAnnouncement);
             }
-
+            Logger.Log.Info("End Get Announcement");
             return result;
         }
 

@@ -12,6 +12,7 @@
     using Criteria.Announcement;
     using Fanex.Caching;
     using Fanex.Data.Repository;
+    using Fanex.Logging;
     using Models.Announcement;
     using Params.Announcement;
     using Utils;
@@ -172,6 +173,7 @@
             BaseAnnouncementsParams announcementParams,
             DateTime lastSeenAnnouncement)
         {
+            Logger.Log.Info("Begin GetAnnouncementsByUser");
             foreach (var announcement in announcementToday)
             {
                 if (announcement.Specifications == null
@@ -179,7 +181,7 @@
                     || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
                     var messageContent = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
-
+                    Logger.Log.Info("GetAnnouncementsByUser" + messageContent);
                     yield return new AlphaAnnouncement(
                         announcement.Id,
                         messageContent,
@@ -189,6 +191,8 @@
                         announcement.Specifications);
                 }
             }
+
+            Logger.Log.Info("End GetAnnouncementsByUser");
         }
 
         private static string GetMessageContentByLanguage(IEnumerable<MessageContent> messages, string languageKey)
