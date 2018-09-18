@@ -6,7 +6,6 @@
     using System.Net;
     using Announcements.Models;
     using Configurations;
-    using Fanex.Logging;
     using Helpers;
     using Newtonsoft.Json;
     using Requests;
@@ -36,26 +35,17 @@
         public IEnumerable<Announcement> GetAnnouncementsHistory(AnnouncementHistoryRequest request)
         {
             var restRequest = new RestRequest("AnnouncementApi/GetAnnouncementsHistory", Method.POST);
-
-            Logger.Log.Info(JsonConvert.SerializeObject(request));
-
             restRequest.AddJsonBody(request);
-            try
+
+            IRestResponse response = restClient.Execute(restRequest);
+
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                IRestResponse response = restClient.Execute(restRequest);
-                Logger.Log.Info(response.StatusCode.ToString());
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(
-                        response.Content,
-                        new SpecificationConverter());
-                }
+                return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(
+                    response.Content,
+                    new SpecificationConverter());
             }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex.Message, ex);
-            }
-            // write log
+
             return Enumerable.Empty<Announcement>();
         }
     }
