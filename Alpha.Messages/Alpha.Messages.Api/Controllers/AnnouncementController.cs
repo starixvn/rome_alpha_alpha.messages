@@ -2,12 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Web.Http;
-    using Filter;
     using MediatR;
     using Requests;
     using ViewModels;
 
-    [HmacAuthorizationFilter]
+    //[HmacAuthorizationFilter]
     public class AnnouncementController : ApiController
     {
         private readonly IMediator mediator;
