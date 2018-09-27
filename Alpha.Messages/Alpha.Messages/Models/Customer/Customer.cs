@@ -1,17 +1,9 @@
 ﻿namespace Alpha.Messages.Models.Customer
 {
-    using System.Collections.Generic;
+    using Client.Configurations;
 
     public class Customer
     {
-        private readonly IDictionary<int, string> systems = new Dictionary<int, string>
-        {
-            [1] = "IBCBet",
-            [7] = "789Y",
-            [8] = "EU88",
-            [9] = "Y987",
-        };
-
         public Customer()
         {
         }
@@ -64,6 +56,6 @@
 
         public int SiteCode { get; }
 
-        public string System => systems[SiteCode];
+        public string System => AppSettings.GetConfigValue($"System:{SiteCode}");
     }
 }

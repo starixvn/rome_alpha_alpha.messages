@@ -58,7 +58,7 @@
                 var announcementParam = CreateAnnouncementParam(specificationParam, fromTime, toTime, customer.Language);
 
                 var filteredAnnouncements = announcementService.GetAnnouncementsByUser(
-                    announcements.Where(a => a.Systems.Contains(custInfo.System)),
+                    announcements.Where(a => a.Systems.Contains(custInfo.System, StringComparer.OrdinalIgnoreCase)),
                     announcementParam,
                     toTime);
 

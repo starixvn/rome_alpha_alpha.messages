@@ -24,18 +24,5 @@
             // Assert
             Assert.IsFalse(customer.IsIMBC);
         }
-
-        [TestCase(1, "IBCBet")]
-        [TestCase(7, "789Y")]
-        [TestCase(8, "EU88")]
-        [TestCase(9, "Y987")]
-        public void System_Always_ReturnsCorrectValue(int siteCode, string system)
-        {
-            // Arrange & Act
-            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, siteCode);
-
-            // Assert
-            Assert.AreEqual(system, customer.System);
-        }
     }
 }
