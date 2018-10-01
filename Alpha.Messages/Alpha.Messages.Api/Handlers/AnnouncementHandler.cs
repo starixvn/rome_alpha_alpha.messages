@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Configurations;
     using Constants;
     using Extensions;
     using MediatR;
@@ -53,6 +54,13 @@
             foreach (var customer in message.Customers)
             {
                 var custInfo = customerService.GetCustomerInfo(customer.CustId);
+
+                if (!AppSettings.Environment.Equals("PRO", StringComparison.OrdinalIgnoreCase)
+                    && custInfo.CurrencyId != 20)
+                {
+                    break;
+                }
+
                 var offeredProductIds = productService.GetOfferedProductIdsByCustomer(customer.CustId);
                 var specificationParam = new SpecificationParam(custInfo, offeredProductIds);
                 var announcementParam = CreateAnnouncementParam(specificationParam, fromTime, toTime, customer.Language);

@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Specialized;
     using System.Linq;
     using Announcements.Models;
     using Api.Handlers;
+    using Configurations;
     using KellermanSoftware.CompareNetObjects;
     using Messages.Models.Announcement;
     using Messages.Models.Customer;
@@ -30,7 +32,10 @@
             productService = Substitute.For<ProductService>();
             announcementService = Substitute.For<AnnouncementService>();
             formatAnnouncementService = Substitute.For<AnnouncementFormatService>();
-
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["Environment"] = "LOCAL"
+            };
             announcementHandler = new AnnouncementHandler(
                 customerService,
                 productService,
@@ -110,7 +115,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, 1);
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, 1);
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -132,7 +137,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, 1);
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, 1);
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -154,7 +159,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, 1);
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, 1);
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -183,7 +188,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, 1);
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, 1);
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             var expectedResult = new List<AnnouncementViewModel>
