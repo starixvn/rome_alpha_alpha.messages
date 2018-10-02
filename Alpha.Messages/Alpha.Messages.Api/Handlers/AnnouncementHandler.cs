@@ -7,11 +7,9 @@
     using Configurations;
     using Constants;
     using Extensions;
-    using Fanex.Logging;
     using MediatR;
     using Messages.Models.Announcement;
     using Models;
-    using Newtonsoft.Json;
     using Params.Announcement;
     using Requests;
     using Services;
@@ -45,8 +43,6 @@
             {
                 return Enumerable.Empty<AnnouncementViewModel>();
             }
-
-            Logger.Log.Info(JsonConvert.SerializeObject(message.Customers, Formatting.Indented));
 
             var fromTime = message.FromTime.ToLocalTime();
             var toTime = message.ToTime.ToLocalTime();
@@ -84,8 +80,6 @@
 
                 result.AddRange(custAnnouncement);
             }
-
-            Logger.Log.Info(JsonConvert.SerializeObject(result, Formatting.Indented));
 
             return result;
         }
