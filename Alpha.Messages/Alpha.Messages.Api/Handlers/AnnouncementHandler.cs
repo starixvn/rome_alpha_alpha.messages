@@ -3,11 +3,15 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Announcements.Specs;
     using Configurations;
     using Constants;
     using Extensions;
+    using Fanex.Logging;
     using MediatR;
+    using Messages.Models.Announcement;
     using Models;
+    using Newtonsoft.Json;
     using Params.Announcement;
     using Requests;
     using Services;
@@ -15,6 +19,9 @@
 
     public class AnnouncementHandler : IRequestHandler<GetAnnouncementsQuery, IEnumerable<AnnouncementViewModel>>
     {
+        private const byte UUSCurrencyId = 20;
+        private const string UATEnvironment = "UAT";
+
         private readonly CustomerService customerService;
         private readonly ProductService productService;
         private readonly AnnouncementService announcementService;
@@ -39,6 +46,8 @@
                 return Enumerable.Empty<AnnouncementViewModel>();
             }
 
+            Logger.Log.Info(JsonConvert.SerializeObject(message.Customers, Formatting.Indented));
+
             var fromTime = message.FromTime.ToLocalTime();
             var toTime = message.ToTime.ToLocalTime();
 
@@ -55,12 +64,6 @@
             {
                 var custInfo = customerService.GetCustomerInfo(customer.CustId);
 
-                if (!AppSettings.Environment.Equals("PRO", StringComparison.OrdinalIgnoreCase)
-                    && custInfo.CurrencyId != 20)
-                {
-                    break;
-                }
-
                 var offeredProductIds = productService.GetOfferedProductIdsByCustomer(customer.CustId);
                 var specificationParam = new SpecificationParam(custInfo, offeredProductIds);
                 var announcementParam = CreateAnnouncementParam(specificationParam, fromTime, toTime, customer.Language);
@@ -70,6 +73,11 @@
                     announcementParam,
                     toTime);
 
+                if (AppSettings.Environment.Equals(UATEnvironment))
+                {
+                    filteredAnnouncements = FilterCurrencyRule(filteredAnnouncements);
+                }
+
                 var formatedAnnouncements = formatAnnouncementService.Format(filteredAnnouncements, announcementParam);
 
                 var custAnnouncement = formatedAnnouncements.Select(a => new AnnouncementViewModel(customer.CustId, a.Content));
@@ -77,7 +85,30 @@
                 result.AddRange(custAnnouncement);
             }
 
+            Logger.Log.Info(JsonConvert.SerializeObject(result, Formatting.Indented));
+
             return result;
+        }
+
+        private static IEnumerable<AlphaAnnouncement> FilterCurrencyRule(IEnumerable<AlphaAnnouncement> announcements)
+        {
+            return announcements.Where(ann =>
+            {
+                foreach (var spec in ann.Specifications)
+                {
+                    if (spec is CurrencySpecification)
+                    {
+                        var currencyList = spec.Value as IEnumerable<byte>;
+
+                        if (currencyList != null && currencyList.Any())
+                        {
+                            return currencyList.Contains(UUSCurrencyId);
+                        }
+                    }
+                }
+
+                return false;
+            });
         }
 
         private static AnnouncementsHistoryParams CreateAnnouncementParam(
