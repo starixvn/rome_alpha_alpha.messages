@@ -7,9 +7,11 @@
     using Configurations;
     using Constants;
     using Extensions;
+    using Fanex.Logging;
     using MediatR;
     using Messages.Models.Announcement;
     using Models;
+    using Newtonsoft.Json;
     using Params.Announcement;
     using Requests;
     using Services;
@@ -24,21 +26,29 @@
         private readonly ProductService productService;
         private readonly AnnouncementService announcementService;
         private readonly AnnouncementFormatService formatAnnouncementService;
+        private readonly ILogger logger;
 
         public AnnouncementHandler(
             CustomerService customerService,
             ProductService productService,
             AnnouncementService announcementService,
-            AnnouncementFormatService formatAnnouncementService)
+            AnnouncementFormatService formatAnnouncementService,
+            ILogger logger)
         {
             this.customerService = customerService;
             this.productService = productService;
             this.announcementService = announcementService;
             this.formatAnnouncementService = formatAnnouncementService;
+            this.logger = logger;
         }
 
         public IEnumerable<AnnouncementViewModel> Handle(GetAnnouncementsQuery message)
         {
+            if (AppSettings.EnableLogInfo)
+            {
+                logger.Info(JsonConvert.SerializeObject(message, Formatting.Indented));
+            }
+
             if (message.Customers == null || !message.Customers.Any())
             {
                 return Enumerable.Empty<AnnouncementViewModel>();
@@ -79,6 +89,11 @@
                 var custAnnouncement = formatedAnnouncements.Select(a => new AnnouncementViewModel(customer.CustId, a.Content));
 
                 result.AddRange(custAnnouncement);
+            }
+
+            if (result.Any() && AppSettings.EnableLogInfo)
+            {
+                logger.Info(JsonConvert.SerializeObject(result, Formatting.Indented));
             }
 
             return result;

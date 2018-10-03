@@ -7,6 +7,7 @@
     using Client;
     using Controllers;
     using Fanex.Data.Repository;
+    using Fanex.Logging;
     using MediatR;
     using Services;
     using SimpleInjector;
@@ -58,6 +59,8 @@
 
         private static void RegisterServices(Container container)
         {
+            container.RegisterSingleton(() => Logger.Log);
+
             container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
             container.RegisterSingleton<CustomerService, CustomerServiceImpl>();

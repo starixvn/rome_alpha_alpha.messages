@@ -7,6 +7,7 @@
     using Announcements.Models;
     using Api.Handlers;
     using Configurations;
+    using Fanex.Logging;
     using KellermanSoftware.CompareNetObjects;
     using Messages.Models.Announcement;
     using Messages.Models.Customer;
@@ -40,7 +41,8 @@
                 customerService,
                 productService,
                 announcementService,
-                formatAnnouncementService);
+                formatAnnouncementService,
+                Substitute.For<ILogger>());
         }
 
         [Test]
