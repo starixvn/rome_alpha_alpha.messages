@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - Alpha / Alpha Message Nexcel CSharp" ToolsVersion="14.0">
+  <Include Path="..\..\sonarqube\alpha-messagecsharp.ruleset" Action="Default" />
+  <Include Path="alpha.messages.ruleset" Action="Default" />
+</RuleSet>

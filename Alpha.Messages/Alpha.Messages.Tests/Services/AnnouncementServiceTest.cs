@@ -10,6 +10,7 @@
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using KellermanSoftware.CompareNetObjects;
+    using Messages.Configurations;
     using Messages.Criteria.Announcement;
     using Messages.Models.Announcement;
     using Messages.Services;
@@ -17,6 +18,7 @@
     using NUnit.Framework;
     using Params.Announcement;
     using Ploeh.AutoFixture;
+    using Utils;
 
     public class AnnouncementServiceImplTest
     {
@@ -38,9 +40,7 @@
             fixture = new Fixture();
             compareLogic = new CompareLogic();
             cacheForTesting = Substitute.For<Cache>();
-#pragma warning disable CS0618 // Type or member is obsolete
             ConfiguredCacheService.SwitchCacheStorage(cacheForTesting);
-#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         [Test]
@@ -188,7 +188,6 @@
 
             //// Assert
             announcementClient.Received().GetAnnouncementsHistory(Arg.Is<AnnouncementHistoryRequest>(i => i.FromDate.Date == fiveMonthAgo.Date));
-
         }
 
         [Test]
@@ -207,14 +206,14 @@
 
             //// Assert
             announcementClient.Received().GetAnnouncementsHistory(Arg.Is<AnnouncementHistoryRequest>(i => i.FromDate.Date == sixMonthAgo.Date));
-
         }
 
         [Test]
         public void GetLastSeenAnnouncement_CannotFindCustomer_ReturnDefault()
         {
             //// Arrange
-            var defaultLastSeen = new LastSeenAnnouncement(123, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
+            SystemTime.Now = DateTime.Now;
+            var defaultLastSeen = new LastSeenAnnouncement(123, SystemTime.Now, SystemTime.Now, SystemTime.Now, SystemTime.Now);
             LastSeenAnnouncement lastSeen = null;
             dynamicRepository.Get<LastSeenAnnouncement>(Arg.Any<GetLastSeenAnnouncementCriteria>()).Returns(lastSeen);
 
@@ -227,6 +226,26 @@
             Assert.AreEqual(defaultLastSeen.LastSeenPersonal, act.LastSeenPersonal);
             Assert.AreEqual(defaultLastSeen.LastSeenSpecial, act.LastSeenSpecial);
             Assert.AreEqual(defaultLastSeen.LastSeenSystem, act.LastSeenSystem);
+        }
+
+        [Test]
+        public void GetAnnouncements_Always_CallsAnnouncementClientGetAnnouncementsHistory()
+        {
+            // Arrange
+            var fromTime = DateTime.Now;
+            var toTime = DateTime.Now;
+            var request = new AnnouncementHistoryRequest(fromTime, toTime, AppSettings.Environment, string.Empty);
+
+            // Act
+            service.GetAnnouncements(fromTime, toTime);
+
+            // Assert
+            announcementClient.Received().GetAnnouncementsHistory(
+                Arg.Is<AnnouncementHistoryRequest>(
+                    r => r.FromDate == request.FromDate
+                        && r.ToDate == request.ToDate
+                        && r.System == request.System
+                        && r.Environment == request.Environment));
         }
 
         private IEnumerable<Announcement> CreateAnnouncements(DateTime dateTime)

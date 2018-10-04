@@ -250,6 +250,24 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string system {
+            get {
+                return ResourceManager.GetString("system", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System Announcement.
+        /// </summary>
+        public static string systemAnnouncement {
+            get {
+                return ResourceManager.GetString("systemAnnouncement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System Update.
         /// </summary>
         public static string SystemUpdate {

@@ -16,7 +16,7 @@
             get { return appSettingValues ?? ConfigurationManager.AppSettings; }
 
             set { appSettingValues = value; }
-        }       
+        }
 
         public static bool LocalTest => GetConfigValue("LocalTest") == "1";
 
@@ -33,8 +33,10 @@
         public static string MessageAgent => string.IsNullOrWhiteSpace(GetConfigValue("Message:Agent")) ? "3000,3300" : GetConfigValue("Message:Agent");
 
         public static string RemoteRefURL => GetConfigValue("RemoteRefURL");
-        
+
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
+
+        public static bool EnableLogInfo => GetConfigValue("EnableLogInfo") == "1";
 
         public static void Verify()
         {

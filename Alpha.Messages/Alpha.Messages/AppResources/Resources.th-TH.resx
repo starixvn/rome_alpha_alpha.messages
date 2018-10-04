@@ -171,4 +171,10 @@
   <data name="SystemUpdate" xml:space="preserve">
     <value>อัปเดตระบบ</value>
   </data>
+  <data name="systemAnnouncement" xml:space="preserve">
+    <value>ประกาศระบบ</value>
+  </data>
+  <data name="system" xml:space="preserve">
+    <value>ระบบ</value>
+  </data>
 </root>

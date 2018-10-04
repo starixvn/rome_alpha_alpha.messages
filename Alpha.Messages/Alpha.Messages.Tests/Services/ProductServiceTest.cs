@@ -5,10 +5,7 @@
     using System.Linq;
     using Fanex.Data.Repository;
     using Fixtures;
-    using Messages.Criteria;
-    using Messages.Criteria.Announcement;
     using Messages.Criteria.Product;
-    using Messages.Models.Announcement;
     using Messages.Models.Product;
     using Messages.Services;
     using NSubstitute;
@@ -16,10 +13,11 @@
 
     public class ProductServiceTest
     {
+        private const string ProductsCacheKey = "Alpha.Message.Services.GetAllProducts";
+        private const string OfferedProductCacheKey = "Alpha.Message.Services.ProductServiceImpl.OfferedProduct";
         private IDynamicRepository dynamicRepository;
         private ProductServiceImpl productService;
         private FanexCacheFixture fanexCacheFixture;
-        private const string ProductsCacheKey = "Alpha.Message.Services.GetAllProducts";
         private Func<int, bool> canViewProduct;
         private IEnumerable<Product> productList;
 
@@ -82,6 +80,24 @@
 
             //// Assert
             dynamicRepository.Received().Fetch<int>(Arg.Any<UnsynchronizedSettingCriteria>());
+        }
+
+        [Test]
+        public void GetOfferedProductIdsByCustomer_NotExistInCache_CallsDynamicRepository()
+        {
+            // Arrange
+            var custId = 1;
+            fanexCacheFixture.CacheForTesting.TryGet($"{OfferedProductCacheKey}.{custId}", out productList);
+            dynamicRepository.Fetch<Product>(Arg.Any<GetOfferedProductCriteria>()).Returns(new List<Product>
+            {
+                new Product(1,"name", false)
+            });
+
+            // Act
+            productService.GetOfferedProductIdsByCustomer(custId);
+
+            // Assert
+            dynamicRepository.Received().Fetch<Product>(Arg.Is<GetOfferedProductCriteria>(c => c.CustId == custId));
         }
     }
 }

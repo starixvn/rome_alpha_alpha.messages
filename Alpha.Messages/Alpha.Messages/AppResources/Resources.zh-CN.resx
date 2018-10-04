@@ -171,4 +171,10 @@
   <data name="SystemUpdate" xml:space="preserve">
     <value>系统更新</value>
   </data>
+  <data name="systemAnnouncement" xml:space="preserve">
+    <value>系统公告</value>
+  </data>
+  <data name="system" xml:space="preserve">
+    <value>系统</value>
+  </data>
 </root>

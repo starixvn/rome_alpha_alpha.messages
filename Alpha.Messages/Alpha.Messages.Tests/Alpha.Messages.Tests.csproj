@@ -17,9 +17,10 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,8 +47,8 @@
       <HintPath>..\..\packages\Fanex.Caching.2.1.0\lib\net461\Fanex.Caching.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Common, Version=1.0.404.97, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.Common.1.0.404.97\lib\net40\Fanex.Common.dll</HintPath>
+    <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Data, Version=2.1.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -91,7 +92,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ploeh.AutoFixture, Version=3.50.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AutoFixture.3.50.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <HintPath>..\..\packages\AutoFixture.3.50.6\lib\net40\Ploeh.AutoFixture.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -154,10 +155,12 @@
     <Compile Include="Constants\CustId.cs" />
     <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteriaTests.cs" />
     <Compile Include="Criteria\Announcement\UpdateLastSeenAnnouncementCriteriaTests.cs" />
+    <Compile Include="Criteria\Customer\GetCustomerInfoCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetPortalMessagesCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetUnreadMessageCriteriaTest.cs" />
     <Compile Include="Criteria\Message\GetUnreadMessagesOnUserCriteriaTest.cs" />
+    <Compile Include="Criteria\Product\GetOfferedProductCriteriaTests.cs" />
     <Compile Include="Criteria\Product\GetProductsCriteriaTest.cs" />
     <Compile Include="Criteria\NewMessage\InsertPersonalMessageCriteriaTest.cs" />
     <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteriaTest.cs" />
@@ -169,11 +172,13 @@
     <Compile Include="Criteria\NewMessage\UpdateMessageAsReadOnUserCritriaTest.cs" />
     <Compile Include="Criteria\Product\UnsynchronizedSettingCriteriaTests.cs" />
     <Compile Include="Database\MessageDatabase.cs" />
+    <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Fixtures\AnnouncementFixture.cs" />
     <Compile Include="Fixtures\FanexCacheFixture.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\Announcement\BaseAnnouncementsParamsTests.cs" />
     <Compile Include="Models\Announcement\LastSeenAnnouncementTests.cs" />
+    <Compile Include="Models\Customer\CustomerTests.cs" />
     <Compile Include="Models\Enumerations\UserLevelTests.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
     <Compile Include="Models\Message\MessageHistoryTests.cs" />
@@ -184,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatServiceTest.cs" />
     <Compile Include="Services\AnnouncementServiceTest.cs" />
+    <Compile Include="Services\CustomerServiceImplTests.cs" />
     <Compile Include="Services\MarqueeMessageServiceTest.cs" />
     <Compile Include="Services\MessageHistoryServiceTests.cs" />
     <Compile Include="Services\NewMessageServiceTests.cs" />

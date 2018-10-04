@@ -22,7 +22,6 @@
 
         public AnnouncementClientImpl() : this(null)
         {
-
         }
 
         public AnnouncementClientImpl(IRestClient restClient)
@@ -32,13 +31,14 @@
                 Authenticator = new HmacAuthenticator()
             };
         }
-        
 
         public IEnumerable<Announcement> GetAnnouncementsHistory(AnnouncementHistoryRequest request)
         {
-            var restRequest = new RestRequest("AnnouncementApi/GetAnnouncementsHistory", Method.POST);            
+            var restRequest = new RestRequest("AnnouncementApi/GetAnnouncementsHistory", Method.POST);
             restRequest.AddJsonBody(request);
+
             IRestResponse response = restClient.Execute(restRequest);
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(
@@ -46,7 +46,6 @@
                     new SpecificationConverter());
             }
 
-            // write log
             return Enumerable.Empty<Announcement>();
         }
     }

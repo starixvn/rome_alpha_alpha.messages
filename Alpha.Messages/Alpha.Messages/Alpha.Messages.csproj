@@ -191,9 +191,11 @@
     <Compile Include="Constants\MessageRange.cs" />
     <Compile Include="Constants\MessageType.cs" />
     <Compile Include="Constants\SessionKey.cs" />
+    <Compile Include="Criteria\Customer\GetCustomerInfoCriteria.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
     <Compile Include="Criteria\Message\MarkMessageAsReadCommand.cs" />
     <Compile Include="Criteria\NewMessage\GetUnreadMessagesOnUserCriteria.cs" />
+    <Compile Include="Criteria\Product\GetOfferedProductCriteria.cs" />
     <Compile Include="Criteria\Product\GetProductsCriteria.cs" />
     <Compile Include="Criteria\NewMessage\InsertPersonalMessageCriteria.cs" />
     <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteria.cs" />
@@ -208,6 +210,7 @@
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteria.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Announcement\LastSeenAnnouncement.cs" />
+    <Compile Include="Models\Customer\Customer.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />
     <Compile Include="Models\Message\MarqueeMessage.cs" />
@@ -230,12 +233,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnnouncementFormatService.cs" />
     <Compile Include="Services\AnnouncementService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\MarqueeMessageService.cs" />
     <Compile Include="Services\MessageHistoryService.cs" />
     <Compile Include="Services\NewMessageService.cs" />
     <Compile Include="Services\PortalMessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\AlphaRemotingRefService.cs" />
+    <Compile Include="Utils\SystemTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Alpha.Messages.Debug.ruleset" />

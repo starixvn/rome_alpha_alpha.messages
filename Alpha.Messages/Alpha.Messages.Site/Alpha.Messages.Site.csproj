@@ -194,8 +194,8 @@
       <HintPath>..\..\packages\Sunplus.Agent.Model.Definitions.3.0.2.0\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Utilities, Version=3.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sunplus.Agent.Utilities.3.0.0.4\lib\net40\Sunplus.Agent.Utilities.dll</HintPath>
+    <Reference Include="Sunplus.Agent.Utilities, Version=3.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Utilities.3.0.0.6\lib\net40\Sunplus.Agent.Utilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -394,6 +394,7 @@
     <Content Include="Views\PortalMessage\Messages.cshtml" />
     <Content Include="Views\Announcement\Index.cshtml" />
     <Content Include="Views\Announcement\Popup.cshtml" />
+    <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="assets\styles\popup\index.scss" />
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />

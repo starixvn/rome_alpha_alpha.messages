@@ -19,6 +19,7 @@
             ContentJP = GetMessageByCulture(resourceKey, Language.Japanese);
             ContentTH = GetMessageByCulture(resourceKey, Language.Thai);
             ContentKO = GetMessageByCulture(resourceKey, Language.Korean);
+            ContentVN = GetMessageByCulture(resourceKey, Language.Vietnamese);
             MessageType = Constants.MessageType.Personal;
             CreatorName = string.Empty;
             IsBatch = true;
@@ -47,6 +48,9 @@
 
         [SpParam(SqlParamName = "content_es")]
         public string ContentES => string.Empty;
+
+        [SpParam(SqlParamName = "content_vn")]
+        public string ContentVN { get; set; }
 
         [SpParam(SqlParamName = "msgtype")]
         public int MessageType { get; set; }

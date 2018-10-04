@@ -14,16 +14,26 @@
     using Fanex.Data.Repository;
     using Models.Announcement;
     using Params.Announcement;
+    using Utils;
 
     public interface AnnouncementService
     {
         int GetNumberOfNewAnnouncements(BaseAnnouncementsParams announcementParams);
+
         void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId);
+
         IEnumerable<AlphaAnnouncement> GetAnnouncementsHistory(AnnouncementsHistoryParams announcementParams);
 
         AlphaAnnouncement GetPopUpAnnouncements(PopupAnnouncementParams announcementParams);
 
         LastSeenAnnouncement GetLastSeenAnnouncement(int custId, int subAccId);
+
+        IEnumerable<Announcement> GetAnnouncements(DateTime fromTime, DateTime toTime);
+
+        IEnumerable<AlphaAnnouncement> GetAnnouncementsByUser(
+           IEnumerable<Announcement> announcementToday,
+           BaseAnnouncementsParams announcementParams,
+           DateTime lastSeenAnnouncement);
     }
 
     public class AnnouncementServiceImpl : AnnouncementService
@@ -44,7 +54,7 @@
             this.specificationService = specificationService;
             this.dynamicRepository = dynamicRepository;     
         }
-        
+
         public void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId)
         {
             if (!isAdminUser)
@@ -97,8 +107,11 @@
         {
             var lastSeen = dynamicRepository.Get<LastSeenAnnouncement>(new GetLastSeenAnnouncementCriteria(custId, subAccId));
 
-            return lastSeen ?? new LastSeenAnnouncement(custId, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
+            return lastSeen ?? new LastSeenAnnouncement(custId, SystemTime.Now, SystemTime.Now, SystemTime.Now, SystemTime.Now);
         }
+
+        public IEnumerable<Announcement> GetAnnouncements(DateTime fromTime, DateTime toTime)
+            => announcementClient.GetAnnouncementsHistory(new AnnouncementHistoryRequest(fromTime, toTime, AppSettings.Environment, string.Empty));
 
         private static DateTime GetAvailableLastSeenDate(DateTime fromDate, DateTime lastSeenDate)
         {
@@ -154,7 +167,7 @@
                 .OrderBy(i => i.ReleasedDate);
         }
 
-        private IEnumerable<AlphaAnnouncement> GetAnnouncementsByUser(
+        public IEnumerable<AlphaAnnouncement> GetAnnouncementsByUser(
             IEnumerable<Announcement> announcementToday,
             BaseAnnouncementsParams announcementParams,
             DateTime lastSeenAnnouncement)
@@ -166,7 +179,6 @@
                     || specificationService.IsSatisfied(announcement.Specifications, announcementParams.SpecificationParamter))
                 {
                     var messageContent = GetMessageContentByLanguage(announcement.Contents, announcementParams.Language);
-
                     yield return new AlphaAnnouncement(
                         announcement.Id,
                         messageContent,

@@ -11,14 +11,18 @@
     public interface ProductService
     {
         IEnumerable<Product> GetOfferedProductsByCustomer(int custId);
+
         IEnumerable<int> GetUnconfirmSettingProductIds(int custId);
+
+        IEnumerable<byte> GetOfferedProductIdsByCustomer(int custId);
     }
 
-    public class ProductServiceImpl: ProductService
-    {        
+    public class ProductServiceImpl : ProductService
+    {
         private readonly IDynamicRepository dynamicRepository;
         private readonly Func<int, bool> canViewProduct;
         private const string ProductsCacheKey = "Alpha.Message.Services.GetAllProducts";
+        private const string OfferedProductCacheKey = "Alpha.Message.Services.ProductServiceImpl.OfferedProduct";
 
         public ProductServiceImpl(
             IDynamicRepository dynamicRepository,
@@ -31,12 +35,25 @@
         public IEnumerable<int> GetUnconfirmSettingProductIds(int custId)
             => dynamicRepository.Fetch<int>(new UnsynchronizedSettingCriteria(custId));
 
+        public IEnumerable<byte> GetOfferedProductIdsByCustomer(int custId)
+            => ConfiguredCacheService.GetOrSet(
+                $"{OfferedProductCacheKey}.{custId}",
+                () =>
+                {
+                    var products = dynamicRepository.Fetch<Product>(new GetOfferedProductCriteria(custId));
+
+                    return products != null
+                        ? products.Where(p => !p.IsHidden).Select(p => (byte)p.Id)
+                        : Enumerable.Empty<byte>();
+                },
+                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(5)));
+
         public IEnumerable<Product> GetOfferedProductsByCustomer(int custId)
-            => GetAllProducts().Where(product => canViewProduct(product.Id));
+           => GetAllProducts().Where(product => canViewProduct(product.Id));
 
         private IEnumerable<Product> GetAllProducts()
             => ConfiguredCacheService
-                .GetOrSet(
+            .GetOrSet(
                 ProductsCacheKey,
                 () => dynamicRepository.Fetch<Product>(new GetProductsCriteria()),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromDays(1)));

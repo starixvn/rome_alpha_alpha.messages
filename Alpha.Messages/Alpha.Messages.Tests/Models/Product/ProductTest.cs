@@ -1,5 +1,4 @@
-﻿using System;
-using Alpha.Messages.Models.Product;
+﻿using Alpha.Messages.Models.Product;
 using NUnit.Framework;
 
 namespace Alpha.Messages.Tests.Models
@@ -12,7 +11,7 @@ namespace Alpha.Messages.Tests.Models
         [SetUp]
         public void SetUp()
         {
-            _product = new Product(1, "test", new DateTime(2017, 1, 1));
+            _product = new Product(1, "test", false);
         }
 
         [Test]
