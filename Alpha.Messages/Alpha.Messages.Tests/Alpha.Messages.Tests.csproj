@@ -180,6 +180,7 @@
     <Compile Include="Models\Announcement\LastSeenAnnouncementTests.cs" />
     <Compile Include="Models\Customer\CustomerTests.cs" />
     <Compile Include="Models\Enumerations\UserLevelTests.cs" />
+    <Compile Include="Models\Message\GeneralMarqueeMessageTests.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
     <Compile Include="Models\Message\MessageHistoryTests.cs" />
     <Compile Include="Models\Message\MultiLanguagueTests.cs" />

@@ -16,14 +16,14 @@
 
         GeneralMarqueeMessage GetLatestPrivateMessage(int custId, string languageKey, bool isTest);
 
-        GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey);        
+        GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey);
     }
 
     public class MarqueeMessageServiceImpl : MarqueeMessageService
     {
         private const int CachedSecond = 30;
         private readonly IDynamicRepository dynamicRepository;
-        
+
         public MarqueeMessageServiceImpl(IDynamicRepository dynamicRepository)
         {
             this.dynamicRepository = dynamicRepository;
@@ -50,7 +50,7 @@
                 () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest)),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));
 
-            return new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey));
+            return new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch);
         }
 
         public GeneralMarqueeMessage GetLatestPrivateMessage(int custId, string languageKey, bool isTest)
@@ -62,18 +62,18 @@
                 var message = dynamicRepository.Get<MarqueeMessage>(new GetLatestPrivateMessageCriteria(custId, isTest));
                 if (message != null)
                 {
-                    generalMessage = new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey));
+                    generalMessage = new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch);
                 }
             }
 
             return generalMessage;
         }
-        
+
         private bool HasLatestPrivateMessage(int custId, bool isTest)
         {
             var id = dynamicRepository.Get<int>(new HasLatestPrivateMessageCriteria(custId, isTest));
 
             return id > 0;
-        }        
+        }
     }
 }

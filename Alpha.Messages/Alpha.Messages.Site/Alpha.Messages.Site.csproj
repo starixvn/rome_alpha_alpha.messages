@@ -292,7 +292,9 @@
     <Content Include="App_Data\SPNames\MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBCUST.CustDB.xml" />
-    <Content Include="App_Data\SPNames\PRO\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBMSG.bodb_Message.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\PRO\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\PRO\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBAGE.bodb02.xml" />
