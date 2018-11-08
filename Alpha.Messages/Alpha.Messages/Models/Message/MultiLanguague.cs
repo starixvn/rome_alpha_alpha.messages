@@ -121,20 +121,6 @@
             ? Contents[languageKey]
             : Contents.ContainsKey(Language.English)
             ? Contents[Language.English]
-            : string.Empty;
-
-        public void ReplaceBetTransId(string betTransId, bool isBatch)
-        {
-            if (isBatch)
-            {
-                Contents[Language.English] = Contents[Language.English].Replace("@@", betTransId);
-                Contents[Language.ChineseSimplified] = Contents[Language.ChineseSimplified].Replace("@@", betTransId);
-                Contents[Language.ChineseTraditional] = Contents[Language.ChineseTraditional].Replace("@@", betTransId);
-                Contents[Language.Japanese] = Contents[Language.Japanese].Replace("@@", betTransId);
-                Contents[Language.Thai] = Contents[Language.Thai].Replace("@@", betTransId);
-                Contents[Language.Korean] = Contents[Language.Korean].Replace("@@", betTransId);
-                Contents[Language.Vietnamese] = Contents[Language.Vietnamese].Replace("@@", betTransId);
-            }
-        }
+            : string.Empty;        
     }
 }

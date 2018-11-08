@@ -20,9 +20,15 @@
             int userId) : base(contentEN, contentCS, contentCH, contentJP, contentTH, contentKO, contentVi)
         {
             Id = messageId;
-            ReplaceBetTransId(betTransId, isBatch);
+
+            BetTransId = betTransId;
+            IsBatch = isBatch;
         }
 
-        public int Id { get;}     
+        public int Id { get;}
+
+        public string BetTransId { get; }
+
+        public bool IsBatch { get; }
     }
 }

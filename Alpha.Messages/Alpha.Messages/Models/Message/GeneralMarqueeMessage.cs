@@ -10,12 +10,19 @@
 
         public GeneralMarqueeMessage(
             int id,
-            string content)
+            string content,
+            string betTransId,
+            bool isBatch)
         {
             Id = id;
             Content = content.Replace("\n", string.Empty)
                 .Replace("\r", string.Empty)
                 .Replace("'", "\'");
+
+            if (isBatch)
+            {
+                Content = Content.Replace("@@", betTransId);
+            }
         }
 
         public int Id { get; }
