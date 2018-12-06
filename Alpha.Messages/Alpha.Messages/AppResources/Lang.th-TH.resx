@@ -162,4 +162,7 @@
   <data name="PositionTakingSettingFollows" xml:space="preserve">
     <value>การตั้งค่าแบ่งสู้คัดลอกดังต่อไปนี้</value>
   </data>
+  <data name="NewBetTypeTitle" xml:space="preserve">
+    <value>ประเภทการเดิมพันใหม่ของ E-Sports:</value>
+  </data>
 </root>

@@ -162,4 +162,10 @@
   <data name="PositionTakingSettingFollows" xml:space="preserve">
     <value>Position Taking Setting Follows</value>
   </data>
+  <data name="NewBetType" xml:space="preserve">
+    <value>New Bet Type</value>
+  </data>
+  <data name="NewBetTypeTitle" xml:space="preserve">
+    <value>New bet types of E-Sports:</value>
+  </data>
 </root>

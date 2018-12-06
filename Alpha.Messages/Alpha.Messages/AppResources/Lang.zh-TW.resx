@@ -162,4 +162,7 @@
   <data name="PositionTakingSettingFollows" xml:space="preserve">
     <value>占成數設定複製跟隨</value>
   </data>
+  <data name="NewBetTypeTitle" xml:space="preserve">
+    <value>電子競技的新投註類型：</value>
+  </data>
 </root>

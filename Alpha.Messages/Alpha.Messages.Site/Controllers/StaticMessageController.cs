@@ -5,10 +5,8 @@
 
     public class StaticMessageController : BaseController
     {
-        // GET: NewSportType
-        public ActionResult NewSportType()
-        {
-            return View();
-        }
+        public ActionResult NewSportType() => View();
+
+        public ActionResult Index(string id) => View(id);
     }
 }
