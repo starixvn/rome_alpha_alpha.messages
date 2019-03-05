@@ -12,7 +12,9 @@
             int id,
             string content,
             string betTransId,
-            bool isBatch)
+            bool isBatch,
+            bool isSticky,
+            int msgTypeFromDB)
         {
             Id = id;
             Content = content.Replace("\n", string.Empty)
@@ -23,10 +25,14 @@
             {
                 Content = Content.Replace("@@", betTransId);
             }
+
+            MessageType = isSticky ? Messages.Constants.MessageType.Special : msgTypeFromDB == 3 ? Messages.Constants.MessageType.Normal: Messages.Constants.MessageType.Personal;
         }
 
         public int Id { get; }
 
         public string Content { get; }
+
+        public int MessageType { get; }
     }
 }

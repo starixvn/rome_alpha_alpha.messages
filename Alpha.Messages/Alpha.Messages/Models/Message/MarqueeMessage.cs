@@ -14,21 +14,29 @@
             string contentJP,
             string contentTH,
             string contentKO,
-            string contentVi, 
+            string contentVi,
             bool isBatch,
             string betTransId,
-            int userId) : base(contentEN, contentCS, contentCH, contentJP, contentTH, contentKO, contentVi)
+            int userId,
+            bool isSticky,
+            int msgType) : base(contentEN, contentCS, contentCH, contentJP, contentTH, contentKO, contentVi)
         {
             Id = messageId;
 
             BetTransId = betTransId;
             IsBatch = isBatch;
+            IsSticky = isSticky;
+            MsgType = msgType;
         }
 
-        public int Id { get;}
+        public int Id { get; }
 
         public string BetTransId { get; }
 
         public bool IsBatch { get; }
+
+        public int MsgType { get; }
+
+        public bool IsSticky { get; }
     }
 }

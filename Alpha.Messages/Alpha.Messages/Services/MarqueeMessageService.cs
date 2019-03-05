@@ -50,7 +50,7 @@
                 () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest)),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));
 
-            return new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch);
+            return new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch, message.IsSticky, message.MsgType);
         }
 
         public GeneralMarqueeMessage GetLatestPrivateMessage(int custId, string languageKey, bool isTest)
@@ -62,7 +62,7 @@
                 var message = dynamicRepository.Get<MarqueeMessage>(new GetLatestPrivateMessageCriteria(custId, isTest));
                 if (message != null)
                 {
-                    generalMessage = new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch);
+                    generalMessage = new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch, message.IsSticky, message.MsgType);
                 }
             }
 

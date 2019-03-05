@@ -61,6 +61,7 @@
                      EndDate,
                      LimitedDateToShowInfo,
                      IsTest,
-                     MessageType);
+                     MessageType,
+                     Specification);
     }
 }

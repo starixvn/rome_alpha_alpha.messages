@@ -71,7 +71,7 @@
 
             var newAnnouncements = GetNewAnnouncements(fromDate);
 
-            var announcements = GetAnnouncementsByUser(newAnnouncements, announcementParams, lastSeenAnnouncement.LastSeenSystem);
+            var announcements = GetAnnouncementsByUser(newAnnouncements, announcementParams, lastSeenAnnouncement.LastSeenSystem).ToList();
 
             return announcements.Count(i => i.ReleasedDate >= lastSeenAnnouncement.LastSeenSystem);
         }
