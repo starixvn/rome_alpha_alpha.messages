@@ -1,7 +1,8 @@
 ﻿namespace Alpha.Messages.Params
 {
-    using System;
     using Announcement;
+    using Announcements.Models;
+    using System;
 
     public class MessageHistoryParams : BaseAnnouncementsParams
     {
@@ -15,7 +16,8 @@
             DateTime endDate,
             DateTime limitedDate,
             bool isTest,
-            int messageType)
+            int messageType, 
+            IParam specificationParamter)
         {
             CustId = custId;
             SubAccId = subAccId;
@@ -27,6 +29,7 @@
             LimitedDate = limitedDate;
             IsTest = isTest;
             MessageType = messageType;
+            SpecificationParamter = specificationParamter;
         }
 
         public int SpecialType { get; }

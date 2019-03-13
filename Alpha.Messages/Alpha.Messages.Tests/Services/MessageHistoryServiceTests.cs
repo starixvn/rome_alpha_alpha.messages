@@ -64,7 +64,8 @@
                     DateTime.Today,
                     limitedDate,
                     false,
-                    personalType));
+                    personalType,
+                    null));
 
             //// Assert
             dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate == limitedDate));
@@ -91,7 +92,8 @@
                     DateTime.Now,
                     DateTime.MinValue,
                     false,
-                    personalType));
+                    personalType,
+                    null));
 
             //// Assert
             dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == threeDayAgo.Date));
@@ -118,7 +120,8 @@
                     DateTime.Now,
                     DateTime.MinValue,
                     false,
-                    personalType));
+                    personalType,
+                    null));
 
             //// Assert
             dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == newReleaseDate.Date));
@@ -146,7 +149,8 @@
                     DateTime.Now,
                     DateTime.MinValue,
                     false,
-                    personalType));
+                    personalType,
+                    null));
 
             //// Assert
             dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == sixMonthAgo.Date));

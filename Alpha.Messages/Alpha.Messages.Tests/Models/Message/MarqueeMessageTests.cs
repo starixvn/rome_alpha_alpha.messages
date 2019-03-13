@@ -12,7 +12,7 @@
             var expectedId = 123;
             var expectedBetTransId = "bettransid";
             var expectedIsBatch = true;
-            var model = new MarqueeMessage(expectedId, "ContentEN", "ContentCS", "ContentCH", "ContentJP", "ContentTH", "ContentKO", "ContentVI", expectedIsBatch, expectedBetTransId, 321);
+            var model = new MarqueeMessage(expectedId, "ContentEN", "ContentCS", "ContentCH", "ContentJP", "ContentTH", "ContentKO", "ContentVI", expectedIsBatch, expectedBetTransId, 321, false, 1);
 
             //// Act
 

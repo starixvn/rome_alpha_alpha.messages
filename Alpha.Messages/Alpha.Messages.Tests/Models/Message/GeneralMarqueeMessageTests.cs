@@ -11,7 +11,7 @@
         {
             //// Arrange
             var expectedContent = "123razortesting marquee";
-            var model = new GeneralMarqueeMessage(1, "@@razortesting marquee", "123", true);
+            var model = new GeneralMarqueeMessage(1, "@@razortesting marquee", "123", true, false, 1);
 
             //// Act
             var act = model.Content;
