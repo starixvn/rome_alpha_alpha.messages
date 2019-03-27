@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -320,7 +321,9 @@
       <DependentUpon>extendMessage.css</DependentUpon>
     </Content>
     <Content Include="assets\bundles\home-mobile-calculate-07.css" />
-    <Content Include="assets\bundles\home-mobile-calculate-07.min.css" />
+    <Content Include="assets\bundles\home-mobile-calculate-07.min.css">
+      <DependentUpon>home-mobile-calculate-07.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\message.js" />
     <Content Include="assets\bundles\message.min.js" />
     <Content Include="assets\bundles\popup.css" />

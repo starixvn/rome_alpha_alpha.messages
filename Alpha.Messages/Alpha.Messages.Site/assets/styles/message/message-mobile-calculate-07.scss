@@ -11,6 +11,24 @@ body {
     display: none !important;
 }
 
+.visible-mobile {
+    display: inline-block !important;
+}
+
+.nav-tabs {
+    display: table;
+    width: 100%;
+
+    li {
+        display: table-cell;
+        float: none;
+
+        a {
+            text-align: center;
+        }
+    }
+}
+
 .nav.nav-tabs > li {    
     &:last-child {
         margin-right: 0;

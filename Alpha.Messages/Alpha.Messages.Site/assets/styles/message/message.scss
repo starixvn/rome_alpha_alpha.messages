@@ -72,8 +72,8 @@ body {
 }
 
 .visible-mobile {
-        display: none !important;
-    } 
+    display: none !important;
+} 
 
 @media only screen and (max-device-width : $conent-device-greater1024) {
     .filter {
