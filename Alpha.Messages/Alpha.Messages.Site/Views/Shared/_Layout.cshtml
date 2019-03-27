@@ -47,10 +47,10 @@
             <li role="presentation" class="@(Model.MessageType == MessageType.System ? "active" : string.Empty) ">
                 <a href="@Url.Action("Index", "Announcement", new { messageType = MessageType.System })">
                     <span class="hidden-mobile">
-                        @Resources.SystemUpdate
+                        @Resources.systemAnnouncement
                     </span>
                     <span class="visible-mobile">
-                        @Resources.SystemUpdate
+                        @Resources.system
                     </span>
                     @if (Model.UnreadMessage.System > 0)
                     {
