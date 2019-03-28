@@ -37,5 +37,11 @@
       "assets/scripts/core.js",
       "assets/scripts/message/index.js"
     ]
+  },
+  {
+    "outputFileName": "assets/bundles/home-mobile-calculate-07.css",
+    "inputFiles": [
+      "assets/styles/message/message-mobile-calculate-07.css"
+    ]
   }
 ]

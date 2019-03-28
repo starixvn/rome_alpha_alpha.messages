@@ -53,13 +53,15 @@ body {
 }
 
 .badge-title {
+    @include border-radius(3px);
+    position: relative;
+    top: -2px;
     display: inline-block;
     padding: 2px 4px;
     background: #da1625;
     color: #fff;
-    border-radius: 2px;
     line-height: 1;
-    font-size: 14px;
+    font-size: 11px;
     text-transform: capitalize;
     font-style: normal;
 }
@@ -70,8 +72,8 @@ body {
 }
 
 .visible-mobile {
-        display: none !important;
-    } 
+    display: none !important;
+} 
 
 @media only screen and (max-device-width : $conent-device-greater1024) {
     .filter {
@@ -82,7 +84,7 @@ body {
 }
 
 /* ----------- Mobile ----------- */
-@media only screen and (max-device-width : $conent-device-lower768) {
+/*@media only screen and (max-device-width : $conent-device-lower768) {
     body {
         background-color: #fff;
         font-size: $font-size-mobile;
@@ -125,4 +127,4 @@ body {
             }
         }
     }
-}
+}*/

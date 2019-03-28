@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,8 +66,8 @@
       <HintPath>..\..\packages\Alpha.SubAccount.1.0.0\lib\net40\Alpha.SubAccount.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Web, Version=1.0.1.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Web.1.0.1.8\lib\net461\Alpha.Web.dll</HintPath>
+    <Reference Include="Alpha.Web, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Web.1.0.2\lib\net461\Alpha.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -319,6 +320,10 @@
     <Content Include="assets\bundles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
     </Content>
+    <Content Include="assets\bundles\home-mobile-calculate-07.css" />
+    <Content Include="assets\bundles\home-mobile-calculate-07.min.css">
+      <DependentUpon>home-mobile-calculate-07.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\message.js" />
     <Content Include="assets\bundles\message.min.js" />
     <Content Include="assets\bundles\popup.css" />
@@ -361,6 +366,12 @@
     <Content Include="assets\styles\Home\_mixins.scss" />
     <Content Include="assets\styles\Home\_mixins2.scss" />
     <Content Include="assets\styles\Home\_variables.scss" />
+    <Content Include="assets\styles\message\message-mobile-calculate-07.css">
+      <DependentUpon>message-mobile-calculate-07.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\message\message-mobile-calculate-07.min.css">
+      <DependentUpon>message-mobile-calculate-07.css</DependentUpon>
+    </Content>
     <Content Include="assets\styles\message\message.css">
       <DependentUpon>message.scss</DependentUpon>
     </Content>
@@ -401,6 +412,7 @@
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
+    <Content Include="assets\styles\message\message-mobile-calculate-07.scss" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
