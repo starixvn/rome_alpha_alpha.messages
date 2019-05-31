@@ -17,7 +17,7 @@
         public ActionResult Index(AnnouncementsHistoryQuery message)
         {
             message.Specification = specificationParam;
-            
+
             return View(message);
         }
 
