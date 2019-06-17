@@ -94,7 +94,7 @@
   <Function Name="Announcement">
     <Setting Key="Age_MsgCustReadStatus_Sel" SpName="Age_MsgCustReadStatus_Sel" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
     <Setting Key="Age_MsgCustReadStatus_Upd" SpName="Age_MsgCustReadStatus_Upd" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
-    <Setting Key="Age_MsgCustReadStatus_SelUnread" SpName="Age_MsgCustReadStatus_SelUnread" DbName="DBMSG.bodb_Message.BODBDownlineNetView" Plain="0"></Setting>
+    <Setting Key="Age_MsgCustReadStatus_SelUnread" SpName="Age_MsgCustReadStatus_SelUnread" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
   </Function>
 
 </Functions>
