@@ -168,4 +168,10 @@
   <data name="NewBetTypeTitle" xml:space="preserve">
     <value>New bet types of E-Sports:</value>
   </data>
+  <data name="LabelTotalGoal" xml:space="preserve">
+    <value>Total Goal</value>
+  </data>
+  <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
+    <value>New bet types of Soccer:</value>
+  </data>
 </root>

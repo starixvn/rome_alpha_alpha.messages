@@ -413,6 +413,7 @@
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
     <Content Include="assets\styles\message\message-mobile-calculate-07.scss" />
+    <Content Include="Views\StaticMessage\112894.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>

@@ -165,4 +165,10 @@
   <data name="NewBetTypeTitle" xml:space="preserve">
     <value>電子競技的新投註類型：</value>
   </data>
+  <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
+    <value>足球的新投注類別</value>
+  </data>
+  <data name="NewBetType" xml:space="preserve">
+    <value>新投注類別</value>
+  </data>
 </root>
