@@ -159,4 +159,13 @@
   <data name="PositionTakingSettingFollows" xml:space="preserve">
     <value>Thiết lập Position Taking theo</value>
   </data>
+  <data name="LabelTotalGoal" xml:space="preserve">
+    <value>Tổng số bàn thắng</value>
+  </data>
+  <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
+    <value>Các loại cược mới của Bóng Đá:</value>
+  </data>
+  <data name="NewBetType" xml:space="preserve">
+    <value>Loại cược mới</value>
+  </data>
 </root>
