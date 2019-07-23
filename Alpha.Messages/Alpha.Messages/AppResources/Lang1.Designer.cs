@@ -19,7 +19,7 @@ namespace Alpha.Messages.AppResources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Lang {
@@ -97,7 +97,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1 X 2.
+        ///   Looks up a localized string similar to 1X2.
         /// </summary>
         public static string Label1x2 {
             get {
@@ -160,6 +160,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Goal.
+        /// </summary>
+        public static string LabelTotalGoal {
+            get {
+                return ResourceManager.GetString("LabelTotalGoal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moneyline.
         /// </summary>
         public static string moneyline {
@@ -174,6 +183,15 @@ namespace Alpha.Messages.AppResources {
         public static string NewBetType {
             get {
                 return ResourceManager.GetString("NewBetType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New bet types of Soccer:.
+        /// </summary>
+        public static string NewBetTypeOfSoccerTitle {
+            get {
+                return ResourceManager.GetString("NewBetTypeOfSoccerTitle", resourceCulture);
             }
         }
         
