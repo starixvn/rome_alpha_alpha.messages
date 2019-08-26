@@ -171,4 +171,7 @@
   <data name="NewBetType" xml:space="preserve">
     <value>ประเภทการเดิมพันใหม่</value>
   </data>
+  <data name="LabelOthers" xml:space="preserve">
+    <value>อื่นๆ</value>
+  </data>
 </root>

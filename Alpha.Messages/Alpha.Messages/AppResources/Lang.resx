@@ -174,4 +174,7 @@
   <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
     <value>New bet types of Soccer:</value>
   </data>
+  <data name="LabelOthers" xml:space="preserve">
+    <value>Others</value>
+  </data>
 </root>

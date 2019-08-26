@@ -414,6 +414,7 @@
     <Content Include="Views\StaticMessage\102924.cshtml" />
     <Content Include="assets\styles\message\message-mobile-calculate-07.scss" />
     <Content Include="Views\StaticMessage\112894.cshtml" />
+    <Content Include="Views\StaticMessage\117068.cshtml" />
     <None Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </None>

@@ -133,6 +133,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        public static string LabelOthers {
+            get {
+                return ResourceManager.GetString("LabelOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Other Bettypes.
         /// </summary>
         public static string LabelOtherTypes {
