@@ -1,14 +1,17 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
     using MediatR;
-    using Requests;
+    using Models.Message;
     using Requests.MarqueeMessage;
     using Services;
     using ViewModels;
 
-    public class MarqueeMessageHandler : IRequestHandler<MarqueeMessageQuery, MarqueeMessageViewModel>
+    public class MarqueeMessageHandler :
+        IRequestHandler<MarqueeMessageQuery, MarqueeMessageViewModel>,
+        IRequestHandler<MoveBetMessageQuery, GeneralMoveBetsMessage>
     {
         private readonly MarqueeMessageService messageService;
+
         public MarqueeMessageHandler(MarqueeMessageService messageService)
         {
             this.messageService = messageService;
@@ -22,5 +25,8 @@
 
             return new MarqueeMessageViewModel(publicMessage, privateMessage, moveBet);
         }
+
+        public GeneralMoveBetsMessage Handle(MoveBetMessageQuery message)
+            => messageService.GetMoveBetsMessage(message.Language);
     }
 }

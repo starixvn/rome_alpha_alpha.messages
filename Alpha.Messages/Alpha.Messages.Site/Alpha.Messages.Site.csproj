@@ -516,6 +516,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\Announcement\AnnouncementsHistoryQuery.cs" />
+    <Compile Include="Requests\MarqueeMessage\MoveBetMessageQuery.cs" />
     <Compile Include="Requests\MessageHistoryBaseRequest.cs" />
     <Compile Include="Requests\NewMessage\NumberOfNewMessageQuery.cs" />
     <Compile Include="Requests\MarqueeMessage\MarqueeMessageQuery.cs" />
