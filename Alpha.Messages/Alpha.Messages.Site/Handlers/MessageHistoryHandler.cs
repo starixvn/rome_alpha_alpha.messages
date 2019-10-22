@@ -15,7 +15,7 @@
         private readonly AnnouncementService announcementService;
 
         public MessageHistoryHandler(
-            MessageHistoryService messageService, 
+            MessageHistoryService messageService,
             NewMessageService newMessageService,
             AnnouncementService announcementService)
         {
@@ -25,7 +25,7 @@
         }
 
         public MessagesHistoryViewModel Handle(MessageHistoryQuery message)
-        {            
+        {
             var lastSeenDate = GetLastSeenDate(message.CustId, message.SubAccId, message.MessageType);
             var messageParams = (MessageHistoryParams)message.ConvertToParameters();
             var messages = messageService.GetMessagesHistory(messageParams);

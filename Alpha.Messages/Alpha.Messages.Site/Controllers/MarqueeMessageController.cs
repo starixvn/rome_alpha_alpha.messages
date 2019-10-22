@@ -25,5 +25,7 @@
             return Json(mediator.Send(query));
         }
 
+        public ActionResult MoveBet()
+            => Json(mediator.Send(new MoveBetMessageQuery(userSession)), JsonRequestBehavior.AllowGet);
     }
 }

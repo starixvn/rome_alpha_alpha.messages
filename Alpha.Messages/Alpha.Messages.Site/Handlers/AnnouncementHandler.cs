@@ -23,14 +23,14 @@
             this.formatAnnouncementService = formatService;
             this.newMessageService = newMessageService;
         }
-      
+
         public AnnouncementHistoryViewModel Handle(AnnouncementsHistoryQuery message)
         {
             var parameters = (AnnouncementsHistoryParams)message.ConvertToParameters();
 
             var announcements = announcementService.GetAnnouncementsHistory(parameters);
             var formatedAnnouncements = formatAnnouncementService.Format(announcements, parameters);
-            
+
             var unreadMessage = newMessageService.GetNumberOfUnreadMessage(parameters);
 
             return new AnnouncementHistoryViewModel(

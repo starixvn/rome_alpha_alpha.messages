@@ -3,6 +3,7 @@
     using System;
     using System.Web;
     using System.Web.Http;
+    using Alpha.Logging;
     using App_Start;
     using Configurations;
     using Fanex.Data;
@@ -27,10 +28,7 @@
                 .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
                 .Run();
 
-            var loggingConfiguration = new LoggingConfiguration()
-                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
-
-            ExceptionHandler.UseConfig(loggingConfiguration);
+            LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
         }
 
         protected void Application_Error(object sender, EventArgs e)
