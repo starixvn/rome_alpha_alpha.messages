@@ -168,4 +168,7 @@
   <data name="NewBetType" xml:space="preserve">
     <value>Loại cược mới</value>
   </data>
+  <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
+    <value>Các loại cược mới của Cầu Lông:</value>
+  </data>
 </root>

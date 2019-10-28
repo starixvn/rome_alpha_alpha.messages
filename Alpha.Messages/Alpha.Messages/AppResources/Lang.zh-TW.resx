@@ -174,4 +174,7 @@
   <data name="LabelOthers" xml:space="preserve">
     <value>其他</value>
   </data>
+  <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
+    <value>羽毛球新投註類型：</value>
+  </data>
 </root>
