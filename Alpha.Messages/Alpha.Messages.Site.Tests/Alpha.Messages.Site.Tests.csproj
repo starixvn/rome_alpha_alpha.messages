@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AnnouncementControllerTest.cs" />
     <Compile Include="Controllers\PortalMessageControllerTests.cs" />
     <Compile Include="Fixtures\UserSessionFixture.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\PopupAnnouncementHandlerTest.cs" />
     <Compile Include="Handlers\NewMessageHandlerTests.cs" />
     <Compile Include="Handlers\AnnouncementHandlerTest.cs" />

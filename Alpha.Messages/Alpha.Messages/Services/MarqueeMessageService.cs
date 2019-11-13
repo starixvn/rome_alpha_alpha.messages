@@ -31,7 +31,7 @@
 
         public GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey)
         {
-            string key = "Alpha.Message.Services.NotificationMoveBets__";
+            const string key = "Alpha.Message.Services.NotificationMoveBets__";
 
             var message = ConfiguredCacheService.GetOrSet(
                 key,

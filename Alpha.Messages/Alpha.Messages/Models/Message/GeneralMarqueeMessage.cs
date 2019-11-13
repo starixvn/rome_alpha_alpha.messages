@@ -2,6 +2,8 @@
 {
     public class GeneralMarqueeMessage
     {
+        private const int NormalMessageDB = 3;
+
         public GeneralMarqueeMessage()
         {
             Id = 0;
@@ -26,7 +28,7 @@
                 Content = Content.Replace("@@", betTransId);
             }
 
-            MessageType = isSticky ? Messages.Constants.MessageType.Special : msgTypeFromDB == 3 ? Messages.Constants.MessageType.Normal: Messages.Constants.MessageType.Personal;
+            MessageType = GetMessageType(isSticky, msgTypeFromDB);
         }
 
         public int Id { get; }
@@ -34,5 +36,15 @@
         public string Content { get; }
 
         public int MessageType { get; }
+
+        private static int GetMessageType(bool isSticky, int messageType)
+        {
+            if (isSticky)
+            {
+                return Messages.Constants.MessageType.Special;
+            }
+
+            return messageType == NormalMessageDB ? Messages.Constants.MessageType.Normal : Messages.Constants.MessageType.Personal;
+        }
     }
 }
