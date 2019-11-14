@@ -19,6 +19,7 @@
 
     public class ProductServiceImpl : ProductService
     {
+        private const int ExpiredTimeOfferredProductMinutes = 5;
         private readonly IDynamicRepository dynamicRepository;
         private readonly Func<int, bool> canViewProduct;
         private const string ProductsCacheKey = "Alpha.Message.Services.GetAllProducts";
@@ -46,7 +47,7 @@
                         ? products.Where(p => !p.IsHidden).Select(p => (byte)p.Id)
                         : Enumerable.Empty<byte>();
                 },
-                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(5)));
+                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(ExpiredTimeOfferredProductMinutes)));
 
         public IEnumerable<Product> GetOfferedProductsByCustomer(int custId)
            => GetAllProducts().Where(product => canViewProduct(product.Id));

@@ -277,19 +277,5 @@
             //// Assert
             Assert.AreEqual(expectedValue, act);
         }
-
-        [Test]
-        public void IsIMBCCustomer_Always_ReturnExpectedValue()
-        {
-            //// Arrange
-            var expectedValue = true;
-            userSession.IsIMBCCustomer.Returns(expectedValue);
-
-            //// Act
-            var act = parameter.IsIMBCCustomer;
-
-            //// Assert
-            Assert.AreEqual(expectedValue, act);
-        }
     }
 }

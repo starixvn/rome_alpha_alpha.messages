@@ -54,9 +54,20 @@ body {
         display: block;
     }
 
-    .input-group.date .form-control {
-        @include box-shadow-multiple('none');
-        border: 1px solid $border-color;
+    .input-group.date {
+        .form-control {
+            @include box-shadow-multiple('none');
+            border: 1px solid $border-color;
+            height: calculateScale(28px);
+            line-height: calculateScale(28px);
+            padding-left: calculateScale(8px);
+            padding-right: calculateScale(8px);
+            font-size: calculateScale(12px);
+        }
+
+        .icon-calendar {
+            font-size: calculateScale(24px);
+        }
     }
 
     .form-group .control.date {
@@ -74,21 +85,6 @@ body {
         margin-right: 0;
         padding-left: calculateScale(16px);
         padding-right: calculateScale(16px);
-    }
-}
-
-
-.input-group.date {
-    .form-control {
-        height: calculateScale(28px);
-        line-height: calculateScale(28px);
-        padding-left: calculateScale(8px);
-        padding-right: calculateScale(8px);
-        font-size: calculateScale(12px);
-    }
-
-    .icon-calendar {
-        font-size: calculateScale(24px);
     }
 }
 

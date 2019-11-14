@@ -51,8 +51,6 @@
 
         public bool IsAgent => userSession.IsAgent;
 
-        public bool IsIMBCCustomer => userSession.IsIMBCCustomer;
-
         public Dictionary<string, object> DynamicParams { get; }
 
         public IEnumerable<byte> OfferedProductIds

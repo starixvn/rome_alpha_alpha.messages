@@ -152,7 +152,7 @@
             var availablePopupAnnouncements = ConfiguredCacheService.GetOrSet(
                 $"Alpha.Messages.PopupAnnouncement_{AppSettings.SiteGroup}",
                 () => announcementClient.GetAnnouncementsHistory(request)
-                .Where(i => DateTime.Now <= i.ExpiredDate && i.AnnouncementType == AnnouncementType.EmergencyPopup),
+                .Where(i => DateTime.Now <= i.ExpiredDate && i.IsPopup),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
             return availablePopupAnnouncements;

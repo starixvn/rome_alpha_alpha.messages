@@ -117,10 +117,12 @@
         }
 
         public string GetContentByKey(string languageKey)
-            => Contents.ContainsKey(languageKey) && !string.IsNullOrEmpty(Contents[languageKey])
-            ? Contents[languageKey]
-            : Contents.ContainsKey(Language.English)
-            ? Contents[Language.English]
-            : string.Empty;        
+        {
+            if (Contents.ContainsKey(languageKey) && !string.IsNullOrEmpty(Contents[languageKey])) {
+                return Contents[languageKey];
+            }
+
+            return Contents.ContainsKey(Language.English) ? Contents[Language.English] : string.Empty;
+        }
     }
 }

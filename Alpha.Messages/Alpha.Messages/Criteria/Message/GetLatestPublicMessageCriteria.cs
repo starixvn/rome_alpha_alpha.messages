@@ -5,6 +5,8 @@
 
     public class GetLatestPublicMessageCriteria : CriteriaBase
     {
+        private const int IndexSite3 = 2;
+
         public GetLatestPublicMessageCriteria(int messageType, string site, bool isTest)
         {
             MessageType = messageType;
@@ -42,7 +44,7 @@
                 if (!string.IsNullOrEmpty(Site))
                 {
                     var sites = Site.Split(',');
-                    site3 = sites.Length > 2 ? sites[2] : string.Empty;
+                    site3 = sites.Length > IndexSite3 ? sites[IndexSite3] : string.Empty;
                 }
 
                 return site3;

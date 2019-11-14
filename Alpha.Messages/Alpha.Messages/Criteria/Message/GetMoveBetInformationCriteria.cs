@@ -4,12 +4,9 @@
 
     public class GetMoveBetInformationCriteria : CriteriaBase
     {
-        public GetMoveBetInformationCriteria()
-        {
-            TimeZone = 8;
-        }
+        private const int ChinaGTM = 8;
 
-        public int TimeZone { get; }
+        public int TimeZone { get; } = ChinaGTM;
 
         public override string GetSettingKey() => "Age_MoveBetsProcessNotification";
 
