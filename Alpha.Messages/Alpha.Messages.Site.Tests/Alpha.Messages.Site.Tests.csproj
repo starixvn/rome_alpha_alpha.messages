@@ -213,6 +213,7 @@
     <Compile Include="Controllers\MessageHistoryControllerTests.cs" />
     <Compile Include="Controllers\AnnouncementControllerTest.cs" />
     <Compile Include="Controllers\PortalMessageControllerTests.cs" />
+    <Compile Include="Controllers\StaticMessageControllerTests.cs" />
     <Compile Include="Fixtures\UserSessionFixture.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\PopupAnnouncementHandlerTest.cs" />

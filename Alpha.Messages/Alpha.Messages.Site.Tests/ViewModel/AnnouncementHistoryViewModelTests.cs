@@ -95,5 +95,41 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             //// Assert
             Assert.AreEqual(DateTime.MinValue, act);
         }
+
+        [Test]
+        public void CurrentDate_Always_IsNow()
+        {
+            //// Arrange
+            var announcements = new List<AlphaAnnouncement>
+            {
+                new AlphaAnnouncement(12, "content", "code", DateTime.Now, DateTime.Now, null)
+            };
+            var unreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
+            var viewModel = new AnnouncementHistoryViewModel(announcements, DateTime.Now, DateTime.Now, MessageType.Normal, UserLevel.Agent, unreadMessage);
+
+            //// Act
+            var act = viewModel.CurrentDate;
+
+            //// Assert
+            Assert.AreEqual(DateTime.Now, act);
+        }
+
+        [Test]
+        public void MaxDate_Always_IsNow()
+        {
+            //// Arrange
+            var announcements = new List<AlphaAnnouncement>
+            {
+                new AlphaAnnouncement(12, "content", "code", DateTime.Now, DateTime.Now, null)
+            };
+            var unreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
+            var viewModel = new AnnouncementHistoryViewModel(announcements, DateTime.Now, DateTime.Now, MessageType.Normal, UserLevel.Agent, unreadMessage);
+
+            //// Act
+            var act = viewModel.MaxDate;
+
+            //// Assert
+            Assert.AreEqual(DateTime.Now, act);
+        }
     }
 }
