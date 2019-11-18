@@ -7,19 +7,29 @@
 
     public class MarqueeMessageQuery : IRequest<MarqueeMessageViewModel>
     {
-        public MarqueeMessageQuery(
-            IUserSession userSession,
-            bool? isTest = null)
+        private readonly bool? isTest;
+
+        public MarqueeMessageQuery(IUserSession userSession)
         {
             CustId = userSession.CustId;
             CurrentLang = userSession.Language;
             RoleId = userSession.RoleId;
-            IsTest = isTest ?? AppSettings.LocalTest;
+        }
+
+        public MarqueeMessageQuery(
+            IUserSession userSession,
+            bool? isTest)
+        {
+            CustId = userSession.CustId;
+            CurrentLang = userSession.Language;
+            RoleId = userSession.RoleId;
+            this.isTest = isTest;
         }
 
         public int CustId { get; }
 
-        public bool IsTest { get; }
+        public bool IsTest
+            => this.isTest == null ? AppSettings.LocalTest : this.isTest.Value; 
 
         public string CurrentLang { get; }
 

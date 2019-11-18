@@ -30,5 +30,18 @@
             //// Assert
             Assert.AreEqual("CallBaseCreateModel", act);
         }
+
+        [Test]
+        public void CreateModel_ParameterIsNotIUserSession_CreateInstanceOfUserSession()
+        {
+            //// Arrange
+            var product = typeof(Product);
+
+            //// Act
+            var act = CreateInstanceOfUserSession(product);
+
+            //// Assert
+            Assert.AreEqual("CallCreateInstanceOfUserSession", act);
+        }
     }
 }

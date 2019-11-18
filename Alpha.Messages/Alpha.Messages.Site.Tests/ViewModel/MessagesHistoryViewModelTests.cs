@@ -124,5 +124,30 @@
             // Assert
             Assert.AreEqual(userLevelName, viewModel.RoleName);
         }
+
+        [TestCase(4, true)]
+        [TestCase(3, true)]
+        [TestCase(2, true)]
+        public void IsNewMessage_Always_ReturnTrue(byte roleId, bool expected)
+        {
+            // Arrange
+            var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
+            var model = new MessagesHistoryViewModel(
+                messageWrappers,
+                DateTime.Today,
+                Language.Default,
+                DateTime.Today,
+                DateTime.Today,
+                MessageType.Normal,
+                roleId,
+                numberOfUnreadMessage);
+
+            // Act
+            var act = model.IsNewMessage(DateTime.Now);
+
+            // Assert
+            Assert.AreEqual(expected, act);
+        }
     }
 }

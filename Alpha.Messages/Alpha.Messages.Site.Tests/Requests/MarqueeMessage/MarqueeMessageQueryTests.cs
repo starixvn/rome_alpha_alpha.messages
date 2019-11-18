@@ -17,7 +17,8 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
         {
             userSession = Substitute.For<IUserSession>();
         }
-       
+
+        [Test]
         public void RoleId_Always_ReturnCorrectInConstructor()
         {
             // Arrange
@@ -25,12 +26,13 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
             userSession.RoleId.Returns(roleIdInConstructor);
 
             // Act
-            var query = new MarqueeMessageQuery(userSession, false);
+            var query = new MarqueeMessageQuery(userSession);
 
             // Assert
             Assert.AreEqual(roleIdInConstructor, query.RoleId);
         }
 
+        [Test]
         public void CustId_Always_ReturnCorrectInConstructor()
         {
             // Arrange
@@ -38,12 +40,13 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
             userSession.CustId.Returns(custId);
 
             // Act
-            var query = new MarqueeMessageQuery(userSession, false);
+            var query = new MarqueeMessageQuery(userSession);
 
             // Assert
             Assert.AreEqual(custId, query.CustId);
         }
 
+        [Test]
         public void IsTest_Always_ReturnCorrectInConstructor()
         {
             // Arrange
@@ -56,6 +59,7 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
             Assert.AreEqual(isTest, query.IsTest);
         }
 
+        [Test]
         public void CurrentLang_Always_ReturnCorrectInConstructor()
         {
             // Arrange
@@ -63,10 +67,24 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
             userSession.Language.Returns(currentLang);
 
             // Act
-            var query = new MarqueeMessageQuery(userSession, false);
+            var query = new MarqueeMessageQuery(userSession);
 
             // Assert
             Assert.AreEqual(currentLang, query.CurrentLang);
+        }
+
+        [Test]
+        public void MoveBet_Always_HasDefaultLanguage()
+        {
+            // Arrange
+            var currentLang = "en-US";
+            userSession.Language.Returns(currentLang);
+
+            // Act
+            var query = new MoveBetMessageQuery(userSession);
+
+            // Assert
+            Assert.AreEqual(currentLang, query.Language);
         }
     }
 }

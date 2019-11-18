@@ -255,8 +255,7 @@
                 {
                     ReleasedDate = dateTime,
                     Code = string.Empty,
-                    Contents =new List<MessageContent> { new MessageContent { LanguageKey = "en-US" }
-}
+                    Contents =new List<MessageContent> { new MessageContent { LanguageKey = "en-US" } }
                 },
                 new Announcement
                 {
@@ -265,5 +264,21 @@
                     Contents =new List<MessageContent> { new MessageContent { LanguageKey = "en-US" } }
                 },
             };
+
+        [Test]
+        public void GetPopUpAnnouncements_Always_ReturnNull()
+        {
+            // Arrange
+            var param = new PopupAnnouncementParams()
+            {
+                IsShowedPopup = true
+            };
+
+            // Act
+            var act = service.GetPopUpAnnouncements(param);
+
+            // Assert
+            Assert.IsNull(act);
+        }
     }
 }

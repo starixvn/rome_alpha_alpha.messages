@@ -24,5 +24,25 @@
             // Assert
             Assert.IsFalse(customer.IsIMBC);
         }
+
+        [Test]
+        public void IsSyncedCasino_DefaultCtor_Always_ReturnFalse()
+        {
+            // Arrange & Act
+            var customer = new Customer();
+
+            // Assert
+            Assert.IsFalse(customer.IsSyncedCasino);
+        }
+
+        [Test]
+        public void IsAllDayTransfer_DefaultCtor_Always_ReturnFalse()
+        {
+            // Arrange & Act
+            var customer = new Customer();
+
+            // Assert
+            Assert.IsFalse(customer.IsAllDayBalTransfer);
+        }
     }
 }

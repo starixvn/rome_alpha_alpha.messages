@@ -15,6 +15,7 @@
 #pragma warning restore CS0618 // Type or member is obsolete
         private ProductService productService;
         private SpecificationParameter parameter;
+        private Announcements.Models.IParam param;
 
         [SetUp]
         public void SetUp()
@@ -25,6 +26,7 @@
             productService = Substitute.For<ProductService>();
             productService.GetOfferedProductsByCustomer(Arg.Any<int>()).Returns(Enumerable.Empty<Product>());
             parameter = new SpecificationParameter(userSession, productService);
+            param = Substitute.For<SpecificationParameter>(userSession, productService);
         }
 
         [Test]
@@ -276,6 +278,123 @@
 
             //// Assert
             Assert.AreEqual(expectedValue, act);
+        }
+
+        [Test]
+        public void ARecommendId_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = 1;
+            
+            //// Act
+            var act = param.ARecommendId.Returns(1);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.ARecommendId);
+        }
+
+        [Test]
+        public void CurrencyId_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = 1;
+
+            //// Act
+            var act = ((int)param.CurrencyId).Returns(1);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.CurrencyId);
+        }
+
+        [Test]
+        public void IsEnableYesterdayTransfer_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+
+            //// Act
+            var act = param.EnableYesterdayTransfer.Returns(true);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.EnableYesterdayTransfer);
+        }
+
+        [Test]
+        public void Agent_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+
+            //// Act
+            var act = param.IsAgent.Returns(true);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.IsAgent);
+        }
+
+        [Test]
+        public void Master_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+
+            //// Act
+            var act = param.IsMaster.Returns(true);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.IsMaster);
+        }
+
+        [Test]
+        public void Super_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+
+            //// Act
+            var act = param.IsSuper.Returns(true);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.IsSuper);
+        }
+
+        [Test]
+        public void SubAcc_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+
+            //// Act
+            var act = param.IsSubAcc.Returns(true);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.IsSubAcc);
+        }
+
+        [Test]
+        public void SyncCasino_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = true;
+
+            //// Act
+            var act = param.IsSyncedCasino.Returns(true);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.IsSyncedCasino);
+        }
+
+        [Test]
+        public void Internal_Always_ReturnExpectedValue()
+        {
+            //// Arrange
+            var expectedValue = false;
+
+            //// Act
+            var act = param.IsInternal.Returns(false);
+
+            //// Assert
+            Assert.AreEqual(expectedValue, param.IsInternal);
         }
     }
 }

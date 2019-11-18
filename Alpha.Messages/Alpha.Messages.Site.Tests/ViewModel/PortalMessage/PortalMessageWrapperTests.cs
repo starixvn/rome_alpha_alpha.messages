@@ -56,11 +56,12 @@ namespace Alpha.Messages.Site.Tests.ViewModels
             Assert.IsTrue(act.Contains(message.BetTransId));
         }
 
-        public void ShortContent_ContentMoreThan100Length_ReduceLastCharacter(string lang)
+        [Test]
+        public void ShortContent_ContentMoreThan100Length_ReduceLastCharacter()
         {
             // Arrange
-            var noticeMessage = FakeDataHelper.Create<PortalMessage>();
             var fullContent = new string('a', 101);
+            var noticeMessage = FakeDataHelper.Create<PortalMessage>();
             var expectedContent = $"{fullContent.Substring(0, fullContent.Length - 1)}...";
             noticeMessage.ContentEN = fullContent;
 
