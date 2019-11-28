@@ -174,4 +174,7 @@
   <data name="LabelOthers" xml:space="preserve">
     <value>อื่นๆ</value>
   </data>
+  <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
+    <value>การเดิมพันประเภทใหม่ของแบดมินตัน:</value>
+  </data>
 </root>

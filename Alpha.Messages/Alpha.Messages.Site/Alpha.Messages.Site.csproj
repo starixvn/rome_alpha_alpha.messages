@@ -573,6 +573,7 @@
     <Content Include="Web.AppSettings.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\StaticMessage\121631.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
