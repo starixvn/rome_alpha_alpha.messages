@@ -121,7 +121,7 @@
     <value>1 X 2</value>
   </data>
   <data name="LabelAsianHDC_OU_OE" xml:space="preserve">
-    <value>Asian HDP, OU, OE</value>
+    <value>Cược chấp châu Á, Tài Xỉu, Lẻ Chẵn</value>
   </data>
   <data name="LabelHandicapFC" xml:space="preserve">
     <value>Cược Chấp</value>
@@ -133,7 +133,7 @@
     <value>Loại cược khác</value>
   </data>
   <data name="LabelOverUnder" xml:space="preserve">
-    <value>Over/Under </value>
+    <value>Tài/Xỉu</value>
   </data>
   <data name="moneyline" xml:space="preserve">
     <value>Moneyline</value>
@@ -142,7 +142,7 @@
     <value>Môn Thể Thao khác</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
-    <value>Hiệp 1 - Hdp</value>
+    <value>Hiệp 1 - Cược Chấp</value>
   </data>
   <data name="BetType" xml:space="preserve">
     <value>Loại cược</value>
@@ -170,5 +170,14 @@
   </data>
   <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
     <value>Các loại cược mới của Cầu Lông:</value>
+  </data>
+  <data name="LabelOthers" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="NewBetTypeTitle" xml:space="preserve">
+    <value>Các loại cược mới của E-Sports:</value>
+  </data>
+  <data name="NewSportType" xml:space="preserve">
+    <value>Loại thể thao mới</value>
   </data>
 </root>

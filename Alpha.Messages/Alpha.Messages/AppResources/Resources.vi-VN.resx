@@ -174,4 +174,25 @@
   <data name="systemAnnouncement" xml:space="preserve">
     <value>Thông báo hệ thống</value>
   </data>
+  <data name="close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="message" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="viewAnnouncement" xml:space="preserve">
+    <value>Xem thông báo</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Cá nhân</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Đặc biệt</value>
+  </data>
+  <data name="system" xml:space="preserve">
+    <value>Hệ thống</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>Chung</value>
+  </data>
 </root>
