@@ -17,6 +17,7 @@
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
 
             DependencyConfig.Init();
             AppSettings.Verify();
@@ -27,8 +28,6 @@
                 .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoreProcedurePath, enableWatching: true)
                 .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
                 .Run();
-
-            LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
         }
 
         protected void Application_Error(object sender, EventArgs e)
