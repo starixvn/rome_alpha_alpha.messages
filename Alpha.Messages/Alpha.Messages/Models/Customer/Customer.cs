@@ -18,7 +18,8 @@
             int sRecommendId,
             string site,
             bool isSyncedCasino,
-            int siteCode)
+            int siteCode,
+            bool enabled)
         {
             CustId = custId;
             UserName = userName;
@@ -30,6 +31,7 @@
             Site = site;
             IsSyncedCasino = isSyncedCasino;
             SiteCode = siteCode;
+            Enabled = enabled;
         }
 
         public int CustId { get; }
@@ -57,5 +59,7 @@
         public int SiteCode { get; }
 
         public string System => AppSettings.GetConfigValue($"System:{SiteCode}");
+
+        public bool Enabled { get; }
     }
 }
