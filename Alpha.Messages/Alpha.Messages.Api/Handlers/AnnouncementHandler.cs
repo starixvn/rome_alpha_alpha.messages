@@ -70,25 +70,28 @@
             {
                 var custInfo = customerService.GetCustomerInfo(customer.CustId);
 
-                var offeredProductIds = productService.GetOfferedProductIdsByCustomer(customer.CustId);
-                var specificationParam = new SpecificationParam(custInfo, offeredProductIds);
-                var announcementParam = CreateAnnouncementParam(specificationParam, fromTime, toTime, customer.Language);
-
-                var filteredAnnouncements = announcementService.GetAnnouncementsByUser(
-                    announcements.Where(a => a.Systems.Contains(custInfo.System, StringComparer.OrdinalIgnoreCase)),
-                    announcementParam,
-                    toTime);
-
-                if (AppSettings.Environment.Equals(UATEnvironment))
+                if (custInfo != null && custInfo.Enabled)
                 {
-                    filteredAnnouncements = FilterCurrencyRule(filteredAnnouncements);
+                    var offeredProductIds = productService.GetOfferedProductIdsByCustomer(customer.CustId);
+                    var specificationParam = new SpecificationParam(custInfo, offeredProductIds);
+                    var announcementParam = CreateAnnouncementParam(specificationParam, fromTime, toTime, customer.Language);
+
+                    var filteredAnnouncements = announcementService.GetAnnouncementsByUser(
+                        announcements.Where(a => a.Systems.Contains(custInfo.System, StringComparer.OrdinalIgnoreCase)),
+                        announcementParam,
+                        toTime);
+
+                    if (AppSettings.Environment.Equals(UATEnvironment))
+                    {
+                        filteredAnnouncements = FilterCurrencyRule(filteredAnnouncements);
+                    }
+
+                    var formatedAnnouncements = formatAnnouncementService.Format(filteredAnnouncements, announcementParam);
+
+                    var custAnnouncement = formatedAnnouncements.Select(a => new AnnouncementViewModel(customer.CustId, a.Content));
+
+                    result.AddRange(custAnnouncement);
                 }
-
-                var formatedAnnouncements = formatAnnouncementService.Format(filteredAnnouncements, announcementParam);
-
-                var custAnnouncement = formatedAnnouncements.Select(a => new AnnouncementViewModel(customer.CustId, a.Content));
-
-                result.AddRange(custAnnouncement);
             }
 
             if (result.Any() && AppSettings.EnableLogInfo)
