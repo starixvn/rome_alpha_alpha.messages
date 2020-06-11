@@ -617,6 +617,21 @@
     </Content>
     <Content Include="Views\StaticMessage\121631.cshtml" />
     <Content Include="Views\StaticMessage\125126.cshtml" />
+    <Content Include="Views\StaticMessage\132994.Agent.vi-VN.pdf" />
+    <Content Include="Views\StaticMessage\132994.Master.vi-VN.pdf" />
+    <Content Include="Views\StaticMessage\132994.Super.vi-VN.pdf" />
+    <Content Include="Views\StaticMessage\132994.Agent.zh-TW.pdf" />
+    <Content Include="Views\StaticMessage\132994.Master.zh-TW.pdf" />
+    <Content Include="Views\StaticMessage\132994.Super.zh-TW.pdf" />
+    <Content Include="Views\StaticMessage\132994.Agent.th-TH.pdf" />
+    <Content Include="Views\StaticMessage\132994.Master.th-TH.pdf" />
+    <Content Include="Views\StaticMessage\132994.Super.th-TH.pdf" />
+    <Content Include="Views\StaticMessage\132994.Agent.en-US.pdf" />
+    <Content Include="Views\StaticMessage\132994.Master.en-US.pdf" />
+    <Content Include="Views\StaticMessage\132994.Super.en-US.pdf" />
+    <Content Include="Views\StaticMessage\132994.Agent.zh-CN.pdf" />
+    <Content Include="Views\StaticMessage\132994.Master.zh-CN.pdf" />
+    <Content Include="Views\StaticMessage\132994.Super.zh-CN.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
