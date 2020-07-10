@@ -429,8 +429,93 @@
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="assets\styles\popup\index.scss" />
     <Content Include="Views\StaticMessage\129373.en-US.cshtml" />
-    <Content Include="Views\StaticMessage\129373.ja-JP.cshtml" />
-    <Content Include="Views\StaticMessage\129373.ko-KR.cshtml" />
+    <Content Include="Views\StaticMessage\129373.ja-JP.cshtml">
+      <DependentUpon>129373.en-US.cshtml</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\129373.ko-KR.cshtml">
+      <DependentUpon>129373.en-US.cshtml</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\129373.th-TH.cshtml">
+      <DependentUpon>129373.en-US.cshtml</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\129373.vi-VN.cshtml">
+      <DependentUpon>129373.en-US.cshtml</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\129373.zh-CN.cshtml">
+      <DependentUpon>129373.en-US.cshtml</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\129373.zh-TW.cshtml">
+      <DependentUpon>129373.en-US.cshtml</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Master.en-US.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Master.th-TH.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Master.vi-VN.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Master.zh-CN.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Master.zh-TW.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Super.th-TH.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Super.vi-VN.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Super.zh-CN.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132782.Super.zh-TW.pdf">
+      <DependentUpon>132782.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Agent.en-US.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Agent.th-TH.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Agent.vi-VN.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Agent.zh-CN.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Agent.zh-TW.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Master.en-US.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Master.th-TH.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Master.vi-VN.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Master.zh-CN.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Master.zh-TW.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Super.th-TH.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Super.vi-VN.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Super.zh-CN.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\132994.Super.zh-TW.pdf">
+      <DependentUpon>132994.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
@@ -474,10 +559,6 @@
     <Content Include="assets\QRCode\Styles\Images\vn\6.png" />
     <Content Include="assets\QRCode\Styles\Images\vn\7.png" />
     <Content Include="assets\QRCode\Styles\page.css" />
-    <Content Include="Views\StaticMessage\129373.th-TH.cshtml" />
-    <Content Include="Views\StaticMessage\129373.vi-VN.cshtml" />
-    <Content Include="Views\StaticMessage\129373.zh-CN.cshtml" />
-    <Content Include="Views\StaticMessage\129373.zh-TW.cshtml" />
     <Content Include="Web.uat2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
@@ -617,25 +698,8 @@
     </Content>
     <Content Include="Views\StaticMessage\121631.cshtml" />
     <Content Include="Views\StaticMessage\125126.cshtml" />
-    <Content Include="Views\StaticMessage\132994.Agent.vi-VN.pdf" />
-    <Content Include="Views\StaticMessage\132994.Master.vi-VN.pdf" />
-    <Content Include="Views\StaticMessage\132994.Super.vi-VN.pdf" />
-    <Content Include="Views\StaticMessage\132994.Agent.zh-TW.pdf" />
-    <Content Include="Views\StaticMessage\132994.Master.zh-TW.pdf" />
-    <Content Include="Views\StaticMessage\132994.Super.zh-TW.pdf" />
-    <Content Include="Views\StaticMessage\132994.Agent.th-TH.pdf" />
-    <Content Include="Views\StaticMessage\132994.Master.th-TH.pdf" />
-    <Content Include="Views\StaticMessage\132994.Super.th-TH.pdf" />
-    <Content Include="Views\StaticMessage\132994.Agent.en-US.pdf" />
-    <Content Include="Views\StaticMessage\132994.Master.en-US.pdf" />
     <Content Include="Views\StaticMessage\132994.Super.en-US.pdf" />
-    <Content Include="Views\StaticMessage\132994.Agent.zh-CN.pdf" />
-    <Content Include="Views\StaticMessage\132994.Master.zh-CN.pdf" />
-    <Content Include="Views\StaticMessage\132994.Super.zh-CN.pdf" />
     <Content Include="Views\StaticMessage\132782.Super.en-US.pdf" />
-    <Content Include="Views\StaticMessage\132782.Master.en-US.pdf" />
-    <Content Include="Views\StaticMessage\132782.Super.vi-VN.pdf" />
-    <Content Include="Views\StaticMessage\132782.Master.vi-VN.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
