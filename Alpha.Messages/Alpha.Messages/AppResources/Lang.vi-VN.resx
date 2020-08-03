@@ -180,4 +180,7 @@
   <data name="NewSportType" xml:space="preserve">
     <value>Loại thể thao mới</value>
   </data>
+  <data name="NewBetTypeOfBasketball" xml:space="preserve">
+    <value>Các loại cược mới của Bóng Rổ:</value>
+  </data>
 </root>

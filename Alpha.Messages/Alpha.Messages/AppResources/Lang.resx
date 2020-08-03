@@ -180,4 +180,7 @@
   <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
     <value>New bet types of Badminton:</value>
   </data>
+  <data name="NewBetTypeOfBasketball" xml:space="preserve">
+    <value>New bet types of Basketball:</value>
+  </data>
 </root>
