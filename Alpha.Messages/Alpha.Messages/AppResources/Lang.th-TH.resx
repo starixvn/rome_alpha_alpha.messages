@@ -177,4 +177,7 @@
   <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
     <value>การเดิมพันประเภทใหม่ของแบดมินตัน:</value>
   </data>
+  <data name="NewBetTypeOfBasketball" xml:space="preserve">
+    <value>ประเภทการเดิมพันใหม่ของบาสเกตบอล:</value>
+  </data>
 </root>

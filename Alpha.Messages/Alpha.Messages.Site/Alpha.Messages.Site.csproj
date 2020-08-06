@@ -700,6 +700,7 @@
     <Content Include="Views\StaticMessage\125126.cshtml" />
     <Content Include="Views\StaticMessage\132994.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\132782.Super.en-US.pdf" />
+    <Content Include="Views\StaticMessage\131295.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
