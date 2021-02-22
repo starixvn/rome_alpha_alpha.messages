@@ -558,6 +558,12 @@
     <Content Include="Views\StaticMessage\135363.Super.zh-TW.pdf">
       <DependentUpon>135363.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\137130.Agent.en-US.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Master.en-US.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
@@ -744,6 +750,7 @@
     <Content Include="Views\StaticMessage\132782.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\131295.cshtml" />
     <Content Include="Views\StaticMessage\135363.Super.en-US.pdf" />
+    <Content Include="Views\StaticMessage\137130.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\147430.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\147430.Agent.en-US.pdf">
 	  <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
