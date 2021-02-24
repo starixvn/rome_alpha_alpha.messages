@@ -194,10 +194,7 @@
         {
             var message = messages.FirstOrDefault(i => i.LanguageKey.Equals(languageKey) && !string.IsNullOrEmpty(i.Text));
 
-            if (message == null)
-            {
-                message = messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage) && !string.IsNullOrEmpty(i.Text));
-            }
+            message = message ?? messages.FirstOrDefault(i => i.LanguageKey.Equals(DefaultLanguage) && !string.IsNullOrEmpty(i.Text));
 
             return message == null ? string.Empty : message.Text;
         }
