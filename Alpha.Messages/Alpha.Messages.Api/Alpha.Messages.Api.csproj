@@ -252,7 +252,9 @@
     </Compile>
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Extensions\LongExtensions.cs" />
-    <Compile Include="Filter\GlobalExceptionFilterAttribute.cs" />
+    <Compile Include="Filter\GlobalExceptionFilterAttribute.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Filter\HmacAuthorizationFilterAttribute.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>

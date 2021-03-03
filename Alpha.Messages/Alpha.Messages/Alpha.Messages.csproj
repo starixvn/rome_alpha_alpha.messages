@@ -215,7 +215,9 @@
     <Compile Include="Models\Message\MessageHistory.cs" />
     <Compile Include="Models\Message\MoveBetsMessage.cs" />
     <Compile Include="Models\Message\MultiLanguague.cs" />
-    <Compile Include="Models\Announcement\ResourceManager.cs" />
+    <Compile Include="Models\Announcement\ResourceManager.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Criteria\NewMessage\UpdateMessageAsReadOnUserCritria.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Constants\UserLevel.cs" />
@@ -237,7 +239,9 @@
     <Compile Include="Services\NewMessageService.cs" />
     <Compile Include="Services\PortalMessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
-    <Compile Include="Services\AlphaRemotingRefService.cs" />
+    <Compile Include="Services\AlphaRemotingRefService.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Utils\SystemTime.cs" />
   </ItemGroup>
   <ItemGroup>
