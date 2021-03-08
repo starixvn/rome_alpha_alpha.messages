@@ -561,7 +561,43 @@
     <Content Include="Views\StaticMessage\137130.Agent.en-US.pdf">
       <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\137130.Agent.th-TH.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Agent.vi-VN.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Agent.zh-CN.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Agent.zh-TW.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\137130.Master.en-US.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Master.th-TH.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Master.vi-VN.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Master.zh-CN.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Master.zh-TW.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Super.th-TH.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Super.vi-VN.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Super.zh-CN.pdf">
+      <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\137130.Super.zh-TW.pdf">
       <DependentUpon>137130.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
@@ -753,11 +789,11 @@
     <Content Include="Views\StaticMessage\137130.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\147430.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\147430.Agent.en-US.pdf">
-	  <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
-	</Content>
+      <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\147430.Master.en-US.pdf">
-	  <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
-	</Content>
+      <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
