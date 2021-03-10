@@ -795,6 +795,12 @@
       <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\150390.cshtml" />
+    <Content Include="Web.AppSettings.aws.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.aws.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
