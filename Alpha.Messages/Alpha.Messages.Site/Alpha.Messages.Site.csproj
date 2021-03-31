@@ -794,6 +794,7 @@
     <Content Include="Views\StaticMessage\147430.Master.en-US.pdf">
       <DependentUpon>147430.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\150390.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

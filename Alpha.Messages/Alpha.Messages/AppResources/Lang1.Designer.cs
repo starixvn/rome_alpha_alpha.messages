@@ -214,6 +214,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New bet types of Cricket:.
+        /// </summary>
+        public static string NewBetTypeOfCricketTitle {
+            get {
+                return ResourceManager.GetString("NewBetTypeOfCricketTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New bet types of Soccer:.
         /// </summary>
         public static string NewBetTypeOfSoccerTitle {
@@ -237,6 +246,15 @@ namespace Alpha.Messages.AppResources {
         public static string NewSportType {
             get {
                 return ResourceManager.GetString("NewSportType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Commission.
+        /// </summary>
+        public static string NoCommission {
+            get {
+                return ResourceManager.GetString("NoCommission", resourceCulture);
             }
         }
         
