@@ -183,4 +183,10 @@
   <data name="NewBetTypeOfBasketball" xml:space="preserve">
     <value>Các loại cược mới của Bóng Rổ:</value>
   </data>
+  <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
+    <value>Các loại cược mới của Cricket</value>
+  </data>
+  <data name="NoCommission" xml:space="preserve">
+    <value>Không có hoa hồng</value>
+  </data>
 </root>

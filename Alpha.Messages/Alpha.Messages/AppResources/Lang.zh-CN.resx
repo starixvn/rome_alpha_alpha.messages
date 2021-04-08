@@ -180,4 +180,10 @@
   <data name="NewBetTypeOfBasketball" xml:space="preserve">
     <value>篮球的新投注类型:</value>
   </data>
+  <data name="NoCommission" xml:space="preserve">
+    <value>无佣金</value>
+  </data>
+  <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
+    <value>新板球投注类型</value>
+  </data>
 </root>

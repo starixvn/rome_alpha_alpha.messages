@@ -180,4 +180,10 @@
   <data name="NewBetTypeOfBasketball" xml:space="preserve">
     <value>ประเภทการเดิมพันใหม่ของบาสเกตบอล:</value>
   </data>
+  <data name="NoCommission" xml:space="preserve">
+    <value>ไม่มีคอมมิสชั่น</value>
+  </data>
+  <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
+    <value>ประเภทการเดิมพันใหม่ของคริกเก็ต</value>
+  </data>
 </root>
