@@ -1,11 +1,17 @@
 ﻿namespace Alpha.Messages.Tests.Criteria
 {
+    using Alpha.Messages.Configurations;
     using Messages.Criteria.NewMessage;
     using NUnit.Framework;
 
     [TestFixture]
     public class GetUnreadMessagesOnUserCriteriaTest
     {
+        public GetUnreadMessagesOnUserCriteriaTest()
+        {
+            AppSettings.AppSettingValues["DisabledCheckDuplicationLogin"] = "0";
+        }
+
         [Test]
         public void GetSettingKey_Always_ReturnCorrectKey()
         {

@@ -38,6 +38,8 @@
 
         public static bool EnableLogInfo => GetConfigValue("EnableLogInfo") == "1";
 
+        public static bool IsDisabledRecheckin => GetConfigValue("DisabledCheckDuplicationLogin") == "1";
+
         public static void Verify()
         {
             Require(StoreProcedurePath, nameof(StoreProcedurePath));
