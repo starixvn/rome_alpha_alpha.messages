@@ -193,6 +193,7 @@
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
     <Compile Include="Criteria\Message\MarkMessageAsReadCommand.cs" />
     <Compile Include="Criteria\NewMessage\GetUnreadMessagesOnUserCriteria.cs" />
+    <Compile Include="Criteria\OnUserCriteriaBase.cs" />
     <Compile Include="Criteria\Product\GetOfferedProductCriteria.cs" />
     <Compile Include="Criteria\Product\GetProductsCriteria.cs" />
     <Compile Include="Criteria\NewMessage\InsertPersonalMessageCriteria.cs" />

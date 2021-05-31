@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class UpdateMessageAsReadOnUserCritria : CriteriaBase
+    public class UpdateMessageAsReadOnUserCritria : OnUserCriteriaBase
     {
         public UpdateMessageAsReadOnUserCritria(int custId, int typeId)
         {
@@ -19,6 +19,6 @@
 
         public override string GetSettingKey() => "Age_MessageNoticeUpdStatus";
 
-        public override bool IsValid() => CustId > 0;
+        public override bool IsValid() => base.IsValid() && CustId > 0;
     }
 }

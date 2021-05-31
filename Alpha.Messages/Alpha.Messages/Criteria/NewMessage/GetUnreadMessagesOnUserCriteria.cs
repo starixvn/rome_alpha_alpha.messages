@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class GetUnreadMessagesOnUserCriteria : CriteriaBase
+    public class GetUnreadMessagesOnUserCriteria : OnUserCriteriaBase
     {
         public GetUnreadMessagesOnUserCriteria(int custId)
         {
@@ -13,6 +13,6 @@
 
         public override string GetSettingKey() => "Age_MessageNoticeSelByCustID";
 
-        public override bool IsValid() => CustId > 0;
+        public override bool IsValid() => base.IsValid() && CustId > 0 ;
     }
 }
