@@ -40,6 +40,10 @@
 
         public static bool IsDisabledRecheckin => GetConfigValue("DisabledCheckDuplicationLogin") == "1";
 
+        public static bool IsHidePortalMessage => "1" == GetConfigValue("Announcement:HidePortalMessage");
+
+        public static bool IsHideMarqueeMessage => "1" == GetConfigValue("Announcement:HideMarqueeMessage");
+
         public static void Verify()
         {
             Require(StoreProcedurePath, nameof(StoreProcedurePath));

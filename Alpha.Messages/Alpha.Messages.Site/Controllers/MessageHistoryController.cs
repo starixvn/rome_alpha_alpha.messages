@@ -25,6 +25,11 @@
 
         public ActionResult Index(int messageType)
         {
+            if (AppSettings.IsHidePortalMessage)
+            {
+                return new EmptyResult();
+            }
+
             var query = new MessageHistoryQuery(
                 userSession,
                 messageType,
@@ -43,6 +48,11 @@
             DateTime? toDate,
             int messageType = MessageType.Normal)
         {
+            if (AppSettings.IsHidePortalMessage)
+            {
+                return new EmptyResult();
+            }
+
             var query = new MessageHistoryQuery(
                 userSession,
                 messageType,
@@ -55,6 +65,5 @@
 
             return View("Index", viewModel);
         }
-
     }
 }
