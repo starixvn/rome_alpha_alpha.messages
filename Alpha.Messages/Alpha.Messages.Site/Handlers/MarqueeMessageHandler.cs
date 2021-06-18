@@ -11,14 +11,18 @@
         IRequestHandler<MoveBetMessageQuery, GeneralMoveBetsMessage>
     {
         private readonly MarqueeMessageService messageService;
+        private readonly NewMessageService newMessageService;
 
-        public MarqueeMessageHandler(MarqueeMessageService messageService)
+        public MarqueeMessageHandler(MarqueeMessageService messageService, NewMessageService newMessageService)
         {
             this.messageService = messageService;
+            this.newMessageService = newMessageService;
         }
 
         public MarqueeMessageViewModel Handle(MarqueeMessageQuery message)
         {
+            newMessageService.MoveNewMessage(message.CustId, message.UserName, message.RoleId, message.IsAdminUser);
+
             GeneralMarqueeMessage publicMessage;
             GeneralMarqueeMessage privateMessage;
 

@@ -41,7 +41,7 @@
             handler.Handle(query);
 
             //// Assert
-            messageService.Received().MoveNewMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<int>(), Arg.Any<bool>());
+            // messageService.Received().MoveNewMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<int>(), Arg.Any<bool>());
             messageService.Received().CheckNewUnreadMessage(Arg.Any<NumberOfNewMessageParams>());            
         }
 

@@ -18,7 +18,7 @@
 
         public NumberOfUnreadMessage Handle(NumberOfNewMessageQuery message)
         {
-            messageService.MoveNewMessage(message.CustId, message.UserName, message.RoleId, message.IsAdminUser);
+            // messageService.MoveNewMessage(message.CustId, message.UserName, message.RoleId, message.IsAdminUser);
 
             var parameters = (NumberOfNewMessageParams)message.ConvertToParameters();
 

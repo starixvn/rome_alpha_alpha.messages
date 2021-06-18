@@ -8,12 +8,14 @@
     public class MarqueeMessageQuery : IRequest<MarqueeMessageViewModel>
     {
         private readonly bool? isTest;
+        private readonly IUserSession userSession;
 
         public MarqueeMessageQuery(IUserSession userSession)
         {
             CustId = userSession.CustId;
             CurrentLang = userSession.Language;
             RoleId = userSession.RoleId;
+            this.userSession = userSession;
         }
 
         public MarqueeMessageQuery(
@@ -24,6 +26,7 @@
             CurrentLang = userSession.Language;
             RoleId = userSession.RoleId;
             this.isTest = isTest;
+            this.userSession = userSession;
         }
 
         public int CustId { get; }
@@ -33,6 +36,10 @@
 
         public string CurrentLang { get; }
 
-        public byte RoleId { get; }        
+        public byte RoleId { get; }
+
+        public string UserName => userSession.UserName;
+
+        public bool IsAdminUser => userSession.AdminId != 0;
     }
 }

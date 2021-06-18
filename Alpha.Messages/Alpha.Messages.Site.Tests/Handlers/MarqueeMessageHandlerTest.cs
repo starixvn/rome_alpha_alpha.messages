@@ -16,6 +16,7 @@
     public class MarqueeMessageHandlerTest
     {
         private MarqueeMessageService messageService;
+        private NewMessageService newMessageService;
         private MarqueeMessageHandler messageHandler;
         private IUserSession userSession;
         private Fixture fixture;
@@ -24,7 +25,8 @@
         public void SetUp()
         {
             messageService = Substitute.For<MarqueeMessageService>();
-            messageHandler = new MarqueeMessageHandler(messageService);
+            newMessageService = Substitute.For<NewMessageService>();
+            messageHandler = new MarqueeMessageHandler(messageService, newMessageService);
 
             userSession = Substitute.For<IUserSession>();
             userSession.Language.Returns(Language.English);
