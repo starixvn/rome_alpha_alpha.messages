@@ -21,11 +21,24 @@
         }
 
         [HttpGet]
-        public ActionResult Index() => View(DefaultNumberMessage);
+        public ActionResult Index()
+        {
+            if (AppSettings.DisableMessages)
+            {
+                return new EmptyResult();
+            }
+
+            return View(DefaultNumberMessage);
+        }
 
         [HttpGet]
         public ActionResult Messages(int totalMessage)
         {
+            if (AppSettings.DisableMessages)
+            {
+                return new EmptyResult();
+            }
+
             var viewModel = mediator.Send(
                 new PortalMessageQuery(userSession, totalMessage, AppSettings.LocalTest));
 
@@ -35,12 +48,25 @@
         [HttpPost]
         public bool MarkMessageAsRead(int messageId)
         {
+            if (AppSettings.DisableMessages)
+            {
+                return false;
+            }
+
             var isSuccess = mediator.Send(new MarkMessageAsReadQuery(userSession.CustId, messageId, userSession.IsInternal));
 
             return isSuccess;
         }
 
         [HttpGet]
-        public ActionResult MoreMessages(int totalMessage) => View("Index", totalMessage);
+        public ActionResult MoreMessages(int totalMessage)
+        {
+            if (AppSettings.DisableMessages)
+            {
+                return new EmptyResult();
+            }
+
+            return View("Index", totalMessage);
+        }
     }
 }

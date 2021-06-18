@@ -19,8 +19,20 @@
 
         public MarqueeMessageViewModel Handle(MarqueeMessageQuery message)
         {
-            var publicMessage = messageService.GetLatestPublicMessage(message.RoleId, message.CurrentLang, message.IsTest);
-            var privateMessage = messageService.GetLatestPrivateMessage(message.CustId, message.CurrentLang, message.IsTest);
+            GeneralMarqueeMessage publicMessage;
+            GeneralMarqueeMessage privateMessage;
+
+            if (Configurations.AppSettings.DisableMessages)
+            {
+                publicMessage = new GeneralMarqueeMessage();
+                privateMessage = new GeneralMarqueeMessage();
+            }
+            else
+            {
+                publicMessage = messageService.GetLatestPublicMessage(message.RoleId, message.CurrentLang, message.IsTest);
+                privateMessage = messageService.GetLatestPrivateMessage(message.CustId, message.CurrentLang, message.IsTest);
+            }
+
             var moveBet = messageService.GetMoveBetsMessage(message.CurrentLang);
 
             return new MarqueeMessageViewModel(publicMessage, privateMessage, moveBet);
