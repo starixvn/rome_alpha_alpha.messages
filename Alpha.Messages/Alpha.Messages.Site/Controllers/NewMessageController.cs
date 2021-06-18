@@ -16,6 +16,11 @@
     
         public ActionResult GetNumberOfNewAnnouncement(NumberOfNewMessageQuery message)
         {
+            if (Configurations.AppSettings.DisableMessages)
+            {
+                return new EmptyResult();
+            }
+
             message.Specification = specificationParam;
 
             return Json(message);

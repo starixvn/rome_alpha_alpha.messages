@@ -22,7 +22,7 @@
             GeneralMarqueeMessage publicMessage;
             GeneralMarqueeMessage privateMessage;
 
-            if (Configurations.AppSettings.IsHideMarqueeMessage)
+            if (Configurations.AppSettings.DisableMessages)
             {
                 publicMessage = new GeneralMarqueeMessage();
                 privateMessage = new GeneralMarqueeMessage();

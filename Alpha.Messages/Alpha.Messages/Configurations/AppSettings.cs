@@ -40,9 +40,7 @@
 
         public static bool IsDisabledRecheckin => GetConfigValue("DisabledCheckDuplicationLogin") == "1";
 
-        public static bool IsHidePortalMessage => "1" == GetConfigValue("Announcement:HidePortalMessage");
-
-        public static bool IsHideMarqueeMessage => "1" == GetConfigValue("Announcement:HideMarqueeMessage");
+        public static bool DisableMessages => "1" == GetConfigValue("DisableMessages");
 
         public static void Verify()
         {

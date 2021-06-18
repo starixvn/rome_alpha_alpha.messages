@@ -23,7 +23,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            if (AppSettings.IsHidePortalMessage)
+            if (AppSettings.DisableMessages)
             {
                 return new EmptyResult();
             }
@@ -34,7 +34,7 @@
         [HttpGet]
         public ActionResult Messages(int totalMessage)
         {
-            if (AppSettings.IsHidePortalMessage)
+            if (AppSettings.DisableMessages)
             {
                 return new EmptyResult();
             }
@@ -48,7 +48,7 @@
         [HttpPost]
         public bool MarkMessageAsRead(int messageId)
         {
-            if (AppSettings.IsHidePortalMessage)
+            if (AppSettings.DisableMessages)
             {
                 return false;
             }
@@ -61,7 +61,7 @@
         [HttpGet]
         public ActionResult MoreMessages(int totalMessage)
         {
-            if (AppSettings.IsHidePortalMessage)
+            if (AppSettings.DisableMessages)
             {
                 return new EmptyResult();
             }
