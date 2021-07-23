@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{ var darkModeName = ViewData["DarkModeName"]; }
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link type="text/css" rel="stylesheet" href="../assets/QRCode/Styles/page.css" />
+    <link type="text/css" rel="stylesheet" href="../assets/QRCode/Styles/page@(darkModeName).css" />
 </head>
 <body>
     <div class="container">
@@ -35,7 +36,7 @@
                 <div class="img-box"><img src="../assets/QRCode/Styles/Images/en/4.png" /></div>
                 <ul>
                     <li>
-                        In case you access this function by clicking the <img src="../assets/QRCode/Styles/Images/copy.png"/> icon on the Account Info, the <i>Existing Member account</i> and <i>Member Credit</i> fields will be automatically filled in with the corresponding data.
+                        In case you access this function by clicking the <img src="../assets/QRCode/Styles/Images/copy.png" /> icon on the Account Info, the <i>Existing Member account</i> and <i>Member Credit</i> fields will be automatically filled in with the corresponding data.
                     </li>
                 </ul>
                 <h2 class="heading2"><span class="step">Step 3: </span>Select a domain url and complete the account creation process.</h2>

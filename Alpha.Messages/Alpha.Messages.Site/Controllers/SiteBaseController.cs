@@ -14,7 +14,10 @@
         }
 
         protected ActionResult View<TResponse>(IRequest<TResponse> message)
-            => View(mediator.Send(message));
+        {
+            AssignDarkModeViewData();
+            return View(mediator.Send(message));
+        }
 
         protected ActionResult Json<TResponse>(IRequest<TResponse> message)
             => new JsonResult { Data = mediator.Send(message) };

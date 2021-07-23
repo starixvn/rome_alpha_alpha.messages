@@ -1,0 +1,19 @@
+﻿@import '../Home/_variables.scss';
+
+body {
+    height: auto;
+    font-family: Roboto,Arial,Tahoma,helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 22px;
+    display: inline-block;
+}
+
+a {
+    color: #045ace;
+}
+
+@media only screen and (max-device-width : $screen-device-lower768) {
+    body {
+        display: block;
+    }    
+}

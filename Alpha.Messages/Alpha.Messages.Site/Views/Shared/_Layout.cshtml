@@ -1,4 +1,5 @@
 ﻿@{ var isShowPersonalTab = !(bool)ViewData["IsProtectedMode"]; }
+@{ var darkModeName = ViewData["DarkModeName"]; }
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,10 @@
     <title>@(ViewBag.Title ?? "Alpha - Sites")</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="~/favico.ico" />
-    @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
-    @StaticResources.AssetStyles.Render($"/bundles/site-messages/message-{Model.RoleName}")
-    @StaticResources.RenderStyles("~/assets/bundles/default-message")
-    @StaticResources.RenderStylesWithMedia(767, "~/assets/bundles/home-mobile-calculate-07")
+    @StaticResources.AssetStyles.RenderCommon($"/bundles/common/common{darkModeName}")
+    @StaticResources.AssetStyles.Render($"/bundles/site-messages/message-{Model.RoleName}{darkModeName}")
+    @StaticResources.RenderStyles($"~/assets/bundles/default-message{darkModeName}")
+    @StaticResources.RenderStylesWithMedia(767, $"~/assets/bundles/home-mobile-calculate-07{darkModeName}")
 
     @RenderSection("Styles", required: false)
 </head>

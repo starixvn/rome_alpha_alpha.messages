@@ -43,5 +43,25 @@
     "inputFiles": [
       "assets/styles/message/message-mobile-calculate-07.css"
     ]
+  },
+  /************************** Dark Mode ************************/
+  {
+    "outputFileName": "assets/bundles/default-message-dark.css",
+    "inputFiles": [
+      "assets/styles/message/message-dark.css"
+    ]
+  },
+
+  {
+    "outputFileName": "assets/bundles/popup-dark.css",
+    "inputFiles": [
+      "assets/styles/popup/index-dark.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/bundles/home-mobile-calculate-07-dark.css",
+    "inputFiles": [
+      "assets/styles/message/message-mobile-calculate-07-dark.css"
+    ]
   }
 ]

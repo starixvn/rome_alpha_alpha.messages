@@ -1,12 +1,13 @@
 ﻿@using Alpha.Messages.Services
 @{
     Layout = null;
+    var darkModeName = ViewData["DarkModeName"];
 }
 <html>
 <head>
     <title>Cricket Announcement</title>
-    @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
-    @StaticResources.AssetStyles.Render("/bundles/site-reports/default")
+    @StaticResources.AssetStyles.RenderCommon($"/bundles/common/common{darkModeName}")
+    @StaticResources.AssetStyles.Render($"/bundles/site-reports/default{darkModeName}")
     @StaticResources.RenderStyles("~/assets/bundles/extendMessage")
 </head>
 <body>
