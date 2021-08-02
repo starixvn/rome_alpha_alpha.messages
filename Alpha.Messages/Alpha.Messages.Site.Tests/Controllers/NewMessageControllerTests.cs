@@ -30,7 +30,7 @@
         {
             //// Arrange
             var query = new NumberOfNewMessageQuery(fixtures.UserSession);
-            var controller = new NewMessageController(mediator, specificationParam);
+            var controller = new NewMessageController(mediator, fixtures.UserSession, specificationParam);
 
             //// Act
             controller.GetNumberOfNewAnnouncement(query);
@@ -44,7 +44,7 @@
         {
             //// Arrange
             var query = new NumberOfNewMessageQuery(fixtures.UserSession);
-            var controller = new NewMessageController(mediator, specificationParam);
+            var controller = new NewMessageController(mediator, fixtures.UserSession, specificationParam);
 
             //// Act
             controller.GetNumberOfNewAnnouncement(query);

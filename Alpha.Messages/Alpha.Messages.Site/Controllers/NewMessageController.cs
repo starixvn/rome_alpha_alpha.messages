@@ -6,12 +6,14 @@
     using Announcements.Models;
     using MediatR;
     using Requests.NewMessage;
+    using Sunplus.Agent.Model.Entities;
 
     public class NewMessageController : SiteBaseController
     {
         private readonly IParam specificationParam;
 
-        public NewMessageController(IMediator mediator, IParam specificationParam) : base(mediator)
+        public NewMessageController(IMediator mediator, IUserSession userSession, IParam specificationParam)
+            : base(mediator, userSession)
         {
             this.specificationParam = specificationParam;
         }

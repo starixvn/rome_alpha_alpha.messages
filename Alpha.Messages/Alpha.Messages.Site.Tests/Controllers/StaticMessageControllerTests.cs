@@ -1,4 +1,5 @@
 ﻿using Alpha.Messages.Site.Controllers;
+using Alpha.Messages.Site.Tests.Fixtures;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,14 @@ namespace Alpha.Messages.Site.Tests.Controllers
     [TestFixture]
     public class StaticMessageControllerTests
     {
+        private UserSessionFixture fixtures;
         private StaticMessageController controller;
 
         [SetUp]
         public void SetUp()
         {
-            controller = new StaticMessageController();
+            fixtures = new UserSessionFixture();
+            controller = new StaticMessageController(fixtures.UserSession);
         }
 
         [TestCase("102924", "102924")]

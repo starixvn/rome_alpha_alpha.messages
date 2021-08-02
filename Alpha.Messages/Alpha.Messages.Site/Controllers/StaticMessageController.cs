@@ -9,6 +9,11 @@
     [AllowProtectedMode]
     public class StaticMessageController : BaseController
     {
+        public StaticMessageController(IUserSession userSession)
+            : base(userSession)
+        {
+        }
+
         public ActionResult NewSportType()
         {
             AssignDarkModeViewData();

@@ -2,13 +2,15 @@
 {
     using System.Web.Mvc;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
     using Web;
 
     public abstract class SiteBaseController : BaseController
     {
         protected readonly IMediator mediator;
 
-        protected SiteBaseController(IMediator mediator)
+        protected SiteBaseController(IMediator mediator, IUserSession userSession)
+            : base(userSession)
         {
             this.mediator = mediator;
         }

@@ -30,7 +30,7 @@
         {
             //// Arrange
             var query = new AnnouncementsHistoryQuery(fixtures.UserSession);
-            var controller = new AnnouncementController(mediator, specificationParam);
+            var controller = new AnnouncementController(mediator, fixtures.UserSession, specificationParam);
 
             //// Act
             controller.Index(query);
@@ -44,7 +44,7 @@
         {
             //// Arrange
             var query = new AnnouncementsHistoryQuery(fixtures.UserSession);
-            var controller = new AnnouncementController(mediator, specificationParam);
+            var controller = new AnnouncementController(mediator, fixtures.UserSession, specificationParam);
 
             //// Act
             controller.Index(query);
@@ -58,7 +58,7 @@
         {
             //// Arrange
             var query = new PopupAnnouncementQuery(fixtures.UserSession);
-            var controller = new AnnouncementController(mediator, specificationParam);
+            var controller = new AnnouncementController(mediator, fixtures.UserSession, specificationParam);
 
             //// Act
             controller.Popup(query);
@@ -72,7 +72,7 @@
         {
             //// Arrange
             var query = new PopupAnnouncementQuery(fixtures.UserSession);
-            var controller = new AnnouncementController(mediator, specificationParam);
+            var controller = new AnnouncementController(mediator, fixtures.UserSession, specificationParam);
 
             //// Act
             controller.Popup(query);
