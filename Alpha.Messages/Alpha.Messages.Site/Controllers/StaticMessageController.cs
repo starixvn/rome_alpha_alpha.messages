@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Messages.Site.Controllers
 {
+    using System.Web.Mvc;
     using Alpha.Messages.Models.Constants;
     using Sunplus.Agent.Model.Entities;
-    using System.Web.Mvc;
     using Web;
 
     public class StaticMessageController : BaseController

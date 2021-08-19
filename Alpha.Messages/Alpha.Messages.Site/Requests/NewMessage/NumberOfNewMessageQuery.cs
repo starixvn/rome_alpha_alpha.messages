@@ -37,6 +37,6 @@
                 SpecificationParamter = Specification,
                 ParentSites = ParentSites,
                 UnreadMessage = UnreadMessage
-            };        
+            };
     }
 }

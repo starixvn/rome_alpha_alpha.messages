@@ -69,6 +69,7 @@
             GlobalFilters.Filters.Add(new CheckBelongingFilter());
             GlobalFilters.Filters.Add(new NoCacheFilter());
             GlobalFilters.Filters.Add(new AfterLoginFlowFilter());
+            GlobalFilters.Filters.Add(new ProtectedModeFilter());
 
             ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
