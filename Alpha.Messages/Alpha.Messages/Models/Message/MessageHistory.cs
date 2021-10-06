@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Messages.Models.Message
 {
     using System;
+    using Alpha.Messages.Utils;
     using Messages.Constants;
 
     public class MessageHistory : MultiLanguague
@@ -49,6 +50,11 @@
         public string Content(string language)
         {
             var rawContent = GetContentByKey(language);
+
+            if (MessageType == Messages.Constants.MessageType.Personal)
+            {
+                rawContent = MessageFormatter.MarkBoldText(rawContent, language);
+            }
 
             return rawContent
                 .Replace(MessageConstants.ContentFontStartMarkup, string.Empty)

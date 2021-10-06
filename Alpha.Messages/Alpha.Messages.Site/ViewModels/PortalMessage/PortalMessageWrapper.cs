@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Messages.Site.ViewModels
 {
     using System;
+    using Alpha.Messages.Utils;
     using Constants;
-    using Fanex.Age.Utility;
     using Models.Message;
 
     public class PortalMessageWrapper
@@ -60,21 +60,32 @@
             {
                 int length = Math.Min(DefaultMaxContentLength, Content.Length);
 
-                var content = Content.Substring(0, length)+ Ellipsis;
+                return Content.Substring(0, length) + Ellipsis;
+            }
+        }
+
+        private string content;
+        public string Content
+        {
+            get
+            {
+                if (content == null)
+                {
+                    content = CurrentMessage.GetContentByKey(currentLang)
+                        .Replace("@@", CurrentMessage.BetTransId)
+                        .Replace(MessageConstants.ContentFontStartMarkup, string.Empty)
+                        .Replace(MessageConstants.ContentFontEndMarkup, string.Empty);
+                }
 
                 return content;
             }
         }
 
-        public string Content
-            => CurrentMessage.GetContentByKey(currentLang)
-            .Replace("@@", CurrentMessage.BetTransId)
-            .Replace(MessageConstants.ContentFontStartMarkup, string.Empty)
-            .Replace(MessageConstants.ContentFontEndMarkup, string.Empty);
+        public string BoldContent => MessageFormatter.MarkBoldText(Content, currentLang);
 
-        public string GetStyleMessage 
+        public string GetStyleMessage
             => CurrentMessage.GetContentByKey(currentLang).Contains(MessageConstants.ContentFontEndMarkup) ?
-            "text-red" : 
+            "text-red" :
             string.Empty;
     }
 }

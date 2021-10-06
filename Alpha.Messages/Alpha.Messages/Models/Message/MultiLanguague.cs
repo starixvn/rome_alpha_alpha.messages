@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Messages.Models.Message
 {
-    using System;
     using System.Collections.Generic;
     using Alpha.Messages.Constants;
 
