@@ -5,14 +5,13 @@
     using Announcements.Models;
     using MediatR;
     using Requests.Announcement;
-    using Sunplus.Agent.Model.Entities;
 
     public class AnnouncementController : SiteBaseController
     {
         private readonly IParam specificationParam;
 
-        public AnnouncementController(IMediator mediator, IUserSession userSession, IParam specificationParam)
-            : base(mediator, userSession)
+        public AnnouncementController(IMediator mediator, IParam specificationParam)
+            : base(mediator)
         {
             this.specificationParam = specificationParam;
         }

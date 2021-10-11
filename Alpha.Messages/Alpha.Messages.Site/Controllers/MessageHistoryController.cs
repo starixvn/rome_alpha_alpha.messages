@@ -15,11 +15,13 @@
 
     public class MessageHistoryController : SiteBaseController
     {
+        private readonly IUserSession userSession;
         private readonly IParam specificationParam;
 
         public MessageHistoryController(IMediator mediator, IUserSession userSession, IParam specificationParam)
-            : base(mediator, userSession)
+            : base(mediator)
         {
+            this.userSession = userSession;
             this.specificationParam = specificationParam;
         }
 
@@ -62,7 +64,6 @@
                 toDate ?? DateTime.Today,
                 AppSettings.LocalTest);
             query.Specification = specificationParam;
-            AssignDarkModeViewData();
 
             var viewModel = mediator.Send(query);
 

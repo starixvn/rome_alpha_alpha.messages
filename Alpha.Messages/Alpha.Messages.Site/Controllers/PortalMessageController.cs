@@ -9,10 +9,12 @@
     public class PortalMessageController : SiteBaseController
     {
         private const int DefaultNumberMessage = 10;
+        private readonly IUserSession userSession;
 
         public PortalMessageController(IMediator mediator, IUserSession userSession)
-            : base(mediator, userSession)
+            : base(mediator)
         {
+            this.userSession = userSession;
         }
 
         [HttpGet]

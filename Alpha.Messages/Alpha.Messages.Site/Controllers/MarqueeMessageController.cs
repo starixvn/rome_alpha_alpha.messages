@@ -10,9 +10,12 @@
 
     public class MarqueeMessageController : SiteBaseController
     {
+        private readonly IUserSession userSession;
+
         public MarqueeMessageController(IMediator mediator, IUserSession userSession)
-            : base(mediator, userSession)
+            : base(mediator)
         {
+            this.userSession = userSession;
         }
 
         [HttpPost]

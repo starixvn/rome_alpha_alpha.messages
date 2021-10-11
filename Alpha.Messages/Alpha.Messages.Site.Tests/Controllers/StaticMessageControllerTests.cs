@@ -1,26 +1,19 @@
-﻿using Alpha.Messages.Site.Controllers;
-using Alpha.Messages.Site.Tests.Fixtures;
+﻿using System.Web.Mvc;
+using Alpha.Messages.Site.Controllers;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace Alpha.Messages.Site.Tests.Controllers
 {
     [TestFixture]
     public class StaticMessageControllerTests
     {
-        private UserSessionFixture fixtures;
+
         private StaticMessageController controller;
 
         [SetUp]
         public void SetUp()
         {
-            fixtures = new UserSessionFixture();
-            controller = new StaticMessageController(fixtures.UserSession);
+            controller = new StaticMessageController();
         }
 
         [TestCase("102924", "102924")]

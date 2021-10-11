@@ -9,22 +9,11 @@
     [AllowProtectedMode]
     public class StaticMessageController : BaseController
     {
-        public StaticMessageController(IUserSession userSession)
-            : base(userSession)
-        {
-        }
-
         public ActionResult NewSportType()
-        {
-            AssignDarkModeViewData();
-            return View();
-        }
+            => View();
 
         public ActionResult Index(string id)
-        {
-            AssignDarkModeViewData();
-            return View(id);
-        }
+            => View(id);
 
         public ActionResult File(string id)
         {
