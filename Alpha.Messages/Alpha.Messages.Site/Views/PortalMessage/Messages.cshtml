@@ -26,7 +26,7 @@
                             @message.ShortContent
                         </div>
                         <div class="content full-content @message.GetStyleMessage">
-                            @message.Content
+                            @Html.Raw(message.BoldContent)
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         @message.ShortContent
                     </div>
                     <div class="content full-content @message.GetStyleMessage">
-                        @message.Content
+                        @Html.Raw(message.BoldContent)
                     </div>
                 </div>
             </div>

@@ -241,6 +241,7 @@
     <Compile Include="Services\AlphaRemotingRefService.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
+    <Compile Include="Utils\MessageFormatter.cs" />
     <Compile Include="Utils\SystemTime.cs" />
   </ItemGroup>
   <ItemGroup>

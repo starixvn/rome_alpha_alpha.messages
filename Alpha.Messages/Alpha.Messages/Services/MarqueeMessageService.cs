@@ -1,13 +1,11 @@
 ﻿namespace Alpha.Messages.Services
 {
     using System;
-    using Configurations;
+    using Alpha.Messages.Utils;
     using Constants;
     using Criteria.Message;
     using Fanex.Caching;
     using Fanex.Data.Repository;
-    using Models.Announcement;
-    using Models.Constants;
     using Models.Message;
 
     public interface MarqueeMessageService
@@ -62,7 +60,14 @@
                 var message = dynamicRepository.Get<MarqueeMessage>(new GetLatestPrivateMessageCriteria(custId, isTest));
                 if (message != null)
                 {
-                    generalMessage = new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch, message.IsSticky, message.MsgType);
+                    var rawContent = message.GetContentByKey(languageKey);
+                    generalMessage = new GeneralMarqueeMessage(
+                        message.Id,
+                        MessageFormatter.MarkBoldText(rawContent, languageKey),
+                        message.BetTransId,
+                        message.IsBatch,
+                        message.IsSticky,
+                        message.MsgType);
                 }
             }
 
