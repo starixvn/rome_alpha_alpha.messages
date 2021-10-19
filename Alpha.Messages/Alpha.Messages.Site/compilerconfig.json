@@ -26,5 +26,9 @@
   {
     "outputFile": "assets/styles/popup/index-dark.css",
     "inputFile": "assets/styles/popup/index-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/extendMessage-dark.css",
+    "inputFile": "assets/styles/extendMessage-dark.scss"
   }
 ]

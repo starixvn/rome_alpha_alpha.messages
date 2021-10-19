@@ -364,6 +364,10 @@
     <Content Include="assets\bundles\default-message.min.css">
       <DependentUpon>default-message.css</DependentUpon>
     </Content>
+    <Content Include="assets\bundles\extendMessage-dark.css" />
+    <Content Include="assets\bundles\extendMessage-dark.min.css">
+      <DependentUpon>extendMessage-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\extendMessage.css" />
     <Content Include="assets\bundles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
@@ -400,6 +404,12 @@
     <Content Include="assets\scripts\tests\libs\moment.js" />
     <Content Include="assets\scripts\tests\libs\store.js" />
     <Content Include="assets\scripts\tests\libs\tooltip.js" />
+    <Content Include="assets\styles\extendMessage-dark.css">
+      <DependentUpon>extendMessage-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\extendMessage-dark.min.css">
+      <DependentUpon>extendMessage-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\styles\extendMessage.css">
       <DependentUpon>extendMessage.scss</DependentUpon>
     </Content>
@@ -831,6 +841,7 @@
     <Content Include="assets\styles\message\message-dark.scss" />
     <Content Include="assets\styles\message\message-mobile-calculate-07-dark.scss" />
     <Content Include="assets\styles\popup\index-dark.scss" />
+    <Content Include="assets\styles\extendMessage-dark.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

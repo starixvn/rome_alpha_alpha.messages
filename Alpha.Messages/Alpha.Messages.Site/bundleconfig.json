@@ -46,6 +46,12 @@
   },
   /************************** Dark Mode ************************/
   {
+    "outputFileName": "assets/bundles/extendMessage-dark.css",
+    "inputFiles": [
+      "assets/styles/extendMessage-dark.css"
+    ]
+  },
+  {
     "outputFileName": "assets/bundles/default-message-dark.css",
     "inputFiles": [
       "assets/styles/message/message-dark.css"
