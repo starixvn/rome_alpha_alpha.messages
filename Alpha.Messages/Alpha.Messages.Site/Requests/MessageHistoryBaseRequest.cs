@@ -36,6 +36,8 @@
 
         public string Site => userSession.Site;
 
+        public bool IsProtectedMode => userSession.IsProtectedMode;
+
         virtual public BaseAnnouncementsParams ConvertToParameters()
             => new BaseAnnouncementsParams
             {
