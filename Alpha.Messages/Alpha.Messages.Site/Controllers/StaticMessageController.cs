@@ -2,9 +2,11 @@
 {
     using System.Web.Mvc;
     using Alpha.Messages.Models.Constants;
+    using Alpha.Web.Filters;
     using Sunplus.Agent.Model.Entities;
     using Web;
 
+    [AllowProtectedMode]
     public class StaticMessageController : BaseController
     {
         public ActionResult NewSportType() => View();
