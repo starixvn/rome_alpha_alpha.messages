@@ -4,7 +4,7 @@
 
 <div role="tabpanel" class="tab-pane active" id="system">
     <div class="filter">
-        @using (Html.BeginForm("Index", "Announcement", FormMethod.Post, new { id = "report-form" }))
+        @using (Html.BeginForm("Index", "Announcement", FormMethod.Get, new { id = "report-form" }))
         {
             <div id="daterange-picker"
                  class="daterange-picker"
