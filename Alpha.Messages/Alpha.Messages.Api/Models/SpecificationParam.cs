@@ -37,8 +37,6 @@
 
         public bool IsSuper => UserLevel.IsSuper(customer.RoleId);
 
-        public bool IsSyncedCasino => customer.IsSyncedCasino;
-
         public string LangKey { get; }
 
         public string Language { get; }

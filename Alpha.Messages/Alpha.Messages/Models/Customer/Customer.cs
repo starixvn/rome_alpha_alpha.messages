@@ -17,7 +17,6 @@
             int mRecommendId,
             int sRecommendId,
             string site,
-            bool isSyncedCasino,
             int siteCode,
             bool enabled)
         {
@@ -28,8 +27,7 @@
             ARecommendId = aRecommendId;
             MRecommendId = mRecommendId;
             SRecommendId = sRecommendId;
-            Site = site;
-            IsSyncedCasino = isSyncedCasino;
+            Site = site;           
             SiteCode = siteCode;
             Enabled = enabled;
         }
@@ -51,8 +49,6 @@
         public string Site { get; }
 
         public bool IsIMBC => Site.Equals("IMBC");
-
-        public bool IsSyncedCasino { get; }
 
         public bool IsAllDayBalTransfer { get; }
 

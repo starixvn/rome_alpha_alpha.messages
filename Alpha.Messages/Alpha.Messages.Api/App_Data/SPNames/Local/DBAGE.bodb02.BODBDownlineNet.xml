@@ -17,7 +17,6 @@
       <Mapping DataField="recommend" ObjectProperty="ARecommendId" />
       <Mapping DataField="mrecommend" ObjectProperty="MRecommendId" />
       <Mapping DataField="srecommend" ObjectProperty="SRecommendId" />
-      <Mapping DataField="synccasino" ObjectProperty="IsSyncedCasino" />
     </Setting>
   </Function>
 </Functions>

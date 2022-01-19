@@ -180,21 +180,7 @@
 
             //// Assert
             Assert.AreEqual(expectedValue, act);
-        }
-
-        [Test]
-        public void IsSyncedCasino_Always_ReturnExpectedValue()
-        {
-            //// Arrange
-            var expectedValue = true;
-            userSession.IsCasinoSync.Returns(expectedValue);
-
-            //// Act
-            var act = parameter.IsSyncedCasino;
-
-            //// Assert
-            Assert.AreEqual(expectedValue, act);
-        }
+        }        
 
         [Test]
         public void EnableYesterdayTransfer_Always_ReturnExpectedValue()
@@ -371,18 +357,6 @@
             Assert.AreEqual(expectedValue, param.IsSubAcc);
         }
 
-        [Test]
-        public void SyncCasino_Always_ReturnExpectedValue()
-        {
-            //// Arrange
-            var expectedValue = true;
-
-            //// Act
-            var act = param.IsSyncedCasino.Returns(true);
-
-            //// Assert
-            Assert.AreEqual(expectedValue, param.IsSyncedCasino);
-        }
 
         [Test]
         public void Internal_Always_ReturnExpectedValue()
