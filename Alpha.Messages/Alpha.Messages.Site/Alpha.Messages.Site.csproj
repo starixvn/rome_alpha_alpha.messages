@@ -877,6 +877,7 @@
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\154810.cshtml" />
+    <Content Include="Views\StaticMessage\166326.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
