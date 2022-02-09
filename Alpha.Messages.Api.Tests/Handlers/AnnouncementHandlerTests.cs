@@ -210,6 +210,44 @@
             Assert.IsTrue(compareLogic.Compare(expectedResult, actualResult).AreEqual);
         }
 
+        [Test]
+        public void Handle_AnnouncementsIsEmpty_ReturnsCorrectResult()
+        {
+            // Arrange
+            var message = CreateGetAnnouncementsQuery();
+            var announcements = Enumerable.Empty<Announcement>();
+
+            announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
+                .Returns(announcements);
+
+            // Act
+            var actualResult = announcementHandler.Handle(message);
+
+            var expectedResult = Enumerable.Empty<AnnouncementViewModel>();
+
+            // Assert
+            Assert.IsTrue(new CompareLogic().Compare(expectedResult, actualResult).AreEqual);
+        }
+
+        [Test]
+        public void Handle_AnnouncementsIsNull_ReturnsCorrectResult()
+        {
+            // Arrange
+            var message = CreateGetAnnouncementsQuery();
+            IEnumerable<Announcement> announcements = null;
+
+            announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
+                .Returns(announcements);
+
+            // Act
+            var actualResult = announcementHandler.Handle(message);
+
+            IEnumerable<AnnouncementViewModel> expectedResult = Enumerable.Empty<AnnouncementViewModel>();
+
+            // Assert
+            Assert.IsTrue(new CompareLogic().Compare(expectedResult, actualResult).AreEqual);
+        }
+
         private GetAnnouncementsQuery CreateGetAnnouncementsQuery()
             => new GetAnnouncementsQuery
             {

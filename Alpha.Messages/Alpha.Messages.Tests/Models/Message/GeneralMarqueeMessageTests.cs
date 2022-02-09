@@ -19,5 +19,31 @@
             //// Assert
             Assert.AreEqual(expectedContent, act);
         }
+
+        [Test]
+        public void GeneraMarqueeMessage_Always_IdAlwaysHasDefaultValue()
+        {
+            // Arrange
+            var model = new GeneralMarqueeMessage();
+
+            // Act
+            var act = model.Id;
+
+            // Assert
+            Assert.AreEqual(0, act);
+        }
+
+        [Test]
+        public void GeneraMarqueeMessage_Always_MessageTypeAlwaysHasDefaultValue()
+        {
+            // Arrange
+            var model = new GeneralMarqueeMessage();
+
+            // Act
+            var act = model.MessageType;
+
+            // Assert
+            Assert.AreEqual(0, act);
+        }
     }
 }

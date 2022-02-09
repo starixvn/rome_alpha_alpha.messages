@@ -40,7 +40,7 @@
             var actual = criteria.IsValid();
 
             // Assert
-            Assert.AreEqual(true, actual);
+            Assert.IsTrue(actual);
         }
 
         [TestCase(0, "")]
@@ -59,7 +59,7 @@
             var actual = criteria.IsValid();
 
             // Assert
-            Assert.AreEqual(false, actual);
+            Assert.IsFalse(actual);
         }
 
         [Test]
