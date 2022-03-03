@@ -3,20 +3,18 @@
     using System.Web.Mvc;
     using Alpha.Messages.Models.Message;
     using Alpha.Messages.Site.ViewModels;
-    using Alpha.Web;
     using Alpha.Web.Filters;
     using MediatR;
     using Requests.MarqueeMessage;
     using Sunplus.Agent.Model.Entities;
 
-    public class MarqueeMessageController : BaseController
+    public class MarqueeMessageController : SiteBaseController
     {
-        private readonly IMediator mediator;
         private readonly IUserSession userSession;
 
         public MarqueeMessageController(IMediator mediator, IUserSession userSession)
+            : base(mediator)
         {
-            this.mediator = mediator;
             this.userSession = userSession;
         }
 

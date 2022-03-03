@@ -9,9 +9,11 @@
     [AllowProtectedMode]
     public class StaticMessageController : BaseController
     {
-        public ActionResult NewSportType() => View();
+        public ActionResult NewSportType()
+            => View();
 
-        public ActionResult Index(string id) => View(id);
+        public ActionResult Index(string id)
+            => View(id);
 
         public ActionResult File(string id)
         {

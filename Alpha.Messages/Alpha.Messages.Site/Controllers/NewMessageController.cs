@@ -11,7 +11,8 @@
     {
         private readonly IParam specificationParam;
 
-        public NewMessageController(IMediator mediator, IParam specificationParam) : base(mediator)
+        public NewMessageController(IMediator mediator, IParam specificationParam)
+            : base(mediator)
         {
             this.specificationParam = specificationParam;
         }

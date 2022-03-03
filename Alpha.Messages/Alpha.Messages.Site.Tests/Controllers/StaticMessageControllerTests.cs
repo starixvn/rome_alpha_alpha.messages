@@ -1,17 +1,13 @@
-﻿using Alpha.Messages.Site.Controllers;
+﻿using System.Web.Mvc;
+using Alpha.Messages.Site.Controllers;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace Alpha.Messages.Site.Tests.Controllers
 {
     [TestFixture]
     public class StaticMessageControllerTests
     {
+
         private StaticMessageController controller;
 
         [SetUp]

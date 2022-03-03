@@ -1,12 +1,11 @@
 ﻿@model AlphaAnnouncement
-
 @{
     Layout = null;
 }
 <html>
 <head>    
-    @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
-    @StaticResources.RenderStyles("~/assets/bundles/popup")
+    @StaticResources.AssetStyles.RenderCommonWithDarkMode("/bundles/common/common")
+    @StaticResources.RenderStylesWithDarkMode("~/assets/bundles/popup")
 </head>
 <body>
     @if (Model != null)

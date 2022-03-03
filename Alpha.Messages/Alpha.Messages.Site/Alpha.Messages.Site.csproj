@@ -68,8 +68,8 @@
       <HintPath>..\..\packages\Alpha.SubAccount.1.0.0\lib\net40\Alpha.SubAccount.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Web, Version=1.0.8.7, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Web.1.0.8.7\lib\net461\Alpha.Web.dll</HintPath>
+    <Reference Include="Alpha.Web, Version=1.0.8.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.Web.1.0.8.8\lib\net461\Alpha.Web.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
@@ -213,8 +213,8 @@
       <HintPath>..\..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.5.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.5.8\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.5.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.5.9\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
     </Reference>
     <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.2.8, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sunplus.Agent.Model.Definitions.3.0.2.8\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
@@ -356,13 +356,25 @@
     <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
     <Content Include="assets\bundles\announcement.js" />
     <Content Include="assets\bundles\announcement.min.js" />
+    <Content Include="assets\bundles\default-message-dark.css" />
+    <Content Include="assets\bundles\default-message-dark.min.css">
+      <DependentUpon>default-message-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\default-message.css" />
     <Content Include="assets\bundles\default-message.min.css">
       <DependentUpon>default-message.css</DependentUpon>
     </Content>
+    <Content Include="assets\bundles\extendMessage-dark.css" />
+    <Content Include="assets\bundles\extendMessage-dark.min.css">
+      <DependentUpon>extendMessage-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\extendMessage.css" />
     <Content Include="assets\bundles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\home-mobile-calculate-07-dark.css" />
+    <Content Include="assets\bundles\home-mobile-calculate-07-dark.min.css">
+      <DependentUpon>home-mobile-calculate-07-dark.css</DependentUpon>
     </Content>
     <Content Include="assets\bundles\home-mobile-calculate-07.css" />
     <Content Include="assets\bundles\home-mobile-calculate-07.min.css">
@@ -370,6 +382,10 @@
     </Content>
     <Content Include="assets\bundles\message.js" />
     <Content Include="assets\bundles\message.min.js" />
+    <Content Include="assets\bundles\popup-dark.css" />
+    <Content Include="assets\bundles\popup-dark.min.css">
+      <DependentUpon>popup-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\popup.css" />
     <Content Include="assets\bundles\popup.js" />
     <Content Include="assets\bundles\popup.min.css">
@@ -388,6 +404,12 @@
     <Content Include="assets\scripts\tests\libs\moment.js" />
     <Content Include="assets\scripts\tests\libs\store.js" />
     <Content Include="assets\scripts\tests\libs\tooltip.js" />
+    <Content Include="assets\styles\extendMessage-dark.css">
+      <DependentUpon>extendMessage-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\extendMessage-dark.min.css">
+      <DependentUpon>extendMessage-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\styles\extendMessage.css">
       <DependentUpon>extendMessage.scss</DependentUpon>
     </Content>
@@ -410,6 +432,18 @@
     <Content Include="assets\styles\Home\_mixins.scss" />
     <Content Include="assets\styles\Home\_mixins2.scss" />
     <Content Include="assets\styles\Home\_variables.scss" />
+    <Content Include="assets\styles\message\message-dark.css">
+      <DependentUpon>message-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\message\message-dark.min.css">
+      <DependentUpon>message-dark.css</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\message\message-mobile-calculate-07-dark.css">
+      <DependentUpon>message-mobile-calculate-07-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\message\message-mobile-calculate-07-dark.min.css">
+      <DependentUpon>message-mobile-calculate-07-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\styles\message\message-mobile-calculate-07.css">
       <DependentUpon>message-mobile-calculate-07.scss</DependentUpon>
     </Content>
@@ -421,6 +455,12 @@
     </Content>
     <Content Include="assets\styles\message\message.min.css">
       <DependentUpon>message.css</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\popup\index-dark.css">
+      <DependentUpon>index-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\popup\index-dark.min.css">
+      <DependentUpon>index-dark.css</DependentUpon>
     </Content>
     <Content Include="assets\styles\popup\index.css">
       <DependentUpon>index.scss</DependentUpon>
@@ -798,6 +838,10 @@
     <Content Include="assets\styles\extendMessage.scss" />
     <Content Include="assets\styles\_variables.scss" />
     <Content Include="bundleconfig.json" />
+    <Content Include="assets\styles\message\message-dark.scss" />
+    <Content Include="assets\styles\message\message-mobile-calculate-07-dark.scss" />
+    <Content Include="assets\styles\popup\index-dark.scss" />
+    <Content Include="assets\styles\extendMessage-dark.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

@@ -12,17 +12,15 @@
     using MediatR;
     using Requests.MessageHistory;
     using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class MessageHistoryController : BaseController
+    public class MessageHistoryController : SiteBaseController
     {
-        private readonly IMediator mediator;
         private readonly IUserSession userSession;
         private readonly IParam specificationParam;
 
         public MessageHistoryController(IMediator mediator, IUserSession userSession, IParam specificationParam)
+            : base(mediator)
         {
-            this.mediator = mediator;
             this.userSession = userSession;
             this.specificationParam = specificationParam;
         }
@@ -44,9 +42,7 @@
                 AppSettings.LocalTest);
             query.Specification = specificationParam;
 
-            var viewModel = mediator.Send(query);
-
-            return View(viewModel);
+            return View(query);
         }
 
         [AllowProtectedMode]

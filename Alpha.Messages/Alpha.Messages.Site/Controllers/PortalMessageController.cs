@@ -2,21 +2,18 @@
 {
     using System.Web.Mvc;
     using Alpha.Messages.Configurations;
-    using Alpha.Web;
     using MediatR;
     using Messsages.Site.Requests.PortalMessage;
     using Sunplus.Agent.Model.Entities;
 
-    public class PortalMessageController : BaseController
+    public class PortalMessageController : SiteBaseController
     {
         private const int DefaultNumberMessage = 10;
-
-        private readonly IMediator mediator;
         private readonly IUserSession userSession;
 
         public PortalMessageController(IMediator mediator, IUserSession userSession)
+            : base(mediator)
         {
-            this.mediator = mediator;
             this.userSession = userSession;
         }
 

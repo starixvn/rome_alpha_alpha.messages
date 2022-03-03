@@ -10,7 +10,8 @@
     {
         private readonly IParam specificationParam;
 
-        public AnnouncementController(IMediator mediator, IParam specificationParam) : base(mediator)
+        public AnnouncementController(IMediator mediator, IParam specificationParam)
+            : base(mediator)
         {
             this.specificationParam = specificationParam;
         }
