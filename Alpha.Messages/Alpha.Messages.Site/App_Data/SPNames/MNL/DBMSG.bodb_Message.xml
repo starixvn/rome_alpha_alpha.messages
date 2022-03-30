@@ -49,7 +49,7 @@
       <Mapping DataField="TargetId" ObjectProperty="UserId" />
       <Mapping DataField="MsgType" ObjectProperty="MessageType" />
     </Setting>
-    <Setting Key="Dot_Msg_GetSpecialMessage" SpName="Dot_Msg_GetSpecialMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    <Setting Key="Dot_Msg_GetSpecialMessage" SpName="Age_Msg_GetSpecialMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
