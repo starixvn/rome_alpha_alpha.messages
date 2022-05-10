@@ -39,8 +39,6 @@
 
         public string Site => userSession.Site;
 
-        public bool IsSyncedCasino => userSession.IsCasinoSync;
-
         public int MRecommendId => userSession.MRecommendId;
 
         public int SRecommendId => userSession.SRecommendId;

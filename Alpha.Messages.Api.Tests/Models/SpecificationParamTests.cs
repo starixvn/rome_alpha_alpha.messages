@@ -308,20 +308,7 @@
 
             //// Assert
             Assert.AreEqual(expectedValue, act);
-        }
-
-        [Test]
-        public void SyncCasino_Always_ReturnExpectedValue()
-        {
-            //// Arrange
-            var expectedValue = false;
-
-            //// Act
-            var act = param.IsSyncedCasino;
-
-            //// Assert
-            Assert.AreEqual(expectedValue, act);
-        }
+        }       
 
         [Test]
         public void Internal_Always_ReturnExpectedValue()
