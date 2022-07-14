@@ -232,6 +232,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New bet types of Volleyball:.
+        /// </summary>
+        public static string NewBetTypeOfVolleyball {
+            get {
+                return ResourceManager.GetString("NewBetTypeOfVolleyball", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New bet types of E-Sports:.
         /// </summary>
         public static string NewBetTypeTitle {
