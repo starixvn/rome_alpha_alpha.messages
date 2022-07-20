@@ -23,6 +23,11 @@
                 viewName = $"{id}.en-US";
             }
 
+            if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{viewName}.cshtml")))
+            {
+                return new EmptyResult();
+            }
+
             return PartialView(viewName);
         }
 
@@ -33,6 +38,11 @@
             if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf")))
             {
                 fileName = $"{id}.{roleName}.en-US";
+            }
+
+            if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf")))
+            {
+                return new EmptyResult();
             }
 
             return base.File(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf"), "application/pdf");
