@@ -177,4 +177,7 @@
   <data name="system" xml:space="preserve">
     <value>系统</value>
   </data>
+  <data name="TelegramChatbot" xml:space="preserve">
+    <value>Telegram Chatbot指南</value>
+  </data>
 </root>

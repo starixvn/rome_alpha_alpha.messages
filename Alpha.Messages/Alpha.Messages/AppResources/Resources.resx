@@ -195,4 +195,7 @@
   <data name="system" xml:space="preserve">
     <value>System</value>
   </data>
+  <data name="TelegramChatbot" xml:space="preserve">
+    <value>Telegram Chatbot Guideline</value>
+  </data>
 </root>

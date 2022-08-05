@@ -195,4 +195,7 @@
   <data name="normal" xml:space="preserve">
     <value>Chung</value>
   </data>
+  <data name="TelegramChatbot" xml:space="preserve">
+    <value>Hướng dẫn sử dụng Telegram Chatbot</value>
+  </data>
 </root>
