@@ -1,6 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Controllers
 {
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Web.Mvc;
+    using Alpha.Messages.Models.Announcement;
     using Alpha.Messages.Models.Constants;
     using Alpha.Web.Filters;
     using Sunplus.Agent.Model.Entities;
@@ -9,6 +12,18 @@
     [AllowProtectedMode]
     public class StaticMessageController : BaseController
     {
+        private readonly IDictionary<string, string> FileNameMapping = new Dictionary<string, string>
+        {
+            ["167819"] = "TelegramChatbot"
+        };
+
+        private readonly ResourceManager resourceManager;
+
+        public StaticMessageController(ResourceManager resourceManager)
+        {
+            this.resourceManager = resourceManager;
+        }
+
         public ActionResult NewSportType()
             => View();
 
@@ -45,7 +60,13 @@
                 return new EmptyResult();
             }
 
+            var fileDownloadName = FileNameMapping.ContainsKey(id) 
+                ? $"{resourceManager.GetString(FileNameMapping[id], CultureInfo.CreateSpecificCulture(UserSession.Current.Language))}.pdf" 
+                : "Guide.pdf";
+
+            Response.AddHeader("Content-Disposition", "inline; filename=" + fileDownloadName);
+
             return base.File(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf"), "application/pdf");
-        }
+        } 
     }
 }
