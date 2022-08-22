@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
+using Alpha.Messages.Models.Announcement;
 using Alpha.Messages.Site.Controllers;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Alpha.Messages.Site.Tests.Controllers
@@ -13,7 +15,8 @@ namespace Alpha.Messages.Site.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            controller = new StaticMessageController();
+            var resManager = Substitute.For<ResourceManager>();
+            controller = new StaticMessageController(resManager);
         }
 
         [TestCase("102924", "102924")]
