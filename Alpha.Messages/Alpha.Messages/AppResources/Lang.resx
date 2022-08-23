@@ -189,4 +189,7 @@
   <data name="NoCommission" xml:space="preserve">
     <value>No Commission</value>
   </data>
+  <data name="NewBetTypeOfVolleyball" xml:space="preserve">
+    <value>New bet types of Volleyball:</value>
+  </data>
 </root>

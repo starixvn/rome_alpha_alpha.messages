@@ -966,6 +966,7 @@
     <Content Include="Views\StaticMessage\166332.cshtml" />
     <Content Include="Views\StaticMessage\167296.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\167819.Super.en-US.pdf" />
+    <Content Include="Views\StaticMessage\173861.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
