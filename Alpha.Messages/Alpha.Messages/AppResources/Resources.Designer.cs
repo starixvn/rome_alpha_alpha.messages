@@ -115,6 +115,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Watchlist Guideline.
+        /// </summary>
+        public static string MyWatchlist {
+            get {
+                return ResourceManager.GetString("MyWatchlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string New {

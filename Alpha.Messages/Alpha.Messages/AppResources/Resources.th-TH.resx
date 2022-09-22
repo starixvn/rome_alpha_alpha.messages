@@ -180,4 +180,7 @@
   <data name="TelegramChatbot" xml:space="preserve">
     <value>คู่มือการใช้เทเลแกรมแชทบ็อต</value>
   </data>
+  <data name="MyWatchlist" xml:space="preserve">
+    <value>แนวทางรายการเฝ้าดูของฉัน</value>
+  </data>
 </root>

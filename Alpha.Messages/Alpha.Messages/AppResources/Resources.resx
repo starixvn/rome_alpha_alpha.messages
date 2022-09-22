@@ -198,4 +198,7 @@
   <data name="TelegramChatbot" xml:space="preserve">
     <value>Telegram Chatbot Guideline</value>
   </data>
+  <data name="MyWatchlist" xml:space="preserve">
+    <value>My Watchlist Guideline</value>
+  </data>
 </root>

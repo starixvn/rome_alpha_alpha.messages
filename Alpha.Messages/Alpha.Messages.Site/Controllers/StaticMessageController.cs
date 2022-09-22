@@ -14,7 +14,8 @@
     {
         private readonly IDictionary<string, string> FileNameMapping = new Dictionary<string, string>
         {
-            ["167819"] = "TelegramChatbot"
+            ["167819"] = "TelegramChatbot",
+            ["170467"] = "MyWatchlist"
         };
 
         private readonly ResourceManager resourceManager;
