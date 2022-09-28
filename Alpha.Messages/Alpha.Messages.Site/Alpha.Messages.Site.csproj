@@ -967,6 +967,19 @@
     <Content Include="Views\StaticMessage\167296.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\167819.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\173861.cshtml" />
+    <Content Include="Views\StaticMessage\170467.Agent.en-US.pdf" />
+    <Content Include="Views\StaticMessage\170467.Agent.th-TH.pdf">
+	  <DependentUpon>170467.Agent.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\170467.Agent.zh-CN.pdf">
+	  <DependentUpon>170467.Agent.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\170467.Agent.zh-TW.pdf">
+	  <DependentUpon>170467.Agent.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\170467.Agent.vi-VN.pdf">
+	  <DependentUpon>170467.Agent.en-US.pdf</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
