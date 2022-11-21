@@ -10,9 +10,9 @@
     {
         private static readonly Dictionary<int, string> SettingKeys = new Dictionary<int, string>
         {
-            [MessageType.Personal] = "Dot_Msg_GetPrivateMessage",
+            [MessageType.Personal] = "Age_Msg_GetPrivateMessage",
             [MessageType.Normal] = "Age_Msg_GetPublicMessage",
-            [MessageType.Special] = "Dot_Msg_GetSpecialMessage"
+            [MessageType.Special] = "Age_Msg_GetSpecialMessage"
         };
 
         private readonly string settingKey;

@@ -10,7 +10,7 @@
         {
             //// Arrange
             var criteria = new AssignMessageToUserCriteria(123, 321, "razor");
-            var expectedKey = "Dot_Msg_SetUsrMessage";
+            var expectedKey = "Age_Msg_SetUsrMessage";
 
             //// Act
             var act = criteria.GetSettingKey();

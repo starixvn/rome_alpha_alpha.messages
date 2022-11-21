@@ -59,7 +59,7 @@
         
         public bool IsBatch { get; }
 
-        public override string GetSettingKey() => "Dot_Msg_SetMessage";
+        public override string GetSettingKey() => "Age_Msg_SetMessage";
 
         public override bool IsValid() => true;
 
