@@ -22,7 +22,7 @@
         {
             //// Arrange
             var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
-            var expectedKey = "Dot_Msg_SetMessage";
+            var expectedKey = "Age_Msg_SetMessage";
 
             //// Act
             var act = criteria.GetSettingKey();

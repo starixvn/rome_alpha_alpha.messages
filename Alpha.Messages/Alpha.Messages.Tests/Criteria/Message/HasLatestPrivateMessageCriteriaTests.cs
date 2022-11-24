@@ -10,7 +10,7 @@
         {
             //// Arrange
             var criteria = new HasLatestPrivateMessageCriteria(263, false);
-            var expectedKey = "Dot_Msg_HasPriMessage24";
+            var expectedKey = "Age_Msg_HasPriMessage24";
 
             //// Act
             var act = criteria.GetSettingKey();

@@ -23,7 +23,7 @@
 
         public string BetTransId { get; }
 
-        public override string GetSettingKey() => "Dot_Msg_SetUsrMessage";
+        public override string GetSettingKey() => "Age_Msg_SetUsrMessage";
 
         public override bool IsValid() => MessageId > 0;
     }

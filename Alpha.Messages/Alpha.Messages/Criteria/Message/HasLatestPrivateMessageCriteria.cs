@@ -14,7 +14,7 @@
 
         public bool IsTest { get; }
 
-        public override string GetSettingKey() => "Dot_Msg_HasPriMessage24";
+        public override string GetSettingKey() => "Age_Msg_HasPriMessage24";
 
         public override bool IsValid() => UserId > 0;
     }

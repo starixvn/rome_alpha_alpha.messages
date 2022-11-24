@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
   <Function Name="Message">   
-    <Setting Key="Dot_Msg_SetMessage" SpName="Dot_Msg_SetMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    <Setting Key="Age_Msg_SetMessage" SpName="Age_Msg_SetMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="messageId" ObjectProperty="Id" />
     </Setting>
-    <Setting Key="Dot_Msg_SetUsrMessage" SpName="Dot_Msg_SetUsrMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    <Setting Key="Age_Msg_SetUsrMessage" SpName="Age_Msg_SetUsrMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
     </Setting>  
     
-    <Setting Key="Dot_Msg_GetTopPriMessage24" SpName="Dot_Msg_GetTopPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    <Setting Key="Age_Msg_GetTopPriMessage24" SpName="Age_Msg_GetTopPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
@@ -33,7 +33,7 @@
       <Mapping DataField="MsgType" ObjectProperty="MsgType" />
       <Mapping DataField="IsSticky" ObjectProperty="IsSticky" />
     </Setting>
-    <Setting Key="Dot_Msg_HasPriMessage24" SpName="Dot_Msg_HasPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
+    <Setting Key="Age_Msg_HasPriMessage24" SpName="Age_Msg_HasPriMessage24" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0" />
 
   </Function>
   <Function Name="MessageHistory">
@@ -49,7 +49,7 @@
       <Mapping DataField="TargetId" ObjectProperty="UserId" />
       <Mapping DataField="MsgType" ObjectProperty="MessageType" />
     </Setting>
-    <Setting Key="Dot_Msg_GetSpecialMessage" SpName="Age_Msg_GetSpecialMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    <Setting Key="Age_Msg_GetSpecialMessage" SpName="Age_Msg_GetSpecialMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
@@ -61,7 +61,7 @@
       <Mapping DataField="TargetId" ObjectProperty="UserId" />
       <Mapping DataField="MsgType" ObjectProperty="MessageType" />
     </Setting>
-    <Setting Key="Dot_Msg_GetPrivateMessage" SpName="Dot_Msg_GetPrivateMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
+    <Setting Key="Age_Msg_GetPrivateMessage" SpName="Age_Msg_GetPrivateMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="MessageId" ObjectProperty="Id" />
       <Mapping DataField="Content_en" ObjectProperty="ContentEN" />
       <Mapping DataField="Content_cs" ObjectProperty="ContentCS" />
