@@ -139,7 +139,7 @@
         private IEnumerable<Announcement> GetNewAnnouncements(DateTime fromDate)
         {
             var newAnnouncements = ConfiguredCacheService.GetOrSet(
-                 $"Alpha.Messages.Announcement_{fromDate}_{AppSettings.SiteGroup}",
+                 $"Alpha.Messages.Announcement_{fromDate}_{AppSettings.SiteLabel}",
                  () => GetAnnouncementsHistory(fromDate, DateTime.Now),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
 
@@ -148,9 +148,9 @@
 
         private IEnumerable<Announcement> GetAvailablePopUpAnnouncements()
         {
-            var request = new AnnouncementHistoryRequest(DateTime.Today.AddDays(-30), DateTime.Now, AppSettings.Environment, AppSettings.SiteGroup);
+            var request = new AnnouncementHistoryRequest(DateTime.Today.AddDays(-30), DateTime.Now, AppSettings.Environment, AppSettings.SiteLabel);
             var availablePopupAnnouncements = ConfiguredCacheService.GetOrSet(
-                $"Alpha.Messages.PopupAnnouncement_{AppSettings.SiteGroup}",
+                $"Alpha.Messages.PopupAnnouncement_{AppSettings.SiteLabel}",
                 () => announcementClient.GetAnnouncementsHistory(request)
                 .Where(i => DateTime.Now <= i.ExpiredDate && i.IsPopup),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
@@ -160,7 +160,7 @@
 
         private IEnumerable<Announcement> GetAnnouncementsHistory(DateTime fromDate, DateTime toDate)
         {
-            var request = new AnnouncementHistoryRequest(fromDate, toDate, AppSettings.Environment, AppSettings.SiteGroup);
+            var request = new AnnouncementHistoryRequest(fromDate, toDate, AppSettings.Environment, AppSettings.SiteLabel);
 
             return announcementClient.GetAnnouncementsHistory(request)
                 .Where(i => i.ReleasedDate <= DateTime.Now)

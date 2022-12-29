@@ -54,11 +54,11 @@
             var expectedValue = "xxx";
             AppSettings.AppSettingValues = new NameValueCollection()
             {
-                ["SiteGroup"] = expectedValue
+                ["SiteLabel"] = expectedValue
             };
 
             //// Act
-            var act = AppSettings.SiteGroup;
+            var act = AppSettings.SiteLabel;
 
             //// Assert
             Assert.AreEqual(expectedValue, act);
