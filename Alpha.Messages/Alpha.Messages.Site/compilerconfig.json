@@ -1,42 +1,50 @@
 ﻿[
-    {
-        "outputFile": "assets/styles/extendMessage.css",
-        "inputFile": "assets/styles/extendMessage.scss"
-    },
-    {
-        "outputFile": "Assets/styles/message/message.css",
-        "inputFile": "Assets/styles/message/message.scss"
-    },
-    {
-        "outputFile": "Assets/styles/popup/index.css",
-        "inputFile": "Assets/styles/popup/index.scss"
-    },
-    {
-        "outputFile": "assets/styles/message/message-mobile-calculate-07.css",
-        "inputFile": "assets/styles/message/message-mobile-calculate-07.scss"
-    },
-    {
-        "outputFile": "assets/styles/message/message-dark.css",
-        "inputFile": "assets/styles/message/message-dark.scss"
-    },
-    {
-        "outputFile": "assets/styles/message/message-mobile-calculate-07-dark.css",
-        "inputFile": "assets/styles/message/message-mobile-calculate-07-dark.scss"
-    },
-    {
-        "outputFile": "assets/styles/popup/index-dark.css",
-        "inputFile": "assets/styles/popup/index-dark.scss"
-    },
-    {
-        "outputFile": "assets/styles/extendMessage-dark.css",
-        "inputFile": "assets/styles/extendMessage-dark.scss"
-    },
-    {
-        "outputFile": "Assets/styles/feedback/index.css",
-        "inputFile": "Assets/styles/feedback/index.scss"
-    },
-    {
-        "outputFile": "Assets/styles/feedback/index-dark.css",
-        "inputFile": "Assets/styles/feedback/index-dark.scss"
-    }
+  {
+    "outputFile": "assets/styles/extendMessage.css",
+    "inputFile": "assets/styles/extendMessage.scss"
+  },
+  {
+    "outputFile": "Assets/styles/message/message.css",
+    "inputFile": "Assets/styles/message/message.scss"
+  },
+  {
+    "outputFile": "Assets/styles/popup/index.css",
+    "inputFile": "Assets/styles/popup/index.scss"
+  },
+  {
+    "outputFile": "assets/styles/message/message-mobile-calculate-07.css",
+    "inputFile": "assets/styles/message/message-mobile-calculate-07.scss"
+  },
+  {
+    "outputFile": "assets/styles/message/message-dark.css",
+    "inputFile": "assets/styles/message/message-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/message/message-mobile-calculate-07-dark.css",
+    "inputFile": "assets/styles/message/message-mobile-calculate-07-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/popup/index-dark.css",
+    "inputFile": "assets/styles/popup/index-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/extendMessage-dark.css",
+    "inputFile": "assets/styles/extendMessage-dark.scss"
+  },
+  {
+    "outputFile": "Assets/styles/feedback/index.css",
+    "inputFile": "Assets/styles/feedback/index.scss"
+  },
+  {
+    "outputFile": "Assets/styles/feedback/index-dark.css",
+    "inputFile": "Assets/styles/feedback/index-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/feedback/feedback-mobile-calculate-07.css",
+    "inputFile": "assets/styles/feedback/feedback-mobile-calculate-07.scss"
+  },
+  {
+    "outputFile": "assets/styles/feedback/feedback-mobile-calculate-07-dark.css",
+    "inputFile": "assets/styles/feedback/feedback-mobile-calculate-07-dark.scss"
+  }
 ]

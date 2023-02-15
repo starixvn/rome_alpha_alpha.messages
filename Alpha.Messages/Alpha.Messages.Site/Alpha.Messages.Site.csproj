@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
     <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -379,6 +379,14 @@
     <Content Include="assets\bundles\extendMessage.css" />
     <Content Include="assets\bundles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07-dark.css" />
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07-dark.min.css">
+      <DependentUpon>feedback-mobile-calculate-07-dark.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07.css" />
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07.min.css">
+      <DependentUpon>feedback-mobile-calculate-07.css</DependentUpon>
     </Content>
     <Content Include="assets\bundles\feedback\index-dark.css" />
     <Content Include="assets\bundles\feedback\index-dark.min.css">
@@ -978,6 +986,8 @@
     <Content Include="assets\styles\extendMessage-dark.scss" />
     <Content Include="assets\styles\feedback\index-dark.scss" />
     <Content Include="assets\styles\feedback\index.scss" />
+    <Content Include="assets\styles\feedback\feedback-mobile-calculate-07-dark.scss" />
+    <Content Include="assets\styles\feedback\feedback-mobile-calculate-07.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

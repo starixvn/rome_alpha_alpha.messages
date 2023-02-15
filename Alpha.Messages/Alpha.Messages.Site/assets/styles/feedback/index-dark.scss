@@ -1,5 +1,4 @@
-﻿
-.div-greeting {
+﻿.div-greeting {
     font-weight: bold;
 }
 
@@ -10,35 +9,62 @@
 }
 
 .feedback-msg {
-    margin: 10px 0px 10px 60px;
-    width: 600px;
+    margin: 4px 0 8px 0;
+    width: 100%;
     resize: none;
-    height: 200px;
-    color: #656565;
-    border: solid 2px #2C2C2C;
+    height: 100px;
+    background: #1C1C1C;
+    border: 1px solid #2C2C2C;
+    padding: 7px 11px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
 }
 
 .rate-boxes {
-    padding: 10px;
-    margin: 10px 60px;
-    width: 600px;
+    padding: 0;
+    margin: 8px 0 20px 0;
 
     .rate-box {
-        width: 93px;
+        width: 80px;
         background-color: #323232;
         display: inline-block;
-        padding: 10px 0;
-        margin: 0 10px;
+        padding: 7px 0;
+        margin: 0 9px 0 0;
         text-align: center;
+        border: 1px solid #474747;
+
+        &.active {
+            .rate-1 {
+                background: url('images/angry-active.svg') no-repeat;
+            }
+
+            .rate-2 {
+                background: url('images/sad-active.svg') no-repeat;
+            }
+
+            .rate-3 {
+                background: url('images/normal-active.svg') no-repeat;
+            }
+
+            .rate-4 {
+                background: url('images/good-active.svg') no-repeat;
+            }
+
+            .rate-5 {
+                background: url('images/amazing-active.svg') no-repeat;
+            }
+        }
     }
 
     .rate {
-        height: 50px;
+        height: 48px;
         width: 40px;
         position: relative;
-        display: inline-block;
+        display: block;
+        margin: 0 auto;
         cursor: pointer;
-        margin: 0 24px;
     }
 
     .rate-1 {
@@ -82,13 +108,20 @@
     }
 
     .txt-rate {
-        width: 90px;
-        font-weight: bold;
         text-align: center;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 20px;
     }
 }
 
 .btn-box {
-    width: 668px;
     text-align: right;
+
+    button {
+        line-height: 28px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 24px;
+    }
 }

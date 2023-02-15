@@ -26,9 +26,9 @@ class Feedback {
         const self: any = this;
 
         $('.rate').click(function (): void {
-            $('.rate').removeClass('active');
+            $('.rate').parents('.rate-box').removeClass('active');
             var $this = $(this);
-            $this.addClass('active');
+            $this.parents('.rate-box').addClass('active');
 
             var r = $this.attr('value');
             self.feedback.rate = r;
