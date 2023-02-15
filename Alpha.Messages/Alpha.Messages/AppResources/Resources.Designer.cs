@@ -19,7 +19,7 @@ namespace Alpha.Messages.AppResources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -61,11 +61,29 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amazing.
+        /// </summary>
+        public static string Amazing {
+            get {
+                return ResourceManager.GetString("Amazing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Announcement.
         /// </summary>
         public static string announcement {
             get {
                 return ResourceManager.GetString("announcement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad.
+        /// </summary>
+        public static string Bad {
+            get {
+                return ResourceManager.GetString("Bad", resourceCulture);
             }
         }
         
@@ -79,6 +97,78 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feedback.
+        /// </summary>
+        public static string Feedback {
+            get {
+                return ResourceManager.GetString("Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;d love to hear from you. How are we doing?.
+        /// </summary>
+        public static string Feedback_Greeting {
+            get {
+                return ResourceManager.GetString("Feedback_Greeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Params.
+        /// </summary>
+        public static string Feedback_InvalidParams {
+            get {
+                return ResourceManager.GetString("Feedback_InvalidParams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What functions can be improved? What functions are lacking?.
+        /// </summary>
+        public static string Feedback_Message {
+            get {
+                return ResourceManager.GetString("Feedback_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;ve hit the 4,000 character count limit..
+        /// </summary>
+        public static string Feedback_MessageLimit {
+            get {
+                return ResourceManager.GetString("Feedback_MessageLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please share your thoughts or rate us.
+        /// </summary>
+        public static string Feedback_NoInput {
+            get {
+                return ResourceManager.GetString("Feedback_NoInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate your experience.
+        /// </summary>
+        public static string Feedback_Rate {
+            get {
+                return ResourceManager.GetString("Feedback_Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;re so happy to hear from you! Thank you for your valuable feedback..
+        /// </summary>
+        public static string Feedback_Success {
+            get {
+                return ResourceManager.GetString("Feedback_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         public static string from {
@@ -88,11 +178,29 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good.
+        /// </summary>
+        public static string Good {
+            get {
+                return ResourceManager.GetString("Good", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HIGHLIGHTS.
         /// </summary>
         public static string highlights {
             get {
                 return ResourceManager.GetString("highlights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Later.
+        /// </summary>
+        public static string Later {
+            get {
+                return ResourceManager.GetString("Later", resourceCulture);
             }
         }
         
@@ -214,6 +322,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Okay.
+        /// </summary>
+        public static string Okay {
+            get {
+                return ResourceManager.GetString("Okay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal.
         /// </summary>
         public static string Personal {
@@ -291,6 +408,15 @@ namespace Alpha.Messages.AppResources {
         public static string TelegramChatbot {
             get {
                 return ResourceManager.GetString("TelegramChatbot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terrible.
+        /// </summary>
+        public static string Terrible {
+            get {
+                return ResourceManager.GetString("Terrible", resourceCulture);
             }
         }
         

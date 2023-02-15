@@ -201,4 +201,46 @@
   <data name="MyWatchlist" xml:space="preserve">
     <value>My Watchlist Guideline</value>
   </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Feedback_Greeting" xml:space="preserve">
+    <value>We'd love to hear from you. How are we doing?</value>
+  </data>
+  <data name="Feedback_Message" xml:space="preserve">
+    <value>What functions can be improved? What functions are lacking?</value>
+  </data>
+  <data name="Feedback_MessageLimit" xml:space="preserve">
+    <value>You've hit the 4,000 character count limit.</value>
+  </data>
+  <data name="Feedback_Rate" xml:space="preserve">
+    <value>Rate your experience</value>
+  </data>
+  <data name="Terrible" xml:space="preserve">
+    <value>Terrible</value>
+  </data>
+  <data name="Bad" xml:space="preserve">
+    <value>Bad</value>
+  </data>
+  <data name="Okay" xml:space="preserve">
+    <value>Okay</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Good</value>
+  </data>
+  <data name="Amazing" xml:space="preserve">
+    <value>Amazing</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="Feedback_Success" xml:space="preserve">
+    <value>We're so happy to hear from you! Thank you for your valuable feedback.</value>
+  </data>
+  <data name="Feedback_NoInput" xml:space="preserve">
+    <value>Please share your thoughts or rate us</value>
+  </data>
+  <data name="Feedback_InvalidParams" xml:space="preserve">
+    <value>Invalid Params</value>
+  </data>
 </root>

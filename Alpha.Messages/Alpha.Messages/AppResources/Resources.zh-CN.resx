@@ -183,4 +183,43 @@
   <data name="MyWatchlist" xml:space="preserve">
     <value>我的监控指南</value>
   </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>反馈</value>
+  </data>
+  <data name="Feedback_Greeting" xml:space="preserve">
+    <value>我们很乐意听取您的意见。您认为我们做得如何？</value>
+  </data>
+  <data name="Feedback_Message" xml:space="preserve">
+    <value>您觉得哪些功能可以改进？或者觉得还缺少哪些功能？</value>
+  </data>
+  <data name="Feedback_MessageLimit" xml:space="preserve">
+    <value>您已达到4,000个文字的限制。</value>
+  </data>
+  <data name="Feedback_Rate" xml:space="preserve">
+    <value>请评价您的体验</value>
+  </data>
+  <data name="Terrible" xml:space="preserve">
+    <value>很差</value>
+  </data>
+  <data name="Bad" xml:space="preserve">
+    <value>较差</value>
+  </data>
+  <data name="Okay" xml:space="preserve">
+    <value>还行</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>很好</value>
+  </data>
+  <data name="Amazing" xml:space="preserve">
+    <value>非常好</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>稍后</value>
+  </data>
+  <data name="Feedback_Success" xml:space="preserve">
+    <value>我们很高兴收到您的反馈！谢谢您的宝贵意见。</value>
+  </data>
+  <data name="Feedback_NoInput" xml:space="preserve">
+    <value>欢迎留下您宝贵的建议与评分</value>
+  </data>
 </root>

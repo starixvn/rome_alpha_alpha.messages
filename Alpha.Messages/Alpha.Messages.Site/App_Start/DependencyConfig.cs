@@ -87,7 +87,7 @@
                     UserPermission.HasPermissionOnProduct),
                 Lifestyle.Singleton);
             container.RegisterSingleton<ResourceManager, SiteResourceManager>();
-
+            container.RegisterPerWebRequest<FeedbackService, FeedbackServiceImpl>();
         }
 
         private static void RegisterAnnouncementService(Container container)

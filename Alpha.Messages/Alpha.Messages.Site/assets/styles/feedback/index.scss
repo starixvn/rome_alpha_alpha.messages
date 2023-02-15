@@ -1,0 +1,104 @@
+﻿
+.div-greeting {
+    font-weight: bold;
+}
+
+.feedback-box, .feedback-result {
+    padding-top: 10px;
+    margin: 0;
+    top: 12px;
+}
+
+.feedback-msg {
+    margin: 10px 0px 10px 60px;
+    width: 600px;
+    resize: none;
+    height: 200px;
+    color: #000;
+    border: solid 2px #e5e5e5;
+}
+
+.rate-boxes {
+    padding: 10px;
+    margin: 10px 60px;
+    width: 600px;
+
+    .rate-box {
+        width: 93px;
+        background-color: #F7F7F7;
+        display: inline-block;
+        padding: 10px 0;
+        margin: 0 10px;
+        text-align: center;
+    }
+
+    .rate {
+        height: 50px;
+        width: 40px;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 24px;
+    }
+
+    .rate-1 {
+        background: url('images/angry.svg') no-repeat;
+
+        &:hover, &.active {
+            background: url('images/angry-active.svg') no-repeat;
+        }
+    }
+
+    .rate-2 {
+        background: url('images/sad.svg') no-repeat;
+
+        &:hover, &.active {
+            background: url('images/sad-active.svg') no-repeat;
+        }
+    }
+
+    .rate-3 {
+        background: url('images/normal.svg') no-repeat;
+
+        &:hover, &.active {
+            background: url('images/normal-active.svg') no-repeat;
+        }
+    }
+
+    .rate-4 {
+        background: url('images/good.svg') no-repeat;
+
+        &:hover, &.active {
+            background: url('images/good-active.svg') no-repeat;
+        }
+    }
+
+    .rate-5 {
+        background: url('images/amazing.svg') no-repeat;
+
+        &:hover, &.active {
+            background: url('images/amazing-active.svg') no-repeat;
+        }
+    }
+
+    .txt-rate {
+        width: 90px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.btn-box {
+    width: 668px;
+    text-align: right;
+}
+
+.btn-cancel {
+    background-color: #fff;
+    color: #0B599C;
+    border: solid 1px #0B599C;
+
+    &:hover, &:active, &:focus {
+        background-color: #fff;
+    }
+}
