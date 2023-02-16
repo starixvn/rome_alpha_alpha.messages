@@ -46,12 +46,15 @@ class Feedback {
 
     submitFeedback(): void {
         const self: any = this;
+
+        self.$.blockUI();
         self.feedback.message = $('.feedback-msg').val();
 
         if (self.feedback.message.length > self.messageLimit) {
             var text = self.$('#Feedback_MessageLimit').val();
             $('.message-limit').html(text);
             $('.message-limit').removeClass('hide');
+            self.$.unblockUI();
             return;
         }
 
@@ -60,6 +63,7 @@ class Feedback {
             var text = self.$('#Feedback_NoInput').val();
             $('.message-result').html(text);
             $('.message-result').removeClass('hide');
+            self.$.unblockUI();
             return;
         }
 
@@ -70,6 +74,7 @@ class Feedback {
             url: self.addFeedbackUrl,
             data: self.feedback,
             success: (result) => {
+                self.$.unblockUI();
                 if (result.ErrCode === 0) {
                     $('.feedback-box').addClass('hide');
                     $('.feedback-result').removeClass('hide');
