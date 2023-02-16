@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Messages.Site.Tests.Handlers
 {
     using System.Threading.Tasks;
+    using Alpha.Messages.AppResources;
     using Alpha.Messages.Params.Feedback;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Requests.Feedback;
@@ -27,6 +28,34 @@
         {
             handler = null;
             service = null;
+        }
+
+        [Test]
+        public async Task HandleCheckExistsFeedbackQuery_Always_ReturnsCheckResult()
+        {
+            // Arrange
+            var query = new CheckExistsFeedbackQuery();
+            var result = true;
+            service.CheckExistsAsync(Arg.Any<int>()).Returns(Task.FromResult(result));
+
+            // Act
+            var viewModel = await handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual(viewModel, result);
+        }
+
+        [Test]
+        public async Task HandleAddFeedbackQuery_IsInternal_ReturnsErrorResult()
+        {
+            // Arrange
+            var query = new AddFeedbackQuery { IsInternal = true };
+
+            // Act
+            var viewModel = await handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual(Resources.NotAuthorized, viewModel.ErrMsg);
         }
 
         [Test]

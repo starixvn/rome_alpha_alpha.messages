@@ -43,6 +43,25 @@
         }
 
         [Test]
+        public async Task CheckExist_Always_ReturnsCheckResult()
+        {
+            // Arrange
+            userSession.RoleId.Returns((byte)4);
+            userSession.SubAccId.Returns(1);
+
+            var query = new CheckExistsFeedbackQuery();
+            var result = true;
+
+            mediator.SendAsync(Arg.Any<CheckExistsFeedbackQuery>()).Returns(Task.FromResult(result));
+
+            // Act
+            var actualResult = await controller.CheckExist(query) as JsonResult;
+
+            // Assert
+            Assert.True(compareLogic.Compare(result, actualResult.Data).AreEqual);
+        }
+
+        [Test]
         public async Task Add_Always_ReturnsAddFeedbackResult()
         {
             // Arrange

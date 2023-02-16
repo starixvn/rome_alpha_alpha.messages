@@ -24,10 +24,20 @@
             return View("~/Views/Feedback/Index.cshtml");
         }
 
+        public async Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
+        {
+            query.CustId = userSession.CustId;
+
+            var model = await mediator.SendAsync(query);
+
+            return Json(model);
+        }
+
         public async Task<ActionResult> Add(AddFeedbackQuery query)
         {
             query.CustId = userSession.CustId;
             query.SubAccId = userSession.SubAccId;
+            query.IsInternal = userSession.IsInternal;
 
             var model = await mediator.SendAsync(query);
 

@@ -15,8 +15,10 @@
 
         public int SubAccId { get; set; }
 
+        public bool IsInternal { get; set; }
+
         public bool IsValid()
-            => Rate != 0 ||
-            (!string.IsNullOrWhiteSpace(Message) && Message.Length <= MaxMessageLength);
+            => !IsInternal &&
+            (Rate != 0 || (!string.IsNullOrWhiteSpace(Message) && Message.Length <= MaxMessageLength));
     }
 }

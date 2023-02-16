@@ -25,6 +25,19 @@
         }
 
         [Test]
+        public async Task CheckExistsAsync_Always_ReturnsData()
+        {
+            // Arrange
+            var expectedResult = false;
+
+            // Act
+            var actualResult = await service.CheckExistsAsync(0);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [Test]
         public async Task AddFeedbackAsync_Always_ReturnsResult()
         {
             // Arrange

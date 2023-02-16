@@ -217,6 +217,7 @@
     <Compile Include="Constants\MessageType.cs" />
     <Compile Include="Constants\SessionKey.cs" />
     <Compile Include="Criteria\Customer\GetCustomerInfoCriteria.cs" />
+    <Compile Include="Criteria\Feedback\CheckExistsCriteria.cs" />
     <Compile Include="Criteria\Feedback\AddFeedbackCriteria.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
     <Compile Include="Criteria\Message\MarkMessageAsReadCommand.cs" />

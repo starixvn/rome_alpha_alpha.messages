@@ -213,6 +213,7 @@
     <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteriaTests.cs" />
     <Compile Include="Criteria\Announcement\UpdateLastSeenAnnouncementCriteriaTests.cs" />
     <Compile Include="Criteria\Customer\GetCustomerInfoCriteriaTests.cs" />
+    <Compile Include="Criteria\Feedback\CheckExistsCriteriaTests.cs" />
     <Compile Include="Criteria\Feedback\AddFeedbackCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetPortalMessagesCriteriaTests.cs" />

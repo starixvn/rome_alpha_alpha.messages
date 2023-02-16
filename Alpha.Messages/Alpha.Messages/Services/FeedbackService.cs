@@ -8,6 +8,7 @@
 
     public interface FeedbackService
     {
+        Task<bool> CheckExistsAsync(int custId);
         Task<Result> AddFeedbackAsync(AddFeedbackParam param);
     }
 
@@ -18,6 +19,15 @@
         public FeedbackServiceImpl(IDynamicRepository dynamicRepository)
         {
             this.dynamicRepository = dynamicRepository;
+        }
+
+        public async Task<bool> CheckExistsAsync(int custId)
+        {
+            var criteria = new CheckExistsCriteria(custId);
+
+            await dynamicRepository.ExecuteAsync(criteria);
+
+            return criteria.IsExists;
         }
 
         public async Task<Result> AddFeedbackAsync(AddFeedbackParam param)

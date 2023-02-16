@@ -222,4 +222,7 @@
   <data name="Feedback_NoInput" xml:space="preserve">
     <value>โปรดทำการให้คะแนนหรือแสดงความคิดเห็นของท่าน</value>
   </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>คุณไม่มีอำนาจในการเข้าใช้งานฟังก์ชันนี้</value>
+  </data>
 </root>
