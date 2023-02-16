@@ -31,7 +31,7 @@
             var expectedResult = false;
 
             // Act
-            var actualResult = await service.CheckExistsAsync(0);
+            var actualResult = await service.CheckExistsAsync(0,0);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);

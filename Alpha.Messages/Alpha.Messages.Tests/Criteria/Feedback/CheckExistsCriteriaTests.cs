@@ -10,7 +10,7 @@
         public void IsValid_CustIdIsZero_ReturnFalse()
         {
             // Arrange
-            var criteria = new CheckExistsCriteria(0);
+            var criteria = new CheckExistsCriteria(0,0);
 
             // Act
             var actualValue = criteria.IsValid();
@@ -23,7 +23,7 @@
         public void IsValid_CustIdIsNegative_ReturnFalse()
         {
             // Arrange
-            var criteria = new CheckExistsCriteria(-1);
+            var criteria = new CheckExistsCriteria(-1, 0);
 
             // Act
             var actualValue = criteria.IsValid();
@@ -36,7 +36,7 @@
         public void IsValid_CustIdIsPositive_ReturnTrue()
         {
             // Arrange
-            var criteria = new CheckExistsCriteria(1);
+            var criteria = new CheckExistsCriteria(1, 0);
 
             // Act
             var actualValue = criteria.IsValid();

@@ -21,7 +21,7 @@
 
         public async Task<bool> Handle(CheckExistsFeedbackQuery message)
         {
-            return await service.CheckExistsAsync(message.CustId);
+            return await service.CheckExistsAsync(message.CustId, message.SubAccId);
         }
 
         public async Task<Result> Handle(AddFeedbackQuery message)

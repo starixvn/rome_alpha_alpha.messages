@@ -201,4 +201,43 @@
   <data name="NotAuthorized" xml:space="preserve">
     <value>Bạn không được cho phép sử dụng chức năng này.</value>
   </data>
+  <data name="Terrible" xml:space="preserve">
+    <value>Thất vọng</value>
+  </data>
+  <data name="Bad" xml:space="preserve">
+    <value>Chưa tốt</value>
+  </data>
+  <data name="Okay" xml:space="preserve">
+    <value>Bình thường</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Tốt</value>
+  </data>
+  <data name="Amazing" xml:space="preserve">
+    <value>Tuyệt vời</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Góp ý</value>
+  </data>
+  <data name="Feedback_Greeting" xml:space="preserve">
+    <value>Chúng tôi rất cần những ý kiến từ bạn</value>
+  </data>
+  <data name="Feedback_Message" xml:space="preserve">
+    <value>Theo bạn tính năng nào cần thay đổi? Tính năng nào chúng tôi chưa có?</value>
+  </data>
+  <data name="Feedback_MessageLimit" xml:space="preserve">
+    <value>Bạn đã đạt đến giới hạn 4,000 ký tự.</value>
+  </data>
+  <data name="Feedback_NoInput" xml:space="preserve">
+    <value>Xin chia sẻ cảm nhận và đánh giá mức độ hài lòng của bạn dành cho chúng tôi</value>
+  </data>
+  <data name="Feedback_Rate" xml:space="preserve">
+    <value>Đánh giá trải nghiệm của bạn</value>
+  </data>
+  <data name="Feedback_Success" xml:space="preserve">
+    <value>Cảm ơn những nhận xét quý giá của bạn.</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>Để sau</value>
+  </data>
 </root>

@@ -36,7 +36,7 @@
             // Arrange
             var query = new CheckExistsFeedbackQuery();
             var result = true;
-            service.CheckExistsAsync(Arg.Any<int>()).Returns(Task.FromResult(result));
+            service.CheckExistsAsync(Arg.Any<int>(), Arg.Any<int>()).Returns(Task.FromResult(result));
 
             // Act
             var viewModel = await handler.Handle(query);

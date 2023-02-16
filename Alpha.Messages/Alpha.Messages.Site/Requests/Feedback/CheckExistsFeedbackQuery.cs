@@ -5,5 +5,6 @@
     public class CheckExistsFeedbackQuery : IAsyncRequest<bool>
     {
         public int CustId { get; set; }
+        public int SubAccId { get; set; }
     }
 }

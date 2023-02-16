@@ -19,6 +19,7 @@ class Feedback {
     }
 
     init(): void {
+        $('.feedback-msg').focus();
         this.bindEvents();
     }
 

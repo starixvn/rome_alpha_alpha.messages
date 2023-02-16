@@ -27,6 +27,7 @@
         public async Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
         {
             query.CustId = userSession.CustId;
+            query.SubAccId = userSession.SubAccId;
 
             var model = await mediator.SendAsync(query);
 

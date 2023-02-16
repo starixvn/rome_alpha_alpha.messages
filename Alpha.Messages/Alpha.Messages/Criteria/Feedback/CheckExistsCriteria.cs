@@ -4,12 +4,15 @@ namespace Alpha.Messages.Criteria.Feedback
 {
     public class CheckExistsCriteria : NonQueryCommand
     {
-        public CheckExistsCriteria(int custId)
+        public CheckExistsCriteria(int custId, int subAccId)
         {
             CustId = custId;
+            SubAccId = subAccId;
         }
 
         public int CustId { get; }
+
+        public int SubAccId { get; }
 
         public bool IsExists { get; set; }
 
