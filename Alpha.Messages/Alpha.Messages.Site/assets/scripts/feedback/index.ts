@@ -50,15 +50,15 @@ class Feedback {
         self.$.blockUI();
         self.feedback.message = $('.feedback-msg').val();
 
+        $('.message-limit').addClass('hide');
+        $('.message-result').addClass('hide');
+
         if (self.feedback.message.length > self.messageLimit) {
-            var text = self.$('#Feedback_MessageLimit').val();
-            $('.message-limit').html(text);
             $('.message-limit').removeClass('hide');
             self.$.unblockUI();
             return;
         }
 
-        $('.message-limit').addClass('hide');
         if (self.feedback.message.length === 0 && self.feedback.rate === 0) {
             var text = self.$('#Feedback_NoInput').val();
             $('.message-result').html(text);
@@ -66,8 +66,6 @@ class Feedback {
             self.$.unblockUI();
             return;
         }
-
-        $('.message-result').addClass('hide');
 
         $.ajax({
             type: "POST",
