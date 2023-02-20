@@ -4,6 +4,7 @@
     using System.Web.Mvc;
     using Alpha.Messages.Site.Requests.Feedback;
     using Alpha.Web;
+    using Alpha.Web.Filters;
     using MediatR;
     using Sunplus.Agent.Model.Entities;
 
@@ -18,12 +19,13 @@
             this.userSession = userSession;
         }
 
-        [HttpGet]
+        [HttpGet, AllowProtectedMode]
         public ViewResult Index()
         {
             return View("~/Views/Feedback/Index.cshtml");
         }
 
+        [AllowProtectedMode]
         public async Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
         {
             query.CustId = userSession.CustId;
@@ -34,6 +36,7 @@
             return Json(model);
         }
 
+        [AllowProtectedMode]
         public async Task<ActionResult> Add(AddFeedbackQuery query)
         {
             query.CustId = userSession.CustId;
