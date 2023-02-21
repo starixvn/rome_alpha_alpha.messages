@@ -44,6 +44,12 @@
       "assets/styles/message/message-mobile-calculate-07.css"
     ]
   },
+  {
+    "outputFileName": "assets/bundles/feedback/feedback-mobile-calculate-07.css",
+    "inputFiles": [
+      "assets/styles/feedback/feedback-mobile-calculate-07.css"
+    ]
+  },
   /************************** Dark Mode ************************/
   {
     "outputFileName": "assets/bundles/extendMessage-dark.css",
@@ -68,6 +74,31 @@
     "outputFileName": "assets/bundles/home-mobile-calculate-07-dark.css",
     "inputFiles": [
       "assets/styles/message/message-mobile-calculate-07-dark.css"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/feedback/index.css",
+    "inputFiles": [
+      "Assets/styles/feedback/index.css"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/feedback/index-dark.css",
+    "inputFiles": [
+      "Assets/styles/feedback/index-dark.css"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/feedback/index.js",
+    "inputFiles": [
+      "Assets/scripts/core.js",
+      "Assets/scripts/feedback/index.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/bundles/feedback/feedback-mobile-calculate-07-dark.css",
+    "inputFiles": [
+      "assets/styles/feedback/feedback-mobile-calculate-07-dark.css"
     ]
   }
 ]

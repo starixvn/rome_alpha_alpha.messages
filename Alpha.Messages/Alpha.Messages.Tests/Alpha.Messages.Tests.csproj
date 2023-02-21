@@ -213,6 +213,8 @@
     <Compile Include="Criteria\Announcement\GetLastSeenAnnouncementCriteriaTests.cs" />
     <Compile Include="Criteria\Announcement\UpdateLastSeenAnnouncementCriteriaTests.cs" />
     <Compile Include="Criteria\Customer\GetCustomerInfoCriteriaTests.cs" />
+    <Compile Include="Criteria\Feedback\CheckExistsCriteriaTests.cs" />
+    <Compile Include="Criteria\Feedback\AddFeedbackCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetPortalMessagesCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetUnreadMessageCriteriaTest.cs" />
@@ -253,6 +255,7 @@
     <Compile Include="Services\MessageHistoryServiceTests.cs" />
     <Compile Include="Services\NewMessageServiceTests.cs" />
     <Compile Include="Services\PortalMessageServiceTests.cs" />
+    <Compile Include="Services\FeedbackServiceImplTests.cs" />
     <Compile Include="Services\ProductServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>

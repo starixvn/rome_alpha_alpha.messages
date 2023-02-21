@@ -30,5 +30,21 @@
   {
     "outputFile": "assets/styles/extendMessage-dark.css",
     "inputFile": "assets/styles/extendMessage-dark.scss"
+  },
+  {
+    "outputFile": "Assets/styles/feedback/index.css",
+    "inputFile": "Assets/styles/feedback/index.scss"
+  },
+  {
+    "outputFile": "Assets/styles/feedback/index-dark.css",
+    "inputFile": "Assets/styles/feedback/index-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/feedback/feedback-mobile-calculate-07.css",
+    "inputFile": "assets/styles/feedback/feedback-mobile-calculate-07.scss"
+  },
+  {
+    "outputFile": "assets/styles/feedback/feedback-mobile-calculate-07-dark.css",
+    "inputFile": "assets/styles/feedback/feedback-mobile-calculate-07-dark.scss"
   }
 ]

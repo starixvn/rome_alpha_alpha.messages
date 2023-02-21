@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
     <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -316,10 +316,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBTXN.BODB02.xml" />
+    <Content Include="App_Data\SPNames\INTERNAL\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml">
       <SubType>Designer</SubType>
@@ -327,16 +329,19 @@
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\MNL\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\MNL\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\MNL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\MNL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\PRO\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\PRO\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\PRO\DBMSG.bodb_Message.xml">
       <SubType>Designer</SubType>
@@ -344,11 +349,13 @@
     <Content Include="App_Data\SPNames\PRO\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\PRO\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\SIT\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\SIT\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\SIT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\SIT\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\SIT\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
+    <Content Include="App_Data\SPNames\UAT\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\UAT\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\UAT\DBMSG.bodb_Message.xml">
       <SubType>Designer</SubType>
@@ -373,6 +380,26 @@
     <Content Include="assets\bundles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
     </Content>
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07-dark.css" />
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07-dark.min.css">
+      <DependentUpon>feedback-mobile-calculate-07-dark.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07.css" />
+    <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07.min.css">
+      <DependentUpon>feedback-mobile-calculate-07.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\index-dark.css" />
+    <Content Include="assets\bundles\feedback\index-dark.min.css">
+      <DependentUpon>index-dark.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\index.css" />
+    <Content Include="assets\bundles\feedback\index.js" />
+    <Content Include="assets\bundles\feedback\index.min.css">
+      <DependentUpon>index.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\home-mobile-calculate-07-dark.css" />
     <Content Include="assets\bundles\home-mobile-calculate-07-dark.min.css">
       <DependentUpon>home-mobile-calculate-07-dark.css</DependentUpon>
@@ -395,6 +422,12 @@
     <Content Include="assets\bundles\popup.min.js">
       <DependentUpon>popup.js</DependentUpon>
     </Content>
+    <Content Include="assets\scripts\feedback\index.js">
+      <DependentUpon>index.ts</DependentUpon>
+    </Content>
+    <Content Include="assets\scripts\feedback\index.js.map">
+      <DependentUpon>index.ts</DependentUpon>
+    </Content>
     <Content Include="assets\scripts\tests\libs\bootstrap-datetimepicker.js" />
     <Content Include="assets\scripts\tests\libs\bootstrap-modal.js" />
     <Content Include="assets\scripts\tests\libs\datepicker.js" />
@@ -416,6 +449,28 @@
     </Content>
     <Content Include="assets\styles\extendMessage.min.css">
       <DependentUpon>extendMessage.css</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\feedback\images\amazing-active.svg" />
+    <Content Include="assets\styles\feedback\images\amazing.svg" />
+    <Content Include="assets\styles\feedback\images\angry-active.svg" />
+    <Content Include="assets\styles\feedback\images\angry.svg" />
+    <Content Include="assets\styles\feedback\images\good-active.svg" />
+    <Content Include="assets\styles\feedback\images\good.svg" />
+    <Content Include="assets\styles\feedback\images\normal-active.svg" />
+    <Content Include="assets\styles\feedback\images\normal.svg" />
+    <Content Include="assets\styles\feedback\images\sad-active.svg" />
+    <Content Include="assets\styles\feedback\images\sad.svg" />
+    <Content Include="assets\styles\feedback\index-dark.css">
+      <DependentUpon>index-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\feedback\index-dark.min.css">
+      <DependentUpon>index-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\feedback\index.css">
+      <DependentUpon>index.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\feedback\index.min.css">
+      <DependentUpon>index.scss</DependentUpon>
     </Content>
     <Content Include="assets\styles\Home\Images\flag_sprite.png" />
     <Content Include="assets\styles\Home\Images\icon_close.jpg" />
@@ -473,7 +528,6 @@
     <Content Include="deployment.ignore" />
     <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
     <Content Include="Alpha.Messages.Site.ruleset" />
-    <Content Include="Views\MessageHistory\Index.cshtml" />
     <Content Include="assets\styles\message\message.scss" />
     <Content Include="typings\globals\bootstrap\typings.json" />
     <Content Include="typings\globals\hammerjs\typings.json" />
@@ -877,12 +931,14 @@
     <Compile Include="Controllers\MarqueeMessageController.cs" />
     <Compile Include="Controllers\MessageHistoryController.cs" />
     <Compile Include="Controllers\SiteBaseController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\StaticMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\FeedbackHandler.cs" />
     <Compile Include="Handlers\PopupAnnouncementHandler.cs" />
     <Compile Include="Handlers\NewMessageHandler.cs" />
     <Compile Include="Handlers\AnnouncementHandler.cs" />
@@ -894,6 +950,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\Announcement\AnnouncementsHistoryQuery.cs" />
+    <Compile Include="Requests\Feedback\CheckExistsFeedbackQuery.cs" />
+    <Compile Include="Requests\Feedback\AddFeedbackQuery.cs" />
     <Compile Include="Requests\MarqueeMessage\MoveBetMessageQuery.cs" />
     <Compile Include="Requests\MessageHistoryBaseRequest.cs" />
     <Compile Include="Requests\NewMessage\NumberOfNewMessageQuery.cs" />
@@ -927,6 +985,10 @@
     <Content Include="assets\styles\message\message-mobile-calculate-07-dark.scss" />
     <Content Include="assets\styles\popup\index-dark.scss" />
     <Content Include="assets\styles\extendMessage-dark.scss" />
+    <Content Include="assets\styles\feedback\index-dark.scss" />
+    <Content Include="assets\styles\feedback\index.scss" />
+    <Content Include="assets\styles\feedback\feedback-mobile-calculate-07-dark.scss" />
+    <Content Include="assets\styles\feedback\feedback-mobile-calculate-07.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -968,7 +1030,7 @@
     <Content Include="Views\StaticMessage\167819.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\173861.cshtml" />
     <Content Include="Views\StaticMessage\179067.Agent.en-US.pdf">
-	  <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Agent.th-TH.pdf">
       <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
@@ -983,33 +1045,35 @@
       <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Master.en-US.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Master.th-TH.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Master.vi-VN.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Master.zh-CN.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Master.zh-TW.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\179067.Super.th-TH.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Super.vi-VN.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Super.zh-CN.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179067.Super.zh-TW.pdf">
-		<DependentUpon>179067.Super.en-US.pdf</DependentUpon>
+      <DependentUpon>179067.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\MessageHistory\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1074,6 +1138,7 @@
     <TypeScriptCompile Include="assets\scripts\announcement\index.ts" />
     <TypeScriptCompile Include="assets\scripts\components\daterangepicker.ts" />
     <TypeScriptCompile Include="assets\scripts\core.ts" />
+    <TypeScriptCompile Include="assets\scripts\feedback\index.ts" />
     <TypeScriptCompile Include="assets\scripts\message\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\hammerjs\index.d.ts" />
