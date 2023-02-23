@@ -1,6 +1,8 @@
 ﻿@using Newtonsoft.Json;
 @using Alpha.Messages.Configurations;
 @{
+    /**/
+
     Layout = null;
 }
 
@@ -71,6 +73,7 @@
     @Html.Hidden("copied", Resources.Copied)
     @Html.Hidden("inUse", Resources.InUse)
     @Html.Hidden("domain", Resources.Domain)
+    @Html.Hidden("loading", Resources.Loading)
     @Html.Hidden("speedTestPath", "/assets/styles/images/crossword.png")
     @Html.Hidden("site-main", AppSettings.GetConfigValue("MainAppPath"))
     <textarea id="area-copy-domain" class="hide area-copy-domain"></textarea>

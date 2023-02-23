@@ -270,4 +270,10 @@
   <data name="Status" xml:space="preserve">
     <value>Trạng Thái</value>
   </data>
+  <data name="No_Duplicate[1]" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Đang tải </value>
+  </data>
 </root>

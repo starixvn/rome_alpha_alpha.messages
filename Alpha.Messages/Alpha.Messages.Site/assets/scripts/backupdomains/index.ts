@@ -12,9 +12,9 @@ class BackupDomainsView {
 
     needSorting = true;
     iDomain = 0;
-    isCalculating = false;
     timeout = 20000;
-    downloadTimes = 5;
+    downloadTimes = 1;
+    loadedItems = 0;
 
     constructor($: JQueryStatic, clipboard: any) {
         this.$ = $;
@@ -26,16 +26,11 @@ class BackupDomainsView {
 
         this.bindCopyDomain();
         this.$('.icon-refresh').click(() => {
-            this.$.blockUI();
             this.refreshStatus();
         });
 
-        this.isCalculating = true;
-        this.calculateNextSpeed();
-
-        setInterval(() => {
-            if (!this.isCalculating) { this.refreshStatus(); }
-        }, 6000);
+        this.loadedItems = 0;
+        this.calculateSpeeds();
     };
 
     cacheElements = () => {
@@ -43,66 +38,65 @@ class BackupDomainsView {
         this.speedTestPath = this.$('#speedTestPath').val();
 
         this.domains = JSON.parse(this.$('#Domains').val());
+
         for (var i = 0; i < this.domains.length; i++) {
             var d = this.domains[i];
             d.InUse = this.isInUse(d);
+            d.Name = this.$('#domain').val() + " " + (i + 1);
         }
     };
 
-    calculateNextSpeed = () => {
-        if (this.iDomain === this.domains.length) {
-            this.renderDomains();
-            return;
+    calculateSpeeds = () => {
+        for (var i = 0; i < this.domains.length; i++) {
+            var d = this.domains[i];
+            d.Speed = 0;
+            this.calculateTotalSpeed(d.Domain, i);
         }
-
-        var d = this.domains[this.iDomain];
-
-        this.calculateArgSpeed(0, d.Domain, 0, (speed) => {
-            if (speed < 0) {
-                d.Error = true;
-            }
-
-            d.Speed = speed;
-            this.iDomain++;
-            this.calculateNextSpeed();
-        });
     };
 
-    calculateArgSpeed = (index, url, speed, callback) => {
-        if (index === this.downloadTimes) {
-            callback(speed / this.downloadTimes);
-            return;
+    calculateTotalSpeed = (domain, i) => {
+        for (var seq = 0; seq < this.downloadTimes; seq++) {
+            this.sumSpeeds(domain, i, seq);
         }
+    };
 
+    sumSpeeds = (domain, i, seq) => {
         var startTime = (new Date()).getTime();
         var download = new Image();
+        var d = this.domains[i];
+
         download.onload = () => {
             var endTime = (new Date()).getTime();
-            speed += endTime - startTime;
-            this.calculateArgSpeed(index + 1, url, speed, callback);
+            d.Speed = d.Speed == -1 ? d.Speed + endTime - startTime : d.Speed;
+
+            this.completeCheckSeq(d);
         };
 
         download.onerror = (ev: ErrorEvent) => {
-            callback(-1);
+            d.Error = true;
+            d.Speed = -1;
+            this.completeCheckSeq(d);
         };
 
         startTime = (new Date()).getTime();
-        download.src = 'http://' + url + this.speedTestPath + "?v=" + startTime;
+        download.src = 'http://' + domain + this.speedTestPath + "?v=" + startTime;
+    };
+
+    completeCheckSeq = (d) => {
+        this.loadedItems++;
+
+        if (this.loadedItems === this.downloadTimes * this.domains.length) {
+            this.renderDomains();
+            this.loadedItems = 0;
+
+            setTimeout(() => {
+                if (this.loadedItems === 0) { this.refreshStatus(); }
+            }, 60000);
+        }
     };
 
     renderDomains = () => {
-        if (this.domains.length === 0) {
-            this.$tableReport.removeClass('hide');
-            this.$.unblockUI();
-            return;
-        }
-
         this.domains.sort(this.sortDomains);
-
-        if (!this.domains.some(d => d.OldSpeed !== d.Speed)) {
-            this.$.unblockUI();
-            return;
-        }
 
         var html = '';
         for (var i = 0; i < this.domains.length; i++) {
@@ -114,10 +108,10 @@ class BackupDomainsView {
             html += `<tr data-domain="` + d.Domain + `">
                         <td class="center">` + (i + 1) + `</td>
                         <td class="center">`+
-                `<input type="text" class="form-control txt-domain lnk" id="domain-` + i + `" autocomplete="off" readonly value="` + this.$('#domain').val() + ' ' + (i + 1) + `" data-url="` + d.Domain + `" data-isdown="` + (d.Error ? 1 : 0) + `" />` +
+                `<input type="text" class="form-control txt-domain lnk" id="domain-` + i + `" autocomplete="off" readonly value="` + d.Name + `" data-url="` + d.Domain + `" data-isdown="` + (d.Error ? 1 : 0) + `" />` +
                 (isInUse ? '<span class="icon icon-check" title="' + this.$('#inUse').val() + '" data-original-title="' + this.$('#inUse').val() + '"></span>' : padding) +
                 `</td>
-                        <td class="center status-`+ status + `">` + this.$('#' + status).val() + `</td>
+                        <td class="center status-col status-`+ status + `">` + this.$('#' + status).val() + `</td>
                         <td class="center"><div class="icon icon-content-copy icon-content-copy-`+ i + `" data-clipboard-action="copy" data-clipboard-target="#domain-` + i + `" title="` + this.$('#copyDomain').val() + `"></div></td>
                      </tr>`;
 
@@ -138,8 +132,6 @@ class BackupDomainsView {
         this.$('.icon-check').mouseleave(function () { self.$(this).tooltip('hide'); });
 
         this.$tableReport.removeClass('hide');
-        this.isCalculating = false;
-        this.$.unblockUI();
     };
 
     bindCopyDomain = () => {
@@ -179,8 +171,8 @@ class BackupDomainsView {
 
     refreshStatus = () => {
         this.iDomain = 0;
-        this.isCalculating = true;
-        this.calculateNextSpeed();
+        this.$('.status-col').html(this.$('#loading').val() + '...');
+        this.calculateSpeeds();
     };
 
     sortDomains = (a, b) => {
