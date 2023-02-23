@@ -11,7 +11,6 @@ class BackupDomainsView {
     domains = [];
 
     needSorting = true;
-    iDomain = 0;
     timeout = 20000;
     downloadTimes = 1;
     loadedItems = 0;
@@ -170,7 +169,7 @@ class BackupDomainsView {
     };
 
     refreshStatus = () => {
-        this.iDomain = 0;
+        this.loadedItems = 0;
         this.$('.status-col').html(this.$('#loading').val() + '...');
         this.calculateSpeeds();
     };

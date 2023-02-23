@@ -50,7 +50,7 @@
 
                     <tr data-domain="@d.Domain">
                         <td class="center">@(i + 1)</td>
-                        <td class="center"><a href="@d.Domain" target="_blank">@Resources.Domain @(i + 1)</a></td>
+                        <td class="center"><a href="@("http://" + d.Domain)" target="_blank">@Resources.Domain @(i + 1)</a></td>
                         <td class="center">@Resources.Loading...</td>
                         <td class="center"><div class="icon icon-content-copy icon-content-copy-@i" title="@Resources.CopyDomain"></div></td>
                     </tr>
