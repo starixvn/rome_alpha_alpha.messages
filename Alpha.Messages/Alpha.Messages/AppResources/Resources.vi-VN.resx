@@ -240,4 +240,7 @@
   <data name="Later" xml:space="preserve">
     <value>Để sau</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>Số</value>
+  </data>
 </root>

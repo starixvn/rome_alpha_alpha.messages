@@ -248,6 +248,7 @@
     <Compile Include="Models\Message\PortalMessageTests.cs" />
     <Compile Include="Models\Product\ProductTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BackupDomainsServiceServiceTest.cs" />
     <Compile Include="Services\AnnouncementFormatServiceTest.cs" />
     <Compile Include="Services\AnnouncementServiceTest.cs" />
     <Compile Include="Services\CustomerServiceImplTests.cs" />

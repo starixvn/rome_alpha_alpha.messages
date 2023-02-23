@@ -225,4 +225,7 @@
   <data name="NotAuthorized" xml:space="preserve">
     <value>您沒有使用此功能的權限</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>編號</value>
+  </data>
 </root>

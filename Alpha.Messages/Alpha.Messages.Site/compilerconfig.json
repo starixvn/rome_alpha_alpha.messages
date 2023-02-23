@@ -46,5 +46,13 @@
   {
     "outputFile": "assets/styles/feedback/feedback-mobile-calculate-07-dark.css",
     "inputFile": "assets/styles/feedback/feedback-mobile-calculate-07-dark.scss"
+  },
+  {
+    "outputFile": "assets/styles/backupdomains/backupdomains.css",
+    "inputFile": "assets/styles/backupdomains/backupdomains.scss"
+  },
+  {
+    "outputFile": "assets/styles/backupdomains/backupdomains-dark.css",
+    "inputFile": "assets/styles/backupdomains/backupdomains-dark.scss"
   }
 ]

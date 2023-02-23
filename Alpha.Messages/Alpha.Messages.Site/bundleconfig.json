@@ -100,5 +100,24 @@
     "inputFiles": [
       "assets/styles/feedback/feedback-mobile-calculate-07-dark.css"
     ]
+  },
+  {
+    "outputFileName": "assets/bundles/backupdomains/backupdomains.css",
+    "inputFiles": [
+      "assets/styles/backupdomains/backupdomains.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/bundles/backupdomains/backupdomains-dark.css",
+    "inputFiles": [
+      "assets/styles/backupdomains/backupdomains-dark.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/bundles/backupdomains/backupdomains.js",
+    "inputFiles": [
+      "assets/scripts/core.js",
+      "assets/scripts/backupdomains/index.js"
+    ]
   }
 ]

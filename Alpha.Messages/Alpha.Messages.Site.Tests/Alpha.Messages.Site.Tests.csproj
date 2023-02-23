@@ -206,6 +206,7 @@
   <ItemGroup>
     <Compile Include="Constants\CustId.cs" />
     <Compile Include="Constants\RoleId.cs" />
+    <Compile Include="Controllers\BackupDomainsControllerTest.cs" />
     <Compile Include="Controllers\FeedbackControllerTests.cs" />
     <Compile Include="Controllers\NewMessageControllerTests.cs" />
     <Compile Include="Controllers\MarqueeMessageControllerTests.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Controllers\StaticMessageControllerTests.cs" />
     <Compile Include="Fixtures\UserSessionFixture.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\BackupDomainsHandlerTest.cs" />
     <Compile Include="Handlers\FeedbackHandlerTests.cs" />
     <Compile Include="Handlers\PopupAnnouncementHandlerTest.cs" />
     <Compile Include="Handlers\NewMessageHandlerTests.cs" />
