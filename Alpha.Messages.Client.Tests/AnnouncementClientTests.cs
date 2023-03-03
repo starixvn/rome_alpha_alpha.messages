@@ -42,7 +42,7 @@
         public void GetAnnouncementsHistory_Always_CallApi()
         {
             //// Arrange
-            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now, "Local", "IBCBet");
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now, "Local", "Nova88");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse());
 
             //// Act
@@ -56,7 +56,7 @@
         public void GetAnnouncementsHistory_ApiError_ReturnEmptyList()
         {
             //// Arrange
-            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "IBCBet");
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "Nova88");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse() { StatusCode = HttpStatusCode.BadRequest });
 
             //// Act
@@ -70,7 +70,7 @@
         public void GetAnnouncementsHistory_ApiOK_NotThrowException()
         {
             //// Arrange
-            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "IBCBet");
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "Nova88");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(
                 new RestResponse
                 {

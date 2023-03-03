@@ -23,7 +23,7 @@ namespace Alpha.Messages.Site.Controllers
         public async Task<ActionResult> Index(BackupDomainsQuery message)
         {
             var roleId = userSession.RoleId;
-            message.SiteLabel = AppSettings.GetConfigValue("SiteGroup");
+            message.SiteLabel = AppSettings.GetConfigValue("SiteLabel");
 
             var domains = await mediator.SendAsync(message);
 
