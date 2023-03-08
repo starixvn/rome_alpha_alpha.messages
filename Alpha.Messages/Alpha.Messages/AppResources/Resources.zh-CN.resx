@@ -232,7 +232,7 @@
     <value>后备域名</value>
   </data>
   <data name="CopyDomain" xml:space="preserve">
-    <value>复制域名</value>
+    <value>复制</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>域名</value>
@@ -254,6 +254,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>复制！</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>载入中</value>

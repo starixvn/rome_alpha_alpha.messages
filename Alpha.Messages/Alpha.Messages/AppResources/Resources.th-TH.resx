@@ -232,7 +232,7 @@
     <value>โดเมนสำรอง</value>
   </data>
   <data name="CopyDomain" xml:space="preserve">
-    <value>คัดลอกโดเมน</value>
+    <value>สำเนา</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>โดเมน</value>
@@ -254,6 +254,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>คัดลอกเรียบร้อยแล้ว</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>กำลังโหลด</value>

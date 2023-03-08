@@ -115,7 +115,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy Domain.
+        ///   Looks up a localized string similar to Copy.
         /// </summary>
         public static string CopyDomain {
             get {
