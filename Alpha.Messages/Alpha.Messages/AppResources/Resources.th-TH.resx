@@ -228,4 +228,31 @@
   <data name="No" xml:space="preserve">
     <value> ลำดับที่</value>
   </data>
+  <data name="BackupDomains" xml:space="preserve">
+    <value>โดเมนสำรอง</value>
+  </data>
+  <data name="CopyDomain" xml:space="preserve">
+    <value>คัดลอกโดเมน</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>โดเมน</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>ขัดข้อง</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>กำลังใช้งาน</value>
+  </data>
+  <data name="normal2" xml:space="preserve">
+    <value>ปกติ</value>
+  </data>
+  <data name="VeryGood" xml:space="preserve">
+    <value>ดีเยี่ยม</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>รีเฟรช</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
 </root>

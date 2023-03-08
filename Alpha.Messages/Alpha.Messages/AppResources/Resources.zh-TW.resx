@@ -228,4 +228,31 @@
   <data name="No" xml:space="preserve">
     <value>編號</value>
   </data>
+  <data name="BackupDomains" xml:space="preserve">
+    <value>後備域名</value>
+  </data>
+  <data name="CopyDomain" xml:space="preserve">
+    <value>複製域名</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>域名</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>中斷</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>正在使用</value>
+  </data>
+  <data name="normal2" xml:space="preserve">
+    <value>普通</value>
+  </data>
+  <data name="VeryGood" xml:space="preserve">
+    <value>很好</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>狀態</value>
+  </data>
 </root>
