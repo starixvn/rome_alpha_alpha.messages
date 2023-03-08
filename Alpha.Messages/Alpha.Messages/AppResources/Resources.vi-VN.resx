@@ -202,7 +202,7 @@
     <value>Thất vọng</value>
   </data>
   <data name="Bad" xml:space="preserve">
-    <value>Chưa tốt</value>
+    <value>Chậm</value>
   </data>
   <data name="Okay" xml:space="preserve">
     <value>Bình thường</value>
@@ -271,7 +271,7 @@
     <value>Trạng Thái</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Đã lưu!</value>
+    <value>Đã sao chép</value>
   </data>
   <data name="No_Duplicate[1]" xml:space="preserve">
     <value>Số</value>
@@ -279,10 +279,10 @@
   <data name="Loading" xml:space="preserve">
     <value>Đang tải </value>
   </data>
-  <data name="No_Duplicate[1]" xml:space="preserve">
+  <data name="No_Duplicate[1]_Duplicate[1]" xml:space="preserve">
     <value>Số</value>
   </data>
-  <data name="Loading" xml:space="preserve">
+  <data name="Loading_Duplicate[1]" xml:space="preserve">
     <value>Đang tải </value>
   </data>
 </root>
