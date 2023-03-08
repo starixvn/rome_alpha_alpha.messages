@@ -41,7 +41,6 @@ class BackupDomainsView {
         for (var i = 0; i < this.domains.length; i++) {
             var d = this.domains[i];
             d.InUse = this.isInUse(d);
-            d.Name = this.$('#domain').val() + " " + (i + 1);
         }
     };
 
@@ -107,7 +106,7 @@ class BackupDomainsView {
             html += `<tr data-domain="` + d.Domain + `">
                         <td class="center">` + (i + 1) + `</td>
                         <td class="center">`+
-                `<input type="text" class="form-control txt-domain lnk" id="domain-` + i + `" autocomplete="off" readonly value="` + d.Name + `" data-url="` + d.Domain + `" data-isdown="` + (d.Error ? 1 : 0) + `" />` +
+                `<input type="text" class="form-control txt-domain lnk" id="domain-` + i + `" autocomplete="off" readonly value="` + d.Alias + `" data-url="` + d.Domain + `" data-isdown="` + (d.Error ? 1 : 0) + `" />` +
                 (isInUse ? '<span class="icon icon-check" title="' + this.$('#inUse').val() + '" data-original-title="' + this.$('#inUse').val() + '"></span>' : padding) +
                 `</td>
                         <td class="center status-col status-`+ status + `">` + this.$('#' + status).val() + `</td>
