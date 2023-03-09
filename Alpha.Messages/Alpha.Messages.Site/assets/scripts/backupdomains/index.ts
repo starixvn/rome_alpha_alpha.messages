@@ -79,7 +79,7 @@ class BackupDomainsView {
         };
 
         startTime = (new Date()).getTime();
-        download.src = 'http://' + domain + this.speedTestPath + "?v=" + startTime;
+        download.src = '//' + domain + this.speedTestPath + "?v=" + startTime;
     };
 
     completeCheckSeq = (d) => {
@@ -130,7 +130,7 @@ class BackupDomainsView {
             var isDown = self.$(this).data('isdown');
             var d = self.$(this).data('url');
 
-            window.open('http://' + d);
+            window.open('//' + d);
         });
 
         this.bindCopyDomain();
