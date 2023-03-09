@@ -10,11 +10,13 @@
     {
         private readonly IUserSession userSession;
         private readonly ProductService productService;
+        private readonly CustomerService customerService;
 
-        public SpecificationParameter(IUserSession userSession, ProductService productService)
+        public SpecificationParameter(IUserSession userSession, ProductService productService, CustomerService customerService)
         {
             this.userSession = userSession;
             this.productService = productService;
+            this.customerService = customerService;
         }
 
         public int AdminId => userSession.AdminId;
@@ -54,6 +56,7 @@
         public IEnumerable<byte> OfferedProductIds
             => productService.GetOfferedProductsByCustomer(UserId).Select(i => (byte)i.Id);
 
-        public bool EnableYesterdayTransfer => userSession.IsAllDayBalTransfer;
+        public bool EnableYesterdayTransfer
+            => customerService.IsAllDayBalanceTransfer(userSession.CustId);
     }
 }
