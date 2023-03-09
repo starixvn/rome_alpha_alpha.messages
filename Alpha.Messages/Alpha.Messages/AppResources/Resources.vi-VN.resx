@@ -192,9 +192,6 @@
   <data name="system" xml:space="preserve">
     <value>Hệ thống</value>
   </data>
-  <data name="normal" xml:space="preserve">
-    <value>Chung</value>
-  </data>
   <data name="TelegramChatbot" xml:space="preserve">
     <value>Hướng dẫn sử dụng Telegram Chatbot</value>
   </data>
@@ -205,13 +202,13 @@
     <value>Thất vọng</value>
   </data>
   <data name="Bad" xml:space="preserve">
-    <value>Chưa tốt</value>
+    <value>Chậm</value>
   </data>
   <data name="Okay" xml:space="preserve">
     <value>Bình thường</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>Tốt</value>
+    <value>Nhanh</value>
   </data>
   <data name="Amazing" xml:space="preserve">
     <value>Tuyệt vời</value>
@@ -239,5 +236,53 @@
   </data>
   <data name="Later" xml:space="preserve">
     <value>Để sau</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="BackupDomains" xml:space="preserve">
+    <value>Tên Miền Dự Phòng</value>
+  </data>
+  <data name="CopyDomain" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Tên Miền</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>Tạm dừng</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>Đang dùng</value>
+  </data>
+  <data name="normal2" xml:space="preserve">
+    <value>Bình thường</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="VeryGood" xml:space="preserve">
+    <value>Rất nhanh</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Trạng Thái</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Đã sao chép</value>
+  </data>
+  <data name="No_Duplicate[1]" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Đang tải </value>
+  </data>
+  <data name="No_Duplicate[1]_Duplicate[1]" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="Loading_Duplicate[1]" xml:space="preserve">
+    <value>Đang tải </value>
   </data>
 </root>

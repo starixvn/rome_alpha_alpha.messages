@@ -1,0 +1,82 @@
+﻿body {
+  background-color: transparent;
+}
+
+
+#tbl-report {
+  margin-top: 15px;
+  width: 360px;
+}
+
+.icon-refresh {
+  cursor: pointer;
+}
+
+.col-no {
+  width: 60px;
+}
+
+.col-domain {
+  width: 160px;
+}
+
+.col-status {
+  width: 120px;
+}
+
+.col-copy-domain {
+  width: 100px;
+}
+
+.domain-url {
+  text-decoration: underline;
+}
+
+.status-very-good {
+  color: #14A42C;
+}
+
+.status-good {
+  color: #92D050;
+}
+
+.status-normal {
+  color: #C65911;
+}
+
+.status-bad {
+  color: #FF3A90;
+}
+
+.status-down {
+  color: #fff;
+}
+
+.div-icon {
+  width: 20px;
+  display: inline-block;
+}
+
+.area-copy-domain {
+  width: 0;
+  height: 0;
+  resize: none;
+}
+
+input[type="text"].txt-domain {
+  display: inline-block;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  width: 80px;
+
+  &.lnk {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #337ab7;
+
+    &:hover, &:focus {
+      color: #23527c;
+    }
+  }
+}

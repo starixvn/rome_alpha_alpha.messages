@@ -202,13 +202,13 @@
     <value>很差</value>
   </data>
   <data name="Bad" xml:space="preserve">
-    <value>较差</value>
+    <value>慢</value>
   </data>
   <data name="Okay" xml:space="preserve">
     <value>还行</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>很好</value>
+    <value>快</value>
   </data>
   <data name="Amazing" xml:space="preserve">
     <value>非常好</value>
@@ -224,5 +224,44 @@
   </data>
   <data name="NotAuthorized" xml:space="preserve">
     <value>您没有使用此功能的权限</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="BackupDomains" xml:space="preserve">
+    <value>后备域名</value>
+  </data>
+  <data name="CopyDomain" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>域名</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>中断</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>正在使用</value>
+  </data>
+  <data name="normal2" xml:space="preserve">
+    <value>普通</value>
+  </data>
+  <data name="VeryGood" xml:space="preserve">
+    <value>非常快</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>载入中</value>
+  </data>
+  <data name="Loading_Duplicate[1]" xml:space="preserve">
+    <value>载入中</value>
   </data>
 </root>

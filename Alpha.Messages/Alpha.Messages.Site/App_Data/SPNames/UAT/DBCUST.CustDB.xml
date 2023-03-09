@@ -3,4 +3,7 @@
   <Function Name="Unsynced Setting">
     <Setting Key="Acc_CustomerSelUnSyncProducts" SpName="Acc_CustomerSelUnSyncProducts" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" TimeOut="600" />
   </Function>
+  <Function Name="Backup Domains">
+    <Setting Key="Age_DomainListSel" SpName="Age_DomainListSel" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" TimeOut="600" />
+  </Function>
 </Functions>
