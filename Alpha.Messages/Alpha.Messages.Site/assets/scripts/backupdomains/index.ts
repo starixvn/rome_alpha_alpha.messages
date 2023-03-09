@@ -215,7 +215,7 @@ class BackupDomainsView {
 
         return 'normal';
     };
-    isInUse = (d) => window.location.href.indexOf(d.Domain) !== -1;
+    isInUse = (d) => window.location.href.indexOf(d.Domain.replace('www.', '')) !== -1;
 }
 
 $(function () {
