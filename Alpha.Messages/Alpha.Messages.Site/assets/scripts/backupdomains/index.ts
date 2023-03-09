@@ -11,9 +11,11 @@ class BackupDomainsView {
     domains = [];
 
     needSorting = true;
-    timeout = 20000;
+    downloadInterval = 60000;
     downloadTimes = 1;
     loadedItems = 0;
+    checkSpeedsTimeout = 0;
+
 
     constructor($: JQueryStatic, clipboard: any) {
         this.$ = $;
@@ -83,14 +85,20 @@ class BackupDomainsView {
     completeCheckSeq = (d) => {
         this.loadedItems++;
 
-        if (this.loadedItems === this.downloadTimes * this.domains.length) {
-            this.renderDomains();
-            this.loadedItems = 0;
-
-            setTimeout(() => {
-                if (this.loadedItems === 0) { this.refreshStatus(); }
-            }, 60000);
+        if (this.loadedItems !== this.downloadTimes * this.domains.length) {
+            return;
         }
+
+        this.renderDomains();
+        this.loadedItems = 0;
+
+        if (this.checkSpeedsTimeout) {
+            clearTimeout(this.checkSpeedsTimeout);
+        }
+
+        this.checkSpeedsTimeout = setTimeout(() => {
+            if (this.loadedItems === 0) { this.refreshStatus(); }
+        }, this.downloadInterval);
     };
 
     renderDomains = () => {
@@ -106,7 +114,7 @@ class BackupDomainsView {
             html += `<tr data-domain="` + d.Domain + `">
                         <td class="center">` + (i + 1) + `</td>
                         <td class="center">`+
-                `<input type="text" class="form-control txt-domain lnk" id="domain-` + i + `" autocomplete="off" readonly value="` + d.Alias + `" data-url="` + d.Domain + `" data-isdown="` + (d.Error ? 1 : 0) + `" />` +
+                `<input type="text" class="form-control txt-domain lnk" id="domain-` + i + `" autocomplete="off" readonly value="` + (this.$('#domain').val() + ' ' + d.Alias) + `" data-url="` + d.Domain + `" data-isdown="` + (d.Error ? 1 : 0) + `" />` +
                 (isInUse ? '<span class="icon icon-check" title="' + this.$('#inUse').val() + '" data-original-title="' + this.$('#inUse').val() + '"></span>' : padding) +
                 `</td>
                         <td class="center status-col status-`+ status + `">` + this.$('#' + status).val() + `</td>
@@ -174,8 +182,7 @@ class BackupDomainsView {
     };
 
     sortDomains = (a, b) => {
-        if ((a.Error && b.Error) ||
-            (a.Timeout == 1 && b.Timeout == 1)) {
+        if (a.Error && b.Error) {
             return 0;
         }
 
@@ -184,14 +191,6 @@ class BackupDomainsView {
         }
 
         if (b.Error) {
-            return -1;
-        }
-
-        if (a.Timeout) {
-            return 1;
-        }
-
-        if (b.Timeout) {
             return -1;
         }
 
