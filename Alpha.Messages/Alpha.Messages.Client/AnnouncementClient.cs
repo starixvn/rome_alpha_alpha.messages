@@ -39,7 +39,7 @@
             restRequest.AddJsonBody(request);
 
             IRestResponse response = restClient.Execute(restRequest);
-            Logs.WriteInfo(response.Content);
+            Logs.WriteInfo(request.ToString());
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(
