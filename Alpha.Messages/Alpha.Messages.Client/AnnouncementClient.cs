@@ -10,6 +10,7 @@
     using Newtonsoft.Json;
     using Requests;
     using RestSharp;
+    using Sunplus.Agent.Utilities;
 
     public interface AnnouncementClient
     {
@@ -38,7 +39,7 @@
             restRequest.AddJsonBody(request);
 
             IRestResponse response = restClient.Execute(restRequest);
-
+            Logs.WriteInfo(response.Content);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(
