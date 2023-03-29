@@ -14,6 +14,7 @@
         private IUserSession userSession;
 #pragma warning restore CS0618 // Type or member is obsolete
         private ProductService productService;
+        private CustomerService customerService;
         private SpecificationParameter parameter;
         private Announcements.Models.IParam param;
 
@@ -25,7 +26,9 @@
 #pragma warning restore CS0618 // Type or member is obsolete
             productService = Substitute.For<ProductService>();
             productService.GetOfferedProductsByCustomer(Arg.Any<int>()).Returns(Enumerable.Empty<Product>());
-            parameter = new SpecificationParameter(userSession, productService);
+            customerService = Substitute.For<CustomerService>();
+            customerService.IsAllDayBalanceTransfer(Arg.Any<int>()).Returns(false);
+            parameter = new SpecificationParameter(userSession, productService, customerService);
             param = Substitute.For<SpecificationParameter>(userSession, productService);
         }
 
@@ -187,7 +190,7 @@
         {
             //// Arrange
             var expectedValue = true;
-            userSession.IsAllDayBalTransfer.Returns(expectedValue);
+            customerService.IsAllDayBalanceTransfer(Arg.Any<int>()).Returns(expectedValue);
 
             //// Act
             var act = parameter.EnableYesterdayTransfer;

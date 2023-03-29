@@ -127,8 +127,8 @@
       <HintPath>..\..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.6.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.6.5\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.6.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Model.Base.3.0.6.8\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
     </Reference>
     <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.3.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sunplus.Agent.Model.Definitions.3.0.3.5\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
@@ -218,6 +218,7 @@
     <Compile Include="Constants\SessionKey.cs" />
     <Compile Include="Criteria\BackupDomains\GetGetBackupDomainsCriteria.cs" />
     <Compile Include="Criteria\Customer\GetCustomerInfoCriteria.cs" />
+    <Compile Include="Criteria\Customer\GetIsAllDayBalTransferCriteria.cs" />
     <Compile Include="Criteria\Feedback\CheckExistsCriteria.cs" />
     <Compile Include="Criteria\Feedback\AddFeedbackCriteria.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Models\Announcement\LastSeenAnnouncement.cs" />
     <Compile Include="Models\BackupDomains\BackupDomainModel.cs" />
     <Compile Include="Models\Customer\Customer.cs" />
+    <Compile Include="Models\Customer\CustomerTransferStatus.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />
     <Compile Include="Models\Message\MarqueeMessage.cs" />

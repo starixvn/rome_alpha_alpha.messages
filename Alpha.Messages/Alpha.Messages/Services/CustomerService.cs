@@ -7,6 +7,8 @@
     public interface CustomerService
     {
         Customer GetCustomerInfo(int custId);
+
+        bool IsAllDayBalanceTransfer(int custId);
     }
 
     public class CustomerServiceImpl : CustomerService
@@ -20,5 +22,13 @@
 
         public Customer GetCustomerInfo(int custId)
             => dynamicRepository.Get<Customer>(new GetCustomerInfoCriteria(custId));
+
+        public bool IsAllDayBalanceTransfer(int custId)
+        {
+            var customerTransferStatus = dynamicRepository.Get<CustomerTransferStatus>(
+                new GetIsAllDayBalTransferCriteria(custId));
+
+            return customerTransferStatus != null && customerTransferStatus.IsAllDayBalTransfer;
+        }
     }
 }

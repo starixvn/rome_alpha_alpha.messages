@@ -89,6 +89,7 @@
             container.RegisterSingleton<ResourceManager, SiteResourceManager>();
             container.RegisterPerWebRequest<FeedbackService, FeedbackServiceImpl>();
             container.RegisterPerWebRequest<BackupDomainsService, BackupDomainsServiceImpl>();
+            container.RegisterSingleton<CustomerService, CustomerServiceImpl>();
         }
 
         private static void RegisterAnnouncementService(Container container)
