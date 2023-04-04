@@ -834,6 +834,12 @@
     <Content Include="Views\StaticMessage\167819.Super.zh-TW.pdf">
       <DependentUpon>167819.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\171247.vi-VN.pdf">
+      <DependentUpon>171247.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\171248.vi-VN.pdf">
+      <DependentUpon>171248.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
@@ -1111,6 +1117,8 @@
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\MessageHistory\Index.cshtml" />
     <Content Include="Views\BackupDomains\Index.cshtml" />
+    <Content Include="Views\StaticMessage\171247.en-US.pdf" />
+    <Content Include="Views\StaticMessage\171248.en-US.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

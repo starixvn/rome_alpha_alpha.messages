@@ -68,6 +68,28 @@
             Response.AddHeader("Content-Disposition", "inline; filename=" + fileDownloadName);
 
             return base.File(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf"), "application/pdf");
-        } 
+        }
+
+        public ActionResult Help(string id)
+        {
+            string fileName = $"{id}.{UserSession.Current.Language}";
+            if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf")))
+            {
+                fileName = $"{id}.en-US";
+            }
+
+            if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf")))
+            {
+                return new EmptyResult();
+            }
+
+            var fileDownloadName = FileNameMapping.ContainsKey(id)
+                ? $"{resourceManager.GetString(FileNameMapping[id], CultureInfo.CreateSpecificCulture(UserSession.Current.Language))}.pdf"
+                : "Guide.pdf";
+
+            Response.AddHeader("Content-Disposition", "inline; filename=" + fileDownloadName);
+
+            return base.File(Server.MapPath($"~/Views/StaticMessage/{fileName}.pdf"), "application/pdf");
+        }
     }
 }
