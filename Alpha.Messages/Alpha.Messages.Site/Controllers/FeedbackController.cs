@@ -15,7 +15,11 @@
         [HttpGet, AllowProtectedMode]
         public ViewResult Index() => View();
 
-        [AllowProtectedMode]
+        [HttpGet, AllowProtectedMode]
+        public Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
+            => JsonAsync(query, JsonRequestBehavior.AllowGet);
+
+        [HttpGet, AllowProtectedMode]
         public async Task<ActionResult> Function(GetFunctionFeedbackQuery query)
         {
             var viewModel = await mediator.SendAsync(query);

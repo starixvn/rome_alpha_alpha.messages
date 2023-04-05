@@ -329,7 +329,9 @@
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
-    <Content Include="App_Data\SPNames\LOCAL\DBBOT.bodb_Chatbot.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBBOT.bodb_Chatbot.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\LOCAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
@@ -994,6 +996,8 @@
     <Compile Include="Requests\Announcement\AnnouncementsHistoryQuery.cs" />
     <Compile Include="Requests\BackupDomains\BackupDomainsQuery.cs" />
     <Compile Include="Requests\Feedback\AddFeedbackQuery.cs" />
+    <Compile Include="Requests\Feedback\CheckExistsFeedbackQuery.cs" />
+    <Compile Include="Requests\Feedback\FeedbackAreaQuery.cs" />
     <Compile Include="Requests\Feedback\GetFunctionFeedbackQuery.cs" />
     <Compile Include="Requests\MarqueeMessage\MoveBetMessageQuery.cs" />
     <Compile Include="Requests\MessageHistoryBaseRequest.cs" />
@@ -1126,7 +1130,9 @@
     <Content Include="Views\StaticMessage\171247.en-US.pdf" />
     <Content Include="Views\StaticMessage\171248.en-US.pdf" />
     <Content Include="Views\Feedback\Function.cshtml" />
-    <Content Include="Views\Feedback\_Shared.cshtml" />
+    <Content Include="Views\Feedback\_SharedLayout.cshtml" />
+    <Content Include="Views\Feedback\_RateIcons.cshtml" />
+    <Content Include="Views\Feedback\_RateStars.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

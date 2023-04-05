@@ -301,9 +301,12 @@
     <value>How is {0} doing overall? We would love to hear from you!</value>
   </data>
   <data name="FeedbackFunction_Message" xml:space="preserve">
-    <value>What areas can be improved? What areas are lacking?</value>
+    <value>Which areas can be improved? Which areas are lacking?</value>
   </data>
   <data name="FeedbackFunction_Rate" xml:space="preserve">
     <value>Rate your experience with {0} function.</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
   </data>
 </root>

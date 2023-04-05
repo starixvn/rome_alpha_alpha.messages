@@ -221,7 +221,7 @@
     <Compile Include="Criteria\Customer\GetIsAllDayBalTransferCriteria.cs" />
     <Compile Include="Criteria\Feedback\CheckExistsCriteria.cs" />
     <Compile Include="Criteria\Feedback\AddFeedbackCriteria.cs" />
-    <Compile Include="Criteria\Feedback\GetFunctionFeedbackCriteria.cs" />
+    <Compile Include="Criteria\Feedback\GetFeedbackFunctionCriteria.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
     <Compile Include="Criteria\Message\MarkMessageAsReadCommand.cs" />
     <Compile Include="Criteria\NewMessage\GetUnreadMessagesOnUserCriteria.cs" />

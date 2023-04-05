@@ -5,7 +5,6 @@
     using Alpha.Messages.Params.Feedback;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Requests.Feedback;
-    using Alpha.Web.Models;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
@@ -66,7 +65,7 @@
         {
             // Arrange
             var query = new AddFeedbackQuery(userSession) { Rate = 2 };
-            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(new Result());
+            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(Task.CompletedTask);
 
             // Act
             var viewModel = await handler.Handle(query);
@@ -80,7 +79,7 @@
         {
             // Arrange
             var query = new AddFeedbackQuery(userSession) { Rate = 2 };
-            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(new Result { ErrCode = 1 });
+            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(Task.CompletedTask);
 
             // Act
             var viewModel = await handler.Handle(query);

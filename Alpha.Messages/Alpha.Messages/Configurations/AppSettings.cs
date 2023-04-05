@@ -42,6 +42,8 @@
 
         public static bool DisableMessages => "1" == GetConfigValue("DisableMessages");
 
+        public static string JsVersion => GetConfigValue("JsVersion");
+
         public static void Verify()
         {
             Require(StoreProcedurePath, nameof(StoreProcedurePath));

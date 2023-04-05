@@ -77,7 +77,6 @@ class Feedback {
                     $('.feedback-box').addClass('hide');
                     $('.feedback-result').removeClass('hide');
                     setTimeout(function (): void {
-                        window.top.indexManager.hideFloatingFeedbackIcon();
                         window.top.popupManager.close();
                     }, 3000);
 

@@ -215,6 +215,7 @@
     <Compile Include="Criteria\Customer\GetCustomerInfoCriteriaTests.cs" />
     <Compile Include="Criteria\Feedback\CheckExistsCriteriaTests.cs" />
     <Compile Include="Criteria\Feedback\AddFeedbackCriteriaTests.cs" />
+    <Compile Include="Criteria\Feedback\GetFeedbackFunctionCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetPortalMessagesCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetUnreadMessageCriteriaTest.cs" />

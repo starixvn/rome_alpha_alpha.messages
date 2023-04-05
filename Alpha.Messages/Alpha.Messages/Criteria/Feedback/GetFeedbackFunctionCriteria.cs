@@ -2,9 +2,9 @@
 {
     using Fanex.Data.Repository;
 
-    public class GetFunctionFeedbackCriteria : CriteriaBase
+    public class GetFeedbackFunctionCriteria : CriteriaBase
     {
-        public GetFunctionFeedbackCriteria(int functionId)
+        public GetFeedbackFunctionCriteria(int functionId)
             => FuncId = functionId;
 
         public int FuncId { get; }

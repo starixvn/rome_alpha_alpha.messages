@@ -232,7 +232,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What areas can be improved? What areas are lacking?.
+        ///   Looks up a localized string similar to Which areas can be improved? Which areas are lacking?.
         /// </summary>
         public static string FeedbackFunction_Message {
             get {
@@ -480,6 +480,15 @@ namespace Alpha.Messages.AppResources {
         public static string Okay {
             get {
                 return ResourceManager.GetString("Okay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        public static string Others {
+            get {
+                return ResourceManager.GetString("Others", resourceCulture);
             }
         }
         

@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
     using Alpha.Messages.AppResources;
     using Alpha.Messages.Models.Feedback;
@@ -12,8 +13,9 @@
     using MediatR;
 
     public class FeedbackHandler :
-        IAsyncRequestHandler<AddFeedbackQuery, Result>,
-        IAsyncRequestHandler<GetFunctionFeedbackQuery, FeedbackFunctionViewModel>
+        IAsyncRequestHandler<CheckExistsFeedbackQuery, bool>,
+        IAsyncRequestHandler<GetFunctionFeedbackQuery, FeedbackFunctionViewModel>,
+        IAsyncRequestHandler<AddFeedbackQuery, Result>
     {
         private readonly FeedbackService feedbackService;
 
@@ -22,35 +24,11 @@
             this.feedbackService = feedbackService;
         }
 
-        public async Task<Result> Handle(AddFeedbackQuery message)
-        {
-            if (!message.IsValid())
-            {
-                return new Result
-                {
-                    ErrCode = 1,
-                    ErrMsg = message.IsInternal ? Resources.NotAuthorized : Resources.Feedback_InvalidParams
-                };
-            }
-
-            var param = new AddFeedbackParam(message.CustId, message.SubAccId, message.Message, message.Rate);
-            var result = await feedbackService.AddFeedbackAsync(param);
-
-            if (result.ErrCode == 0)
-            {
-                result.ErrMsg = Resources.Feedback_Success;
-            }
-
-            return result;
-        }
+        public Task<bool> Handle(CheckExistsFeedbackQuery message)
+            => feedbackService.CheckExistsAsync(message.CustId, message.SubAccId, message.FunctionId);
 
         public async Task<FeedbackFunctionViewModel> Handle(GetFunctionFeedbackQuery message)
         {
-            if (await feedbackService.CheckExistsAsync(message.CustId, message.SubAccId, message.Id))
-            {
-                return new FeedbackFunctionViewModel();
-            }
-
             var feedback = await feedbackService.GetFeedbackFunctionAsync(message.Id);
             var feedbackFunction = feedback.Item1.FirstOrDefault() ?? new FeedbackFunction();
             var feedbackAreas = feedback.Item2;
@@ -59,6 +37,53 @@
                 feedbackFunction.FuncId,
                 feedbackFunction.GetFunctionName(message.Language),
                 feedbackAreas.Select(a => new FeedbackAreaViewModel(a.AreaId, a.GetAreaName(message.Language))));
+        }
+
+        public async Task<Result> Handle(AddFeedbackQuery message)
+        {
+            if (message.IsValid())
+            {
+                var xmlFeedback = message.FunctionId.HasValue && message.Areas?.Any() == true
+                   ? BuildXMLFeedback(message)
+                   : null;
+                await feedbackService.AddFeedbackAsync(new AddFeedbackParam(
+                    message.CustId,
+                    message.SubAccId,
+                    message.Message,
+                    message.Rate,
+                    message.FunctionId,
+                    xmlFeedback));
+
+                return new Result { ErrMsg = Resources.Feedback_Success };
+            }
+
+            return new Result(1, message.IsInternal ? Resources.NotAuthorized : Resources.Feedback_InvalidParams);
+        }
+
+        private static string BuildXMLFeedback(AddFeedbackQuery message)
+        {
+            var xmlBuilder = new StringBuilder();
+            xmlBuilder.Append("<Root>");
+
+            foreach (var item in message.Areas)
+            {
+                xmlBuilder
+                    .Append("<Feedback CustID=\"")
+                    .Append(message.CustId)
+                    .Append("\" SubAccID=\"")
+                    .Append(message.SubAccId)
+                    .Append("\" FuncID=\"")
+                    .Append(message.FunctionId)
+                    .Append("\" AreaID=\"")
+                    .Append(item.AreaId)
+                    .Append("\" Rate=\"")
+                    .Append(item.Rate)
+                    .Append("\"/>");
+            }
+
+            xmlBuilder.Append("</Root>");
+
+            return xmlBuilder.ToString();
         }
     }
 }
