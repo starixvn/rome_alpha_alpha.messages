@@ -1,62 +1,10 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Feedback/_Shared.cshtml";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="description">
-    <meta content="" name="author">
-    @StaticResources.AssetStyles.RenderCommonWithDarkMode("/bundles/common/common")
-    @StaticResources.RenderStylesWithDarkMode("~/Assets/bundles/feedback/index")
-    @StaticResources.RenderStylesWithMediaDarkMode(767, "~/assets/bundles/feedback/feedback-mobile-calculate-07")
-    <title>@Resources.Feedback</title>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      @StaticResources.AssetScripts.RenderCommon("/bundles/common/support-IE8")
-    <![endif]-->
-    @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagScript()
-</head>
-<body>
-    <div class="feedback-box">
-        <div class="div-greeting">@Resources.Feedback_Greeting</div>
-        <textarea class="feedback-msg" placeholder="@Resources.Feedback_Message"></textarea>
-        <div class="hide message-limit msg msg-error">@Resources.Feedback_MessageLimit</div>
-        <div class="div-greeting">@Resources.Feedback_Rate</div>
-        <div class="rate-boxes">
-            <div class="rate-box">
-                <div class="rate rate-1" value="1"></div>
-                <div class="txt-rate">@Resources.Terrible</div>
-            </div>
-            <div class="rate-box">
-                <div class="rate rate-2" value="2"></div>
-                <div class="txt-rate">@Resources.Bad</div>
-            </div>
-            <div class="rate-box">
-                <div class="rate rate-3" value="3"></div>
-                <div class="txt-rate">@Resources.Okay</div>
-            </div>
-            <div class="rate-box">
-                <div class="rate rate-4" value="4"></div>
-                <div class="txt-rate">@Resources.Good</div>
-            </div>
-            <div class="rate-box">
-                <div class="rate rate-5" value="5"></div>
-                <div class="txt-rate">@Resources.Amazing</div>
-            </div>
-        </div>
-        <div class="hide message-result msg msg-error">@Resources.Feedback_MessageLimit</div>
-        <div class="btn-box">
-            <button type="button" class="btn-cancel" id="buttonLater">@Resources.Later</button>
-            <button type="submit" class="btn-submit" id="buttonSubmit">@Resources.submit</button>
-        </div>
-    </div>
-    <div class="hide feedback-result msg msg-success">@Resources.Feedback_Success</div>
-</body>
-@Html.Hidden("Feedback_MessageLimit", Resources.Feedback_MessageLimit)
-@Html.Hidden("Feedback_NoInput", Resources.Feedback_NoInput)
-@StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
-@StaticResources.RenderScripts("~/Assets/bundles/feedback/index")
-</html>
+<div class="div-greeting">@Resources.Feedback_Greeting</div>
+<textarea class="feedback-msg" placeholder="@Resources.Feedback_Message"></textarea>
+<div class="hide message-limit msg msg-error">@Resources.Feedback_MessageLimit</div>
+<div class="div-greeting">@Resources.Feedback_Rate</div>
+@section Scripts{
+    @StaticResources.RenderScripts("~/Assets/bundles/feedback/index")
+}

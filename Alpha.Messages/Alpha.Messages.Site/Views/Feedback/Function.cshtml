@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Feedback/_Shared.cshtml";
+    var hasAreas = Model.FeedbackAreas.Any();
+}
+@model Alpha.Messages.Site.ViewModels.Feedback.FeedbackFunctionViewModel
+@if (hasAreas)
+{
+    <div class="div-greeting">@string.Format(Resources.FeedbackFunctionArea_Greeting, Model.FunctionName)</div>
+    foreach (var item in Model.FeedbackAreas)
+	{
+		 <div data-areaid="@item.AreaId">
+             <div>@item.AreaName</div>
+             <div>*****</div>
+         </div>
+	}
+    <textarea class="feedback-msg" placeholder="@Resources.FeedbackFunctionArea_Message"></textarea>
+}
+else
+{
+    <div class="div-greeting">@string.Format(Resources.FeedbackFunction_Greeting, Model.FunctionName)</div>
+    <textarea class="feedback-msg" placeholder="@Resources.FeedbackFunction_Message"></textarea>
+}
+<div class="hide message-limit msg msg-error">@Resources.Feedback_MessageLimit</div>
+<div class="div-greeting">@string.Format(Resources.FeedbackFunction_Rate, Model.FunctionName)</div>
+@section Scripts{
+    @StaticResources.RenderScripts("~/Assets/bundles/feedback/function")
+}

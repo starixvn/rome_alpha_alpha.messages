@@ -1,26 +1,28 @@
-﻿using Fanex.Data.Repository;
-
-namespace Alpha.Messages.Criteria.Feedback
+﻿namespace Alpha.Messages.Criteria.Feedback
 {
+    using Fanex.Data.Repository;
+
     public class CheckExistsCriteria : NonQueryCommand
     {
-        public CheckExistsCriteria(int custId, int subAccId)
+        public CheckExistsCriteria(int custId, int subAccId, int functionId)
         {
             CustId = custId;
             SubAccId = subAccId;
+            FuncId = functionId;
         }
 
         public int CustId { get; }
 
         public int SubAccId { get; }
 
+        public int FuncId { get; }
+
         public bool IsExists { get; set; }
 
         public override string GetSettingKey()
-        {
-            return "Age_CustFeedbackCheckExists";
-        }
+            => "Age_CustFeedbackCheckExists";
 
-        public override bool IsValid() => CustId > 0;
+        public override bool IsValid()
+            => CustId > 0 && SubAccId >= 0 && FuncId > 0;
     }
 }

@@ -288,4 +288,22 @@
   <data name="Slow" xml:space="preserve">
     <value>Slow</value>
   </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Help us improve!</value>
+  </data>
+  <data name="FeedbackFunctionArea_Greeting" xml:space="preserve">
+    <value>Please evaluate areas you like/ dislike in our {0} function.</value>
+  </data>
+  <data name="FeedbackFunctionArea_Message" xml:space="preserve">
+    <value>Tell us more...</value>
+  </data>
+  <data name="FeedbackFunction_Greeting" xml:space="preserve">
+    <value>How is {0} doing overall? We would love to hear from you!</value>
+  </data>
+  <data name="FeedbackFunction_Message" xml:space="preserve">
+    <value>What areas can be improved? What areas are lacking?</value>
+  </data>
+  <data name="FeedbackFunction_Rate" xml:space="preserve">
+    <value>Rate your experience with {0} function.</value>
+  </data>
 </root>

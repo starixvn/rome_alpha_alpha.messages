@@ -270,4 +270,7 @@
   <data name="Slow" xml:space="preserve">
     <value>缓慢</value>
   </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>协助我们改进！</value>
+  </data>
 </root>

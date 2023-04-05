@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
   <Function Name="Feedback">
-    <Setting Key="Age_CustFeedbackCheckExists" SpName="Age_CustFeedbackCheckExists" DbName="DBBOT.bodb_Chatbot.BODBDownlineNet" Plain="0">
-    </Setting>
-    <Setting Key="Age_CustFeedbackIns" SpName="Age_CustFeedbackIns" DbName="DBBOT.bodb_Chatbot.BODBDownlineNet" Plain="0">
-    </Setting>
+    <Setting Key="Age_CustFeedbackCheckExists" SpName="Age_CustFeedbackCheckExists_xtest" DbName="DBBOT.bodb_Chatbot.BODBDownlineNet" />
+    <Setting Key="Age_CustFeedbackIns" SpName="Age_CustFeedbackIns_xtest" DbName="DBBOT.bodb_Chatbot.BODBDownlineNet" />
+    <Setting Key="Age_FeedbackFunction_Sel" SpName="Age_FeedbackFunction_Sel_xtest" DbName="DBBOT.bodb_Chatbot.BODBDownlineNet" />
   </Function>
 </Functions>

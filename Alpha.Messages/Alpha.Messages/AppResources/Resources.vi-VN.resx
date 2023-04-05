@@ -291,4 +291,7 @@
   <data name="Slow" xml:space="preserve">
     <value>Chậm</value>
   </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Hãy giúp chúng tôi cải thiện!</value>
+  </data>
 </root>

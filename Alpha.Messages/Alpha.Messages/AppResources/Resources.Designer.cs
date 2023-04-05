@@ -223,6 +223,60 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How is {0} doing overall? We would love to hear from you!.
+        /// </summary>
+        public static string FeedbackFunction_Greeting {
+            get {
+                return ResourceManager.GetString("FeedbackFunction_Greeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What areas can be improved? What areas are lacking?.
+        /// </summary>
+        public static string FeedbackFunction_Message {
+            get {
+                return ResourceManager.GetString("FeedbackFunction_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate your experience with {0} function..
+        /// </summary>
+        public static string FeedbackFunction_Rate {
+            get {
+                return ResourceManager.GetString("FeedbackFunction_Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please evaluate areas you like/ dislike in our {0} function..
+        /// </summary>
+        public static string FeedbackFunctionArea_Greeting {
+            get {
+                return ResourceManager.GetString("FeedbackFunctionArea_Greeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tell us more....
+        /// </summary>
+        public static string FeedbackFunctionArea_Message {
+            get {
+                return ResourceManager.GetString("FeedbackFunctionArea_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help us improve!.
+        /// </summary>
+        public static string FeedbackTitle {
+            get {
+                return ResourceManager.GetString("FeedbackTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         public static string from {

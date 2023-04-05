@@ -1,7 +1,9 @@
 ﻿namespace Alpha.Messages.Site.Tests.Requests
 {
     using Alpha.Messages.Site.Requests.Feedback;
+    using NSubstitute;
     using NUnit.Framework;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class AddFeedbackQueryTests
@@ -10,7 +12,8 @@
         public void IsValid_RateAndMessageIsEmpty_ReturnFalse()
         {
             // Arrange
-            var query = new AddFeedbackQuery
+            IUserSession userSession = Substitute.For<IUserSession>();
+            var query = new AddFeedbackQuery(userSession)
             {
                 Rate = 0,
                 Message = string.Empty
@@ -27,7 +30,8 @@
         public void IsValid_HasRateAndMessageIsEmpty_ReturnTrue()
         {
             // Arrange
-            var query = new AddFeedbackQuery
+            IUserSession userSession = Substitute.For<IUserSession>();
+            var query = new AddFeedbackQuery(userSession)
             {
                 Rate = 2,
                 Message = string.Empty
@@ -44,7 +48,8 @@
         public void IsValid_RateIsZeroAndHasMessage_ReturnTrue()
         {
             // Arrange
-            var query = new AddFeedbackQuery
+            IUserSession userSession = Substitute.For<IUserSession>();
+            var query = new AddFeedbackQuery(userSession)
             {
                 Rate = 0,
                 Message = "Message"
@@ -61,7 +66,8 @@
         public void IsValid_RateIsZeroAndOverLimitMessage_ReturnFalse()
         {
             // Arrange
-            var query = new AddFeedbackQuery
+            IUserSession userSession = Substitute.For<IUserSession>();
+            var query = new AddFeedbackQuery(userSession)
             {
                 Rate = 0,
                 Message = new string('*', 5000)

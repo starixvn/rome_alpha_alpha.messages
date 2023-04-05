@@ -221,6 +221,7 @@
     <Compile Include="Criteria\Customer\GetIsAllDayBalTransferCriteria.cs" />
     <Compile Include="Criteria\Feedback\CheckExistsCriteria.cs" />
     <Compile Include="Criteria\Feedback\AddFeedbackCriteria.cs" />
+    <Compile Include="Criteria\Feedback\GetFunctionFeedbackCriteria.cs" />
     <Compile Include="Criteria\Message\GetMessagesHistoryCriteria.cs" />
     <Compile Include="Criteria\Message\MarkMessageAsReadCommand.cs" />
     <Compile Include="Criteria\NewMessage\GetUnreadMessagesOnUserCriteria.cs" />
@@ -243,6 +244,8 @@
     <Compile Include="Models\BackupDomains\BackupDomainModel.cs" />
     <Compile Include="Models\Customer\Customer.cs" />
     <Compile Include="Models\Customer\CustomerTransferStatus.cs" />
+    <Compile Include="Models\Feedback\FeedbackArea.cs" />
+    <Compile Include="Models\Feedback\FeedbackFunction.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
     <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />
     <Compile Include="Models\Message\MarqueeMessage.cs" />

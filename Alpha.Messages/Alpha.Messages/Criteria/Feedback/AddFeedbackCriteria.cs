@@ -1,7 +1,7 @@
-﻿using Fanex.Data.Repository;
-
-namespace Alpha.Messages.Criteria.Feedback
+﻿namespace Alpha.Messages.Criteria.Feedback
 {
+    using Fanex.Data.Repository;
+
     public class AddFeedbackCriteria : NonQueryCommand
     {
         private const int MaxCommentLength = 4000;
@@ -10,7 +10,7 @@ namespace Alpha.Messages.Criteria.Feedback
             int custId,
             int subAccId,
             string comment,
-            int rate)
+            byte rate)
         {
             CustId = custId;
             SubAccId = subAccId;
@@ -24,12 +24,10 @@ namespace Alpha.Messages.Criteria.Feedback
 
         public string Comment { get; }
 
-        public int Rate { get; }
+        public byte Rate { get; }
 
         public override string GetSettingKey()
-        {
-            return "Age_CustFeedbackIns";
-        }
+            => "Age_CustFeedbackIns";
 
         public override bool IsValid()
             => Rate != 0 ||

@@ -6,7 +6,7 @@
             int custId,
             int subAccId,
             string comment,
-            int rate)
+            byte rate)
         {
             CustId = custId;
             SubAccountId = subAccId;
@@ -20,6 +20,6 @@
 
         public string Comment { get; }
 
-        public int Rate { get; }
+        public byte Rate { get; }
     }
 }
