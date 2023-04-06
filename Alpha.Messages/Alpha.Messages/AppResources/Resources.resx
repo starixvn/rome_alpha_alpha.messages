@@ -220,13 +220,13 @@
     <value>Terrible</value>
   </data>
   <data name="Bad" xml:space="preserve">
-    <value>Slow</value>
+    <value>Bad</value>
   </data>
   <data name="Okay" xml:space="preserve">
     <value>Okay</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>Fast</value>
+    <value>Good</value>
   </data>
   <data name="Amazing" xml:space="preserve">
     <value>Amazing</value>
@@ -281,5 +281,11 @@
   </data>
   <data name="normal2" xml:space="preserve">
     <value>Normal</value>
+  </data>
+  <data name="Fast" xml:space="preserve">
+    <value>Fast</value>
+  </data>
+  <data name="Slow" xml:space="preserve">
+    <value>Slow</value>
   </data>
 </root>
