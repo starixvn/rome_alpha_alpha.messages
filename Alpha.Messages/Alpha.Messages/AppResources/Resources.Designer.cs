@@ -88,7 +88,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slow.
+        ///   Looks up a localized string similar to Bad.
         /// </summary>
         public static string Bad {
             get {
@@ -138,6 +138,15 @@ namespace Alpha.Messages.AppResources {
         public static string Down {
             get {
                 return ResourceManager.GetString("Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fast.
+        /// </summary>
+        public static string Fast {
+            get {
+                return ResourceManager.GetString("Fast", resourceCulture);
             }
         }
         
@@ -223,7 +232,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fast.
+        ///   Looks up a localized string similar to Good.
         /// </summary>
         public static string Good {
             get {
@@ -444,6 +453,15 @@ namespace Alpha.Messages.AppResources {
         public static string Refresh {
             get {
                 return ResourceManager.GetString("Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slow.
+        /// </summary>
+        public static string Slow {
+            get {
+                return ResourceManager.GetString("Slow", resourceCulture);
             }
         }
         
