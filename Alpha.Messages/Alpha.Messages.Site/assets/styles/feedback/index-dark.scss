@@ -19,6 +19,9 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 .rate-boxes {
@@ -139,7 +142,7 @@
     justify-content: space-between;
     background: #2b2b2b;
     margin-bottom: 5px;
-    padding: 1px 12px;
+    padding: 4px 12px;
     border: 1px solid transparent;
 
     &:hover {
@@ -167,7 +170,7 @@
     }
 
     > label {
-        width: 20px;
+        width: 25px;
         overflow: hidden;
         white-space: nowrap;
         cursor: pointer;
