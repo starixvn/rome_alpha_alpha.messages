@@ -17,7 +17,7 @@
 }
 
 .col-domain {
-  width: 160px;
+  width: 250px;
 }
 
 .col-status {
@@ -67,7 +67,8 @@ input[type="text"].txt-domain {
   display: inline-block;
   background: transparent;
   box-shadow: none;
-  width: 80px;
+  width: 250px;
+  text-align: center;
 
   &.lnk {
     color: #337ab7;
