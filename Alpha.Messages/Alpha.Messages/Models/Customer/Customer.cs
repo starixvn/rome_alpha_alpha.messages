@@ -17,8 +17,8 @@
             int mRecommendId,
             int sRecommendId,
             string site,
-            int siteCode,
-            bool enabled)
+            bool enabled,
+            string siteLabel)
         {
             CustId = custId;
             UserName = userName;
@@ -28,8 +28,8 @@
             MRecommendId = mRecommendId;
             SRecommendId = sRecommendId;
             Site = site;           
-            SiteCode = siteCode;
             Enabled = enabled;
+            SiteLabel = siteLabel;
         }
 
         public int CustId { get; }
@@ -48,14 +48,14 @@
 
         public string Site { get; }
 
-        public bool IsIMBC => Site.Equals("IMBC");
+        public bool IsIMBC => SiteLabel.Equals("Nova88");
 
         public bool IsAllDayBalTransfer { get; }
 
-        public int SiteCode { get; }
-
-        public string System => AppSettings.GetConfigValue($"System:{SiteCode}");
+        public string System => AppSettings.GetConfigValue($"System:{SiteLabel}");
 
         public bool Enabled { get; }
+
+        public string SiteLabel { get; }
     }
 }

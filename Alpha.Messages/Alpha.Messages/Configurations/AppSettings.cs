@@ -20,7 +20,7 @@
 
         public static bool LocalTest => GetConfigValue("LocalTest") == "1";
 
-        public static string SiteGroup => GetConfigValue("SiteGroup");
+        public static string SiteLabel => GetConfigValue("SiteLabel");
 
         public static string Environment => GetConfigValue("Environment");
 
