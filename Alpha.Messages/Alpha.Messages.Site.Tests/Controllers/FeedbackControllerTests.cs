@@ -25,7 +25,7 @@
         {
             mediator = Substitute.For<IMediator>();
             userSession = Substitute.For<IUserSession>();
-            controller = new FeedbackController(mediator, userSession);
+            controller = new FeedbackController(mediator);
             compareLogic = new CompareLogic();
         }
 
@@ -43,32 +43,13 @@
         }
 
         [Test]
-        public async Task CheckExist_Always_ReturnsCheckResult()
-        {
-            // Arrange
-            userSession.RoleId.Returns((byte)4);
-            userSession.SubAccId.Returns(1);
-
-            var query = new CheckExistsFeedbackQuery();
-            var result = true;
-
-            mediator.SendAsync(Arg.Any<CheckExistsFeedbackQuery>()).Returns(Task.FromResult(result));
-
-            // Act
-            var actualResult = await controller.CheckExist(query) as JsonResult;
-
-            // Assert
-            Assert.True(compareLogic.Compare(result, actualResult.Data).AreEqual);
-        }
-
-        [Test]
         public async Task Add_Always_ReturnsAddFeedbackResult()
         {
             // Arrange
             userSession.RoleId.Returns((byte)4);
             userSession.SubAccId.Returns(1);
 
-            var query = new AddFeedbackQuery();
+            var query = new AddFeedbackQuery(userSession);
             var result = new Result();
 
             mediator.SendAsync(Arg.Any<AddFeedbackQuery>()).Returns(Task.FromResult(result));

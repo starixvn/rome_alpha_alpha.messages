@@ -291,4 +291,25 @@
   <data name="Slow" xml:space="preserve">
     <value>Chậm</value>
   </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Hãy giúp chúng tôi cải thiện!</value>
+  </data>
+  <data name="FeedbackFunctionArea_Greeting" xml:space="preserve">
+    <value>Vui lòng đánh giá những điểm mà bạn hài lòng / không hài lòng về tính năng {0}.</value>
+  </data>
+  <data name="FeedbackFunctionArea_Message" xml:space="preserve">
+    <value>Hãy cho chúng tôi biết thêm...</value>
+  </data>
+  <data name="FeedbackFunction_Greeting" xml:space="preserve">
+    <value>Bạn có hài lòng với tính năng {0} không? Chúng tôi rất mong nhận được ý kiến của bạn!</value>
+  </data>
+  <data name="FeedbackFunction_Message" xml:space="preserve">
+    <value>Điểm nào cần được cải thiện? Điểm nào còn thiếu sót?</value>
+  </data>
+  <data name="FeedbackFunction_Rate" xml:space="preserve">
+    <value>Đánh giá trải nghiệm của bạn với tính năng {0}.</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Khác</value>
+  </data>
 </root>

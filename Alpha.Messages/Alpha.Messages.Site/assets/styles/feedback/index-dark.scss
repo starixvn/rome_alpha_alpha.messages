@@ -12,7 +12,6 @@
     margin: 4px 0 8px 0;
     width: 100%;
     resize: vertical;
-    height: 100px;
     background: #1C1C1C;
     border: 1px solid #2C2C2C;
     padding: 7px 11px;
@@ -20,20 +19,25 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 .rate-boxes {
     padding: 0;
     margin: 8px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
 
     .rate-box {
         width: 80px;
         background-color: #323232;
         display: inline-block;
         padding: 7px 0;
-        margin: 0 9px 0 0;
         text-align: center;
         border: 1px solid #474747;
+        cursor: pointer;
 
         &.active {
             .rate-1 {
@@ -116,12 +120,88 @@
 }
 
 .btn-box {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
 
     button {
         line-height: 28px;
         display: inline-block;
         vertical-align: middle;
-        margin: 0 0 0 24px;
+        margin: 0 0 0 20px;
     }
+}
+
+.area-rate-star {
+    margin-top: 16px;
+    margin-bottom: 7px;
+}
+
+.row-rate-star {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #2b2b2b;
+    margin-bottom: 5px;
+    padding: 4px 12px;
+    border: 1px solid transparent;
+
+    &:hover {
+ 
+        cursor: pointer;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+        border: 1px solid #474747;
+    }
+
+    .title-rate {
+        font-weight: 400;
+        font-size: 14px;
+    }
+}
+
+.rate-star {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+
+    > input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    > label {
+        width: 25px;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #C9D4E2;
+        margin: 0;
+        box-sizing: content-box;
+        padding: 0 0 0 5px;
+        font-size: 23px;
+        line-height: 1;
+
+        &:before {
+            content: '★';
+            margin-right: 40px;
+        }
+    }
+}
+
+.rate-star > input:checked ~ label {
+    color: #EFB00E;
+}
+
+.rate-star:not(:checked) > label:hover,
+.rate-star:not(:checked) > label:hover ~ label {
+    color: #EFB00E;
+}
+
+.rate-star > input:checked + label:hover,
+.rate-star > input:checked + label:hover ~ label,
+.rate-star > input:checked ~ label:hover,
+.rate-star > input:checked ~ label:hover ~ label,
+.rate-star > label:hover ~ input:checked ~ label {
+    color: #EFB00E;
 }

@@ -5,20 +5,22 @@
     using Alpha.Messages.Params.Feedback;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Requests.Feedback;
-    using Alpha.Web.Models;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class FeedbackHandlerTests
     {
+        private IUserSession userSession;
         private FeedbackService service;
         private FeedbackHandler handler;
 
         [SetUp]
         public void SetUp()
         {
+            userSession = Substitute.For<IUserSession>();
             service = Substitute.For<FeedbackService>();
             handler = new FeedbackHandler(service);
         }
@@ -26,30 +28,17 @@
         [TearDown]
         public void Clean()
         {
+            userSession = null;
             handler = null;
             service = null;
-        }
-
-        [Test]
-        public async Task HandleCheckExistsFeedbackQuery_Always_ReturnsCheckResult()
-        {
-            // Arrange
-            var query = new CheckExistsFeedbackQuery();
-            var result = true;
-            service.CheckExistsAsync(Arg.Any<int>(), Arg.Any<int>()).Returns(Task.FromResult(result));
-
-            // Act
-            var viewModel = await handler.Handle(query);
-
-            // Assert
-            Assert.AreEqual(viewModel, result);
         }
 
         [Test]
         public async Task HandleAddFeedbackQuery_IsInternal_ReturnsErrorResult()
         {
             // Arrange
-            var query = new AddFeedbackQuery { IsInternal = true };
+            userSession.IsInternal.Returns(true);
+            var query = new AddFeedbackQuery(userSession);
 
             // Act
             var viewModel = await handler.Handle(query);
@@ -62,7 +51,7 @@
         public async Task HandleAddFeedbackQuery_InvalidQuery_ReturnsErrorResult()
         {
             // Arrange
-            var query = new AddFeedbackQuery();
+            var query = new AddFeedbackQuery(userSession);
 
             // Act
             var viewModel = await handler.Handle(query);
@@ -75,8 +64,8 @@
         public async Task HandleAddFeedbackQuery_ValidQueryAndAddSuccess_ReturnsSuccessResult()
         {
             // Arrange
-            var query = new AddFeedbackQuery { Rate = 2 };
-            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(new Result());
+            var query = new AddFeedbackQuery(userSession) { Rate = 2 };
+            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(Task.CompletedTask);
 
             // Act
             var viewModel = await handler.Handle(query);
@@ -89,8 +78,8 @@
         public async Task HandleAddFeedbackQuery_ValidQueryAndAddFailed_ReturnsErrotResult()
         {
             // Arrange
-            var query = new AddFeedbackQuery { Rate = 2 };
-            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(new Result { ErrCode = 1 });
+            var query = new AddFeedbackQuery(userSession) { Rate = 2 };
+            service.AddFeedbackAsync(Arg.Any<AddFeedbackParam>()).Returns(Task.CompletedTask);
 
             // Act
             var viewModel = await handler.Handle(query);

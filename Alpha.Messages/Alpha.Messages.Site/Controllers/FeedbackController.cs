@@ -3,49 +3,36 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using Alpha.Messages.Site.Requests.Feedback;
-    using Alpha.Web;
     using Alpha.Web.Filters;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
 
-    public class FeedbackController : BaseController
+    public class FeedbackController : SiteBaseController
     {
-        private readonly IMediator mediator;
-        private readonly IUserSession userSession;
-
-        public FeedbackController(IMediator mediator, IUserSession userSession)
+        public FeedbackController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
-            this.userSession = userSession;
         }
 
         [HttpGet, AllowProtectedMode]
-        public ViewResult Index()
+        public ViewResult Index() => View();
+
+        [HttpGet, AllowProtectedMode]
+        public Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
+            => JsonAsync(query, JsonRequestBehavior.AllowGet);
+
+        [HttpGet, AllowProtectedMode]
+        public async Task<ActionResult> Function(GetFunctionFeedbackQuery query)
         {
-            return View("~/Views/Feedback/Index.cshtml");
+            var viewModel = await mediator.SendAsync(query);
+
+            if (viewModel.FunctionId == 0)
+            {
+                return new EmptyResult();
+            }
+
+            return View(viewModel);
         }
 
         [AllowProtectedMode]
-        public async Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
-        {
-            query.CustId = userSession.CustId;
-            query.SubAccId = userSession.SubAccId;
-
-            var model = await mediator.SendAsync(query);
-
-            return Json(model);
-        }
-
-        [AllowProtectedMode]
-        public async Task<ActionResult> Add(AddFeedbackQuery query)
-        {
-            query.CustId = userSession.CustId;
-            query.SubAccId = userSession.SubAccId;
-            query.IsInternal = userSession.IsInternal;
-
-            var model = await mediator.SendAsync(query);
-
-            return Json(model);
-        }
+        public Task<ActionResult> Add(AddFeedbackQuery query) => JsonAsync(query);
     }
 }

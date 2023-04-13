@@ -1,49 +1,89 @@
 ﻿namespace Alpha.Messages.Site.Handlers
 {
+    using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
     using Alpha.Messages.AppResources;
+    using Alpha.Messages.Models.Feedback;
     using Alpha.Messages.Params.Feedback;
     using Alpha.Messages.Services;
     using Alpha.Messages.Site.Requests.Feedback;
+    using Alpha.Messages.Site.ViewModels.Feedback;
     using Alpha.Web.Models;
     using MediatR;
 
     public class FeedbackHandler :
         IAsyncRequestHandler<CheckExistsFeedbackQuery, bool>,
+        IAsyncRequestHandler<GetFunctionFeedbackQuery, FeedbackFunctionViewModel>,
         IAsyncRequestHandler<AddFeedbackQuery, Result>
     {
-        private readonly FeedbackService service;
+        private readonly FeedbackService feedbackService;
 
-        public FeedbackHandler(FeedbackService service)
+        public FeedbackHandler(FeedbackService feedbackService)
         {
-            this.service = service;
+            this.feedbackService = feedbackService;
         }
 
-        public async Task<bool> Handle(CheckExistsFeedbackQuery message)
+        public Task<bool> Handle(CheckExistsFeedbackQuery message)
+            => feedbackService.CheckExistsAsync(message.CustId, message.SubAccId, message.FunctionId);
+
+        public async Task<FeedbackFunctionViewModel> Handle(GetFunctionFeedbackQuery message)
         {
-            return await service.CheckExistsAsync(message.CustId, message.SubAccId);
+            var feedback = await feedbackService.GetFeedbackFunctionAsync(message.Id);
+            var feedbackFunction = feedback.Item1.FirstOrDefault() ?? new FeedbackFunction();
+            var feedbackAreas = feedback.Item2;
+
+            return new FeedbackFunctionViewModel(
+                feedbackFunction.FuncId,
+                feedbackFunction.GetFunctionName(message.Language),
+                feedbackAreas.Select(a => new FeedbackAreaViewModel(a.AreaId, a.GetAreaName(message.Language))));
         }
 
         public async Task<Result> Handle(AddFeedbackQuery message)
         {
-            if (!message.IsValid())
+            if (message.IsValid())
             {
-                return new Result
-                {
-                    ErrCode = 1,
-                    ErrMsg = message.IsInternal ? Resources.NotAuthorized : Resources.Feedback_InvalidParams
-                };
+                var xmlFeedback = message.FunctionId.HasValue && message.Areas?.Any() == true
+                   ? BuildXMLFeedback(message)
+                   : null;
+                await feedbackService.AddFeedbackAsync(new AddFeedbackParam(
+                    message.CustId,
+                    message.SubAccId,
+                    message.Message,
+                    message.Rate,
+                    message.FunctionId,
+                    xmlFeedback));
+
+                return new Result { ErrMsg = Resources.Feedback_Success };
             }
 
-            var param = new AddFeedbackParam(message.CustId, message.SubAccId, message.Message, message.Rate);
-            var result = await service.AddFeedbackAsync(param);
+            return new Result(1, message.IsInternal ? Resources.NotAuthorized : Resources.Feedback_InvalidParams);
+        }
 
-            if (result.ErrCode == 0)
+        private static string BuildXMLFeedback(AddFeedbackQuery message)
+        {
+            var xmlBuilder = new StringBuilder();
+            xmlBuilder.Append("<Root>");
+
+            foreach (var item in message.Areas)
             {
-                result.ErrMsg = Resources.Feedback_Success;
+                xmlBuilder
+                    .Append("<Feedback CustID=\"")
+                    .Append(message.CustId)
+                    .Append("\" SubAccID=\"")
+                    .Append(message.SubAccId)
+                    .Append("\" FuncID=\"")
+                    .Append(message.FunctionId)
+                    .Append("\" AreaID=\"")
+                    .Append(item.AreaId)
+                    .Append("\" Rate=\"")
+                    .Append(item.Rate)
+                    .Append("\"/>");
             }
 
-            return result;
+            xmlBuilder.Append("</Root>");
+
+            return xmlBuilder.ToString();
         }
     }
 }

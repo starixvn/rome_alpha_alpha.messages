@@ -1,21 +1,20 @@
-﻿using Fanex.Data.Repository;
-
-namespace Alpha.Messages.Criteria.Feedback
+﻿namespace Alpha.Messages.Criteria.Feedback
 {
+    using Alpha.Messages.Params.Feedback;
+    using Fanex.Data.Repository;
+
     public class AddFeedbackCriteria : NonQueryCommand
     {
         private const int MaxCommentLength = 4000;
 
-        public AddFeedbackCriteria(
-            int custId,
-            int subAccId,
-            string comment,
-            int rate)
+        public AddFeedbackCriteria(AddFeedbackParam param)
         {
-            CustId = custId;
-            SubAccId = subAccId;
-            Comment = comment ?? string.Empty;
-            Rate = rate;
+            CustId = param.CustId;
+            SubAccId = param.SubAccountId;
+            Comment = param.Comment ?? string.Empty;
+            Rate = param.Rate;
+            FuncId = param.FunctionId;
+            XMLfb = param.XMLFeedback;
         }
 
         public int CustId { get; }
@@ -24,15 +23,18 @@ namespace Alpha.Messages.Criteria.Feedback
 
         public string Comment { get; }
 
-        public int Rate { get; }
+        public byte Rate { get; }
+
+        public int? FuncId { get; }
+
+        public string XMLfb { get; }
 
         public override string GetSettingKey()
-        {
-            return "Age_CustFeedbackIns";
-        }
+            => "Age_CustFeedbackIns";
 
         public override bool IsValid()
             => Rate != 0 ||
-            (!string.IsNullOrWhiteSpace(Comment) && Comment.Length <= MaxCommentLength);
+            (!string.IsNullOrWhiteSpace(Comment) && Comment.Length <= MaxCommentLength)
+            || !string.IsNullOrWhiteSpace(XMLfb);
     }
 }

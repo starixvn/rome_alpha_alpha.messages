@@ -329,7 +329,9 @@
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
-    <Content Include="App_Data\SPNames\LOCAL\DBBOT.bodb_Chatbot.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\DBBOT.bodb_Chatbot.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\LOCAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
@@ -399,6 +401,10 @@
     <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07.css" />
     <Content Include="assets\bundles\feedback\feedback-mobile-calculate-07.min.css">
       <DependentUpon>feedback-mobile-calculate-07.css</DependentUpon>
+    </Content>
+    <Content Include="assets\bundles\feedback\function.js" />
+    <Content Include="assets\bundles\feedback\function.min.js">
+      <DependentUpon>function.js</DependentUpon>
     </Content>
     <Content Include="assets\bundles\feedback\index-dark.css" />
     <Content Include="assets\bundles\feedback\index-dark.min.css">
@@ -989,8 +995,10 @@
     <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\Announcement\AnnouncementsHistoryQuery.cs" />
     <Compile Include="Requests\BackupDomains\BackupDomainsQuery.cs" />
-    <Compile Include="Requests\Feedback\CheckExistsFeedbackQuery.cs" />
     <Compile Include="Requests\Feedback\AddFeedbackQuery.cs" />
+    <Compile Include="Requests\Feedback\CheckExistsFeedbackQuery.cs" />
+    <Compile Include="Requests\Feedback\FeedbackAreaQuery.cs" />
+    <Compile Include="Requests\Feedback\GetFunctionFeedbackQuery.cs" />
     <Compile Include="Requests\MarqueeMessage\MoveBetMessageQuery.cs" />
     <Compile Include="Requests\MessageHistoryBaseRequest.cs" />
     <Compile Include="Requests\NewMessage\NumberOfNewMessageQuery.cs" />
@@ -1001,6 +1009,8 @@
     <Compile Include="Requests\PortalMessage\PortalMessageQuery.cs" />
     <Compile Include="ViewModels\BackupDomainsViewModel.cs" />
     <Compile Include="ViewModels\AnnouncementHistoryViewModel.cs" />
+    <Compile Include="ViewModels\Feedback\FeedbackAreaViewModel.cs" />
+    <Compile Include="ViewModels\Feedback\FeedbackFunctionViewModel.cs" />
     <Compile Include="ViewModels\MarqueeMessageViewModel.cs" />
     <Compile Include="ViewModels\MessageBase.cs" />
     <Compile Include="ViewModels\MessagesHistoryViewModel.cs" />
@@ -1119,6 +1129,10 @@
     <Content Include="Views\BackupDomains\Index.cshtml" />
     <Content Include="Views\StaticMessage\171247.en-US.pdf" />
     <Content Include="Views\StaticMessage\171248.en-US.pdf" />
+    <Content Include="Views\Feedback\Function.cshtml" />
+    <Content Include="Views\Feedback\_SharedLayout.cshtml" />
+    <Content Include="Views\Feedback\_RateIcons.cshtml" />
+    <Content Include="Views\Feedback\_RateStars.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1184,6 +1198,7 @@
     <TypeScriptCompile Include="assets\scripts\backupdomains\index.ts" />
     <TypeScriptCompile Include="assets\scripts\components\daterangepicker.ts" />
     <TypeScriptCompile Include="assets\scripts\core.ts" />
+    <TypeScriptCompile Include="assets\scripts\feedback\function.ts" />
     <TypeScriptCompile Include="assets\scripts\feedback\index.ts" />
     <TypeScriptCompile Include="assets\scripts\message\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

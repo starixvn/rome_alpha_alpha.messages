@@ -73,8 +73,7 @@
 
             ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
-            StaticResources.Init(StaticResources.GetBuildVersion());
-
+            StaticResources.Init(GetBuildVersion());
 
             RefDataTypeContainer
                 .ConnectTo(new Uri(AppSettings.RemoteRefURL))
@@ -100,5 +99,8 @@
                     ["AdminName"] = currentCustomer?.AdminName
                 });
         }
+
+        private static string GetBuildVersion()
+            => $"{StaticResources.GetBuildVersion()}.{AppSettings.JsVersion}";
     }
 }

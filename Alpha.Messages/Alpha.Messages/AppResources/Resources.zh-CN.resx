@@ -270,4 +270,25 @@
   <data name="Slow" xml:space="preserve">
     <value>缓慢</value>
   </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>协助我们改进！</value>
+  </data>
+  <data name="FeedbackFunctionArea_Greeting" xml:space="preserve">
+    <value>请在我们的功能{0}中评估您喜欢/不喜欢的地方。</value>
+  </data>
+  <data name="FeedbackFunctionArea_Message" xml:space="preserve">
+    <value>请告诉我们更多…</value>
+  </data>
+  <data name="FeedbackFunction_Greeting" xml:space="preserve">
+    <value>{0}整体表现如何？我们希望获得您的意见。</value>
+  </data>
+  <data name="FeedbackFunction_Message" xml:space="preserve">
+    <value>哪些方面需要增进？哪些方面还欠缺？</value>
+  </data>
+  <data name="FeedbackFunction_Rate" xml:space="preserve">
+    <value>评价您使用功能{0} 的体验</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>其他</value>
+  </data>
 </root>
