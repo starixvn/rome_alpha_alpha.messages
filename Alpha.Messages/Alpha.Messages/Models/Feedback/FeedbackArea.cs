@@ -11,6 +11,7 @@
         public FeedbackArea(
             int areaId,
             string areaNameEN,
+            string areaNameCN3,
             string areaNameCS,
             string areaNameCH,
             string areaNameTH,
@@ -19,6 +20,7 @@
         {
             AreaId = areaId;
             AreaNameEN = areaNameEN;
+            AreaNameCN3 = areaNameCN3;
             AreaNameCS = areaNameCS;
             AreaNameCH = areaNameCH;
             AreaNameTH = areaNameTH;
@@ -29,6 +31,8 @@
         public int AreaId { get; }
 
         public string AreaNameEN { get; }
+
+        public string AreaNameCN3 { get; }
 
         public string AreaNameCS { get; }
 
@@ -53,8 +57,8 @@
                 case Language.Thai:
                     return AreaNameTH;
 
-                //case Language.Vietnamese:
-                //    return AreaNameVI;
+                case Language.Vietnamese:
+                    return AreaNameCN3;
 
                 case Language.Japanese:
                     return string.IsNullOrWhiteSpace(AreaNameJP) ? AreaNameEN : AreaNameJP;

@@ -11,6 +11,7 @@
         public FeedbackFunction(
             int funcId,
             string funcNameEN,
+            string funcNameCN3,
             string funcNameCS,
             string funcNameCH,
             string funcNameTH,
@@ -19,6 +20,7 @@
         {
             FuncId = funcId;
             FuncNameEN = funcNameEN;
+            FuncNameCN3 = funcNameCN3;
             FuncNameCS = funcNameCS;
             FuncNameCH = funcNameCH;
             FuncNameTH = funcNameTH;
@@ -29,6 +31,8 @@
         public int FuncId { get; }
 
         public string FuncNameEN { get; }
+
+        public string FuncNameCN3 { get; }
 
         public string FuncNameCS { get; }
 
@@ -53,8 +57,8 @@
                 case Language.Thai:
                     return FuncNameTH;
 
-                //case Language.Vietnamese:
-                //    return FuncNameVI;
+                case Language.Vietnamese:
+                    return FuncNameCN3;
 
                 case Language.Japanese:
                     return string.IsNullOrWhiteSpace(FuncNameJP) ? FuncNameEN : FuncNameJP;
