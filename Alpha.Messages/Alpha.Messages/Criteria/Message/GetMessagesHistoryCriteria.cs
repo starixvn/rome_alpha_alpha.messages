@@ -24,7 +24,8 @@
             DateTime startDate,
             DateTime endDate,
             bool isTest,
-            int messageType)
+            int messageType,
+            string site)
         {
             settingKey = SettingKeys[messageType];
             CustId = custId;
@@ -34,6 +35,7 @@
             StartDate = startDate;
             EndDate = endDate;
             IsTest = isTest;
+            Site = site;
         }
 
         [SpParam(SqlParamName = "targetId")]
@@ -54,6 +56,8 @@
         public DateTime EndDate { get; }
 
         public bool IsTest { get; }
+
+        public string Site { get; }
 
         public override string GetSettingKey() => settingKey;
 
