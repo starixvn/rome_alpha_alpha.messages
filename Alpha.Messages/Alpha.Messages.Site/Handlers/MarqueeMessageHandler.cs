@@ -33,7 +33,7 @@
             }
             else
             {
-                publicMessage = messageService.GetLatestPublicMessage(message.RoleId, message.CurrentLang, message.IsTest);
+                publicMessage = messageService.GetLatestPublicMessage(message.RoleId, message.CurrentLang, message.IsTest, message.CustomerSite);
                 privateMessage = messageService.GetLatestPrivateMessage(message.CustId, message.CurrentLang, message.IsTest);
             }
 

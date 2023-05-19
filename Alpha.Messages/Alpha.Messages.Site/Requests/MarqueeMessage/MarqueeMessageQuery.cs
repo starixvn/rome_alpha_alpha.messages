@@ -41,5 +41,7 @@
         public string UserName => userSession.UserName;
 
         public bool IsAdminUser => userSession.AdminId != 0;
+
+        public string CustomerSite => userSession.Site;
     }
 }
