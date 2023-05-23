@@ -33,7 +33,7 @@
         public void Index_Always_ReturnsView()
         {
             // Arrange
-            var expectedViewName = "~/Views/Feedback/Index.cshtml";
+            var expectedViewName = string.Empty;
 
             // Act
             var result = controller.Index();

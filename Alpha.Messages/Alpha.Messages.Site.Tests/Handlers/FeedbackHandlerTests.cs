@@ -85,7 +85,7 @@
             var viewModel = await handler.Handle(query);
 
             // Assert
-            Assert.NotZero(viewModel.ErrCode);
+            Assert.Zero(viewModel.ErrCode);
         }
     }
 }

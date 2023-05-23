@@ -32,7 +32,7 @@
         public int CustId { get; }
 
         public bool IsTest
-            => this.isTest == null ? AppSettings.LocalTest : this.isTest.Value; 
+            => this.isTest ?? AppSettings.LocalTest; 
 
         public string CurrentLang { get; }
 

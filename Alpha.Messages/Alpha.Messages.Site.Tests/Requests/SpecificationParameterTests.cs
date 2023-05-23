@@ -29,7 +29,7 @@
             customerService = Substitute.For<CustomerService>();
             customerService.IsAllDayBalanceTransfer(Arg.Any<int>()).Returns(false);
             parameter = new SpecificationParameter(userSession, productService, customerService);
-            param = Substitute.For<SpecificationParameter>(userSession, productService);
+            param = Substitute.For<SpecificationParameter>(userSession, productService, customerService);
         }
 
         [Test]
