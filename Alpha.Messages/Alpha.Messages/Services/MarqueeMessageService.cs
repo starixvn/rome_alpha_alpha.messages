@@ -44,7 +44,7 @@
             var siteId = MessageConstants.ParentSitesByLevel[roleId];
 
             var message = ConfiguredCacheService.GetOrSet(
-                $"{DataBaseMessageType.Others}_{siteId}",
+                $"{DataBaseMessageType.Others}_{siteId}_{customerSite}",
                 () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest, customerSite)),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));
 
