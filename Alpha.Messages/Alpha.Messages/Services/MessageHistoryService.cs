@@ -37,7 +37,8 @@
                 fromDate,
                 messageParams.EndDate,
                 messageParams.IsTest,
-                messageParams.MessageType);
+                messageParams.MessageType,
+                messageParams.Site);
 
             announcementService.UpdateLastSeenAnnouncement(messageParams.CustId, messageParams.MessageType, messageParams.IsAdminUser, messageParams.SubAccId);
 

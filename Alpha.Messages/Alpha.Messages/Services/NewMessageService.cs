@@ -62,7 +62,9 @@
                 new GetNumberOfUnreadMessageCriteria(
                     announcementParams.CustId,
                     announcementParams.SubAccId,
-                    announcementParams.ParentSites)
+                    announcementParams.ParentSites,
+                    announcementParams.Site
+                    )
                 );
 
             if (CustomerHasInitData(unreadMessage))

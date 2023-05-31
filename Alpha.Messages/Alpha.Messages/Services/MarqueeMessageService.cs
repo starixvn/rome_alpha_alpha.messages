@@ -10,7 +10,7 @@
 
     public interface MarqueeMessageService
     {
-        GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest);
+        GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest, string customerSite);
 
         GeneralMarqueeMessage GetLatestPrivateMessage(int custId, string languageKey, bool isTest);
 
@@ -39,13 +39,13 @@
             return new GeneralMoveBetsMessage(message.GetContentByKey(languageKey), message.MoveBetsEndTime);
         }
 
-        public GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest)
+        public GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest, string customerSite)
         {
             var siteId = MessageConstants.ParentSitesByLevel[roleId];
 
             var message = ConfiguredCacheService.GetOrSet(
                 $"{DataBaseMessageType.Others}_{siteId}",
-                () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest)),
+                () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest, customerSite)),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));
 
             return new GeneralMarqueeMessage(message.Id, message.GetContentByKey(languageKey), message.BetTransId, message.IsBatch, message.IsSticky, message.MsgType);

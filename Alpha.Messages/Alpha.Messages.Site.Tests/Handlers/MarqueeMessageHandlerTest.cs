@@ -40,7 +40,7 @@
         public void Handle_Always_Call3Methods()
         {
             //// Arrange
-            messageService.GetLatestPublicMessage(Arg.Any<byte>(), Arg.Any<string>(), Arg.Any<bool>())
+            messageService.GetLatestPublicMessage(Arg.Any<byte>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>())
                 .Returns(fixture.Create<GeneralMarqueeMessage>());
             messageService.GetLatestPrivateMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<bool>())
                 .Returns(fixture.Create<GeneralMarqueeMessage>());            
@@ -51,7 +51,7 @@
             messageHandler.Handle(new MarqueeMessageQuery(userSession, false));
 
             //// Assert
-            messageService.Received().GetLatestPublicMessage(Arg.Any<byte>(), Arg.Any<string>(), Arg.Any<bool>());
+            messageService.Received().GetLatestPublicMessage(Arg.Any<byte>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>());
             messageService.Received().GetLatestPrivateMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<bool>());
             messageService.Received().GetMoveBetsMessage(Arg.Any<string>());
         }
@@ -60,7 +60,7 @@
         public void HandleLatestMessageQuery_Always_ReturnViewModel()
         {
             //// Arrange
-            messageService.GetLatestPublicMessage(Arg.Any<byte>(), Arg.Any<string>(), Arg.Any<bool>())
+            messageService.GetLatestPublicMessage(Arg.Any<byte>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>())
                 .Returns(fixture.Create<GeneralMarqueeMessage>());
             messageService.GetLatestPrivateMessage(Arg.Any<int>(), Arg.Any<string>(), Arg.Any<bool>())
                 .Returns(fixture.Create<GeneralMarqueeMessage>());            

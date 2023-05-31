@@ -62,6 +62,7 @@
                      LimitedDateToShowInfo,
                      IsTest,
                      MessageType,
-                     Specification);
+                     Specification)
+                    { Site = Site};
     }
 }

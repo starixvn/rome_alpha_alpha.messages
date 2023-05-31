@@ -9,7 +9,7 @@
         public void GetSettingKey_Always_ReturnCorrectKey()
         {
             //// Arrange
-            var criteria = new GetLatestPublicMessageCriteria(3, "3000", false);
+            var criteria = new GetLatestPublicMessageCriteria(3, "3000", false, null);
             var expectedKey = "Acc_Msg_GetTopPubMessage";
 
             //// Act
@@ -23,7 +23,7 @@
         public void IsValid_InvalidParameter_ReturnFalse()
         {
             //// Arrange
-            var criteria = new GetLatestPublicMessageCriteria(-1, null, false);
+            var criteria = new GetLatestPublicMessageCriteria(-1, null, false, null);
 
             //// Act
             var act = criteria.IsValid();
@@ -36,7 +36,7 @@
         public void IsValid_ValidParameter_ReturnTrue()
         {
             //// Arrange
-            var criteria = new GetLatestPublicMessageCriteria(3, "3000", false);
+            var criteria = new GetLatestPublicMessageCriteria(3, "3000", false, null);
 
             //// Act
             var act = criteria.IsValid();
@@ -49,7 +49,7 @@
         public void GetLatestPublicMessageCriteria_ManySites_ReturnCorrectSite()
         {
             //// Arrange && Act
-            var criteria = new GetLatestPublicMessageCriteria(3, "222,333,4444", false);
+            var criteria = new GetLatestPublicMessageCriteria(3, "222,333,4444", false, null);
 
             //// Assert
             Assert.AreEqual("222", criteria.Site1);
@@ -62,7 +62,7 @@
         {
             //// Arrange
             var value0 = 0;
-            var criteria = new GetLatestPublicMessageCriteria(3, "3000", true);
+            var criteria = new GetLatestPublicMessageCriteria(3, "3000", true, null);
 
             //// Act
             var act = criteria.LatestMessageId;
@@ -76,7 +76,7 @@
         {
             //// Arrange
             var valueInConstructor = true;
-            var criteria = new GetLatestPublicMessageCriteria(3, "3000", valueInConstructor);
+            var criteria = new GetLatestPublicMessageCriteria(3, "3000", valueInConstructor, null);
 
             //// Act
             var act = criteria.IsTest;

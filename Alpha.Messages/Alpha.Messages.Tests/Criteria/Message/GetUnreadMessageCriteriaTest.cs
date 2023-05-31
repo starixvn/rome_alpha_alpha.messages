@@ -11,7 +11,7 @@
         public void GetSettingKey_Always_ReturnCorrectKey()
         {
             //// Arrange
-            var criteria = new GetNumberOfUnreadMessageCriteria(263, 0, string.Empty);
+            var criteria = new GetNumberOfUnreadMessageCriteria(263, 0, string.Empty, string.Empty);
             var expectedKey = "Age_MsgCustReadStatus_SelUnread";
 
             //// Act
@@ -25,7 +25,7 @@
         public void IsValid_CustIdMoreThanZeo_ReturnTrue()
         {
             //// Arrange
-            var criteria = new GetNumberOfUnreadMessageCriteria(263, 0, string.Empty);
+            var criteria = new GetNumberOfUnreadMessageCriteria(263, 0, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.IsValid();
@@ -39,7 +39,7 @@
         {
             //// Arrange
             var custId = 123;
-            var criteria = new GetNumberOfUnreadMessageCriteria(custId, 0, string.Empty);
+            var criteria = new GetNumberOfUnreadMessageCriteria(custId, 0, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.CustId;

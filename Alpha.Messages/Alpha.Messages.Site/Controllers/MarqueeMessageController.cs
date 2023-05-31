@@ -27,7 +27,7 @@
                     new GeneralMarqueeMessage(),
                     new GeneralMarqueeMessage(),
                     new GeneralMoveBetsMessage(string.Empty, string.Empty))
-                : mediator.Send(new MarqueeMessageQuery(userSession, false));
+                : mediator.Send(new MarqueeMessageQuery(userSession));
 
             return Json(viewModel);
         }

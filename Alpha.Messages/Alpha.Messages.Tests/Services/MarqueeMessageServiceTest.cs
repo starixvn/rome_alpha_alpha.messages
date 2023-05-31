@@ -127,7 +127,7 @@
             dynamicRepository.Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>()).Returns(messageData);
 
             //// Act
-            messageService.GetLatestPublicMessage(UserLevel.Agent, "en-US", true);
+            messageService.GetLatestPublicMessage(UserLevel.Agent, "en-US", true, null);
 
             //// Assert
             dynamicRepository.Received().Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>());
@@ -144,7 +144,7 @@
             dynamicRepository.Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>()).Returns(messageData);
 
             //// Act
-            var act = messageService.GetLatestPublicMessage(UserLevel.Agent, "zh-CN", true);
+            var act = messageService.GetLatestPublicMessage(UserLevel.Agent, "zh-CN", true, null);
 
             //// Assert
             Assert.AreEqual(contentEN, act.Content);
@@ -159,7 +159,7 @@
             dynamicRepository.Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>()).Returns(messageData);
 
             //// Act
-            messageService.GetLatestPublicMessage(UserLevel.Super, "zh-CN", true);
+            messageService.GetLatestPublicMessage(UserLevel.Super, "zh-CN", true, null);
 
             //// Assert
             dynamicRepository.Received().Get<MarqueeMessage>(Arg.Is<GetLatestPublicMessageCriteria>(i => i.Site1 == SiteSuperId));
@@ -174,7 +174,7 @@
             dynamicRepository.Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>()).Returns(messageData);
 
             //// Act
-            messageService.GetLatestPublicMessage(UserLevel.Master, "zh-CN", true);
+            messageService.GetLatestPublicMessage(UserLevel.Master, "zh-CN", true, null);
 
             //// Assert
             dynamicRepository.Received().Get<MarqueeMessage>(Arg.Is<GetLatestPublicMessageCriteria>(i => i.Site1 == SiteMasterId));
@@ -189,7 +189,7 @@
             dynamicRepository.Get<MarqueeMessage>(Arg.Any<GetLatestPublicMessageCriteria>()).Returns(messageData);
 
             //// Act
-            messageService.GetLatestPublicMessage(UserLevel.Agent, "zh-CN", true);
+            messageService.GetLatestPublicMessage(UserLevel.Agent, "zh-CN", true, null);
 
             //// Assert
             dynamicRepository.Received().Get<MarqueeMessage>(Arg.Is<GetLatestPublicMessageCriteria>(i => i.Site1 == SiteAgentId));

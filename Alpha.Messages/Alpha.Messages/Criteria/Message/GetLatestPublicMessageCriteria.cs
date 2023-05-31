@@ -7,28 +7,30 @@
     {
         private const int IndexSite3 = 2;
 
-        public GetLatestPublicMessageCriteria(int messageType, string site, bool isTest)
+        public GetLatestPublicMessageCriteria(int messageType, string messageSite, bool isTest, string customerSite)
         {
             MessageType = messageType;
             IsTest = isTest;
-
-            Site = site;
+            Site = customerSite;
+            MessageSite = messageSite;
         }
 
-        private string Site { get; set; }
+        public string Site { get; }
+
+        private string MessageSite { get; set; }
 
         public int MessageType { get; }
 
-        public string Site1 => !string.IsNullOrEmpty(Site) ? Site.Split(',')[0] : string.Empty;
+        public string Site1 => !string.IsNullOrEmpty(MessageSite) ? MessageSite.Split(',')[0] : string.Empty;
 
         public string Site2
         {
             get
             {
                 var site2 = string.Empty;
-                if (!string.IsNullOrEmpty(Site))
+                if (!string.IsNullOrEmpty(MessageSite))
                 {
-                    var sites = Site.Split(',');
+                    var sites = MessageSite.Split(',');
                     site2 = sites.Length > 1 ? sites[1] : string.Empty;
                 }
 
@@ -41,9 +43,9 @@
             get
             {
                 var site3 = string.Empty;
-                if (!string.IsNullOrEmpty(Site))
+                if (!string.IsNullOrEmpty(MessageSite))
                 {
-                    var sites = Site.Split(',');
+                    var sites = MessageSite.Split(',');
                     site3 = sites.Length > IndexSite3 ? sites[IndexSite3] : string.Empty;
                 }
 
