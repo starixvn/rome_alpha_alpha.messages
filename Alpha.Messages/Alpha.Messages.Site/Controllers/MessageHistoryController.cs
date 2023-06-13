@@ -39,7 +39,7 @@
                 messageType,
                 DateTime.MinValue,
                 DateTime.Today,
-                AppSettings.LocalTest);
+                AppSettings.LocalTest, 1, 100);
             query.Specification = specificationParam;
 
             return View(query);
@@ -49,7 +49,7 @@
         public ActionResult Messages(
             DateTime? fromDate,
             DateTime? toDate,
-            int messageType = MessageType.Normal)
+            int messageType = MessageType.Normal, int pageIndex = 0, int pageSize = 0)
         {
             if (IsDisableMessages(messageType))
             {
@@ -62,7 +62,7 @@
                 messageType,
                 fromDate ?? DateTime.MinValue,
                 toDate ?? DateTime.Today,
-                AppSettings.LocalTest);
+                AppSettings.LocalTest, pageIndex, pageSize);
             query.Specification = specificationParam;
 
             var viewModel = mediator.Send(query);

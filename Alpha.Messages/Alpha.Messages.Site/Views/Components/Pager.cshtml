@@ -1,0 +1,13 @@
+﻿@model Alpha.Messages.Site.ViewModels.Components.PagerViewModel
+@if (Model.TotalRecords > 0)
+{
+    <div id="pager"
+         data-labelpage="@Resources.Page"
+         data-labelof="@Resources.of"
+         data-labeldisplayitems="@Resources.Pager_DisplayItems"
+         data-pageindex="@Model.PageIndex"
+         data-pagesize="@Model.PageSize"
+         data-totalrecords="@Model.TotalRecords">
+    </div>
+}
+

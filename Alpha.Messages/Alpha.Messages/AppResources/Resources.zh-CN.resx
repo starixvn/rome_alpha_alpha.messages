@@ -291,4 +291,26 @@
   <data name="Others" xml:space="preserve">
     <value>其他</value>
   </data>
+  <data name="Page" xml:space="preserve">
+    <value>页</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>之第</value>
+  </data>
+  <data name="Pager_DisplayItems" xml:space="preserve">
+    <value>显示 {from} 到 {to} 的 {total} 项目</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>特殊</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>个人</value>
+  </data>
+  <data name="GuideNote" xml:space="preserve">
+    <value>公告在默认的情况下将从您上次看到的日期显示至今天。&lt;br&gt;
+ 一般公告和个人讯息最多显示3 个月。</value>
+  </data>
 </root>

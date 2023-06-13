@@ -42,6 +42,7 @@
         public bool IsSticky { get; internal set; }
 
         public string BetTransId { get; }
+        public int TotalMessasge { get; set; }
 
         public long RowNum { get; }
 

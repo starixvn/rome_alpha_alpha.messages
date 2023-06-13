@@ -68,7 +68,7 @@
                     null));
 
             //// Assert
-            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate == limitedDate));
+            dynamicRepository.Received().FetchAsync<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate == limitedDate));
         }
 
         [Test]
@@ -96,7 +96,7 @@
                     null));
 
             //// Assert
-            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == threeDayAgo.Date));
+            dynamicRepository.Received().FetchAsync<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == threeDayAgo.Date));
         }
 
         [Test]
@@ -124,16 +124,16 @@
                     null));
 
             //// Assert
-            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == newReleaseDate.Date));
+            dynamicRepository.Received().FetchAsync<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == newReleaseDate.Date));
         }
 
         [Test]
-        public void GetMessagesHistory_LongTimeNoLogin_FromDateIsSixMonthAgo()
+        public void GetMessagesHistory_LongTimeNoLogin_FromDateIsThreeMonthAgo()
         {
             //// Arrange
             var personalType = 1;
             var lastLoginDate = DateTime.Now.AddYears(-1);
-            var sixMonthAgo = DateTime.Now.AddMonths(-6);
+            var threeMonthAgo = DateTime.Now.AddMonths(-3);
             var lastSeenAnnouncement = new LastSeenAnnouncement(123, lastLoginDate, lastLoginDate, lastLoginDate, lastLoginDate);
             announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
 
@@ -153,7 +153,7 @@
                     null));
 
             //// Assert
-            dynamicRepository.Received().Fetch<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == sixMonthAgo.Date));
+            dynamicRepository.Received().FetchAsync<MessageHistory>(Arg.Is<GetMessagesHistoryCriteria>(i => i.StartDate.Date == threeMonthAgo.Date));
         }
     }
 }

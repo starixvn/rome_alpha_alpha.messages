@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using Alpha.Messages.Models;
     using Helpers;
     using KellermanSoftware.CompareNetObjects;
     using Messages.Constants;
@@ -53,7 +54,13 @@
         {
             // Arrange
             var messages = FakeDataHelper.CreateMany<MessageHistory>().ToList();
-            messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(messages);
+            var report = new PagedReportData<MessageHistory>(
+                 messages,
+                 1,
+                 50,
+                 100);
+
+            messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(report);
             announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>())
                 .Returns(FakeDataHelper.Create<LastSeenAnnouncement>());
 
@@ -62,7 +69,7 @@
                 1,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Act
             messageHandler.Handle(query);
@@ -92,7 +99,12 @@
             var lastSeenAnnouncement = new LastSeenAnnouncement(263, now, now, now, now);
             var numberOfUnReadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             newMessageService.GetNumberOfUnreadMessage(Arg.Any<BaseAnnouncementsParams>()).Returns(numberOfUnReadMessage);
-            messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(messages);
+            var report = new PagedReportData<MessageHistory>(
+                 messages,
+                 1,
+                 50,
+                 100);
+            messageService.GetMessagesHistory(Arg.Any<MessageHistoryParams>()).Returns(report);
             announcementService.GetLastSeenAnnouncement(Arg.Any<int>(), Arg.Any<int>()).Returns(lastSeenAnnouncement);
 
             var query = new MessageHistoryQuery(
@@ -100,10 +112,10 @@
                 1,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             var expectedViewModel = new MessagesHistoryViewModel(
-                messages,
+                report,
                 now,
                 Language.Default,
                 query.StartDate,

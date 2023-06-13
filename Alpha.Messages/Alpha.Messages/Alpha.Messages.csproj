@@ -259,6 +259,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Constants\UserLevel.cs" />
     <Compile Include="Models\Announcement\AlphaAnnouncement.cs" />
+    <Compile Include="Models\PagedReportData.cs" />
     <Compile Include="Models\Product\Product.cs" />
     <Compile Include="Models\Message\NumberOfUnreadMessage.cs" />
     <Compile Include="Models\Message\PortalMessage.cs" />

@@ -1,7 +1,15 @@
 ﻿class Message {
     private $: JQueryStatic;
+    dateRangePickerComponent: DateRangePickerComponent;
+    constraintFromTo = 6;
+    pagerComponent: PagerComponent;
 
-    constructor($: JQueryStatic) {
+    constructor(
+        $: JQueryStatic,
+        dateRangePickerComponent: DateRangePickerComponent,
+        pagerComponent: PagerComponent) {
+        this.dateRangePickerComponent = dateRangePickerComponent;
+        this.pagerComponent = pagerComponent;
         this.$ = $;
     }
 
@@ -14,21 +22,31 @@
         this.$('.btn-submit').on('click', () => {
             this.$.blockUI();
         });
-
-        this.initDateTimePicker('#fromDateContainer');
-        this.initDateTimePicker('#toDateContainer');
+        this.dateRangePickerComponent.render(new DateRangePickerOption("daterange-picker", "report-form", this.constraintFromTo));
+        this.pagerComponent.render();
+        this.$("#report-form").on("click", this.resetPaging);
+        this.$("#icon-information").on("click", this.showGuidelines);
     }
 
-    private initDateTimePicker = (id: string) => {
-        this.$(id).datetimepicker({
-            allowInputToggle: true,
-            format: 'MM/DD/YYYY'
+    resetPaging = () => {
+        this.$("#PageIndex").val(1);
+    };
+
+    showGuidelines = () => {
+        const iconInformation = this.$("#icon-information");
+        const guideNote = this.$("#guide-note");
+        guideNote.modal({ show: true, backdrop: false });
+        const iconHelpPosition = iconInformation.position();
+        guideNote.css({
+            bottom: "auto",
+            top: iconHelpPosition.top + 40,
         });
-    }
-
+    };
 }
 
 $(() => {
-    const message = new Message($);
+    const message = new Message($,
+        new DateRangePickerComponent($),
+        new PagerComponent($));
     message.registerEvents();
 });

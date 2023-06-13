@@ -35,7 +35,9 @@
     "outputFileName": "assets/bundles/message.js",
     "inputFiles": [
       "assets/scripts/core.js",
-      "assets/scripts/message/index.js"
+      "assets/scripts/message/index.js",
+      "assets/scripts/components/daterangepicker.js",
+      "assets/scripts/components/pager.js"
     ]
   },
   {

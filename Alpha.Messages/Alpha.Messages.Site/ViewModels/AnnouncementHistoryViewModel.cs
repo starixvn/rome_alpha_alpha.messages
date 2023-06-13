@@ -21,7 +21,7 @@
 
         public IEnumerable<AlphaAnnouncement> Announcements { get; }
 
-        public DateTime MinDate => DateTime.MinValue;
+        public DateTime MinDate => new DateTime(2017, 7, 1);
 
         public DateTime MaxDate => DateTime.Now;
 

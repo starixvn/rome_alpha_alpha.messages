@@ -82,7 +82,9 @@
                 endDate,
                 isTest,
                 MessageType.Personal,
-                "");
+                "",
+                1,
+                50);
 
             // Assert
             Assert.IsTrue(custId == criteria.CustId &&

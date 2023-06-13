@@ -2,12 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
+    using Alpha.Messages.Models;
+    using Alpha.Messages.Site.ViewModels.Components;
     using Models.Message;
 
     public class MessagesHistoryViewModel : MessageBase
     {
         public MessagesHistoryViewModel(
-            IEnumerable<MessageHistory> messages,
+            PagedReportData<MessageHistory> reportData,
             DateTime lastSeenAnnouncement,
             string languageKey,
             DateTime startDate,
@@ -16,17 +18,24 @@
             byte roleId,
             NumberOfUnreadMessage unreadMessage) : base(messageType, roleId, startDate, endDate, unreadMessage)
         {
-            Messages = messages;
+            ReportData = reportData;
             LastSeenAnnouncement = lastSeenAnnouncement;
             LanguageKey = languageKey;
         }
-
-        public IEnumerable<MessageHistory> Messages { get; }
 
         public DateTime LastSeenAnnouncement { get; }
 
         public string LanguageKey { get; }
 
         public bool IsNewMessage(DateTime postTime) => postTime > LastSeenAnnouncement;
+        public int BuildNo(int no)
+            => no + 1 + ((ReportData.PageIndex - 1) * ReportData.PageSize);
+
+        public PagerViewModel PagerViewModel =>
+                  new PagerViewModel(ReportData.PageIndex, ReportData.PageSize, ReportData.TotalRecords);
+
+        public PagedReportData<MessageHistory> ReportData { get; }
+
     }
+
 }

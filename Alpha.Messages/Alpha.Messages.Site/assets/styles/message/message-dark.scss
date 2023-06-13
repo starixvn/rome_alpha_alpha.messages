@@ -23,7 +23,7 @@ body {
 
     .col-order {
         text-align: center;
-        width: 44px;
+        width: 55px;
     }
 
     .row-first {
@@ -73,7 +73,24 @@ body {
 
 .visible-mobile {
     display: none !important;
-} 
+}
+
+.message-modal {
+    width: 750px;
+
+    .modal-dialog {
+        width: 750px;
+
+        .modal-header {
+            height: 40px;
+
+            .modal-title {
+                height: 35px;
+                cursor: default;
+            }
+        }
+    }
+}
 
 @media only screen and (max-device-width : $conent-device-greater1024) {
     .filter {
@@ -81,7 +98,37 @@ body {
             @include box-shadow-multiple('0px 1px 3px rgba(0, 0, 0, 0.3)');
         }
     }
+    .form-group.icon {
+        margin: 20px 0px 0px 10px;
+    }
+
+    .message-modal {
+        width: 550px;
+
+        .modal-dialog {
+            width: 550px;
+
+            .modal-header {
+                height: 50px;
+
+                .modal-title {
+                    height: 40px;
+                }
+            }
+
+            .modal-body {
+                line-height: 30px;
+            }
+        }
+    }
+
+    .tblRpt {
+        .col-order {
+            width: 85px;
+        }
+    }
 }
+
 
 /* ----------- Mobile ----------- */
 /*@media only screen and (max-device-width : $conent-device-lower768) {
