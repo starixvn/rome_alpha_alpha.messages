@@ -1178,17 +1178,17 @@
     </Content>
     <Content Include="Views\StaticMessage\127446.Agent.en-US.pdf" />
     <Content Include="Views\StaticMessage\127446.Agent.th-TH.pdf">
-		<DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
-	</Content>
+      <DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\127446.Agent.vi-VN.pdf">
-		<DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
-	</Content>
+      <DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\127446.Agent.zh-CN.pdf">
-		<DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
-	</Content>
+      <DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\127446.Agent.zh-TW.pdf">
-		<DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
-	</Content>
+      <DependentUpon>127446.Agent.en-US.pdf</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
