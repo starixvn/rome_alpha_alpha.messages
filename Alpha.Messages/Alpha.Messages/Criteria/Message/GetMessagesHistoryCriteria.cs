@@ -25,13 +25,16 @@
             DateTime endDate,
             bool isTest,
             int messageType,
-            string site)
+            string site,
+            int pageIndex,
+            int pageSize)
         {
             settingKey = SettingKeys[messageType];
             CustId = custId;
             ParentSites = parentSites;
             Special = specialType;
-            TotalMessasge = MessageConstants.DefaultTotalMessageHistory;
+            PageIndex = pageIndex;
+            PageSize = pageSize; 
             StartDate = startDate;
             EndDate = endDate;
             IsTest = isTest;
@@ -46,9 +49,12 @@
 
         public int Special { get; }
 
-        [SpParam(SqlParamName = "record")]
-        public int TotalMessasge { get; }
+        public int PageSize { get; }
 
+        public int PageIndex { get; }
+
+        public int TotalRows { get; set; }
+        
         [SpParam(SqlParamName = "sdate")]
         public DateTime StartDate { get; }
 

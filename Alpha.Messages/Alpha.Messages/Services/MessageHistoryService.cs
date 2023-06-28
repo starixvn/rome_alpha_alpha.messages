@@ -2,6 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Linq;
+    using Alpha.Messages.Models;
     using Constants;
     using Criteria.Message;
     using Fanex.Data.Repository;
@@ -10,7 +13,7 @@
 
     public interface MessageHistoryService
     {
-        IEnumerable<MessageHistory> GetMessagesHistory(MessageHistoryParams messageParams);
+        PagedReportData<MessageHistory> GetMessagesHistory(MessageHistoryParams messageParams);
     }
 
     public class MessageHistoryServiceImpl : MessageHistoryService
@@ -25,7 +28,7 @@
             this.dynamicRepository = dynamicRepository;
         }
 
-        public IEnumerable<MessageHistory> GetMessagesHistory(MessageHistoryParams messageParams)
+        public PagedReportData<MessageHistory> GetMessagesHistory(MessageHistoryParams messageParams)
         {
             messageParams.StartDate = GetAvailableLastSeenDate(messageParams.StartDate, messageParams.MessageType, messageParams.CustId, messageParams.SubAccId);
             var fromDate = GetLimitedDate(messageParams.StartDate, messageParams.LimitedDate, messageParams.MessageType);
@@ -38,11 +41,19 @@
                 messageParams.EndDate,
                 messageParams.IsTest,
                 messageParams.MessageType,
-                messageParams.Site);
+                messageParams.Site,
+                messageParams.PageIndex - 1,
+                messageParams.PageSize
+                );
 
             announcementService.UpdateLastSeenAnnouncement(messageParams.CustId, messageParams.MessageType, messageParams.IsAdminUser, messageParams.SubAccId);
+            var messsages = dynamicRepository.FetchAsync<MessageHistory>(criteria).Result;
 
-            return dynamicRepository.Fetch<MessageHistory>(criteria);
+            return new PagedReportData<MessageHistory>(
+                messsages,
+                messageParams.PageIndex,
+                messageParams.PageSize,
+                criteria.TotalRows);
         }
 
         private DateTime GetAvailableLastSeenDate(DateTime fromDate, int messageType, int custId, int subAccId)
@@ -52,18 +63,18 @@
             if (fromDate == DateTime.MinValue)
             {
                 var threeDayAgo = DateTime.Today.AddDays(-3);
-                var sixMonthAgo = DateTime.Today.AddMonths(-6);
+                var threeMonthAgo = DateTime.Today.AddMonths(-3);
                 if (threeDayAgo < lastSeenDate)
                 {
                     return threeDayAgo;
                 }
-                else if (lastSeenDate < threeDayAgo && lastSeenDate > sixMonthAgo)
+                else if (lastSeenDate < threeDayAgo && lastSeenDate > threeMonthAgo)
                 {
                     return lastSeenDate;
                 }
                 else
                 {
-                    return sixMonthAgo;
+                    return threeMonthAgo;
                 }
             }
 

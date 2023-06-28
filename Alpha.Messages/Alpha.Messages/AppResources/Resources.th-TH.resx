@@ -291,4 +291,26 @@
   <data name="Others" xml:space="preserve">
     <value>อื่นๆ</value>
   </data>
+  <data name="Page" xml:space="preserve">
+    <value>หน้า</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>ของ</value>
+  </data>
+  <data name="Pager_DisplayItems" xml:space="preserve">
+    <value>กำลังแสดงข้อมูล {from} ถึง {to} จากทั้งหมด {total}</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>พิเศษ</value>
+  </data>
+  <data name="normal" xml:space="preserve">
+    <value>ธรรมดา</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>รายบุคคล</value>
+  </data>
+  <data name="GuideNote" xml:space="preserve">
+    <value>การแสดงประกาศ ระบบจะแสดงข้อมูลตั้งแต่วันที่คุณเห็นประกาศครั้งล่าสุดจนถึงปัจจุบัน&lt;br&gt;
+โดยประกาศปกติและข้อความส่วนตัวระบบจะเก็บรักษาไว้เป็นเวลา 3 เดือน</value>
+  </data>
 </root>

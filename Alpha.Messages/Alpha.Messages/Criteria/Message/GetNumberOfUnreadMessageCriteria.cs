@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Messages.Criteria.Message
 {
+    using Alpha.Messages.Configurations;
     using Fanex.Data;
     using Fanex.Data.Repository;
 
@@ -11,6 +12,7 @@
             SubAccId = subAccId;
             ParentSites = parentSites;
             Site = site;
+            IsTest = AppSettings.LocalTest;
         }
 
         public int CustId { get; }
@@ -22,6 +24,8 @@
 
         public string Site { get; }
 
+        public bool IsTest { get; }
+        
         public override string GetSettingKey() => "Age_MsgCustReadStatus_SelUnread";
 
         public override bool IsValid() => CustId >= 0;

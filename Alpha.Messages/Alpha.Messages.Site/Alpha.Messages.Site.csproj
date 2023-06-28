@@ -1015,6 +1015,7 @@
     <Compile Include="Requests\PortalMessage\PortalMessageQuery.cs" />
     <Compile Include="ViewModels\BackupDomainsViewModel.cs" />
     <Compile Include="ViewModels\AnnouncementHistoryViewModel.cs" />
+    <Compile Include="ViewModels\Components\PagerViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackAreaViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackFunctionViewModel.cs" />
     <Compile Include="ViewModels\MarqueeMessageViewModel.cs" />
@@ -1219,6 +1220,7 @@
     <Content Include="Views\StaticMessage\127446.Master.zh-TW.pdf">
       <DependentUpon>127446.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\Components\Pager.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1282,6 +1284,7 @@
     <TypeScriptCompile Include="assets\scripts\announcement\popup.ts" />
     <TypeScriptCompile Include="assets\scripts\announcement\index.ts" />
     <TypeScriptCompile Include="assets\scripts\backupdomains\index.ts" />
+    <TypeScriptCompile Include="assets\scripts\components\pager.ts" />
     <TypeScriptCompile Include="assets\scripts\components\daterangepicker.ts" />
     <TypeScriptCompile Include="assets\scripts\core.ts" />
     <TypeScriptCompile Include="assets\scripts\feedback\function.ts" />

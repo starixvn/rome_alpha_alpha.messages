@@ -93,7 +93,7 @@ namespace Alpha.Messages.Site.Tests.ViewModel
             var act = viewModel.MinDate;
 
             //// Assert
-            Assert.AreEqual(DateTime.MinValue, act);
+            Assert.AreEqual(new DateTime(2017, 7, 1), act);
         }
 
         [Test]

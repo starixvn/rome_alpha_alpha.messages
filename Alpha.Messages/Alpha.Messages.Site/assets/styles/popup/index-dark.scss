@@ -18,3 +18,19 @@ a {
         display: block;
     }    
 }
+
+.message-modal {
+    width: 750px;
+
+    .modal-dialog {
+        width: 750px;
+
+        .modal-header {
+            height: 40px;
+
+            .modal-title {
+                height: 35px;
+            }
+        }
+    }
+}

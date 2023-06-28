@@ -16,7 +16,7 @@
                 int messageType,
                 DateTime startDate,
                 DateTime endDate,
-                bool isTest) : base(userSession)
+                bool isTest, int pageIndex, int pageSize) : base(userSession)
         {
             MessageType = messageType;
             SpecialType = MessageConstants.SpecialTypes[messageType];
@@ -24,6 +24,8 @@
             EndDate = endDate.AddDays(1).AddTicks(-1);
             IsTest = isTest;
             LimitedDateToShowInfo = userSession.GetProperty<DateTime>(SessionKey.CustomerDatelimit);
+            PageIndex = pageIndex;
+            PageSize = pageSize;
         }
 
         public int MessageType { get; }
@@ -35,6 +37,10 @@
         public DateTime EndDate { get; }
 
         public bool IsTest { get; }
+        
+        public int PageIndex { get; }
+
+        public int PageSize { get; }
 
         public DateTime LimitedDateToShowInfo { get; }
 
@@ -62,7 +68,9 @@
                      LimitedDateToShowInfo,
                      IsTest,
                      MessageType,
-                     Specification)
+                     Specification,
+                     PageIndex,
+                     PageSize)
                     { Site = Site};
     }
 }

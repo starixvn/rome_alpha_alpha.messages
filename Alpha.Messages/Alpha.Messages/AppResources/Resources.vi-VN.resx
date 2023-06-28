@@ -312,4 +312,17 @@
   <data name="Others" xml:space="preserve">
     <value>Khác</value>
   </data>
+  <data name="GuideNote" xml:space="preserve">
+    <value>Theo mặc định, thông báo sẽ được hiển thị từ lần xem cuối đến hôm nay.
+Thông Báo Chung và Tin Nhắn Cá Nhân sẽ được lưu đến 3 tháng.</value>
+  </data>
+  <data name="Pager_DisplayItems" xml:space="preserve">
+    <value>Hiển thị {from} đến {to} trên {total} thông báo</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>trên</value>
+  </data>
 </root>

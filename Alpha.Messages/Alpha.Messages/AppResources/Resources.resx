@@ -309,4 +309,17 @@
   <data name="Others" xml:space="preserve">
     <value>Others</value>
   </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="Pager_DisplayItems" xml:space="preserve">
+    <value>Displaying {from} to {to} of {total} items</value>
+  </data>
+  <data name="GuideNote" xml:space="preserve">
+    <value>By default, Announcements will be displayed from your last seen date to today.&lt;br&gt;
+Normal Announcement and Personal Message are available for up to 3 months.</value>
+  </data>
 </root>

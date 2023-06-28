@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using Alpha.Messages.Constants;
+    using Alpha.Messages.Models;
     using Alpha.Messages.Site.Tests.Helpers;
     using Alpha.Messages.Site.ViewModels;
     using Models.Message;
@@ -15,12 +16,17 @@
         {
             // Arrange
             var messages = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var report = new PagedReportData<MessageHistory>(
+                 messages,
+                 1,
+                 50,
+                 100);
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var startDate = DateTime.Today;
 
             // Act
             var viewModel = new MessagesHistoryViewModel(
-                messages,
+                report,
                 DateTime.Today,
                 Language.Default,
                 startDate,
@@ -38,12 +44,17 @@
         {
             // Arrange
             var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var report = new PagedReportData<MessageHistory>(
+                messageWrappers,
+                1,
+                50,
+                100);
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var endDate = DateTime.Today;
 
             // Act
             var viewModel = new MessagesHistoryViewModel(
-                messageWrappers,
+                report,
                 DateTime.Today,
                 Language.Default,
                 DateTime.Today,
@@ -61,12 +72,17 @@
         {
             // Arrange
             var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var report = new PagedReportData<MessageHistory>(
+                messageWrappers,
+                1,
+                50,
+                100);
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var msgType = MessageType.Normal;
 
             // Act
             var viewModel = new MessagesHistoryViewModel(
-                messageWrappers,
+                report,
                 DateTime.Today,
                 Language.Default,
                 DateTime.Today,
@@ -86,10 +102,15 @@
         {
             // Arrange
             var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var report = new PagedReportData<MessageHistory>(
+                messageWrappers,
+                1,
+                50,
+                100);
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             // Act
             var viewModel = new MessagesHistoryViewModel(
-                messageWrappers,
+                report,
                 DateTime.Today,
                 Language.Default,
                 DateTime.Today,
@@ -109,10 +130,15 @@
         {
             // Arrange
             var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var report = new PagedReportData<MessageHistory>(
+              messageWrappers,
+              1,
+              50,
+              100);
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             // Act
             var viewModel = new MessagesHistoryViewModel(
-                messageWrappers,
+                report,
                 DateTime.Today,
                 Language.Default,
                 DateTime.Today,
@@ -132,9 +158,14 @@
         {
             // Arrange
             var messageWrappers = FakeDataHelper.CreateMany<MessageHistory>().ToList();
+            var report = new PagedReportData<MessageHistory>(
+                messageWrappers,
+                1,
+                50,
+                100);
             var numberOfUnreadMessage = FakeDataHelper.Create<NumberOfUnreadMessage>();
             var model = new MessagesHistoryViewModel(
-                messageWrappers,
+                report,
                 DateTime.Today,
                 Language.Default,
                 DateTime.Today,

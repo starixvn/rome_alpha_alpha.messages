@@ -32,7 +32,7 @@
                 MessageType.Normal,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(custId, query.CustId);
@@ -52,7 +52,7 @@
                     MessageType.Normal,
                     DateTime.Today,
                     DateTime.Today,
-                    false);
+                    false, 1, 100);
 
             // Assert
             Assert.AreEqual(expectedParentSitesId, query.ParentSites);
@@ -70,7 +70,7 @@
                 msgType,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(msgType, query.MessageType);
@@ -87,7 +87,7 @@
                 messageType,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(specialType, query.SpecialType);
@@ -106,7 +106,7 @@
                 messageType,
                 startDate,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(startDate, query.StartDate);
@@ -124,7 +124,7 @@
                 MessageType.Special,
                 startDate,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(startDate, query.StartDate);
@@ -142,7 +142,7 @@
                 MessageType.Normal,
                 DateTime.Today,
                 endDate,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(endDate.AddDays(1).AddTicks(-1), query.EndDate);
@@ -160,7 +160,7 @@
                 MessageType.Normal,
                 DateTime.Today,
                 DateTime.Today,
-                isTest);
+                isTest, 1, 100);
 
             // Assert
             Assert.AreEqual(isTest, query.IsTest);
@@ -179,11 +179,11 @@
                 MessageType.Normal,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(currentLang, query.Language);
-        }        
+        }
 
         [Test]
         public void RoleId_Always_EqualsValueSetFromCtor()
@@ -197,7 +197,7 @@
                 MessageType.Normal,
                 DateTime.Today,
                 DateTime.Today,
-                false);
+                false, 1, 100);
 
             // Assert
             Assert.AreEqual(RoleId.Agent, query.RoleId);

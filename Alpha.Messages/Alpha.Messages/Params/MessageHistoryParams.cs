@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Messages.Params
 {
+    using Alpha.Messages.Constants;
     using Announcement;
     using Announcements.Models;
     using System;
@@ -16,8 +17,10 @@
             DateTime endDate,
             DateTime limitedDate,
             bool isTest,
-            int messageType, 
-            IParam specificationParamter)
+            int messageType,
+            IParam specificationParamter,
+            int pageIndex = 0,
+            int pageSize = 0)
         {
             CustId = custId;
             SubAccId = subAccId;
@@ -30,6 +33,17 @@
             IsTest = isTest;
             MessageType = messageType;
             SpecificationParamter = specificationParamter;
+            PageIndex = pageIndex == 0 ? MessageConstants.PageIndex : pageIndex;
+            PageSize = GetPageSize(pageSize, messageType);
+        }
+
+        private int GetPageSize(int pageSize, int messageType)
+        {
+            if (messageType == Constants.MessageType.Special)
+            {
+                return MessageConstants.DefaultTotalSpecialMessageHistory;
+            }
+            return pageSize != 0 ? pageSize : MessageConstants.PageSize;
         }
 
         public int SpecialType { get; }
@@ -38,5 +52,7 @@
         public DateTime LimitedDate { get; }
         public bool IsTest { get; }
         public int MessageType { get; }
+        public int PageSize { get; }
+        public int PageIndex { get; }
     }
 }

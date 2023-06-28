@@ -27,7 +27,7 @@
             userSession = Substitute.For<IUserSession>();
             specificationParam = Substitute.For<IParam>();
             messageController = new MessageHistoryController(mediator, userSession, specificationParam);
-        }        
+        }
 
         [Test]
         public void Index_Always_CallsMediatorSendMessageQuery()
@@ -55,7 +55,7 @@
                 MessageType.Normal,
                 startDate,
                 endDate,
-                AppSettings.LocalTest);
+                AppSettings.LocalTest, 0, 0);
             query.Specification = specificationParam;
 
             // Act
