@@ -7,8 +7,7 @@
     using ViewModels;
 
     public class MarqueeMessageHandler :
-        IRequestHandler<MarqueeMessageQuery, MarqueeMessageViewModel>,
-        IRequestHandler<MoveBetMessageQuery, GeneralMoveBetsMessage>
+        IRequestHandler<MarqueeMessageQuery, MarqueeMessageViewModel>
     {
         private readonly MarqueeMessageService messageService;
         private readonly NewMessageService newMessageService;
@@ -35,14 +34,10 @@
             {
                 publicMessage = messageService.GetLatestPublicMessage(message.RoleId, message.CurrentLang, message.IsTest, message.CustomerSite);
                 privateMessage = messageService.GetLatestPrivateMessage(message.CustId, message.CurrentLang, message.IsTest);
-            }
+            }          
 
-            var moveBet = messageService.GetMoveBetsMessage(message.CurrentLang);
-
-            return new MarqueeMessageViewModel(publicMessage, privateMessage, moveBet);
+            return new MarqueeMessageViewModel(publicMessage, privateMessage);
         }
-
-        public GeneralMoveBetsMessage Handle(MoveBetMessageQuery message)
-            => messageService.GetMoveBetsMessage(message.Language);
+        
     }
 }

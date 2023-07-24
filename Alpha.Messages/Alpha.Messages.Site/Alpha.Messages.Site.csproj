@@ -320,14 +320,12 @@
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\INTERNAL.MNL\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\INTERNAL.MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\INTERNAL\DBMSG.bodb_Message.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\SPNames\INTERNAL\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\INTERNAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBBOT.bodb_Chatbot.xml">
       <SubType>Designer</SubType>
@@ -335,13 +333,11 @@
     <Content Include="App_Data\SPNames\LOCAL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\LOCAL\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\LOCAL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\MNL\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\MNL\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\MNL\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\MNL\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\MNL\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\MNL\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\PRO\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\PRO\DBCUST.CustDB.xml" />
@@ -349,13 +345,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\SPNames\PRO\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\PRO\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\SIT\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\SIT\DBCUST.CustDB.xml" />
     <Content Include="App_Data\SPNames\SIT\DBMSG.bodb_Message.xml" />
     <Content Include="App_Data\SPNames\SIT\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\SIT\DBTXN.BODB02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\UAT\DBBOT.bodb_Chatbot.xml" />
     <Content Include="App_Data\SPNames\UAT\DBCUST.CustDB.xml" />
@@ -363,7 +357,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
-    <Content Include="App_Data\SPNames\UAT\DBTXN.BODB02.xml" />
     <Content Include="assets\bundles\announcement.js" />
     <Content Include="assets\bundles\announcement.min.js" />
     <Content Include="assets\bundles\backupdomains\backupdomains-dark.css" />
@@ -1005,7 +998,6 @@
     <Compile Include="Requests\Feedback\CheckExistsFeedbackQuery.cs" />
     <Compile Include="Requests\Feedback\FeedbackAreaQuery.cs" />
     <Compile Include="Requests\Feedback\GetFunctionFeedbackQuery.cs" />
-    <Compile Include="Requests\MarqueeMessage\MoveBetMessageQuery.cs" />
     <Compile Include="Requests\MessageHistoryBaseRequest.cs" />
     <Compile Include="Requests\NewMessage\NumberOfNewMessageQuery.cs" />
     <Compile Include="Requests\MarqueeMessage\MarqueeMessageQuery.cs" />

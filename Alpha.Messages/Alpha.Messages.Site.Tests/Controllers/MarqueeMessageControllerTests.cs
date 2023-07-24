@@ -37,17 +37,6 @@
             // Assert
             mediator.Received().Send(Arg.Any<MarqueeMessageQuery>());
         }
-
-        [Test]
-        public void MoveBet_Always_CallsMediatorSendMessageQuery()
-        {
-            userSession.RoleId.Returns(RoleId.Agent);
-
-            // Act
-            messageController.MoveBet();
-
-            // Assert
-            mediator.Received().Send(Arg.Any<MoveBetMessageQuery>());
-        }
+      
     }
 }

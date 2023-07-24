@@ -6,18 +6,15 @@
     {        
         public MarqueeMessageViewModel(
             GeneralMarqueeMessage publicMessage, 
-            GeneralMarqueeMessage privateMessage, 
-            GeneralMoveBetsMessage moveBetsInformation)
+            GeneralMarqueeMessage privateMessage)
         {
             PublicMessage = publicMessage;
             PrivateMessage = privateMessage;
-            MoveBetsInformation = moveBetsInformation;
         }
 
         public GeneralMarqueeMessage PublicMessage { get; }
 
         public GeneralMarqueeMessage PrivateMessage { get; }
-        
-        public GeneralMoveBetsMessage MoveBetsInformation { get; }
+       
     }
 }

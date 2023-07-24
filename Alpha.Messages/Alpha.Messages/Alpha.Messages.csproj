@@ -237,7 +237,6 @@
     <Compile Include="Criteria\Product\UnsynchronizedSettingCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteria.cs" />
     <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
-    <Compile Include="Criteria\Message\GetMoveBetInformationCriteria.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteria.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Announcement\LastSeenAnnouncement.cs" />
@@ -247,10 +246,8 @@
     <Compile Include="Models\Feedback\FeedbackArea.cs" />
     <Compile Include="Models\Feedback\FeedbackFunction.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessage.cs" />
-    <Compile Include="Models\Message\GeneralMoveBetsMessage.cs" />
     <Compile Include="Models\Message\MarqueeMessage.cs" />
     <Compile Include="Models\Message\MessageHistory.cs" />
-    <Compile Include="Models\Message\MoveBetsMessage.cs" />
     <Compile Include="Models\Message\MultiLanguague.cs" />
     <Compile Include="Models\Announcement\ResourceManager.cs">
       <SonarQubeExclude>true</SonarQubeExclude>

@@ -1,7 +1,5 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
-    using System;
-    using System.Collections.Specialized;
     using Fanex.Data.Repository;
     using Fixtures;
     using Messages.Configurations;
@@ -13,6 +11,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using Ploeh.AutoFixture;
+    using System.Collections.Specialized;
     using Assert = NUnit.Framework.Assert;
 
     [TestFixture]
@@ -39,86 +38,8 @@
             new FanexCacheFixture();
         }
 
+
       
-        [Test]
-        public void GetMoveBetsMessage_ExpiredCached_CallGetOfDynamicRepository()
-        {
-            //// Arrange
-            var messageData = fixture.Create<MoveBetsMessage>();
-            dynamicRepository.Get<MoveBetsMessage>(Arg.Any<GetMoveBetInformationCriteria>()).Returns(messageData);
-
-            //// Act
-            messageService.GetMoveBetsMessage("US-EN");
-
-            //// Assert
-            dynamicRepository.Received().Get<MoveBetsMessage>(Arg.Any<GetMoveBetInformationCriteria>());
-        }
-
-        [Test]
-        public void GetMoveBetsMessage_EnglishLanguage_ReturnCorrectContent()
-        {
-            //// Arrange
-            var now = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
-            var contentEN = "content EN";
-            var messageData = new MoveBetsMessage(contentEN, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, now);
-            dynamicRepository.Get<MoveBetsMessage>(Arg.Any<GetMoveBetInformationCriteria>()).Returns(messageData);
-
-            //// Act
-            var act = messageService.GetMoveBetsMessage("en-US");
-
-            //// Assert
-            Assert.AreEqual(contentEN, act.Content);
-        }
-
-        [Test]
-        public void GetMoveBetsMessage_CHLanguage_ReturnCorrectContent()
-        {
-            //// Arrange
-            var now = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
-            var contentCH = "content CH";
-            var messageData = new MoveBetsMessage(string.Empty, string.Empty, string.Empty, contentCH, string.Empty, string.Empty, string.Empty, string.Empty, now);
-            dynamicRepository.Get<MoveBetsMessage>(Arg.Any<GetMoveBetInformationCriteria>()).Returns(messageData);
-
-            //// Act
-            var act = messageService.GetMoveBetsMessage("zh-TW");
-
-            //// Assert
-            Assert.AreEqual(contentCH, act.Content);
-        }
-
-        [Test]
-        public void GetMoveBetsMessage_CSContentIsNOTEmpty_ReturnCSContent()
-        {
-            //// Arrange
-            var now = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
-            var contentCS = "content CS";
-            var messageData = new MoveBetsMessage(string.Empty, contentCS, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, now);
-            dynamicRepository.Get<MoveBetsMessage>(Arg.Any<GetMoveBetInformationCriteria>()).Returns(messageData);
-
-            //// Act
-            var act = messageService.GetMoveBetsMessage(Language.ChineseSimplified);
-
-            //// Assert
-            Assert.AreEqual(contentCS, act.Content);
-        }
-
-        [Test]
-        public void GetMoveBetsMessage_ContentCSIsEmpty_ReturnContentEN()
-        {
-            //// Arrange
-            var contentEN = "content EN";
-            var contentCS = string.Empty;
-            var now = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
-            var messageData = new MoveBetsMessage(contentEN, contentCS, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, now);
-            dynamicRepository.Get<MoveBetsMessage>(Arg.Any<GetMoveBetInformationCriteria>()).Returns(messageData);
-
-            //// Act
-            var act = messageService.GetMoveBetsMessage("zh-CN");
-
-            //// Assert
-            Assert.AreEqual(contentEN, act.Content);
-        }
-
         [Test]
         public void GetLatestPublicMessage_ExpiredCached_CallGetOfDynamicRepository()
         {
