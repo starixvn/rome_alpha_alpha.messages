@@ -1,20 +1,13 @@
 ﻿namespace Alpha.Messages.Site.Requests.Feedback
 {
+    using Alpha.Messages.Site.ViewModels.Feedback;
     using MediatR;
     using Sunplus.Agent.Model.Entities;
 
-    public class CheckExistsFeedbackQuery : IAsyncRequest<bool>
+    public class CheckExistsFeedbackQuery : GetFunctionFeedbackQuery, IAsyncRequest<CheckExistsFeedbackViewModel>
     {
-        public CheckExistsFeedbackQuery(IUserSession userSession)
+        public CheckExistsFeedbackQuery(IUserSession userSession) : base(userSession)
         {
-            CustId = userSession.CustId;
-            SubAccId = userSession.SubAccId;
         }
-
-        public int FunctionId { get; set; }
-
-        public int CustId { get; }
-
-        public int SubAccId { get; }
     }
 }

@@ -322,4 +322,7 @@
     <value>By default, Announcements will be displayed from your last seen date to today.&lt;br&gt;
 Normal Announcement and Personal Message are available for up to 3 months.</value>
   </data>
+  <data name="FeedbackOnFunctionTitle" xml:space="preserve">
+    <value>Help us improve {0}</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using Alpha.Messages.Site.Requests.Feedback;
+    using Alpha.Messages.Site.ViewModels.Feedback;
     using Alpha.Web.Filters;
     using MediatR;
 
@@ -17,7 +18,7 @@
 
         [HttpGet, AllowProtectedMode]
         public Task<ActionResult> CheckExist(CheckExistsFeedbackQuery query)
-            => JsonAsync(query, JsonRequestBehavior.AllowGet);
+            => JsonAsync<CheckExistsFeedbackViewModel>(query, JsonRequestBehavior.AllowGet);
 
         [HttpGet, AllowProtectedMode]
         public async Task<ActionResult> Function(GetFunctionFeedbackQuery query)
