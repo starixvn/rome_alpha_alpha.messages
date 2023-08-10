@@ -1,20 +1,18 @@
 ﻿namespace Alpha.Messages.Services
 {
-    using System;
     using Alpha.Messages.Utils;
     using Constants;
     using Criteria.Message;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Models.Message;
+    using System;
 
     public interface MarqueeMessageService
     {
         GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest, string customerSite);
 
         GeneralMarqueeMessage GetLatestPrivateMessage(int custId, string languageKey, bool isTest);
-
-        GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey);
     }
 
     public class MarqueeMessageServiceImpl : MarqueeMessageService
@@ -25,18 +23,6 @@
         public MarqueeMessageServiceImpl(IDynamicRepository dynamicRepository)
         {
             this.dynamicRepository = dynamicRepository;
-        }
-
-        public GeneralMoveBetsMessage GetMoveBetsMessage(string languageKey)
-        {
-            const string key = "Alpha.Message.Services.NotificationMoveBets__";
-
-            var message = ConfiguredCacheService.GetOrSet(
-                key,
-                () => dynamicRepository.Get<MoveBetsMessage>(new GetMoveBetInformationCriteria()),
-                new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));
-
-            return new GeneralMoveBetsMessage(message.GetContentByKey(languageKey), message.MoveBetsEndTime);
         }
 
         public GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest, string customerSite)

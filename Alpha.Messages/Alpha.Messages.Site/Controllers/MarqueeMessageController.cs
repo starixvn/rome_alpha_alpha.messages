@@ -25,21 +25,10 @@
             var viewModel = userSession.IsProtectedMode
                 ? new MarqueeMessageViewModel(
                     new GeneralMarqueeMessage(),
-                    new GeneralMarqueeMessage(),
-                    new GeneralMoveBetsMessage(string.Empty, string.Empty))
+                    new GeneralMarqueeMessage())
                 : mediator.Send(new MarqueeMessageQuery(userSession));
 
             return Json(viewModel);
-        }
-
-        [AllowProtectedMode]
-        public ActionResult MoveBet()
-        {
-            var viewModel = userSession.IsProtectedMode
-                ? new GeneralMoveBetsMessage(string.Empty, string.Empty)
-                : mediator.Send(new MoveBetMessageQuery(userSession));
-
-            return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
     }
 }

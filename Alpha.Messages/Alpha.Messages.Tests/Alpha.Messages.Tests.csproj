@@ -226,7 +226,6 @@
     <Compile Include="Criteria\NewMessage\AssignMessageToUserCriteriaTest.cs" />
     <Compile Include="Criteria\Message\GetLatestPrivateMessageCriteriaTests.cs" />
     <Compile Include="Criteria\Message\GetLatestPublicMessageCriteria.cs" />
-    <Compile Include="Criteria\Message\GetMoveBetInformationCriteriaTests.cs" />
     <Compile Include="Criteria\Message\HasLatestPrivateMessageCriteriaTests.cs" />
     <Compile Include="Criteria\Message\MarkMessageAsReadCriteriaTests.cs" />
     <Compile Include="Criteria\NewMessage\UpdateMessageAsReadOnUserCritriaTest.cs" />
@@ -241,7 +240,6 @@
     <Compile Include="Models\Customer\CustomerTests.cs" />
     <Compile Include="Models\Enumerations\UserLevelTests.cs" />
     <Compile Include="Models\Message\GeneralMarqueeMessageTests.cs" />
-    <Compile Include="Models\Message\GeneralMoveBetsMessageTests.cs" />
     <Compile Include="Models\Message\MarqueeMessageTests.cs" />
     <Compile Include="Models\Message\MessageHistoryTests.cs" />
     <Compile Include="Models\Message\MultiLanguagueTests.cs" />

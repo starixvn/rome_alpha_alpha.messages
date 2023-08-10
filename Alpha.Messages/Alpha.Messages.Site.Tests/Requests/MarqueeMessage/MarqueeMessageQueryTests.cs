@@ -71,20 +71,6 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
 
             // Assert
             Assert.AreEqual(currentLang, query.CurrentLang);
-        }
-
-        [Test]
-        public void MoveBet_Always_HasDefaultLanguage()
-        {
-            // Arrange
-            var currentLang = "en-US";
-            userSession.Language.Returns(currentLang);
-
-            // Act
-            var query = new MoveBetMessageQuery(userSession);
-
-            // Assert
-            Assert.AreEqual(currentLang, query.Language);
-        }
+        }       
     }
 }
