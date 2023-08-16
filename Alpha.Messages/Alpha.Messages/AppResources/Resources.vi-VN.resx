@@ -325,4 +325,7 @@ Thông Báo Chung và Tin Nhắn Cá Nhân sẽ được lưu đến 3 tháng.</
   <data name="of" xml:space="preserve">
     <value>trên</value>
   </data>
+  <data name="FeedbackOnFunctionTitle" xml:space="preserve">
+    <value>Giúp chúng tôi cải thiện {0}</value>
+  </data>
 </root>

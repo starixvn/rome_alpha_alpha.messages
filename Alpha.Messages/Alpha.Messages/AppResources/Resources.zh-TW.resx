@@ -313,4 +313,7 @@
     <value>公告在默認的情況下將從您上次看到的日期顯示至今天。&lt;br&gt;
  一般公告和個人訊息最多顯示3 個月。</value>
   </data>
+  <data name="FeedbackOnFunctionTitle" xml:space="preserve">
+    <value>幫助我們改進{0}</value>
+  </data>
 </root>

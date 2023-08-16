@@ -13,7 +13,7 @@
     using MediatR;
 
     public class FeedbackHandler :
-        IAsyncRequestHandler<CheckExistsFeedbackQuery, bool>,
+        IAsyncRequestHandler<CheckExistsFeedbackQuery, CheckExistsFeedbackViewModel>,
         IAsyncRequestHandler<GetFunctionFeedbackQuery, FeedbackFunctionViewModel>,
         IAsyncRequestHandler<AddFeedbackQuery, Result>
     {
@@ -24,8 +24,24 @@
             this.feedbackService = feedbackService;
         }
 
-        public Task<bool> Handle(CheckExistsFeedbackQuery message)
-            => feedbackService.CheckExistsAsync(message.CustId, message.SubAccId, message.FunctionId);
+        public async Task<CheckExistsFeedbackViewModel> Handle(CheckExistsFeedbackQuery message)
+        {
+            string functionName = string.Empty;
+            var isExist = await feedbackService.CheckExistsAsync(message.CustId, message.SubAccId, message.Id);
+
+            if (!isExist)
+            {
+                var feedback = await feedbackService.GetFeedbackFunctionAsync(message.Id);
+                var feedbackFunction = feedback.Item1.FirstOrDefault();
+
+                if (feedbackFunction != null)
+                {
+                    functionName = string.Format(Resources.FeedbackOnFunctionTitle, feedbackFunction.GetFunctionName(message.Language));
+                }
+            }
+
+            return new CheckExistsFeedbackViewModel(isExist, functionName);
+        }
 
         public async Task<FeedbackFunctionViewModel> Handle(GetFunctionFeedbackQuery message)
         {

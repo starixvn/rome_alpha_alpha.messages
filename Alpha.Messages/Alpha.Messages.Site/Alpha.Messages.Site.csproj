@@ -1008,6 +1008,7 @@
     <Compile Include="ViewModels\BackupDomainsViewModel.cs" />
     <Compile Include="ViewModels\AnnouncementHistoryViewModel.cs" />
     <Compile Include="ViewModels\Components\PagerViewModel.cs" />
+    <Compile Include="ViewModels\Feedback\CheckExistsFeedbackViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackAreaViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackFunctionViewModel.cs" />
     <Compile Include="ViewModels\MarqueeMessageViewModel.cs" />
