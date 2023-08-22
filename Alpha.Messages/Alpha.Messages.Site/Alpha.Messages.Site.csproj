@@ -1214,6 +1214,12 @@
       <DependentUpon>127446.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\Components\Pager.cshtml" />
+    <Content Include="Views\StaticMessage\184099.Agent.en-US.pdf" />
+    <Content Include="Views\StaticMessage\184099.Agent.vi-VN.pdf" />
+    <Content Include="Views\StaticMessage\184099.Master.en-US.pdf" />
+    <Content Include="Views\StaticMessage\184099.Master.vi-VN.pdf" />
+    <Content Include="Views\StaticMessage\184099.Super.en-US.pdf" />
+    <Content Include="Views\StaticMessage\184099.Super.vi-VN.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
