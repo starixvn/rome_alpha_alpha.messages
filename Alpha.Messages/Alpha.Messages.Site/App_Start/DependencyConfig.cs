@@ -1,9 +1,7 @@
 ﻿namespace Alpha.Messages.Site.App_Start
 {
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
-    using System.Web.Mvc;
+    using Alpha.Web.Helpers;
+    using AlphaPlus.User.Models;
     using Announcements.Models;
     using Announcements.Services;
     using Client;
@@ -16,15 +14,18 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
-    using Sunplus.Agent.Model.Base;
-    using Sunplus.Agent.Model.Entities;
-    using Sunplus.Agent.Model.Entities.Permission;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
+    using System.Web.Mvc;
 
     public static class DependencyConfig
     {
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed")]
         public static void Init()
         {
+            AlphaPlus.Configurations.ConfigurationManager.Init(new ConfigurationHelper());
+
             var container = new Container();
 
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
@@ -73,6 +74,7 @@
 
         private static void RegisterServices(Container container)
         {
+            UserSession.Init(new HttpContextHelper());
             container.RegisterSingleton<IUserSession, UserSessionExt>();
             container.RegisterPerWebRequest<NewMessageService, NewMessageServiceImpl>();
             container.RegisterPerWebRequest<MessageHistoryService, MessageHistoryServiceImpl>();

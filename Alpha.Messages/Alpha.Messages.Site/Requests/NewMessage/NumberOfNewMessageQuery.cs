@@ -4,7 +4,7 @@
     using MediatR;
     using Models.Message;
     using Params.Announcement;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class NumberOfNewMessageQuery : MessageHistoryBaseRequest, IRequest<NumberOfUnreadMessage>
     {

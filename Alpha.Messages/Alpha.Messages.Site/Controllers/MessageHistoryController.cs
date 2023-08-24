@@ -11,7 +11,7 @@
     using Constants;
     using MediatR;
     using Requests.MessageHistory;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class MessageHistoryController : SiteBaseController
     {

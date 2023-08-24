@@ -5,7 +5,7 @@ namespace Alpha.Messages.Site.Tests.Requests.Dashboard.Notice
     using NSubstitute;
     using NUnit.Framework;
     using Site.Requests.MarqueeMessage;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     [TestFixture]
     public class MarqueeMessageQueryTests

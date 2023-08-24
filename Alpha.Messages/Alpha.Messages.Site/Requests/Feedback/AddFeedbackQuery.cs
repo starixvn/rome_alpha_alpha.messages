@@ -4,7 +4,7 @@
     using System.Linq;
     using Alpha.Web.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class AddFeedbackQuery : IAsyncRequest<Result>
     {

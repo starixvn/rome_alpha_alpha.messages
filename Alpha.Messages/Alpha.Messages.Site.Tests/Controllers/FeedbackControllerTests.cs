@@ -9,7 +9,7 @@
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     [TestFixture]
     [Category(" Feedback")]

@@ -1,10 +1,9 @@
 ﻿namespace Alpha.Messages.Models.Announcement
 {
-    using System;
-    using System.Collections.Generic;
     using Announcements.Models;
     using Announcements.Specs;
-    using AlphaAppSettings = Web.Configurations.AppSettings;
+    using System;
+    using System.Collections.Generic;
 
     public class AlphaAnnouncement
     {

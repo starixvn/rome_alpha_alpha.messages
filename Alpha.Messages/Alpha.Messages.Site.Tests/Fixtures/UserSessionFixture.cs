@@ -1,7 +1,7 @@
 ﻿namespace Alpha.Messages.Site.Tests.Fixtures
 {
     using NSubstitute;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class UserSessionFixture
     {

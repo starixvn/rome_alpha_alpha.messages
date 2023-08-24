@@ -6,7 +6,7 @@
     using Alpha.Web.Filters;
     using MediatR;
     using Requests.MarqueeMessage;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class MarqueeMessageController : SiteBaseController
     {

@@ -7,7 +7,7 @@
     using NUnit.Framework;
     using Site.Requests;
     using Site.Requests.MarqueeMessage;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     [TestFixture]
     public class MarqueeMessageControllerTests

@@ -23,7 +23,7 @@
     using ONEbook.UM.NETFramework;
     using ONEbook.UM.Services;
     using ONEbook.UM.Transport;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
     using Web;
     using Web.Filters;
     using Web.Helpers;
@@ -62,7 +62,7 @@
                 .UseConfig(umConfig)
                 .UseCacheService(new UMCacheService(new CacheService()))
                 .UseRestClient(new UMRestClient(umConfig))
-                .UseHttpContext(new HttpContextHelper());
+                .UseHttpContext(new ONEbook.UM.Helpers.HttpContextHelper());
             GlobalFilters.Filters.Add(new CheckUMFilterAttribute(
                 new MaintenanceService(UMClientManager.RestClient, UMClientManager.CacheService, UMClientManager.UMClientConfigs, UMClientManager.HttpContext), null));
 

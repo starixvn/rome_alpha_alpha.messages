@@ -4,7 +4,7 @@
     using Alpha.Messages.Configurations;
     using MediatR;
     using Messsages.Site.Requests.PortalMessage;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class PortalMessageController : SiteBaseController
     {

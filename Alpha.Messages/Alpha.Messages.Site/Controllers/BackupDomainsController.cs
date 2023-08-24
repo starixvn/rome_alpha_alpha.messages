@@ -5,6 +5,7 @@
     using Alpha.Messages.Site.Requests.BackupDomains;
     using Alpha.Web.Filters;
     using MediatR;
+using AlphaPlus.User.Models;
 
     public class BackupDomainsController : SiteBaseController
     {

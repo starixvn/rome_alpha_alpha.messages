@@ -6,7 +6,7 @@
     using Models.Message;
     using Params;
     using Params.Announcement;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
     using ViewModels;
 
     public class MessageHistoryQuery : MessageHistoryBaseRequest, IRequest<MessagesHistoryViewModel>
