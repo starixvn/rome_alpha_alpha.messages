@@ -1,36 +1,27 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
-    using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Alpha.Messages.Criteria.Feedback;
-    using Alpha.Messages.Models.Feedback;
     using Alpha.Messages.Params.Feedback;
     using Alpha.Messages.Services;
-    using Alpha.Messages.Tests.Fixtures;
+    using Fanex.Caching;
     using Fanex.Data.Repository;
-    using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
     using NUnit.Framework;
 
     [TestFixture]
     public class FeedbackServiceImplTests
     {
-        private const string FeedBackOnFunctionCacheKey = "Alpha.Messages.Services.FeedbackService.FeedBackOnFunction_{0}";
+        private ICacheService cacheService;
         private IDynamicRepository dynamicRepository;
         private FeedbackServiceImpl service;
-        private CompareLogic compareLogic;
-        private FanexCacheFixture fanexCacheFixture;
-        private Tuple<IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>> feedback;
 
         [SetUp]
         public void SetUp()
         {
+            cacheService = Substitute.For<ICacheService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            service = new FeedbackServiceImpl(dynamicRepository);
-            compareLogic = new CompareLogic();
-            fanexCacheFixture = new FanexCacheFixture();
-            fanexCacheFixture.CacheForTesting.TryGet(string.Format(FeedBackOnFunctionCacheKey, 102), out feedback);
+            service = new FeedbackServiceImpl(dynamicRepository, cacheService);
         }
 
         [Test]

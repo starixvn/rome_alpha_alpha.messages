@@ -6,6 +6,7 @@
     using Announcements.Services;
     using Client;
     using Controllers;
+    using Fanex.Caching;
     using Fanex.Data.Repository;
     using MediatR;
     using Models.Announcement;
@@ -74,6 +75,7 @@
         {
             UserSession.Init(new HttpContextHelper());
             container.RegisterSingleton<IUserSession, UserSessionExt>();
+            container.RegisterSingleton<ICacheService>(() => new CacheService());
             container.RegisterPerWebRequest<NewMessageService, NewMessageServiceImpl>();
             container.RegisterPerWebRequest<MessageHistoryService, MessageHistoryServiceImpl>();
             container.RegisterPerWebRequest<MarqueeMessageService, MarqueeMessageServiceImpl>();
@@ -83,6 +85,7 @@
 
             container.Register<ProductService>(
                 () => new ProductServiceImpl(
+                    container.GetInstance<ICacheService>(),
                     container.GetInstance<IDynamicRepository>(),
                     UserPermission.HasPermissionOnProduct),
                 Lifestyle.Singleton);

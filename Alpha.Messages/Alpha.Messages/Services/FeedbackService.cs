@@ -24,9 +24,13 @@
         private const int FeedBackOnFunctionCacheInMinutes = 60 * 2;
 
         private readonly IDynamicRepository dynamicRepository;
+        private readonly ICacheService cacheService;
 
-        public FeedbackServiceImpl(IDynamicRepository dynamicRepository)
-            => this.dynamicRepository = dynamicRepository;
+        public FeedbackServiceImpl(IDynamicRepository dynamicRepository, ICacheService cacheService)
+        {
+            this.dynamicRepository = dynamicRepository;
+            this.cacheService = cacheService;
+        }
 
         public async Task<bool> CheckExistsAsync(int custId, int subAccId, int functionId)
         {
@@ -37,7 +41,7 @@
         }
 
         public Task<Tuple<IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>>> GetFeedbackFunctionAsync(int functionId)
-            => ConfiguredCacheService.GetOrSetAsync(
+            => cacheService.GetOrSetAsync(
             string.Format(FeedBackOnFunctionCacheKey, functionId),
             () => dynamicRepository.FetchMultiple<FeedbackFunction, FeedbackArea>(new GetFeedbackFunctionCriteria(functionId)),
             new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(FeedBackOnFunctionCacheInMinutes)));

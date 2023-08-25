@@ -1,7 +1,8 @@
 ﻿namespace Alpha.Messages.Tests.Services
 {
+    using System.Collections.Specialized;
+    using Fanex.Caching;
     using Fanex.Data.Repository;
-    using Fixtures;
     using Messages.Configurations;
     using Messages.Constants;
     using Messages.Criteria.Message;
@@ -11,23 +12,25 @@
     using NSubstitute;
     using NUnit.Framework;
     using Ploeh.AutoFixture;
-    using System.Collections.Specialized;
     using Assert = NUnit.Framework.Assert;
 
     [TestFixture]
     public class MarqueeMessageServiceTest
     {
+        private ICacheService cacheService;
         private MarqueeMessageService messageService;
         private IDynamicRepository dynamicRepository;
         private Fixture fixture;
         private const string SiteSuperId = "234";
         private const string SiteMasterId = "2345";
         private const string SiteAgentId = "2346";
+
         [SetUp]
         public void SetUp()
         {
+            cacheService = Substitute.For<ICacheService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            messageService = new MarqueeMessageServiceImpl(dynamicRepository);
+            messageService = new MarqueeMessageServiceImpl(dynamicRepository, cacheService);
             fixture = new Fixture();
             AppSettings.AppSettingValues = new NameValueCollection
             {
@@ -35,11 +38,8 @@
                 ["Message:Master"] = SiteMasterId,
                 ["Message:Agent"] = SiteAgentId
             };
-            new FanexCacheFixture();
         }
 
-
-      
         [Test]
         public void GetLatestPublicMessage_ExpiredCached_CallGetOfDynamicRepository()
         {
@@ -162,6 +162,6 @@
 
             //// Assert
             Assert.AreEqual(contentEN, act.Content);
-        }   
+        }
     }
 }

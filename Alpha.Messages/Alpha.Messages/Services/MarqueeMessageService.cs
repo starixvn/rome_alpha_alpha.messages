@@ -19,17 +19,19 @@
     {
         private const int CachedSecond = 30;
         private readonly IDynamicRepository dynamicRepository;
+        private readonly ICacheService cacheService;
 
-        public MarqueeMessageServiceImpl(IDynamicRepository dynamicRepository)
+        public MarqueeMessageServiceImpl(IDynamicRepository dynamicRepository, ICacheService cacheService)
         {
             this.dynamicRepository = dynamicRepository;
+            this.cacheService = cacheService;
         }
 
         public GeneralMarqueeMessage GetLatestPublicMessage(byte roleId, string languageKey, bool isTest, string customerSite)
         {
             var siteId = MessageConstants.ParentSitesByLevel[roleId];
 
-            var message = ConfiguredCacheService.GetOrSet(
+            var message = cacheService.GetOrSet(
                 $"{DataBaseMessageType.Others}_{siteId}_{customerSite}",
                 () => dynamicRepository.Get<MarqueeMessage>(new GetLatestPublicMessageCriteria(DataBaseMessageType.Others, siteId, isTest, customerSite)),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecond)));

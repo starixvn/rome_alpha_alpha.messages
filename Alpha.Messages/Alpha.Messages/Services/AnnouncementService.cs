@@ -44,15 +44,18 @@
         private readonly AnnouncementClient announcementClient;
         private readonly SpecificationService specificationService;
         private readonly IDynamicRepository dynamicRepository;
+        private readonly ICacheService cacheService;
 
         public AnnouncementServiceImpl(
             AnnouncementClient announcementClient,
             SpecificationService specificationService,
-            IDynamicRepository dynamicRepository)
+            IDynamicRepository dynamicRepository,
+            ICacheService cacheService)
         {
             this.announcementClient = announcementClient;
             this.specificationService = specificationService;
-            this.dynamicRepository = dynamicRepository;     
+            this.dynamicRepository = dynamicRepository;
+            this.cacheService = cacheService;
         }
 
         public void UpdateLastSeenAnnouncement(int custId, int messageType, bool isAdminUser, int subAccId)
@@ -138,7 +141,7 @@
 
         private IEnumerable<Announcement> GetNewAnnouncements(DateTime fromDate)
         {
-            var newAnnouncements = ConfiguredCacheService.GetOrSet(
+            var newAnnouncements = cacheService.GetOrSet(
                  $"Alpha.Messages.Announcement_{fromDate}_{AppSettings.SiteLabel}",
                  () => GetAnnouncementsHistory(fromDate, DateTime.Now),
                  new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(CachedSecondAnnouncement)));
@@ -149,7 +152,7 @@
         private IEnumerable<Announcement> GetAvailablePopUpAnnouncements()
         {
             var request = new AnnouncementHistoryRequest(DateTime.Today.AddDays(-30), DateTime.Now, AppSettings.Environment, AppSettings.SiteLabel);
-            var availablePopupAnnouncements = ConfiguredCacheService.GetOrSet(
+            var availablePopupAnnouncements = cacheService.GetOrSet(
                 $"Alpha.Messages.PopupAnnouncement_{AppSettings.SiteLabel}",
                 () => announcementClient.GetAnnouncementsHistory(request)
                 .Where(i => DateTime.Now <= i.ExpiredDate && i.IsPopup),

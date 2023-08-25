@@ -6,6 +6,7 @@
     using Announcements.Services;
     using Client;
     using Controllers;
+    using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using MediatR;
@@ -60,13 +61,14 @@
         private static void RegisterServices(Container container)
         {
             container.RegisterSingleton(() => Logger.Log);
-
+            container.RegisterSingleton<ICacheService>(() => new CacheService());
             container.RegisterSingleton<AnnouncementFormatService, AnnouncementFormatServiceImpl>();
             container.RegisterSingleton<AnnouncementService, AnnouncementServiceImpl>();
             container.RegisterSingleton<CustomerService, CustomerServiceImpl>();
 
             container.Register<ProductService>(
                 () => new ProductServiceImpl(
+                    container.GetInstance<ICacheService>(),
                     container.GetInstance<IDynamicRepository>(),
                     (_) => true),
                 Lifestyle.Singleton);
