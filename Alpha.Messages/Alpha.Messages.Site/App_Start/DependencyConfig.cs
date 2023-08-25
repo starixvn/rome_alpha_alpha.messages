@@ -24,8 +24,6 @@
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed")]
         public static void Init()
         {
-            AlphaPlus.Configurations.ConfigurationManager.Init(new ConfigurationHelper());
-
             var container = new Container();
 
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();

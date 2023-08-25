@@ -3,7 +3,9 @@
     using System;
     using System.Web;
     using System.Web.Http;
-    using Alpha.Logging;
+    using Alpha.Messages.Api.Helpers;
+    using AlphaPlus.Logging;
+    using AlphaPlus.Logging.Web;
     using App_Start;
     using Configurations;
     using Fanex.Data;
@@ -17,6 +19,8 @@
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            AlphaPlus.Configurations.ConfigurationManager.Init(new ConfigurationHelper());
+            LoggingConfig.ExceptionHandler = new ExceptionHandlerAdapter();
             LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
 
             DependencyConfig.Init();

@@ -4,7 +4,9 @@
     using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Web.Routing;
-    using Alpha.Logging;
+    using AlphaPlus.Logging;
+    using AlphaPlus.Logging.Web;
+    using AlphaPlus.User.Models;
     using App_Start;
     using Auth.Filters;
     using Configurations;
@@ -19,11 +21,9 @@
     using ONEbook.UM;
     using ONEbook.UM.AspNetMVC.Filters;
     using ONEbook.UM.Configurations;
-    using ONEbook.UM.Helpers;
     using ONEbook.UM.NETFramework;
     using ONEbook.UM.Services;
     using ONEbook.UM.Transport;
-    using AlphaPlus.User.Models;
     using Web;
     using Web.Filters;
     using Web.Helpers;
@@ -40,6 +40,8 @@
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            AlphaPlus.Configurations.ConfigurationManager.Init(new ConfigurationHelper());
+
             DependencyConfig.Init();
 
             AppSettings.Verify();
@@ -55,6 +57,7 @@
 
             ShareSession.Init();
 
+            LoggingConfig.ExceptionHandler = new ExceptionHandlerAdapter();
             LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
 
             var umConfig = new UMClientConfiguration().Initialize();
