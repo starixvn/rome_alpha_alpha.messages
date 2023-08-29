@@ -9,8 +9,7 @@
     using App_Start;
     using Configurations;
     using Fanex.Data;
-    using Fanex.Data.CrossCutting.WrappingException;
-    using Fanex.Data.OldConnectionStringProvider;
+    using Fanex.Data.SqlServer;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
 
@@ -28,9 +27,7 @@
 
             DbSettingProviderManager
                 .StartNewSession()
-                .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoreProcedurePath, enableWatching: true)
-                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
+                .WithSqlServer(resourcePath: AppSettings.StoreProcedurePath)
                 .Run();
         }
 

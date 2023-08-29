@@ -13,7 +13,7 @@
     {
         Task<bool> CheckExistsAsync(int custId, int subAccId, int functionId);
 
-        Task<Tuple<IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>>> GetFeedbackFunctionAsync(int functionId);
+        Task<(IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>)> GetFeedbackFunctionAsync(int functionId);
 
         Task AddFeedbackAsync(AddFeedbackParam param);
     }
@@ -40,7 +40,7 @@
             return criteria.IsExists;
         }
 
-        public Task<Tuple<IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>>> GetFeedbackFunctionAsync(int functionId)
+        public Task<(IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>)> GetFeedbackFunctionAsync(int functionId)
             => cacheService.GetOrSetAsync(
             string.Format(FeedBackOnFunctionCacheKey, functionId),
             () => dynamicRepository.FetchMultiple<FeedbackFunction, FeedbackArea>(new GetFeedbackFunctionCriteria(functionId)),
