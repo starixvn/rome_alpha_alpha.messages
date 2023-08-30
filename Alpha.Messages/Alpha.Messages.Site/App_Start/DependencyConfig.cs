@@ -90,6 +90,7 @@
             container.RegisterPerWebRequest<FeedbackService, FeedbackServiceImpl>();
             container.RegisterPerWebRequest<BackupDomainsService, BackupDomainsServiceImpl>();
             container.RegisterSingleton<CustomerService, CustomerServiceImpl>();
+            container.RegisterSingleton<ToastMessageService, ToastMessageServiceImpl>();
         }
 
         private static void RegisterAnnouncementService(Container container)
