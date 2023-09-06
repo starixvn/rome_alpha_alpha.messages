@@ -1220,6 +1220,19 @@
     <Content Include="Views\StaticMessage\184099.Master.vi-VN.pdf" />
     <Content Include="Views\StaticMessage\184099.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\184099.Super.vi-VN.pdf" />
+    <Content Include="Views\StaticMessage\186142.Agent.en-US.pdf" />
+    <Content Include="Views\StaticMessage\186142.Agent.vi-VN.pdf">
+      <DependentUpon>186142.Agent.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\186142.Agent.th-TH.pdf">
+      <DependentUpon>186142.Agent.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\186142.Agent.zh-CN.pdf">
+      <DependentUpon>186142.Agent.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\186142.Agent.zh-TW.pdf">
+      <DependentUpon>186142.Agent.en-US.pdf</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
