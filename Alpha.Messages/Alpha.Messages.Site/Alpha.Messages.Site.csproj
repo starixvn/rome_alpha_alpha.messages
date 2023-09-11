@@ -156,8 +156,8 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ONEbook.UM, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ONEbook.UM.3.1.4\lib\net461\ONEbook.UM.dll</HintPath>
+    <Reference Include="ONEbook.UM, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ONEbook.UM.3.1.6\lib\net461\ONEbook.UM.dll</HintPath>
     </Reference>
     <Reference Include="ONEbook.UM.AspNetMVC, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ONEbook.UM.AspNetMVC.3.1.2\lib\net461\ONEbook.UM.AspNetMVC.dll</HintPath>
@@ -336,7 +336,9 @@
     </Content>
     <Content Include="App_Data\SPNames\UAT\DBONUSER.ON_USER.xml" />
     <Content Include="assets\bundles\announcement.js" />
-    <Content Include="assets\bundles\announcement.min.js" />
+    <Content Include="assets\bundles\announcement.min.js">
+      <DependentUpon>announcement.js</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\backupdomains\backupdomains-dark.css" />
     <Content Include="assets\bundles\backupdomains\backupdomains-dark.min.css">
       <DependentUpon>backupdomains-dark.css</DependentUpon>
@@ -1408,9 +1410,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.2\build\Fanex.Visual-StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.2\build\Fanex.Visual-StyleCop.MSBuild.Targets'))" />
   </Target>
-  <Import Project="..\..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.2\build\Fanex.Visual-StyleCop.MSBuild.Targets" Condition="Exists('..\..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.2\build\Fanex.Visual-StyleCop.MSBuild.Targets')" />
   <PropertyGroup>
     <PostBuildEvent>
       cd $(ProjectDir)

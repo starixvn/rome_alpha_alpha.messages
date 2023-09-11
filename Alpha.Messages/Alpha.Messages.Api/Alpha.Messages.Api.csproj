@@ -75,9 +75,8 @@
       <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Data, Version=4.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.Data.4.2.2\lib\net461\Fanex.Data.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.Data">
+      <HintPath>..\..\packages\Fanex.Data.4.2.2\lib\netstandard2.0\Fanex.Data.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Data.Repository, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Data.Repository.4.2.2\lib\net461\Fanex.Data.Repository.dll</HintPath>
