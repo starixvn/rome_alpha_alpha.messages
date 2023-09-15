@@ -48,7 +48,7 @@
 
         public string Site { get; }
 
-        public bool IsIMBC => SiteLabel.Equals("Nova88");
+        public bool IsIMBC => SiteLabel.Equals("MBC");
 
         public bool IsAllDayBalTransfer { get; }
 
