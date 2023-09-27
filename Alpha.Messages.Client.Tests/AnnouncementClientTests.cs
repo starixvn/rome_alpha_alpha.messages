@@ -56,7 +56,7 @@
         public void GetAnnouncementsHistory_ApiError_ReturnEmptyList()
         {
             //// Arrange
-            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now,"Local", "NovMBC
+            var request = new AnnouncementHistoryRequest(DateTime.Now, DateTime.Now, "Local", "MBC");
             restClient.Execute(Arg.Any<IRestRequest>()).Returns(new RestResponse() { StatusCode = HttpStatusCode.BadRequest });
 
             //// Act
