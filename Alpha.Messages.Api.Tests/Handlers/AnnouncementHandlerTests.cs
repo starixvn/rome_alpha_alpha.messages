@@ -117,7 +117,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "Nova88");
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "MBC");
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -139,7 +139,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "Nova88");
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "NovMBC
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -161,8 +161,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "Nova88");
-            customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "Nova88MBC           customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
             var actualResult = announcementHandler.Handle(message);
@@ -190,8 +189,7 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "Nova88");
-            customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
+            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "Nova88");MBC        customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             var expectedResult = new List<AnnouncementViewModel>
             {
