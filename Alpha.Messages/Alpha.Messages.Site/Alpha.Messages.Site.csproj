@@ -845,6 +845,33 @@
     <Content Include="Views\StaticMessage\184098.Master.en-US.pdf">
       <DependentUpon>184098.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\184099.Agent.th-TH.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Agent.zh-CN.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Agent.zh-TW.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Master.th-TH.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Master.zh-CN.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Master.zh-TW.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Super.th-TH.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Super.zh-CN.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\184099.Super.zh-TW.pdf">
+      <DependentUpon>184099.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\NewSportType.cshtml" />
     <Content Include="Alpha.Messages.Site.Debug.ruleset" />
     <Content Include="Views\StaticMessage\102924.cshtml" />
