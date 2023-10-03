@@ -6,8 +6,8 @@
     using Alpha.Messages.Site.Requests.ToastMessage;
     using Alpha.Web.Filters;
     using Alpha.Web.Models;
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
 
     public class ToastMessageController : SiteBaseController
     {

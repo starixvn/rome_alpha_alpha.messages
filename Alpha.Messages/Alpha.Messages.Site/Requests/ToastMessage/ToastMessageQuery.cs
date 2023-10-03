@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using Alpha.Messages.Models.ToastMessage;
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
 
     public class ToastMessageQuery : IRequest<IEnumerable<ToastMessageModel>>
     {
