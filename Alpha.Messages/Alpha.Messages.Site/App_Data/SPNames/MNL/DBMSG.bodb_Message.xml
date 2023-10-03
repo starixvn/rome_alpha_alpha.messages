@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
-  <Function Name="Message">    
+  <Function Name="Message">
     <Setting Key="Age_Msg_SetMessage" SpName="Age_Msg_SetMessage" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0">
       <Mapping DataField="messageId" ObjectProperty="Id" />
     </Setting>
@@ -95,6 +95,10 @@
     <Setting Key="Age_MsgCustReadStatus_Sel" SpName="Age_MsgCustReadStatus_Sel" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
     <Setting Key="Age_MsgCustReadStatus_Upd" SpName="Age_MsgCustReadStatus_Upd" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
     <Setting Key="Age_MsgCustReadStatus_SelUnread" SpName="Age_MsgCustReadStatus_SelUnread" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
+  </Function>
+  <Function Name="Toast Message">
+    <Setting Key="Age_ToastMessage_Sel" SpName="Age_ToastMessage_Sel" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
+    <Setting Key="Age_ToastMessage_SetRead" SpName="Age_ToastMessage_SetRead" DbName="DBMSG.bodb_Message.BODBDownlineNet" Plain="0"></Setting>
   </Function>
 
 </Functions>

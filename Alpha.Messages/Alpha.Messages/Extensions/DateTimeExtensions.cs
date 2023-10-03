@@ -12,5 +12,13 @@
 
         public static string ToLongTime(this DateTime dateTime)
             => dateTime.ToString(LongTime);
+
+        public static bool IsTodate(this DateTime dateTime)
+        {
+            var currentDate = DateTime.Now.Date;
+            return dateTime.Date == currentDate.Date
+                && dateTime.Month == currentDate.Month
+                && dateTime.Year == currentDate.Year;
+        }
     }
 }

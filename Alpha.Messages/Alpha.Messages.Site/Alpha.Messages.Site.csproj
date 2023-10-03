@@ -967,6 +967,7 @@
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
     <Compile Include="Controllers\BackupDomainsController.cs" />
+    <Compile Include="Controllers\ToastMessageController.cs" />
     <Compile Include="Controllers\NewMessageController.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\PortalMessageController.cs" />
@@ -980,6 +981,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\ToastMessageHandler.cs" />
     <Compile Include="Handlers\BackupDomainsHandler.cs" />
     <Compile Include="Handlers\FeedbackHandler.cs" />
     <Compile Include="Handlers\PopupAnnouncementHandler.cs" />
@@ -1005,6 +1007,8 @@
     <Compile Include="Requests\Announcement\SpecificationParameter.cs" />
     <Compile Include="Requests\PortalMessage\MarkMessageAsReadQuery.cs" />
     <Compile Include="Requests\PortalMessage\PortalMessageQuery.cs" />
+    <Compile Include="Requests\ToastMessage\MarkReadMessageQuery.cs" />
+    <Compile Include="Requests\ToastMessage\ToastMessageQuery.cs" />
     <Compile Include="ViewModels\BackupDomainsViewModel.cs" />
     <Compile Include="ViewModels\AnnouncementHistoryViewModel.cs" />
     <Compile Include="ViewModels\Components\PagerViewModel.cs" />
