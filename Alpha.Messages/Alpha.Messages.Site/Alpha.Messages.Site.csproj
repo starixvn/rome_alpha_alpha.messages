@@ -839,6 +839,21 @@
     <Content Include="Views\StaticMessage\171248.vi-VN.pdf">
       <DependentUpon>171248.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\179159.Agent.en-US.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\179159.Agent.vi-VN.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\179159.Master.en-US.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\179159.Master.vi-VN.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\179159.Super.vi-VN.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\184098.Agent.en-US.pdf">
       <DependentUpon>184098.Super.en-US.pdf</DependentUpon>
     </Content>
@@ -1264,6 +1279,7 @@
     <Content Include="Views\StaticMessage\186142.Agent.zh-TW.pdf">
       <DependentUpon>186142.Agent.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\179159.Super.en-US.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
