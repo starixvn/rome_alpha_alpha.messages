@@ -328,4 +328,13 @@ Thông Báo Chung và Tin Nhắn Cá Nhân sẽ được lưu đến 3 tháng.</
   <data name="FeedbackOnFunctionTitle" xml:space="preserve">
     <value>Giúp chúng tôi cải thiện {0}</value>
   </data>
+  <data name="AgencyDomains" xml:space="preserve">
+    <value>Tên Miền Đại lý</value>
+  </data>
+  <data name="MemberDomains" xml:space="preserve">
+    <value>Tên Miền Member</value>
+  </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>Sao chép tất cả</value>
+  </data>
 </root>

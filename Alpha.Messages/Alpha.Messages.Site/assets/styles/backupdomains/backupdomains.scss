@@ -1,82 +1,26 @@
-﻿body {
-  background-color: transparent;
-}
+﻿.tblRpt {
+    margin-top: 6px;
+    width: auto;
 
-
-#tbl-report {
-  margin-top: 15px;
-  width: 360px;
-}
-
-.icon-refresh {
-  cursor: pointer;
+    tr td {
+        height: 36px;
+        vertical-align: middle;
+    }
 }
 
 .col-no {
-  width: 60px;
+    width: 60px;
 }
 
 .col-domain {
-  width: 250px;
-}
-
-.col-status {
-  width: 120px;
+    width: 250px;
 }
 
 .col-copy-domain {
-  width: 100px;
+    width: 100px;
 }
 
-.domain-url {
-  text-decoration: underline;
-}
-
-.status-very-good {
-  color: #14A42C;
-}
-
-.status-good {
-  color: #92D050;
-}
-
-.status-normal {
-  color: #C65911;
-}
-
-.status-bad {
-  color: #FF3A90;
-}
-
-.status-down {
-  color: #00003A;
-}
-
-.div-icon {
-  width: 20px;
-  display: inline-block;
-}
-
-.area-copy-domain {
-  width: 0;
-  height: 0;
-  resize: none;
-}
-
-input[type="text"].txt-domain {
-  display: inline-block;
-  background: transparent;
-  box-shadow: none;
-  width: 200px;
-  text-align: center;
-
-  &.lnk {
-    color: #337ab7;
-    text-decoration: underline;
-    cursor: pointer;
-
-    &:hover, &:focus {
-      color: #23527c;
-    }
-  }
+.copy-all {
+    margin-left: 2px;
+    top: 2px;
 }

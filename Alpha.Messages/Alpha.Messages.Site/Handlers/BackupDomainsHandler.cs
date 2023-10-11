@@ -1,23 +1,40 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Alpha.Messages.Models.BackupDomains;
-using Alpha.Messages.Services;
-using Alpha.Messages.Site.Requests.BackupDomains;
-using MediatR;
-
-namespace Alpha.Messages.Site.Handlers
+﻿namespace Alpha.Messages.Site.Handlers
 {
-    public class BackupDomainsHandler
-        : IAsyncRequestHandler<BackupDomainsQuery, IEnumerable<BackupDomainModel>>
-    {
-        private readonly BackupDomainsService service;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Alpha.Messages.Services;
+    using Alpha.Messages.Site.Requests.BackupDomains;
+    using Alpha.Messages.Site.ViewModels;
+    using MediatR;
 
-        public BackupDomainsHandler(BackupDomainsService service)
+    public class BackupDomainsHandler : IAsyncRequestHandler<BackupDomainsQuery, BackupDomainsViewModel>
+    {
+        private readonly BackupDomainsService backupDomainsService;
+
+        public BackupDomainsHandler(BackupDomainsService backupDomainsService)
         {
-            this.service = service;
+            this.backupDomainsService = backupDomainsService;
         }
 
-        public async Task<IEnumerable<BackupDomainModel>> Handle(BackupDomainsQuery message)
-            => await service.GetBackupDomains(message.SiteLabel);
+        public async Task<BackupDomainsViewModel> Handle(BackupDomainsQuery message)
+        {
+            var domains = await backupDomainsService.GetBackupDomains(message.Site);
+            var agencyDomains = new List<string>();
+            var memberDomains = new List<string>();
+
+            foreach (var item in domains)
+            {
+                if (item.IsAgency)
+                {
+                    agencyDomains.Add(item.Domain);
+                }
+                else
+                {
+                    memberDomains.Add(item.Domain);
+                }
+            }
+
+            return new BackupDomainsViewModel(message.RoleId, agencyDomains, memberDomains);
+        }
     }
 }

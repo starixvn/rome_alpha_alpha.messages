@@ -316,4 +316,13 @@
   <data name="FeedbackOnFunctionTitle" xml:space="preserve">
     <value>幫助我們改進{0}</value>
   </data>
+  <data name="AgencyDomains" xml:space="preserve">
+    <value>代理網域名</value>
+  </data>
+  <data name="MemberDomains" xml:space="preserve">
+    <value>會員網域名</value>
+  </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>複制全部</value>
+  </data>
 </root>

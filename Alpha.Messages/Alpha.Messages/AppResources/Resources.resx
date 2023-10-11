@@ -325,4 +325,13 @@ Normal Announcement and Personal Message are available for up to 3 months.</valu
   <data name="FeedbackOnFunctionTitle" xml:space="preserve">
     <value>Help us improve {0}</value>
   </data>
+  <data name="AgencyDomains" xml:space="preserve">
+    <value>Agency Domains</value>
+  </data>
+  <data name="MemberDomains" xml:space="preserve">
+    <value>Member Domains</value>
+  </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>Copy All</value>
+  </data>
 </root>
