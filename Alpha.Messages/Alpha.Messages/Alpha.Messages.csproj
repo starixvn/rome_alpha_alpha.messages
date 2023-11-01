@@ -196,7 +196,6 @@
     <Compile Include="Constants\MessageConstants.cs" />
     <Compile Include="Constants\DataBaseMessageType.cs" />
     <Compile Include="Constants\MessageRange.cs" />
-    <Compile Include="Constants\ToastMessageType.cs" />
     <Compile Include="Constants\MessageType.cs" />
     <Compile Include="Constants\SessionKey.cs" />
     <Compile Include="Criteria\BackupDomains\GetGetBackupDomainsCriteria.cs" />
