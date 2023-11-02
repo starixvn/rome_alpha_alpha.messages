@@ -842,6 +842,9 @@
     <Content Include="Views\StaticMessage\179159.Agent.en-US.pdf">
       <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\179159.Agent.th-TH.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\179159.Agent.vi-VN.pdf">
       <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
     </Content>
@@ -854,6 +857,9 @@
     <Content Include="Views\StaticMessage\179159.Master.en-US.pdf">
       <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\179159.Master.th-TH.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\179159.Master.vi-VN.pdf">
       <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
     </Content>
@@ -861,6 +867,9 @@
       <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179159.Master.zh-TW.pdf">
+      <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\179159.Super.th-TH.pdf">
       <DependentUpon>179159.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\179159.Super.vi-VN.pdf">
