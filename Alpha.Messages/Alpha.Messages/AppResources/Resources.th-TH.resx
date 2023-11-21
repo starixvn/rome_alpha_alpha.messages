@@ -316,4 +316,13 @@
   <data name="FeedbackOnFunctionTitle" xml:space="preserve">
     <value>ช่วยเราปรับปรุง {0} ให้ดียิ่งขึ้น</value>
   </data>
+  <data name="AgencyDomains" xml:space="preserve">
+    <value>โดเมนเวปเอเย่นท์</value>
+  </data>
+  <data name="MemberDomains" xml:space="preserve">
+    <value>โดเมนเวปสมาชิก</value>
+  </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>คัดลอกทั้งหมด</value>
+  </data>
 </root>

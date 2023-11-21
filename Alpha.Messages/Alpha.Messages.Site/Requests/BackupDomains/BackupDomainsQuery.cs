@@ -1,11 +1,19 @@
-﻿using System.Collections.Generic;
-using Alpha.Messages.Models.BackupDomains;
-using MediatR;
-
-namespace Alpha.Messages.Site.Requests.BackupDomains
+﻿namespace Alpha.Messages.Site.Requests.BackupDomains
 {
-    public class BackupDomainsQuery : IAsyncRequest<IEnumerable<BackupDomainModel>>
+    using Alpha.Messages.Site.ViewModels;
+    using MediatR;
+    using Sunplus.Agent.Model.Entities;
+
+    public class BackupDomainsQuery : IAsyncRequest<BackupDomainsViewModel>
     {
-        public string SiteLabel { get; set; }
+        public BackupDomainsQuery(IUserSession userSession)
+        {
+            Site = userSession.Site;
+            RoleId = userSession.RoleId;
+        }
+
+        public string Site { get; }
+
+        public byte RoleId { get; }
     }
 }

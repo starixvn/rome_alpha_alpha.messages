@@ -1,13 +1,8 @@
-﻿@using Newtonsoft.Json;
-@using Alpha.Messages.Configurations;
+﻿@using Alpha.Messages.Configurations;
 @{
-    /**/
-
     Layout = null;
 }
-
 @model BackupDomainsViewModel
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +13,7 @@
     @StaticResources.AssetStyles.RenderCommonWithDarkMode("/bundles/common/common")
     @StaticResources.AssetStyles.RenderWithDarkMode($"/bundles/site-messages/message-{Model.RoleName}")
     @StaticResources.RenderStylesWithDarkMode("~/assets/bundles/default-message")
-    @StaticResources.RenderStylesWithDarkMode("~/Assets/bundles/backupdomains/backupdomains")
+    @StaticResources.RenderStylesWithDarkMode("~/assets/bundles/backupdomains/backupdomains")
     <title>@Resources.BackupDomains</title>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,57 +23,69 @@
     @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagScript()
 </head>
 <body>
-    <div class="page-title">
-        <div class="text-title pull-left" style="clear: both">@Resources.BackupDomains</div>
+    <div class="scroll-tabs">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#agency" aria-controls="agency" role="tab" data-toggle="tab">@Resources.AgencyDomains</a>
+            </li>
+            <li role="presentation">
+                <a href="#member" aria-controls="member" role="tab" data-toggle="tab">@Resources.MemberDomains</a>
+            </li>
+        </ul>
     </div>
-    <table class="tblRpt tblRpt-bordered alternative-row-table width-100per tablesorter tblRpt-hover"
-           id="tbl-report">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="agency">
+            @RenderDomainTable(Model.AgencyDomains, "agency")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="member">
+            @RenderDomainTable(Model.MemberDomains, "member")
+        </div>
+    </div>
+    @Html.Hidden("copyAll", Resources.CopyAll)
+    @Html.Hidden("copyDomain", Resources.CopyDomain)
+    @Html.Hidden("copied", Resources.Copied)
+    @Html.Hidden("inUse", Resources.InUse)
+    @Html.Hidden("domain", Resources.Domain)
+    @Html.Hidden("site-main", AppSettings.GetConfigValue("MainAppPath"))
+    @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
+    @StaticResources.AssetScripts.RenderCommon("/bundles/site-messages/backup-domains")
+    @StaticResources.RenderScripts("~/assets/bundles/backupdomains/backupdomains")
+</body>
+</html>
+
+@helper RenderDomainTable(IEnumerable<string> domains, string id) {
+    <table class="tblRpt tblRpt-bordered alternative-row-table tablesorter tblRpt-hover" id="tbl-@id">
         <thead>
             <tr>
-                <th class="col-no">@Resources.No</th>
+                <th class="col-no">#</th>
                 <th class="col-domain">@Resources.Domain</th>
-                <th class="col-status">@Resources.Status <span class="icon-refresh" title="@Resources.Refresh"></span></th>
-                <th class="col-copy-domain">@Resources.CopyDomain</th>
+                <th class="col-copy-domain">
+                    @Resources.CopyDomain
+                    <span class="icon icon-content-copy copy-all" id="icon-copy-all-@id" title="@Resources.CopyAll"></span>
+                </th>
             </tr>
         </thead>
         <tbody>
-            @if (Model.Domains.Any())
+            @if (domains.Any())
             {
-                for (var i = 0; i < Model.Domains.Count(); i++)
+                var index = 0;
+                foreach (var item in domains)
                 {
-                    var d = Model.Domains.ElementAt(i);
-
-                    <tr data-domain="@d.Domain">
-                        <td class="center">@(i + 1)</td>
-                        <td class="center"><a href="@("//" + d.Domain)" target="_blank">@d.Domain</a></td>
-                        <td class="center">@Resources.Loading...</td>
-                        <td class="center"><div class="icon icon-content-copy icon-content-copy-@i" title="@Resources.CopyDomain"></div></td>
+                    <tr>
+                        <td class="center">@(++index)</td>
+                        <td class="center">
+                            <a href="javascript:;" target="_blank" class="domain-url">@item</a>
+                        </td>
+                        <td class="center" data-domain="@item">
+                            <span class="icon icon-content-copy" id="icon-content-copy-@id-@index" title="@Resources.CopyDomain"></span>
+                        </td>
                     </tr>
                 }
             }
             else
             {
-                <tr><td colspan="4" class="center">@Resources.NoInformationIsAvailable</td></tr>
+                <tr><td colspan="3" class="center">@Resources.NoInformationIsAvailable</td></tr>
             }
         </tbody>
     </table>
-
-    @Html.Hidden("Domains", JsonConvert.SerializeObject(Model.Domains))
-    @Html.Hidden("copyDomain", Resources.CopyDomain)
-    @Html.Hidden("very-good", Resources.VeryGood)
-    @Html.Hidden("good", Resources.Fast)
-    @Html.Hidden("normal", Resources.normal2)
-    @Html.Hidden("bad", Resources.Slow)
-    @Html.Hidden("down", Resources.Down)
-    @Html.Hidden("copied", Resources.Copied)
-    @Html.Hidden("inUse", Resources.InUse)
-    @Html.Hidden("domain", Resources.Domain)
-    @Html.Hidden("loading", Resources.Loading)
-    @Html.Hidden("speedTestPath", "/assets/styles/images/crossword.png")
-    @Html.Hidden("site-main", AppSettings.GetConfigValue("MainAppPath"))
-    <textarea id="area-copy-domain" class="hide area-copy-domain"></textarea>
-</body>
-@StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
-@StaticResources.AssetScripts.RenderCommon("/bundles/site-messages/backup-domains")
-@StaticResources.RenderScripts("~/Assets/bundles/backupdomains/backupdomains")
-</html>
+}

@@ -1,20 +1,17 @@
-﻿using Fanex.Data.Repository;
-
-namespace Alpha.Messages.Criteria.BackupDomains
+﻿namespace Alpha.Messages.Criteria.BackupDomains
 {
+    using Fanex.Data.Repository;
+
     public class GetGetBackupDomainsCriteria : CriteriaBase
     {
-        public GetGetBackupDomainsCriteria(string siteLabel)
-        {
-            SiteLabel = siteLabel;
-        }
+        public GetGetBackupDomainsCriteria(string site)
+            => Site = site;
 
-        public string SiteLabel { get; set; }
+        public string Site { get; }
 
         public override string GetSettingKey()
            => "Age_DomainListSel";
 
-        public override bool IsValid()
-            => true;
+        public override bool IsValid() => true;
     }
 }

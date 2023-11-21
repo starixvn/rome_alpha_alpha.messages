@@ -61,6 +61,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agency Domains.
+        /// </summary>
+        public static string AgencyDomains {
+            get {
+                return ResourceManager.GetString("AgencyDomains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amazing.
         /// </summary>
         public static string Amazing {
@@ -111,6 +120,15 @@ namespace Alpha.Messages.AppResources {
         public static string Copied {
             get {
                 return ResourceManager.GetString("Copied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy All.
+        /// </summary>
+        public static string CopyAll {
+            get {
+                return ResourceManager.GetString("CopyAll", resourceCulture);
             }
         }
         
@@ -346,6 +364,15 @@ namespace Alpha.Messages.AppResources {
         public static string Loading {
             get {
                 return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Member Domains.
+        /// </summary>
+        public static string MemberDomains {
+            get {
+                return ResourceManager.GetString("MemberDomains", resourceCulture);
             }
         }
         

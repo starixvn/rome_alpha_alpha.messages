@@ -30,8 +30,8 @@
         public async Task Index_Always_SendQueryToMediator()
         {
             // Arrange
-            var query = new BackupDomainsQuery();
-            var controller = new BackupDomainsController(mediator, fixtures.UserSession);
+            var query = new BackupDomainsQuery(fixtures.UserSession);
+            var controller = new BackupDomainsController(mediator);
 
             // Act
             await controller.Index(query);

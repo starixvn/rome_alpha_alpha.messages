@@ -1,21 +1,24 @@
 ﻿namespace Alpha.Messages.Site.ViewModels
 {
     using System.Collections.Generic;
-    using Alpha.Messages.Models.BackupDomains;
     using Alpha.Messages.Models.Constants;
 
     public class BackupDomainsViewModel
     {
-        public BackupDomainsViewModel(byte roleId, IEnumerable<BackupDomainModel> domains)
+        public BackupDomainsViewModel(
+            byte roleId,
+            IEnumerable<string> agencyDomains,
+            IEnumerable<string> memberDomains)
         {
-            RoleId = roleId;
-            Domains = domains;
+            RoleName = UserLevel.GetDisplayName(roleId);
+            AgencyDomains = agencyDomains;
+            MemberDomains = memberDomains;
         }
 
-        public byte RoleId { get; }
+        public string RoleName { get; }
 
-        public IEnumerable<BackupDomainModel> Domains { get; }
+        public IEnumerable<string> AgencyDomains { get; }
 
-        public string RoleName => UserLevel.GetDisplayName(RoleId);
+        public IEnumerable<string> MemberDomains { get; }
     }
 }
