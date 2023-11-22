@@ -43,7 +43,7 @@
         public Task<(IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>)> GetFeedbackFunctionAsync(int functionId)
             => cacheService.GetOrSetAsync(
             string.Format(FeedBackOnFunctionCacheKey, functionId),
-            () => dynamicRepository.FetchMultiple<FeedbackFunction, FeedbackArea>(new GetFeedbackFunctionCriteria(functionId)),
+            () => dynamicRepository.FetchMultipleAsync<FeedbackFunction, FeedbackArea>(new GetFeedbackFunctionCriteria(functionId)),
             new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(FeedBackOnFunctionCacheInMinutes)));
 
         public Task AddFeedbackAsync(AddFeedbackParam param)
