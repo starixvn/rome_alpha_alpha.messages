@@ -2,18 +2,8 @@
 {
     public class BackupDomainModel
     {
-        public BackupDomainModel()
-        {
-        }
+        public string Domain { get; set; }
 
-        public BackupDomainModel(string domain, bool isAgency)
-        {
-            Domain = domain;
-            IsAgency = isAgency;
-        }
-
-        public string Domain { get; }
-
-        public bool IsAgency { get; }
+        public bool IsAgency { get; set; }
     }
 }

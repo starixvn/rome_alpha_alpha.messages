@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Messages.Criteria.Message
 {
-    using System;
     using Fanex.Data;
     using Fanex.Data.Repository;
 

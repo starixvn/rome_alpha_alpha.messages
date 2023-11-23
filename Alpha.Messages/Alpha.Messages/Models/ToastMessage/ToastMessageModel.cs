@@ -1,14 +1,18 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace Alpha.Messages.Models.ToastMessage
+﻿namespace Alpha.Messages.Models.ToastMessage
 {
+    using System;
+    using Newtonsoft.Json;
+
     public class ToastMessageModel
     {
         public int ToastId { get; set; }
+
         public int TypeId { get; set; }
+
         public int SiteFunctionId { get; set; }
+
         public string Content { get; set; }
+
         public DateTime CreatedTime { get; set; }
 
         public string CreatedTimeStr => CreatedTime.ToLongDateString() + " " + CreatedTime.ToLongTimeString();

@@ -4,45 +4,21 @@
 
     public class FeedbackFunction
     {
-        public FeedbackFunction()
-        {
-        }
+        public int FuncId { get; set; }
 
-        public FeedbackFunction(
-            int funcId,
-            string funcNameEN,
-            string funcNameCN3,
-            string funcNameCS,
-            string funcNameCH,
-            string funcNameTH,
-            string funcNameJP,
-            string funcNameKO)
-        {
-            FuncId = funcId;
-            FuncNameEN = funcNameEN;
-            FuncNameCN3 = funcNameCN3;
-            FuncNameCS = funcNameCS;
-            FuncNameCH = funcNameCH;
-            FuncNameTH = funcNameTH;
-            FuncNameJP = funcNameJP;
-            FuncNameKO = funcNameKO;
-        }
+        public string FuncNameEN { get; set; }
 
-        public int FuncId { get; }
+        public string FuncNameCN3 { get; set; }
 
-        public string FuncNameEN { get; }
+        public string FuncNameCS { get; set; }
 
-        public string FuncNameCN3 { get; }
+        public string FuncNameCH { get; set; }
 
-        public string FuncNameCS { get; }
+        public string FuncNameTH { get; set; }
 
-        public string FuncNameCH { get; }
+        public string FuncNameJP { get; set; }
 
-        public string FuncNameTH { get; }
-
-        public string FuncNameJP { get; }
-
-        public string FuncNameKO { get; }
+        public string FuncNameKO { get; set; }
 
         public string GetFunctionName(string language)
         {

@@ -1,25 +1,26 @@
 ﻿namespace Alpha.Messages.Criteria.NewMessage
 {
-    using System.Globalization;
-    using Constants;
     using Fanex.Data;
     using Fanex.Data.Repository;
-    using Models.Announcement;
 
     public class InsertPersonalMessageCriteria : CriteriaBase
     {
-        private readonly ResourceManager resourceManager;
-
-        public InsertPersonalMessageCriteria(string resourceKey, ResourceManager resource)
+        public InsertPersonalMessageCriteria(
+            string contentEN,
+            string contentCH,
+            string contentCS,
+            string contentJP,
+            string contentTH,
+            string contentKO,
+            string contentVN)
         {
-            this.resourceManager = resource;
-            ContentEN = GetMessageByCulture(resourceKey, Language.English);
-            ContentCH = GetMessageByCulture(resourceKey, Language.ChineseTraditional);
-            ContentCS = GetMessageByCulture(resourceKey, Language.ChineseSimplified);
-            ContentJP = GetMessageByCulture(resourceKey, Language.Japanese);
-            ContentTH = GetMessageByCulture(resourceKey, Language.Thai);
-            ContentKO = GetMessageByCulture(resourceKey, Language.Korean);
-            ContentVN = GetMessageByCulture(resourceKey, Language.Vietnamese);
+            ContentEN = contentEN;
+            ContentCH = contentCH;
+            ContentCS = contentCS;
+            ContentJP = contentJP;
+            ContentTH = contentTH;
+            ContentKO = contentKO;
+            ContentVN = contentVN;
             MessageType = Constants.MessageType.Personal;
             CreatorName = string.Empty;
             IsBatch = true;
@@ -62,8 +63,5 @@
         public override string GetSettingKey() => "Age_Msg_SetMessage";
 
         public override bool IsValid() => true;
-
-        private string GetMessageByCulture(string resourceKey, string culture)
-            => resourceManager.GetString(resourceKey, new CultureInfo(culture)).Replace("<br>", " ");
     }
 }

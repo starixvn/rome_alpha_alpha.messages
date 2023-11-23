@@ -62,7 +62,10 @@
         {
             if (!isAdminUser)
             {
-                dynamicRepository.Execute(new UpdateLastSeenAnnouncementCriteria(custId, messageType, subAccId));
+                dynamicRepository.Execute(new UpdateLastSeenAnnouncementCriteria(
+                    custId,
+                    MessageType.ToString(messageType),
+                    subAccId));
             }
         }
 

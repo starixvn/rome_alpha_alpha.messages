@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Messages.Services
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using Constants;
     using Criteria.Message;
@@ -70,11 +71,13 @@
             if (CustomerHasInitData(unreadMessage))
             {
                 var unreadAnnouncement = announcementService.GetNumberOfNewAnnouncements(announcementParams);
-                numberUnreadMessage = new NumberOfUnreadMessage(
-                unreadMessage.Normal,
-                unreadMessage.Special,
-                unreadAnnouncement,
-                unreadMessage.Personal);
+                numberUnreadMessage = new NumberOfUnreadMessage
+                {
+                    Normal = unreadMessage.Normal,
+                    Special = unreadMessage.Special,
+                    System = unreadAnnouncement,
+                    Personal = unreadMessage.Personal
+                };
             }
 
 
@@ -89,13 +92,23 @@
 
         private void InsertMessageToAlpha(string key, int custId, string custName)
         {
-            var newMessage = dynamicRepository.Fetch<int>(new InsertPersonalMessageCriteria(key, resourceManager));
+            var newMessage = dynamicRepository.Fetch<int>(new InsertPersonalMessageCriteria(
+                GetMessageByCulture(key, Language.English),
+                GetMessageByCulture(key, Language.ChineseTraditional),
+                GetMessageByCulture(key, Language.ChineseSimplified),
+                GetMessageByCulture(key, Language.Japanese),
+                GetMessageByCulture(key, Language.Thai),
+                GetMessageByCulture(key, Language.Korean),
+                GetMessageByCulture(key, Language.Vietnamese)));
             if (newMessage.Any())
             {
                 var messageId = newMessage.FirstOrDefault();
                 dynamicRepository.Fetch<bool>(new AssignMessageToUserCriteria(messageId, custId, custName));
             }
         }
+
+        private string GetMessageByCulture(string resourceKey, string culture)
+            => resourceManager.GetString(resourceKey, new CultureInfo(culture)).Replace("<br>", " ");
 
         private IEnumerable<int> GetUnreadMessagesOnUser(int custId, int levelId, bool isUserAdmin)
         {

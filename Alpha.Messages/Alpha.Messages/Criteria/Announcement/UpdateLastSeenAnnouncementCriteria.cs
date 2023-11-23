@@ -4,11 +4,11 @@
 
     public class UpdateLastSeenAnnouncementCriteria : NonQueryCommand
     {
-        public UpdateLastSeenAnnouncementCriteria(int custId, int messageType, int subAccId)
+        public UpdateLastSeenAnnouncementCriteria(int custId, string messageType, int subAccId)
         {
             CustId = custId;
             SubAccId = subAccId;
-            MessageType = Constants.MessageType.ToString(messageType);
+            MessageType = messageType;
         }
 
         public int SubAccId { get; }

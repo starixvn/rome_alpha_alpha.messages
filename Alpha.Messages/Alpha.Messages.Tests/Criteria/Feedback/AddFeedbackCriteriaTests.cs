@@ -1,7 +1,6 @@
 ﻿namespace Alpha.Messages.Tests.Criteria.Customer
 {
     using Alpha.Messages.Criteria.Feedback;
-    using Alpha.Messages.Params.Feedback;
     using NUnit.Framework;
 
     [TestFixture]
@@ -11,8 +10,7 @@
         public void GetSettingKey_Always_ReturnsCorrectKey()
         {
             // Arrange
-            var param = new AddFeedbackParam(0, 0, string.Empty, 0, null, null);
-            var criteria = new AddFeedbackCriteria(param);
+            var criteria = new AddFeedbackCriteria(0, 0, string.Empty, 0, null, null);
 
             // Act
             var actualSettingKey = criteria.GetSettingKey();
@@ -25,8 +23,7 @@
         public void IsValid_RateAndMessageAndXMLfbIsEmpty_ReturnFalse()
         {
             // Arrange
-            var param = new AddFeedbackParam(0, 0, string.Empty, 0, null, null);
-            var criteria = new AddFeedbackCriteria(param);
+            var criteria = new AddFeedbackCriteria(0, 0, string.Empty, 0, null, null);
 
             // Act
             var actualValue = criteria.IsValid();
@@ -39,8 +36,7 @@
         public void IsValid_HasRateAndMessageIsEmpty_ReturnTrue()
         {
             // Arrange
-            var param = new AddFeedbackParam(0, 0, string.Empty, 2, null, null);
-            var criteria = new AddFeedbackCriteria(param);
+            var criteria = new AddFeedbackCriteria(0, 0, string.Empty, 2, null, null);
 
             // Act
             var actualValue = criteria.IsValid();
@@ -53,8 +49,7 @@
         public void IsValid_RateIsZeroAndHasMessage_ReturnTrue()
         {
             // Arrange
-            var param = new AddFeedbackParam(0, 0, "Message", 0, null, null);
-            var criteria = new AddFeedbackCriteria(param);
+            var criteria = new AddFeedbackCriteria(0, 0, "Message", 0, null, null);
 
             // Act
             var actualValue = criteria.IsValid();
@@ -67,8 +62,7 @@
         public void IsValid_RateIsZeroAndOverLimitMessage_ReturnFalse()
         {
             // Arrange
-            var param = new AddFeedbackParam(0, 0, new string('*', 5000), 0, null, null);
-            var criteria = new AddFeedbackCriteria(param);
+            var criteria = new AddFeedbackCriteria(0, 0, new string('*', 5000), 0, null, null);
 
             // Act
             var actualValue = criteria.IsValid();
@@ -81,8 +75,7 @@
         public void IsValid_HasXMLfb_ReturnTrue()
         {
             // Arrange
-            var param = new AddFeedbackParam(0, 0, string.Empty, 0, null, "<root></root>");
-            var criteria = new AddFeedbackCriteria(param);
+            var criteria = new AddFeedbackCriteria(0, 0, string.Empty, 0, null, "<root></root>");
 
             // Act
             var actualValue = criteria.IsValid();
@@ -94,11 +87,8 @@
         [Test]
         public void Constructor_Always_AssignsCorrectProperties()
         {
-            // Arrange
-            var param = new AddFeedbackParam(123, 456, "qwerty", 5, 102, "<root></root>");
-
-            // Act
-            var criteria = new AddFeedbackCriteria(param);
+            // Arrange & Act
+            var criteria = new AddFeedbackCriteria(123, 456, "qwerty", 5, 102, "<root></root>");
 
             // Assert
             Assert.True(123 == criteria.CustId

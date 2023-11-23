@@ -29,16 +29,16 @@
             IsNewAnnouncement = releasedDate >= lastSeenDate;
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
 
         public string Content { get; set; }
 
-        public string Code { get; }        
+        public string Code { get; set; }
 
-        public DateTime ReleasedDate { get; }
+        public DateTime ReleasedDate { get; set; }
 
-        public bool IsNewAnnouncement { get; }
+        public bool IsNewAnnouncement { get; set; }
 
-        public IEnumerable<ISpecification<IParam>> Specifications { get; }
+        public IEnumerable<ISpecification<IParam>> Specifications { get; set; }
     }
 }

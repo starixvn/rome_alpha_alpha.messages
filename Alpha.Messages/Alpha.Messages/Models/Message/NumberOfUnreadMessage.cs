@@ -1,26 +1,17 @@
-﻿using System;
-
-namespace Alpha.Messages.Models.Message
+﻿namespace Alpha.Messages.Models.Message
 {
+    using System;
+
     [Serializable]
     public class NumberOfUnreadMessage
     {
-        public NumberOfUnreadMessage()
-        {
-        }
+        public int Normal { get; set; }
 
-        public NumberOfUnreadMessage(int normal, int special, int system, int personal)
-        {
-            Normal = normal;
-            Special = special;
-            System = system;
-            Personal = personal;
-        }
+        public int Special { get; set; }
 
-        public int Normal { get; }
-        public int Special { get; }
-        public int System { get; }
-        public int Personal { get; }
+        public int System { get; set; }
+
+        public int Personal { get; set; }
 
         public int Total => Normal + Special + System + Personal;
     }

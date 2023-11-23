@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Alpha.Messages.Models.Message;
+﻿using Alpha.Messages.Models.Message;
 using NUnit.Framework;
 
 namespace Alpha.Messages.Tests.Models.Message
@@ -15,7 +10,13 @@ namespace Alpha.Messages.Tests.Models.Message
         {
             //// Arrange
             var system = 123;
-            var model = new NumberOfUnreadMessage(1, 2, system, 4);
+            var model = new NumberOfUnreadMessage
+            {
+                Normal = 1,
+                Special = 2,
+                System = system,
+                Personal = 4
+            };
 
             //// Act
             var act = model.System;
@@ -29,7 +30,13 @@ namespace Alpha.Messages.Tests.Models.Message
         {
             //// Arrange
             var expected = 10;
-            var model = new NumberOfUnreadMessage(1, 2, 3, 4);
+            var model = new NumberOfUnreadMessage
+            {
+                Normal = 1,
+                Special = 2,
+                System = 3,
+                Personal = 4
+            };
 
             //// Act
             var act = model.Total;

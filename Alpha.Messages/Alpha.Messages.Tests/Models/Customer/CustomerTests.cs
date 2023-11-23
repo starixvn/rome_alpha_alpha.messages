@@ -10,7 +10,19 @@
         public void IsIMBC_SiteIsNotEqualIMBC_ReturnsFalse()
         {
             // Arrange & Act
-            var customer = new Customer(1, string.Empty, 2, 1, 1, 1, 1, string.Empty, true, "IBC");
+            var customer = new Customer
+            {
+                CustId = 1,
+                UserName = string.Empty,
+                RoleId = 2,
+                CurrencyId = 1,
+                ARecommendId = 1,
+                MRecommendId = 1,
+                SRecommendId = 1,
+                Site = string.Empty,
+                IsAllDayBalTransfer = true,
+                SiteLabel = "IBC"
+            };
 
             // Assert
             Assert.IsFalse(customer.IsIMBC);
