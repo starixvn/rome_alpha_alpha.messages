@@ -6,7 +6,7 @@
     using Alpha.Messages.Models.Announcement;
     using Alpha.Messages.Models.Constants;
     using Alpha.Web.Filters;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
     using Web;
 
     [AllowProtectedMode]

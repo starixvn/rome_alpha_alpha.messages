@@ -3,7 +3,6 @@
     using System;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using Sunplus.Agent.Utilities;
 
     public abstract class JsonCreationConverter<T> : JsonConverter
     {
@@ -44,8 +43,7 @@
                 return target;
             }
             catch (Exception ex)
-            {
-                Logs.WriteWarn(ex);
+            {              
                 return null;
             }
         }

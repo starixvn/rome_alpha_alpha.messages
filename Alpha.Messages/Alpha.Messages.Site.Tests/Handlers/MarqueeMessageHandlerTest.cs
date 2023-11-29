@@ -10,7 +10,7 @@
     using Site.Handlers;
     using Site.Requests.MarqueeMessage;
     using Site.ViewModels;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     [TestFixture]
     public class MarqueeMessageHandlerTest

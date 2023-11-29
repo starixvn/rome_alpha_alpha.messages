@@ -20,15 +20,18 @@
     public class ProductServiceImpl : ProductService
     {
         private const int ExpiredTimeOfferredProductMinutes = 5;
+        private readonly ICacheService cacheService;
         private readonly IDynamicRepository dynamicRepository;
         private readonly Func<int, bool> canViewProduct;
         private const string ProductsCacheKey = "Alpha.Message.Services.GetAllProducts";
         private const string OfferedProductCacheKey = "Alpha.Message.Services.ProductServiceImpl.OfferedProduct";
 
         public ProductServiceImpl(
+            ICacheService cacheService,
             IDynamicRepository dynamicRepository,
             Func<int, bool> canViewProduct)
         {
+            this.cacheService = cacheService;
             this.dynamicRepository = dynamicRepository;
             this.canViewProduct = canViewProduct;
         }
@@ -37,7 +40,7 @@
             => dynamicRepository.Fetch<int>(new UnsynchronizedSettingCriteria(custId));
 
         public IEnumerable<byte> GetOfferedProductIdsByCustomer(int custId)
-            => ConfiguredCacheService.GetOrSet(
+            => cacheService.GetOrSet(
                 $"{OfferedProductCacheKey}.{custId}",
                 () =>
                 {
@@ -53,8 +56,7 @@
            => GetAllProducts().Where(product => canViewProduct(product.Id));
 
         private IEnumerable<Product> GetAllProducts()
-            => ConfiguredCacheService
-            .GetOrSet(
+            => cacheService.GetOrSet(
                 ProductsCacheKey,
                 () => dynamicRepository.Fetch<Product>(new GetProductsCriteria()),
                 new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromDays(1)));

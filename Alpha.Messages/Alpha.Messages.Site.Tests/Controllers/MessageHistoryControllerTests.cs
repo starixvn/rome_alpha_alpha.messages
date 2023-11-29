@@ -10,7 +10,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using Site.Requests.MessageHistory;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     [TestFixture]
     public class MessageHistoryControllerTests

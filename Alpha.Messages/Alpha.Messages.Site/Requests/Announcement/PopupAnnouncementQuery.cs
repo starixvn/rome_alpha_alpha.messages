@@ -4,7 +4,7 @@
     using MediatR;
     using Models.Announcement;
     using Params.Announcement;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class PopupAnnouncementQuery : MessageHistoryBaseRequest, IRequest<AlphaAnnouncement>
     {

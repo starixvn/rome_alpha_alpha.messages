@@ -13,7 +13,7 @@
     {
         Task<bool> CheckExistsAsync(int custId, int subAccId, int functionId);
 
-        Task<Tuple<IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>>> GetFeedbackFunctionAsync(int functionId);
+        Task<(IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>)> GetFeedbackFunctionAsync(int functionId);
 
         Task AddFeedbackAsync(AddFeedbackParam param);
     }
@@ -24,9 +24,13 @@
         private const int FeedBackOnFunctionCacheInMinutes = 60 * 2;
 
         private readonly IDynamicRepository dynamicRepository;
+        private readonly ICacheService cacheService;
 
-        public FeedbackServiceImpl(IDynamicRepository dynamicRepository)
-            => this.dynamicRepository = dynamicRepository;
+        public FeedbackServiceImpl(IDynamicRepository dynamicRepository, ICacheService cacheService)
+        {
+            this.dynamicRepository = dynamicRepository;
+            this.cacheService = cacheService;
+        }
 
         public async Task<bool> CheckExistsAsync(int custId, int subAccId, int functionId)
         {
@@ -36,10 +40,10 @@
             return criteria.IsExists;
         }
 
-        public Task<Tuple<IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>>> GetFeedbackFunctionAsync(int functionId)
-            => ConfiguredCacheService.GetOrSetAsync(
+        public Task<(IEnumerable<FeedbackFunction>, IEnumerable<FeedbackArea>)> GetFeedbackFunctionAsync(int functionId)
+            => cacheService.GetOrSetAsync(
             string.Format(FeedBackOnFunctionCacheKey, functionId),
-            () => dynamicRepository.FetchMultiple<FeedbackFunction, FeedbackArea>(new GetFeedbackFunctionCriteria(functionId)),
+            () => dynamicRepository.FetchMultipleAsync<FeedbackFunction, FeedbackArea>(new GetFeedbackFunctionCriteria(functionId)),
             new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(FeedBackOnFunctionCacheInMinutes)));
 
         public Task AddFeedbackAsync(AddFeedbackParam param)

@@ -1,8 +1,7 @@
 ﻿namespace Alpha.Messages.Site.Requests.MarqueeMessage
 {
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.Entities;
     using ViewModels;
 
     public class MarqueeMessageQuery : IRequest<MarqueeMessageViewModel>
@@ -32,7 +31,7 @@
         public int CustId { get; }
 
         public bool IsTest
-            => this.isTest ?? AppSettings.LocalTest; 
+            => this.isTest ?? Configurations.AppSettings.LocalTest; 
 
         public string CurrentLang { get; }
 

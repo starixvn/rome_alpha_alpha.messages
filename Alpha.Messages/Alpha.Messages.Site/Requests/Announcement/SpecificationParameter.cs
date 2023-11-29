@@ -4,7 +4,7 @@
     using System.Linq;
     using Alpha.Announcements.Models;
     using Alpha.Messages.Services;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class SpecificationParameter : IParam
     {

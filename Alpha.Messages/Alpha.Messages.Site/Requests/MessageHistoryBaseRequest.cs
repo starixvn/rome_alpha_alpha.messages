@@ -3,7 +3,7 @@
     using Alpha.Announcements.Models;
     using Alpha.Messages.Constants;
     using Params.Announcement;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class MessageHistoryBaseRequest
     {

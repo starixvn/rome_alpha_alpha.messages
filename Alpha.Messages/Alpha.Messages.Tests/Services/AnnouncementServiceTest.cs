@@ -17,30 +17,26 @@
     using NSubstitute;
     using NUnit.Framework;
     using Params.Announcement;
-    using Ploeh.AutoFixture;
     using Utils;
 
     public class AnnouncementServiceImplTest
     {
+        private ICacheService cacheService;
         private AnnouncementClient announcementClient;
         private SpecificationService specificationService;
         private IDynamicRepository dynamicRepository;
         private AnnouncementService service;
-        private Fixture fixture;
         private CompareLogic compareLogic;
-        private Cache cacheForTesting;
 
         [SetUp]
         public void SetUp()
         {
+            cacheService = Substitute.For<ICacheService>();
             announcementClient = Substitute.For<AnnouncementClient>();
             specificationService = Substitute.For<SpecificationService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            service = new AnnouncementServiceImpl(announcementClient, specificationService, dynamicRepository);
-            fixture = new Fixture();
+            service = new AnnouncementServiceImpl(announcementClient, specificationService, dynamicRepository, cacheService);
             compareLogic = new CompareLogic();
-            cacheForTesting = Substitute.For<Cache>();
-            ConfiguredCacheService.SwitchCacheStorage(cacheForTesting);
         }
 
         [Test]

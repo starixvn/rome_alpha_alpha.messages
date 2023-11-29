@@ -6,7 +6,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using Site.Requests.Announcement;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class SpecificationParameterTests
     {

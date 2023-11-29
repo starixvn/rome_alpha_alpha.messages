@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Messages.Site.Requests.BackupDomains
 {
     using Alpha.Messages.Site.ViewModels;
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
 
     public class BackupDomainsQuery : IAsyncRequest<BackupDomainsViewModel>
     {

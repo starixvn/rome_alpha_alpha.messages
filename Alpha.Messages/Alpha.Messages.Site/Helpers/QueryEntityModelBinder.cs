@@ -2,7 +2,7 @@
 {
     using System;
     using System.Web.Mvc;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class QueryEntityModelBinder : DefaultModelBinder
     {

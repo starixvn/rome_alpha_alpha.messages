@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Fanex.Caching;
     using Fanex.Data.Repository;
-    using Fixtures;
     using Messages.Criteria.Product;
     using Messages.Models.Product;
     using Messages.Services;
@@ -15,9 +15,9 @@
     {
         private const string ProductsCacheKey = "Alpha.Message.Services.GetAllProducts";
         private const string OfferedProductCacheKey = "Alpha.Message.Services.ProductServiceImpl.OfferedProduct";
+        private ICacheService cacheService;
         private IDynamicRepository dynamicRepository;
         private ProductServiceImpl productService;
-        private FanexCacheFixture fanexCacheFixture;
         private Func<int, bool> canViewProduct;
         private IEnumerable<Product> productList;
 
@@ -26,12 +26,11 @@
         {
             canViewProduct = Substitute.For<Func<int, bool>>();
             canViewProduct.Invoke(Arg.Any<int>()).Returns(true);
+            cacheService = Substitute.For<ICacheService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            productService = new ProductServiceImpl(dynamicRepository, canViewProduct);
+            productService = new ProductServiceImpl(cacheService, dynamicRepository, canViewProduct);
 
             productList = Enumerable.Empty<Product>();
-            fanexCacheFixture = new FanexCacheFixture();
-            fanexCacheFixture.CacheForTesting.TryGet(ProductsCacheKey, out productList);
         }
 
         [Test]
@@ -87,7 +86,6 @@
         {
             // Arrange
             var custId = 1;
-            fanexCacheFixture.CacheForTesting.TryGet($"{OfferedProductCacheKey}.{custId}", out productList);
             dynamicRepository.Fetch<Product>(Arg.Any<GetOfferedProductCriteria>()).Returns(new List<Product>
             {
                 new Product(1,"name", false)

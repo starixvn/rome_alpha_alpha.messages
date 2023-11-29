@@ -2,7 +2,7 @@
 {
     using Alpha.Messages.Site.ViewModels.Feedback;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class CheckExistsFeedbackQuery : GetFunctionFeedbackQuery, IAsyncRequest<CheckExistsFeedbackViewModel>
     {

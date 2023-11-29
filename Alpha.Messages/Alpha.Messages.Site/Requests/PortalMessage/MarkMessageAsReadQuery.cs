@@ -3,7 +3,7 @@
     using MediatR;
     using Messages.Constants;
     using Messages.Site.ViewModels;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class MarkMessageAsReadQuery : IRequest<bool>
     {

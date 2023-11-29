@@ -1,13 +1,12 @@
 ﻿namespace Alpha.Messages.Site.App_Start
 {
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
-    using System.Web.Mvc;
+    using Alpha.Web.Helpers;
+    using AlphaPlus.User.Models;
     using Announcements.Models;
     using Announcements.Services;
     using Client;
     using Controllers;
+    using Fanex.Caching;
     using Fanex.Data.Repository;
     using MediatR;
     using Models.Announcement;
@@ -16,9 +15,10 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
-    using Sunplus.Agent.Model.Base;
-    using Sunplus.Agent.Model.Entities;
-    using Sunplus.Agent.Model.Entities.Permission;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
+    using System.Web.Mvc;
 
     public static class DependencyConfig
     {
@@ -73,7 +73,9 @@
 
         private static void RegisterServices(Container container)
         {
+            UserSession.Init(new HttpContextHelper());
             container.RegisterSingleton<IUserSession, UserSessionExt>();
+            container.RegisterSingleton<ICacheService>(() => new CacheService());
             container.RegisterPerWebRequest<NewMessageService, NewMessageServiceImpl>();
             container.RegisterPerWebRequest<MessageHistoryService, MessageHistoryServiceImpl>();
             container.RegisterPerWebRequest<MarqueeMessageService, MarqueeMessageServiceImpl>();
@@ -83,6 +85,7 @@
 
             container.Register<ProductService>(
                 () => new ProductServiceImpl(
+                    container.GetInstance<ICacheService>(),
                     container.GetInstance<IDynamicRepository>(),
                     UserPermission.HasPermissionOnProduct),
                 Lifestyle.Singleton);

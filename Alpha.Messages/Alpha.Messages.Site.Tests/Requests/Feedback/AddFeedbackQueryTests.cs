@@ -3,7 +3,7 @@
     using Alpha.Messages.Site.Requests.Feedback;
     using NSubstitute;
     using NUnit.Framework;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     [TestFixture]
     public class AddFeedbackQueryTests

@@ -4,7 +4,6 @@
     using System.Collections.Specialized;
     using Constants;
     using Fanex.Data.Repository;
-    using Fixtures;
     using Messages.Configurations;
     using Messages.Criteria.Message;
     using Messages.Models.Announcement;
@@ -13,7 +12,6 @@
     using NSubstitute;
     using NUnit.Framework;
     using Params;
-    using Ploeh.AutoFixture;
 
     [TestFixture]
     public class MessageHistoryServiceTests
@@ -21,24 +19,22 @@
         private MessageHistoryService messageService;
         private AnnouncementService announcementService;
         private IDynamicRepository dynamicRepository;
-        private Fixture fixture;
         private const string SiteSuperId = "234";
         private const string SiteMasterId = "2345";
         private const string SiteAgentId = "2346";
+
         [SetUp]
         public void SetUp()
         {
             dynamicRepository = Substitute.For<IDynamicRepository>();
             announcementService = Substitute.For<AnnouncementService>();
             messageService = new MessageHistoryServiceImpl(announcementService, dynamicRepository);
-            fixture = new Fixture();
             AppSettings.AppSettingValues = new NameValueCollection
             {
                 ["Message:Super"] = SiteSuperId,
                 ["Message:Master"] = SiteMasterId,
                 ["Message:Agent"] = SiteAgentId
             };
-            new FanexCacheFixture();
         }
 
         [Test]

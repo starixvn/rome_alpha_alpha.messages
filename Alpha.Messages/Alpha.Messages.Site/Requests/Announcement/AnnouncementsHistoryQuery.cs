@@ -3,7 +3,7 @@
     using System;
     using MediatR;
     using Params.Announcement;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
     using ViewModels;
 
     public class AnnouncementsHistoryQuery : MessageHistoryBaseRequest, IRequest<AnnouncementHistoryViewModel>
