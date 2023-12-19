@@ -2,9 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Alpha.Messages.Constants;
     using Alpha.Messages.Criteria.ToastMessage;
-    using Alpha.Messages.Extensions;
     using Alpha.Messages.Models.ToastMessage;
     using Alpha.Messages.Params.ToastMessage;
     using Alpha.Web.Models;
@@ -50,21 +48,9 @@
 
         public static ToastMessageModel ProritizeMessage(IEnumerable<ToastMessageModel> messages)
         {
-            var result = messages.LastOrDefault(m => m.CreatedTime.IsTodate() && m.SiteFunctionId == ToastMessageType.UpdateADBT);
+            var result = messages.OrderByDescending(m => m.CreatedTime).FirstOrDefault();
 
-            if (result != null)
-            {
-                return result;
-            }
-
-            result = messages.LastOrDefault(m => m.CreatedTime.IsTodate() && m.SiteFunctionId == ToastMessageType.FailedAutoTransfer);
-
-            if (result != null)
-            {
-                return result;
-            }
-
-            return messages.LastOrDefault(m => m.SiteFunctionId == ToastMessageType.UpdateADBT);
+            return result;
         }
     }
 }
