@@ -33,18 +33,19 @@
             BetTransId = bettransId;
         }
 
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
-        public DateTime PostTime { get; internal set; }
+        public DateTime PostTime { get; set; }
 
-        public byte MessageType { get; internal set; }
+        public byte MessageType { get; set; }
 
-        public bool IsSticky { get; internal set; }
+        public bool IsSticky { get; set; }
 
-        public string BetTransId { get; }
+        public string BetTransId { get; set; }
+
         public int TotalMessasge { get; set; }
 
-        public long RowNum { get; }
+        public long RowNum { get; set; }
 
         public bool HasRedColor => ContentEN.Contains(MessageConstants.ContentFontStartMarkup);
 

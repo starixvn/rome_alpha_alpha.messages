@@ -47,6 +47,12 @@
             new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(FeedBackOnFunctionCacheInMinutes)));
 
         public Task AddFeedbackAsync(AddFeedbackParam param)
-            => dynamicRepository.ExecuteAsync(new AddFeedbackCriteria(param));
+            => dynamicRepository.ExecuteAsync(new AddFeedbackCriteria(
+                param.CustId,
+                param.SubAccountId,
+                param.Comment,
+                param.Rate,
+                param.FunctionId,
+                param.XMLFeedback));
     }
 }

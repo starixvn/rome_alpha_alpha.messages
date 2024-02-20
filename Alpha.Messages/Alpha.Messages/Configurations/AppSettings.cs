@@ -26,6 +26,8 @@
 
         public static string StoreProcedurePath => GetConfigValue("StoredProcedurePath");
 
+        public static string FanexDataServiceApi => GetConfigValue("FanexDataServiceApi");
+
         public static string MessageSuper => string.IsNullOrWhiteSpace(GetConfigValue("Message:Super")) ? "3000,3100" : GetConfigValue("Message:Super");
 
         public static string MessageMaster => string.IsNullOrWhiteSpace(GetConfigValue("Message:Master")) ? "3000,3200" : GetConfigValue("Message:Master");

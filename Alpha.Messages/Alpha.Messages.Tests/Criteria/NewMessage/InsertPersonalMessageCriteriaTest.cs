@@ -21,7 +21,8 @@
         public void GetSettingKey_Always_ReturnCorrectKey()
         {
             //// Arrange
-            var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
+            var criteria = new InsertPersonalMessageCriteria(
+                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
             var expectedKey = "Age_Msg_SetMessage";
 
             //// Act
@@ -35,7 +36,8 @@
         public void IsValid_Always_ReturnTrue()
         {
             //// Arrange
-            var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
+            var criteria = new InsertPersonalMessageCriteria(
+                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.IsValid();
@@ -48,7 +50,8 @@
         public void ContentES_Always_IsEmpty()
         {
             //// Arrange
-            var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
+            var criteria = new InsertPersonalMessageCriteria(
+                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.ContentES;
@@ -61,7 +64,8 @@
         public void ContentIT_Always_IsEmpty()
         {
             //// Arrange
-            var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
+            var criteria = new InsertPersonalMessageCriteria(
+                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.ContentIT;
@@ -74,7 +78,8 @@
         public void CreatorName_Always_IsEmpty()
         {
             //// Arrange
-            var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
+            var criteria = new InsertPersonalMessageCriteria(
+                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.CreatorName;
@@ -87,7 +92,8 @@
         public void IsBatch_Always_True()
         {
             //// Arrange
-            var criteria = new InsertPersonalMessageCriteria("vn-VI", resourceManager);
+            var criteria = new InsertPersonalMessageCriteria(
+                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             //// Act
             var act = criteria.IsBatch;

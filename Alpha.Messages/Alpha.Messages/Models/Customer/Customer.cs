@@ -4,58 +4,30 @@
 
     public class Customer
     {
-        public Customer()
-        {
-        }
+        public int CustId { get; set; }
 
-        public Customer(
-            int custId,
-            string userName,
-            byte roleId,
-            byte currencyId,
-            int aRecommendId,
-            int mRecommendId,
-            int sRecommendId,
-            string site,
-            bool enabled,
-            string siteLabel)
-        {
-            CustId = custId;
-            UserName = userName;
-            RoleId = roleId;
-            CurrencyId = currencyId;
-            ARecommendId = aRecommendId;
-            MRecommendId = mRecommendId;
-            SRecommendId = sRecommendId;
-            Site = site;           
-            Enabled = enabled;
-            SiteLabel = siteLabel;
-        }
+        public string UserName { get; set; }
 
-        public int CustId { get; }
+        public byte RoleId { get; set; }
 
-        public string UserName { get; }
+        public byte CurrencyId { get; set; }
 
-        public byte RoleId { get; }
+        public int ARecommendId { get; set; }
 
-        public byte CurrencyId { get; }
+        public int MRecommendId { get; set; }
 
-        public int ARecommendId { get; }
+        public int SRecommendId { get; set; }
 
-        public int MRecommendId { get; }
-
-        public int SRecommendId { get; }
-
-        public string Site { get; }
+        public string Site { get; set; }
 
         public bool IsIMBC => SiteLabel.Equals("MBC");
 
-        public bool IsAllDayBalTransfer { get; }
+        public bool IsAllDayBalTransfer { get; set; }
 
         public string System => AppSettings.GetConfigValue($"System:{SiteLabel}");
 
-        public bool Enabled { get; }
+        public bool Enabled { get; set; }
 
-        public string SiteLabel { get; }
+        public string SiteLabel { get; set; }
     }
 }

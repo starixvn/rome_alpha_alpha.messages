@@ -117,7 +117,19 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "MBC");
+            var customer = new Customer
+            {
+                CustId = 1,
+                UserName = string.Empty,
+                RoleId = 2,
+                CurrencyId = 20,
+                ARecommendId = 1,
+                MRecommendId = 1,
+                SRecommendId = 1,
+                Site = string.Empty,
+                IsAllDayBalTransfer = true,
+                SiteLabel = "MBC"
+            };
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -139,7 +151,19 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "MBC");
+            var customer = new Customer
+            {
+                CustId = 1,
+                UserName = string.Empty,
+                RoleId = 2,
+                CurrencyId = 20,
+                ARecommendId = 1,
+                MRecommendId = 1,
+                SRecommendId = 1,
+                Site = string.Empty,
+                IsAllDayBalTransfer = true,
+                SiteLabel = "MBC"
+            };
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -161,7 +185,19 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "MBC");
+            var customer = new Customer
+            {
+                CustId = 1,
+                UserName = string.Empty,
+                RoleId = 2,
+                CurrencyId = 20,
+                ARecommendId = 1,
+                MRecommendId = 1,
+                SRecommendId = 1,
+                Site = string.Empty,
+                IsAllDayBalTransfer = true,
+                SiteLabel = "MBC"
+            };
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             // Act
@@ -190,7 +226,19 @@
             announcementService.GetAnnouncements(Arg.Any<DateTime>(), Arg.Any<DateTime>())
                 .Returns(announcements);
 
-            var customer = new Customer(1, string.Empty, 2, 20, 1, 1, 1, string.Empty, true, "MBC");
+            var customer = new Customer
+            {
+                CustId = 1,
+                UserName = string.Empty,
+                RoleId = 2,
+                CurrencyId = 20,
+                ARecommendId = 1,
+                MRecommendId = 1,
+                SRecommendId = 1,
+                Site = string.Empty,
+                IsAllDayBalTransfer = true,
+                SiteLabel = "MBC",
+            };
             customerService.GetCustomerInfo(Arg.Any<int>()).Returns(customer);
 
             var expectedResult = new List<AnnouncementViewModel>

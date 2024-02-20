@@ -9,7 +9,6 @@
 
         public MultiLanguague()
         {
-
         }
 
         public MultiLanguague(
@@ -37,7 +36,7 @@
                 return GetContentByKey(Language.English);
             }
 
-            internal set { Contents[Language.English] = value; }
+            set { Contents[Language.English] = value; }
         }
 
         public string ContentCS
@@ -47,7 +46,7 @@
                 return GetContentByKey(Language.ChineseSimplified);
             }
 
-            internal set { Contents[Language.ChineseSimplified] = value; }
+            set { Contents[Language.ChineseSimplified] = value; }
         }
 
         public string ContentCH

@@ -4,45 +4,21 @@
 
     public class FeedbackArea
     {
-        public FeedbackArea()
-        {
-        }
+        public int AreaId { get; set; }
 
-        public FeedbackArea(
-            int areaId,
-            string areaNameEN,
-            string areaNameCN3,
-            string areaNameCS,
-            string areaNameCH,
-            string areaNameTH,
-            string areaNameJP,
-            string areaNameKO)
-        {
-            AreaId = areaId;
-            AreaNameEN = areaNameEN;
-            AreaNameCN3 = areaNameCN3;
-            AreaNameCS = areaNameCS;
-            AreaNameCH = areaNameCH;
-            AreaNameTH = areaNameTH;
-            AreaNameJP = areaNameJP;
-            AreaNameKO = areaNameKO;
-        }
+        public string AreaNameEN { get; set; }
 
-        public int AreaId { get; }
+        public string AreaNameCN3 { get; set; }
 
-        public string AreaNameEN { get; }
+        public string AreaNameCS { get; set; }
 
-        public string AreaNameCN3 { get; }
+        public string AreaNameCH { get; set; }
 
-        public string AreaNameCS { get; }
+        public string AreaNameTH { get; set; }
 
-        public string AreaNameCH { get; }
+        public string AreaNameJP { get; set; }
 
-        public string AreaNameTH { get; }
-
-        public string AreaNameJP { get; }
-
-        public string AreaNameKO { get; }
+        public string AreaNameKO { get; set; }
 
         public string GetAreaName(string language)
         {

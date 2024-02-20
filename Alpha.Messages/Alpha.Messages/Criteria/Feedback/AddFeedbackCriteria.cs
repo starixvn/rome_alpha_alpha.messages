@@ -1,20 +1,25 @@
 ﻿namespace Alpha.Messages.Criteria.Feedback
 {
-    using Alpha.Messages.Params.Feedback;
     using Fanex.Data.Repository;
 
     public class AddFeedbackCriteria : NonQueryCommand
     {
         private const int MaxCommentLength = 4000;
 
-        public AddFeedbackCriteria(AddFeedbackParam param)
+        public AddFeedbackCriteria(
+            int custId,
+            int subAccId,
+            string comment,
+            byte rate,
+            int? funcId,
+            string xmlfb)
         {
-            CustId = param.CustId;
-            SubAccId = param.SubAccountId;
-            Comment = param.Comment ?? string.Empty;
-            Rate = param.Rate;
-            FuncId = param.FunctionId;
-            XMLfb = param.XMLFeedback;
+            CustId = custId;
+            SubAccId = subAccId;
+            Comment = comment ?? string.Empty;
+            Rate = rate;
+            FuncId = funcId;
+            XMLfb = xmlfb;
         }
 
         public int CustId { get; }

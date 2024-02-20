@@ -2,18 +2,8 @@
 {
     public class CustomerTransferStatus
     {
-        public CustomerTransferStatus()
-        {
-        }
+        public int CustId { get; set; }
 
-        public CustomerTransferStatus(int custId, bool isAllDayBalTransfer)
-        {
-            CustId = custId;
-            IsAllDayBalTransfer = isAllDayBalTransfer;
-        }
-
-        public int CustId { get; }
-
-        public bool IsAllDayBalTransfer { get; }
+        public bool IsAllDayBalTransfer { get; set; }
     }
 }

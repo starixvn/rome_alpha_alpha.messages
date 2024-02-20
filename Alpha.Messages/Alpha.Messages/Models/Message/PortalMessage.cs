@@ -6,7 +6,6 @@
     {
         public PortalMessage()
         {
-
         }
 
         public PortalMessage(
@@ -34,18 +33,18 @@
             TopLevel = topLevel;
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
 
-        public DateTime PostTime { get; }
+        public DateTime PostTime { get; set; }
 
-        public byte MessageType { get; }
+        public byte MessageType { get; set; }
 
-        public bool IsSticky { get; }
+        public bool IsSticky { get; set; }
 
         public string BetTransId { get; }
 
-        public bool IsRead { get; }
+        public bool IsRead { get; set; }
 
-        public byte TopLevel { get; }
+        public byte TopLevel { get; set; }
     }
 }

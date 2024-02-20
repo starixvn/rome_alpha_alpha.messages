@@ -4,8 +4,8 @@
     {
         public MarqueeMessage()
         {
-
         }
+
         public MarqueeMessage(
             int messageId,
             string contentEN,
@@ -29,14 +29,14 @@
             MsgType = msgType;
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
 
-        public string BetTransId { get; }
+        public string BetTransId { get; set; }
 
-        public bool IsBatch { get; }
+        public bool IsBatch { get; set; }
 
-        public int MsgType { get; }
+        public int MsgType { get; set; }
 
-        public bool IsSticky { get; }
+        public bool IsSticky { get; set; }
     }
 }
