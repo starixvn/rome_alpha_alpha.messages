@@ -833,6 +833,48 @@
     <Content Include="Views\StaticMessage\167819.Super.zh-TW.pdf">
       <DependentUpon>167819.Super.en-US.pdf</DependentUpon>
     </Content>
+    <Content Include="Views\StaticMessage\167820.Agent.en-US.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Agent.th-TH.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Agent.vi-VN.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Agent.zh-CN.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Agent.zh-TW.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Master.en-US.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Master.th-TH.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Master.vi-VN.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Master.zh-CN.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Master.zh-TW.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Super.th-TH.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Super.vi-VN.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Super.zh-CN.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\167820.Super.zh-TW.pdf">
+      <DependentUpon>167820.Super.en-US.pdf</DependentUpon>
+    </Content>
     <Content Include="Views\StaticMessage\171247.vi-VN.pdf">
       <DependentUpon>171247.en-US.pdf</DependentUpon>
     </Content>
@@ -1402,6 +1444,7 @@
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\StaticMessage\167820.Super.en-US.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

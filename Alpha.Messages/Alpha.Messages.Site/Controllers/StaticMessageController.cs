@@ -15,6 +15,7 @@
         private readonly IDictionary<string, string> FileNameMapping = new Dictionary<string, string>
         {
             ["167819"] = "TelegramChatbot",
+            ["167820"] = "TelegramChatbot",
             ["170467"] = "MyWatchlist"
         };
 
@@ -61,8 +62,8 @@
                 return new EmptyResult();
             }
 
-            var fileDownloadName = FileNameMapping.ContainsKey(id) 
-                ? $"{resourceManager.GetString(FileNameMapping[id], CultureInfo.CreateSpecificCulture(UserSession.Current.Language))}.pdf" 
+            var fileDownloadName = FileNameMapping.ContainsKey(id)
+                ? $"{resourceManager.GetString(FileNameMapping[id], CultureInfo.CreateSpecificCulture(UserSession.Current.Language))}.pdf"
                 : "Guide.pdf";
 
             Response.AddHeader("Content-Disposition", "inline; filename=" + fileDownloadName);
