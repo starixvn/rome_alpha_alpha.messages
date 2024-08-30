@@ -35,6 +35,7 @@
         public ActionResult File(string id)
         {
             string viewName = $"{id}.{UserSession.Current.Language}";
+
             if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{viewName}.cshtml")))
             {
                 viewName = $"{id}.en-US";
@@ -42,8 +43,14 @@
 
             if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{viewName}.cshtml")))
             {
-                return new EmptyResult();
+                if (!System.IO.File.Exists(Server.MapPath($"~/Views/StaticMessage/{id}.cshtml")))
+                {
+                    return new EmptyResult();
+                }
+
+                return PartialView(id);
             }
+
 
             return PartialView(viewName);
         }
