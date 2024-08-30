@@ -139,7 +139,7 @@
     <value>胜负盘</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>其他</value>
+    <value>其它</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>上半场亚洲盘</value>
@@ -166,7 +166,7 @@
     <value>电子竞技的新投注类型：</value>
   </data>
   <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
-    <value>足球的新投注类别</value>
+    <value>足球的新投注类别:</value>
   </data>
   <data name="NewBetType" xml:space="preserve">
     <value>新投注类别</value>
@@ -184,6 +184,15 @@
     <value>无佣金</value>
   </data>
   <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
-    <value>新板球投注类型</value>
+    <value>新板球投注类型:</value>
+  </data>
+  <data name="TwoWayMarket" xml:space="preserve">
+    <value>双项投注盘口</value>
+  </data>
+  <data name="ThreeWayMarket" xml:space="preserve">
+    <value>三项投注盘口</value>
+  </data>
+  <data name="NewBetTypeOfBaseball" xml:space="preserve">
+    <value>棒球的新投注类型:</value>
   </data>
 </root>

@@ -139,7 +139,7 @@
     <value>การทายผู้เล่นหรือทีมที่จะชนะ</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>กีฬาชนิดอื่น</value>
+    <value>อื่นๆ</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>ราคาต่อรอง ครึ่งแรก</value>
@@ -166,7 +166,7 @@
     <value>ประเภทการเดิมพันใหม่ของ E-Sports:</value>
   </data>
   <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
-    <value>ประเภทเดิมพันใหม่ของฟุตบอล</value>
+    <value>ประเภทเดิมพันใหม่ของฟุตบอล:</value>
   </data>
   <data name="NewBetType" xml:space="preserve">
     <value>ประเภทการเดิมพันใหม่</value>
@@ -184,6 +184,15 @@
     <value>ไม่มีคอมมิสชั่น</value>
   </data>
   <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
-    <value>ประเภทการเดิมพันใหม่ของคริกเก็ต</value>
+    <value>ประเภทการเดิมพันใหม่ของคริกเก็ต:</value>
+  </data>
+  <data name="TwoWayMarket" xml:space="preserve">
+    <value>เดิมพันที่มี 2 ตัวเลือก</value>
+  </data>
+  <data name="ThreeWayMarket" xml:space="preserve">
+    <value>เดิมพันที่มี 3 ตัวเลือก</value>
+  </data>
+  <data name="NewBetTypeOfBaseball" xml:space="preserve">
+    <value>ประเภทการเดิมพันใหม่ของเบสบอล:</value>
   </data>
 </root>
