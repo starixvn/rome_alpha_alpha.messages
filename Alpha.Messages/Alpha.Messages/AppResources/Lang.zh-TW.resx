@@ -139,7 +139,7 @@
     <value>勝負盤</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>其他</value>
+    <value>其它</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>上半場亞洲盤</value>
@@ -163,10 +163,10 @@
     <value>占成數設定複製跟隨</value>
   </data>
   <data name="NewBetTypeTitle" xml:space="preserve">
-    <value>電子競技的新投註類型：</value>
+    <value>電子競技的新投註類型:</value>
   </data>
   <data name="NewBetTypeOfSoccerTitle" xml:space="preserve">
-    <value>足球的新投注類別</value>
+    <value>足球的新投注類別:</value>
   </data>
   <data name="NewBetType" xml:space="preserve">
     <value>新投注類別</value>
@@ -175,7 +175,7 @@
     <value>其他</value>
   </data>
   <data name="NewBetTypeOfBadmintonTitle" xml:space="preserve">
-    <value>羽毛球新投註類型：</value>
+    <value>羽毛球新投註類型:</value>
   </data>
   <data name="NewBetTypeOfBasketball" xml:space="preserve">
     <value>籃球的新投註類型:</value>
@@ -184,6 +184,15 @@
     <value>無佣金</value>
   </data>
   <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
-    <value>新板球投注類型</value>
+    <value>新板球投注類型:</value>
+  </data>
+  <data name="TwoWayMarket" xml:space="preserve">
+    <value>雙項投注盤口</value>
+  </data>
+  <data name="ThreeWayMarket" xml:space="preserve">
+    <value>三項投注盤口</value>
+  </data>
+  <data name="NewBetTypeOfBaseball" xml:space="preserve">
+    <value>棒球的新投注類型:</value>
   </data>
 </root>

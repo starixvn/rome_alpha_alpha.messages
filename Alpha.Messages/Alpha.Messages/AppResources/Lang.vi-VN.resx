@@ -139,7 +139,7 @@
     <value>Moneyline</value>
   </data>
   <data name="Others" xml:space="preserve">
-    <value>Môn Thể Thao khác</value>
+    <value>Cược khác</value>
   </data>
   <data name="Label1HHDC" xml:space="preserve">
     <value>Hiệp 1 - Cược Chấp</value>
@@ -184,9 +184,18 @@
     <value>Các loại cược mới của Bóng Rổ:</value>
   </data>
   <data name="NewBetTypeOfCricketTitle" xml:space="preserve">
-    <value>Các loại cược mới của Cricket</value>
+    <value>Các loại cược mới của Cricket:</value>
   </data>
   <data name="NoCommission" xml:space="preserve">
     <value>Không có hoa hồng</value>
+  </data>
+  <data name="TwoWayMarket" xml:space="preserve">
+    <value>Cược với 2 cửa</value>
+  </data>
+  <data name="ThreeWayMarket" xml:space="preserve">
+    <value>Cược với 3 cửa</value>
+  </data>
+  <data name="NewBetTypeOfBaseball" xml:space="preserve">
+    <value>Các loại cược mới của Bóng Chày:</value>
   </data>
 </root>
