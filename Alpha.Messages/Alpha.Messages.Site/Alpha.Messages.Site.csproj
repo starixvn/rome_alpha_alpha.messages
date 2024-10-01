@@ -1446,49 +1446,50 @@
     </Content>
     <Content Include="Views\StaticMessage\167820.Super.en-US.pdf" />
     <Content Include="Views\StaticMessage\207707.cshtml" />
-	 <Content Include="Views\StaticMessage\204089.Super.en-US.pdf" />
-	 <Content Include="Views\StaticMessage\204089.Agent.en-US.pdf">
-	   <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Agent.th-TH.pdf">
-       <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Agent.vi-VN.pdf">
-	   <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Agent.zh-CN.pdf">
-	   <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Agent.zh-TW.pdf">
-	   <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Master.en-US.pdf">
-	   <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Master.th-TH.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Master.vi-VN.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Master.zh-CN.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Master.zh-TW.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Super.th-TH.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Super.vi-VN.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Super.zh-CN.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
-	 <Content Include="Views\StaticMessage\204089.Super.zh-TW.pdf">
-	  <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
-	 </Content>
+    <Content Include="Views\StaticMessage\204089.Super.en-US.pdf" />
+    <Content Include="Views\StaticMessage\204089.Agent.en-US.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Agent.th-TH.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Agent.vi-VN.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Agent.zh-CN.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Agent.zh-TW.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Master.en-US.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Master.th-TH.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Master.vi-VN.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Master.zh-CN.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Master.zh-TW.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Super.th-TH.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Super.vi-VN.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Super.zh-CN.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\204089.Super.zh-TW.pdf">
+      <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
+    </Content>
+    <Content Include="Views\StaticMessage\209584.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
