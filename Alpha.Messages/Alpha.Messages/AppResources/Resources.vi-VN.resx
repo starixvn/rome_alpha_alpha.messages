@@ -283,7 +283,7 @@
     <value>Chậm</value>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
-    <value>Hãy giúp chúng tôi cải thiện!</value>
+    <value>Hãy giúp chúng tôi &lt;span&gt;cải thiện!&lt;/span&gt;</value>
   </data>
   <data name="FeedbackFunctionArea_Greeting" xml:space="preserve">
     <value>Vui lòng đánh giá những điểm mà bạn hài lòng / không hài lòng về tính năng {0}.</value>

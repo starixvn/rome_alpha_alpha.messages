@@ -146,7 +146,6 @@
     border: 1px solid transparent;
 
     &:hover {
- 
         cursor: pointer;
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
         border: 1px solid #474747;
@@ -306,7 +305,7 @@ body.transparent {
         margin-top: 20px;
     }
 
-    .btn-notuseful, .btn-useful {
+    .btn-notuseful, .btn-useful, .btn-close {
         font-size: 13px;
         line-height: 28px;
         height: 28px;
@@ -323,15 +322,16 @@ body.transparent {
     .btn-notuseful {
         color: #276EAC;
         border: 1px solid #36587D;
-        background: #191919;        
+        background: #191919;
     }
 
-    .btn-useful {
+    .btn-useful, .btn-close {
         color: #EDEDED;
         border: 1px solid #36587D;
-        background: #36587D;        
+        background: #36587D;
     }
 }
+
 .survey-result.msg {
     max-width: 300px;
     padding: 30px 20px;
@@ -350,6 +350,7 @@ body.transparent {
         line-height: normal;
     }
 }
+
 .survey-result.msg {
     max-width: 300px;
     padding: 30px 20px;

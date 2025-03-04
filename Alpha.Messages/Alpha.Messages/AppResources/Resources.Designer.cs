@@ -349,7 +349,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to df.
+        ///   Looks up a localized string similar to Help us &lt;span&gt;Improve!&lt;/span&gt;.
         /// </summary>
         public static string FeedbackSurveyTitle {
             get {

@@ -28,6 +28,11 @@
             <div class="btn-box-center">
                 <button type="button" class="btn-notuseful" id="btn-not-useful">@Resources.NotUseful</button>
                 <button type="submit" class="btn-useful " id="btn-useful">@Resources.Useful</button>
+
+                @if (Model.IsInternal)
+                {
+                    <button type="submit" class="btn-close " id="btn-close">@Resources.close</button>
+                }
             </div>
         </div>
     </div>

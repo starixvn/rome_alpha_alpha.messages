@@ -143,6 +143,7 @@
     margin-top: 16px;
     margin-bottom: 7px;
 }
+
 .row-rate-star {
     display: flex;
     align-items: center;
@@ -162,6 +163,7 @@
         font-size: 14px;
     }
 }
+
 .rate-star {
     display: flex;
     flex-direction: row-reverse;
@@ -209,16 +211,19 @@
 .rate-star > label:hover ~ input:checked ~ label {
     color: #EFB00E;
 }
-body.transparent{
+
+body.transparent {
     background: transparent;
     padding: 1px;
 }
+
 .center-survey {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     height: 100%;
 }
+
 .survey-box {
     background: #fff;
     font-size: 14px;
@@ -310,7 +315,7 @@ body.transparent{
         margin-top: 20px;
     }
 
-    .btn-notuseful, .btn-useful {
+    .btn-notuseful, .btn-useful, .btn-close {
         font-size: 13px;
         line-height: 28px;
         height: 28px;
@@ -330,12 +335,13 @@ body.transparent{
         background: #fff;
     }
 
-    .btn-useful {
+    .btn-useful, .btn-close {
         color: #EDEDED;
         border: 1px solid #0B599C;
         background: #0B5799;
     }
 }
+
 .survey-result.msg {
     max-width: 300px;
     padding: 30px 20px;
@@ -354,6 +360,7 @@ body.transparent{
         line-height: normal;
     }
 }
+
 .survey-result.msg {
     max-width: 300px;
     padding: 30px 20px;

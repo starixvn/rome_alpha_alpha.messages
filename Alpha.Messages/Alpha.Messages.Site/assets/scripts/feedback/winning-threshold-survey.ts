@@ -1,7 +1,7 @@
 ﻿"use strict";
 class WinningThresholdSurvey {
     $: JQueryStatic;
-    addFeedbackUrl = "Add";
+    addSurveyUrl = "AddSurvey";
 
     feedback = {
         rate: 0,
@@ -21,18 +21,19 @@ class WinningThresholdSurvey {
     bindEvents(): void {
         const self: any = this;
 
-        var isInternal = $('#IsInternal').val() === '1';
-        if (isInternal) {
-            return;
+        if ($('#IsInternal').val() === '0') {
+            $('#btn-not-useful').click(function (): void {
+                self.submitFeedback(0);
+            });
+
+            $('#btn-useful').click(function (): void {
+                self.submitFeedback(1);
+            });
+        } else {
+            $('#btn-close').click(function (): void {
+                window.top.indexManager.domElements.winningThresholdSurveyPopup.close();
+            });
         }
-
-        $('#btn-not-useful').click(function (): void {
-            self.submitFeedback(0);
-        });
-
-        $('#btn-useful').click(function (): void {
-            self.submitFeedback(1);
-        });
     }
 
     submitFeedback(useful: boolean): void {
@@ -45,7 +46,7 @@ class WinningThresholdSurvey {
 
         $.ajax({
             type: "POST",
-            url: self.addFeedbackUrl,
+            url: self.addSurveyUrl,
             data: self.feedback,
             success: (result) => {
                 self.$.unblockUI();

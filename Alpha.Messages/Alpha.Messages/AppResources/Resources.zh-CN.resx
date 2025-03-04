@@ -352,4 +352,7 @@
   <data name="FeedbackSurveyTitle" xml:space="preserve">
     <value>协助我们&lt;span&gt;改进！&lt;/span&gt;</value>
   </data>
+  <data name="close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
 </root>
