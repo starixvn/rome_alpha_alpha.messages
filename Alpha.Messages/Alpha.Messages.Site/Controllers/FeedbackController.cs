@@ -35,5 +35,12 @@
 
         [AllowProtectedMode]
         public Task<ActionResult> Add(AddFeedbackQuery query) => JsonAsync(query);
+
+        [HttpGet, AllowProtectedMode]
+        public ViewResult WinningThresholdSurvey(FeedbackSurveyQuery query)
+        {
+            var viewModel = new FeedbackSurveyViewModel(query);
+            return View(viewModel);
+        }
     }
 }

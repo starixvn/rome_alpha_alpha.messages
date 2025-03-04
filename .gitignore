@@ -60,3 +60,4 @@ build/BuildTask.Release.log
 .vs/Alpha.Messages/v15/Server/sqlite3/storage.ide-shm
 .vs/Alpha.Messages/v15/Server/sqlite3/storage.ide-wal
 /.vs/Alpha.Messages/DesignTimeBuild/.dtbcache
+.vs/**

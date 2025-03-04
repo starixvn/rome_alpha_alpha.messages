@@ -411,6 +411,10 @@
     <Content Include="assets\bundles\feedback\index.min.js">
       <DependentUpon>index.js</DependentUpon>
     </Content>
+    <Content Include="assets\bundles\feedback\winning-threshold-survey.js" />
+    <Content Include="assets\bundles\feedback\winning-threshold-survey.min.js">
+      <DependentUpon>winning-threshold-survey.js</DependentUpon>
+    </Content>
     <Content Include="assets\bundles\home-mobile-calculate-07-dark.css" />
     <Content Include="assets\bundles\home-mobile-calculate-07-dark.min.css">
       <DependentUpon>home-mobile-calculate-07-dark.css</DependentUpon>
@@ -476,8 +480,14 @@
     <Content Include="assets\styles\feedback\feedback-mobile-calculate-07-dark.css">
       <DependentUpon>feedback-mobile-calculate-07-dark.scss</DependentUpon>
     </Content>
+    <Content Include="assets\styles\feedback\feedback-mobile-calculate-07-dark.min.css">
+      <DependentUpon>feedback-mobile-calculate-07-dark.css</DependentUpon>
+    </Content>
     <Content Include="assets\styles\feedback\feedback-mobile-calculate-07.css">
       <DependentUpon>feedback-mobile-calculate-07.scss</DependentUpon>
+    </Content>
+    <Content Include="assets\styles\feedback\feedback-mobile-calculate-07.min.css">
+      <DependentUpon>feedback-mobile-calculate-07.css</DependentUpon>
     </Content>
     <Content Include="assets\styles\feedback\images\amazing-active.svg" />
     <Content Include="assets\styles\feedback\images\amazing.svg" />
@@ -553,6 +563,8 @@
     <Content Include="assets\styles\popup\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="assets\styles\survey\survey-dark.png" />
+    <Content Include="assets\styles\survey\survey.png" />
     <Content Include="Global.asax" />
     <Content Include="deployment.ignore" />
     <Content Include="App_Data\SPNames\INTERNAL\DBAGE.bodb02.xml" />
@@ -1107,6 +1119,7 @@
     <Compile Include="Requests\Announcement\PopupAnnouncementQuery.cs" />
     <Compile Include="Requests\Announcement\AnnouncementsHistoryQuery.cs" />
     <Compile Include="Requests\BackupDomains\BackupDomainsQuery.cs" />
+    <Compile Include="Requests\Feedback\FeedbackSurveyQuery.cs" />
     <Compile Include="Requests\Feedback\AddFeedbackQuery.cs" />
     <Compile Include="Requests\Feedback\CheckExistsFeedbackQuery.cs" />
     <Compile Include="Requests\Feedback\FeedbackAreaQuery.cs" />
@@ -1124,6 +1137,7 @@
     <Compile Include="ViewModels\AnnouncementHistoryViewModel.cs" />
     <Compile Include="ViewModels\Components\PagerViewModel.cs" />
     <Compile Include="ViewModels\Feedback\CheckExistsFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Feedback\FeedbackSurveyViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackAreaViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackFunctionViewModel.cs" />
     <Compile Include="ViewModels\MarqueeMessageViewModel.cs" />
@@ -1490,6 +1504,8 @@
       <DependentUpon>204089.Super.en-US.pdf</DependentUpon>
     </Content>
     <Content Include="Views\StaticMessage\209584.cshtml" />
+    <Content Include="Views\Feedback\WinningThresholdSurvey.cshtml" />
+    <Content Include="Views\Feedback\_SurveyLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -1517,6 +1533,7 @@
     <TypeScriptCompile Include="assets\scripts\components\daterangepicker.ts" />
     <TypeScriptCompile Include="assets\scripts\core.ts" />
     <TypeScriptCompile Include="assets\scripts\feedback\function.ts" />
+    <TypeScriptCompile Include="assets\scripts\feedback\winning-threshold-survey.ts" />
     <TypeScriptCompile Include="assets\scripts\feedback\index.ts" />
     <TypeScriptCompile Include="assets\scripts\message\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

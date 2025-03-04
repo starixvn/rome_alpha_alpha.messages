@@ -126,5 +126,11 @@
       "assets/scripts/core.js",
       "assets/scripts/backupdomains/index.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/feedback/winning-threshold-survey.js",
+    "inputFiles": [
+      "Assets/scripts/feedback/winning-threshold-survey.js"
+    ]
   }
 ]
