@@ -19,7 +19,7 @@ namespace Alpha.Messages.AppResources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -295,7 +295,70 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help us improve!.
+        ///   Looks up a localized string similar to Please select &lt;b&gt;Useful&lt;/b&gt; or &lt;b&gt;Not Useful&lt;/b&gt; to continue..
+        /// </summary>
+        public static string FeedbackSurvey_SelectUsefulOrNot {
+            get {
+                return ResourceManager.GetString("FeedbackSurvey_SelectUsefulOrNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We’re excited to implement a new Sportsbook Winning Threshold feature, enabling you to set a specific winning limit, equipping you with greater control over risk management and security..
+        /// </summary>
+        public static string FeedbackSurvey_WinningThreshold {
+            get {
+                return ResourceManager.GetString("FeedbackSurvey_WinningThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span&gt;Customizable Risk Control&lt;/span&gt;: Customize winning thresholds for each unique member, ensuring a more tailored and precise approach to risk management..
+        /// </summary>
+        public static string FeedbackSurvey_WinningThreshold_CustomizableRiskControl {
+            get {
+                return ResourceManager.GetString("FeedbackSurvey_WinningThreshold_CustomizableRiskControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span&gt;Peace of Mind&lt;/span&gt;: Minimize large, unpredictable payouts fostering a safer gaming experience..
+        /// </summary>
+        public static string FeedbackSurvey_WinningThreshold_PeaceOfMind {
+            get {
+                return ResourceManager.GetString("FeedbackSurvey_WinningThreshold_PeaceOfMind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span&gt;Stay Ahead&lt;/span&gt;: Receive real-time alerts when members approach their limit—take action early (&lt;span&gt;block placing bets, adjust limits, etc.&lt;/span&gt;)..
+        /// </summary>
+        public static string FeedbackSurvey_WinningThreshold_StayAhead {
+            get {
+                return ResourceManager.GetString("FeedbackSurvey_WinningThreshold_StayAhead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi &lt;b&gt;{0}&lt;/b&gt;, as a valued agent in our community, your insights are essential..
+        /// </summary>
+        public static string FeedbackSurveyGreeting {
+            get {
+                return ResourceManager.GetString("FeedbackSurveyGreeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help us &lt;span&gt;Improve!&lt;/span&gt;.
+        /// </summary>
+        public static string FeedbackSurveyTitle {
+            get {
+                return ResourceManager.GetString("FeedbackSurveyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help us &lt;span&gt;Improve!&lt;/span&gt;.
         /// </summary>
         public static string FeedbackTitle {
             get {
@@ -521,6 +584,15 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Useful.
+        /// </summary>
+        public static string NotUseful {
+            get {
+                return ResourceManager.GetString("NotUseful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of.
         /// </summary>
         public static string of {
@@ -688,6 +760,15 @@ namespace Alpha.Messages.AppResources {
         public static string to {
             get {
                 return ResourceManager.GetString("to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Useful.
+        /// </summary>
+        public static string Useful {
+            get {
+                return ResourceManager.GetString("Useful", resourceCulture);
             }
         }
         

@@ -20,7 +20,7 @@
     @RenderSection("Styles", required: false)
     @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagScript()
 </head>
-<body>
+<body class="bd-transparent">
     @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagNoScript()
     @RenderBody()
     @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
