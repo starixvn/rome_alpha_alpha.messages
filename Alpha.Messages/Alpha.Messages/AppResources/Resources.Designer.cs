@@ -340,7 +340,7 @@ namespace Alpha.Messages.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hi &lt;b&gt;{0}&lt;/b&gt;, as a valued agent in our community, your insights are essential..
+        ///   Looks up a localized string similar to Hi &lt;b&gt;{0}&lt;/b&gt;, as a valued agent in our community, your insights are essential!.
         /// </summary>
         public static string FeedbackSurveyGreeting {
             get {

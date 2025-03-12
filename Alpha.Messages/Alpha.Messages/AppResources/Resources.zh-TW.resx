@@ -326,7 +326,7 @@
     <value>複制全部</value>
   </data>
   <data name="FeedbackSurveyGreeting" xml:space="preserve">
-    <value>您好 &lt;b&gt;{0}&lt;/b&gt;，作為我們共同體中尊貴的代理，您的見解至關重要</value>
+    <value>您好 &lt;b&gt;{0}&lt;/b&gt;，作為我們共同體中尊貴的代理，您的見解至關重要!</value>
   </data>
   <data name="FeedbackSurvey_WinningThreshold" xml:space="preserve">
     <value>我們很高興推出新的體育博彩獲勝限額功能，借此您可以設置特定的贏額，讓您更好地控制風險管理和安全性</value>
