@@ -346,12 +346,6 @@
   <data name="FeedbackSurvey_SelectUsefulOrNot" xml:space="preserve">
     <value>โปรดเลือก &lt;b&gt;มีประโยชน์&lt;/b&gt; หรือ &lt;b&gt;ไม่มีประโยชน์&lt;/b&gt; เพื่อดำเนินการต่อ</value>
   </data>
-  <data name="Useful_Duplicate[1]" xml:space="preserve">
-    <value>มีประโยชน์</value>
-  </data>
-  <data name="NotUseful_Duplicate[1]" xml:space="preserve">
-    <value>ไม่มีประโยชน์</value>
-  </data>
   <data name="FeedbackSurveyTitle" xml:space="preserve">
     <value>ช่วยเรา&lt;span&gt;พัฒนา!&lt;/span&gt;</value>
   </data>

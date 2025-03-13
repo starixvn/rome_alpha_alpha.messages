@@ -352,12 +352,6 @@ Thông Báo Chung và Tin Nhắn Cá Nhân sẽ được lưu đến 3 tháng.</
   <data name="FeedbackSurvey_SelectUsefulOrNot" xml:space="preserve">
     <value>Vui lòng chọn &lt;b&gt;Hữu ích&lt;/b&gt; hoặc &lt;b&gt;Không hữu ích&lt;/b&gt; để tiếp tục.</value>
   </data>
-  <data name="Useful_Duplicate[1]" xml:space="preserve">
-    <value>Hữu ích</value>
-  </data>
-  <data name="NotUseful_Duplicate[1]" xml:space="preserve">
-    <value>Không hữu ích</value>
-  </data>
   <data name="No_Duplicate[1]_Duplicate[1]" xml:space="preserve">
     <value>Số</value>
   </data>
